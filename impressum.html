@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum | N3XT LEVEL</title>
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        accent: '#FF4500', // Vibrant Orange Red
+                        'accent-hover': '#FF6a00',
+                        dark: '#050505',
+                        'card-bg': '#0f0f0f',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sans selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="w-full border-b border-white/5">
+        <div class="max-w-3xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html"
+                class="text-2xl font-black tracking-tighter hover:text-accent transition-colors duration-300">
+                N<span class="text-[#ff0000]">3</span>XT LEVEL<span class="text-accent">.</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Zurück zur
+                Startseite</a>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 py-20">
+        <h1 class="text-4xl font-bold mb-12">Impressum</h1>
+
+        <div class="space-y-8 text-gray-300">
+            <!-- Details -->
+            <section class="space-y-2">
+                <p class="text-xl font-semibold text-white">Angaben gemäß § 5 TMG</p>
+                <p class="font-bold text-lg text-white mt-4">Tamas Horvat</p>
+                <p>Hauptstraße 32</p>
+                <p>2000 Stockerau</p>
+                <p>Österreich</p>
+            </section>
+
+            <!-- Kontakt -->
+            <section class="space-y-2 pt-4">
+                <h2 class="text-lg font-semibold text-white">Kontakt</h2>
+                <p>E-Mail: <a href="mailto:haxesen@gmail.com" class="text-accent hover:underline">haxesen@gmail.com</a>
+                </p>
+            </section>
+
+            <!-- Description -->
+            <section class="space-y-2 pt-4">
+                <h2 class="text-lg font-semibold text-white">Unternehmensgegenstand</h2>
+                <p>IT-Dienstleistungen & Webdesign</p>
+            </section>
+
+            <!-- Disclaimers -->
+            <section class="pt-8 text-sm text-gray-500 space-y-4 border-t border-white/10 mt-12">
+                <h3 class="font-bold text-white">Haftung für Inhalte</h3>
+                <p>
+                    Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+                    allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+                    verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+                    zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                </p>
+                <h3 class="font-bold text-white">Urheberrecht</h3>
+                <p>
+                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                    österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+                    Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
+                    jeweiligen Autors bzw. Erstellers.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black">
+        <div class="max-w-3xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-gray-500 text-sm">
+                &copy; <span id="year"></span> N<span class="text-[#ff0000]">3</span>XT LEVEL. Excellence in Code.
+            </div>
+            <div class="flex space-x-8 text-sm text-gray-400">
+                <a href="impressum.html" class="text-white font-bold border-b border-accent">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-accent transition-colors">Datenschutz</a>
+                <a href="#" class="hover:text-accent transition-colors">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>

@@ -1,31 +1,56 @@
 # N3XT LEVEL - High-Performance AI Portfolio Website
 
-Dies ist ein High-Fidelity-Prototyp der "Master Design" Spezifikation.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://n3xt-level-on8eddq9k-haxesens-projects.vercel.app/)
 
-## Technische Details
+Dies ist ein High-Fidelity-Prototyp der "Master Design" Spezifikation für eine österreichische AI-Webagentur.
 
-Aufgrund der aktuellen Systemumgebung (fehlende Node.js Laufzeitumgebung) wurde dieses Projekt als **statische Single-Page-Application** umgesetzt. Dies gewährleistet:
+## 🚀 Live Demo
+Besuchen Sie die live Version hier: **[N3XT LEVEL Live](https://n3xt-level-on8eddq9k-haxesens-projects.vercel.app/)**
 
-1.  **Sofortige Nutzbarkeit**: Die Datei `index.html` kann sofort in jedem Browser geöffnet werden.
-2.  **Maximale Performance**: Kein Build-Process, kein Server-Overhead.
-3.  **Identisches Design**: Das visuelle Ergebnis entspricht zu 100% den Anforderungen (Next.js & Tailwind CSS Look & Feel).
+## 🛠 Technologie-Stack
+Das Projekt wurde modernisiert und nutzt nun einen **Vite + Tailwind CSS** Build-Prozess für maximale Performance.
 
-## Technologie-Stack
+-   **Frontend**: HTML5, Modern JavaScript (ES6 Modules)
+-   **Styling**: Tailwind CSS v3.4 (konfiguriert für Dark Mode & Orange Accents)
+-   **Build Tool**: Vite (für blitzschnelles HMR und optimierten Production Build)
+-   **Deploy**: Vercel
 
--   **Core**: HTML5 (Semantisch optimiert)
--   **Styling**: Tailwind CSS (via CDN konfiguriert für Rapid Prototyping)
-    -   *Custom Config:* Matte Black Theme, Vibrant Orange Accents (#FF4500), Inter Font.
--   **Interactivity**: Vanilla JavaScript (für Smooth Scrolling und Reveal Animations).
+## 📦 Installation & Entwicklung
 
-## Migration zu Next.js
+### Voraussetzungen
+-   Node.js installiert
 
-Möchten Sie dieses Design in eine Next.js App überführen? Das ist einfach:
+### Setup
+1.  Repository klonen:
+    ```bash
+    git clone https://github.com/haxesen/N3xtLevel.git
+    cd N3xtLevel
+    ```
+2.  Abhängigkeiten installieren:
+    ```bash
+    npm install
+    ```
+3.  Entwicklungsserver starten:
+    ```bash
+    npm run dev
+    ```
 
-1.  Erstellen Sie eine neue Next.js App: `npx create-next-app@latest my-app`
-2.  Installieren Sie Tailwind CSS.
-3.  Kopieren Sie die `tailwind.config` Werte aus dem `<script>` Tag in der `index.html` in Ihre `tailwind.config.js`.
-4.  Zerlegen Sie die `index.html` Abschnitte in Komponenten (z.B. `components/Hero.tsx`, `components/Services.tsx`).
+### Production Build
+Erstellt optimierte Dateien im `/dist` Ordner:
+```bash
+npm run build
+```
+
+## 📂 Struktur
+-   `/components`: Wiederverwendbare JavaScript-Komponenten (Hero, Services, Kontakt, etc.)
+-   `/assets`: Bilder und statische Ressourcen
+-   `index.html`: Einstiegspunkt
+-   `main.js`: Haupt-Skript für Imports und Initialisierung
+
+## 🎨 Design
+-   **Farben**: Matte Black (#000000) & Vibrant Orange (#FF4500)
+-   **Typografie**: Inter (Google Fonts)
+-   **Vibe**: Premium, futuristisch, High-End AI.
 
 ## Lizenz
-
-Alle Inhalte sind Platzhalter und für die Demonstration erstellt.
+© 2025 N3XT LEVEL. Alle Rechte vorbehalten.

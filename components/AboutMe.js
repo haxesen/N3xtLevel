@@ -1,0 +1,42 @@
+const AboutMe = `
+<!-- The Mind Behind Section -->
+<section class="py-32 bg-black relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-16 reveal">
+            <!-- Image Side -->
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div
+                        class="absolute inset-0 border-2 border-accent rounded-full animate-pulse-slow blur-sm">
+                    </div>
+                    <img src="assets/profile.jpg" alt="Tamas Horvat"
+                        class="relative z-10 w-full h-full object-cover rounded-full border-2 border-accent shadow-glow">
+                    <!-- Decorative Elements -->
+                    <div
+                        class="absolute -bottom-4 -right-4 bg-card-bg px-6 py-3 rounded-xl border border-white/10 shadow-xl z-20">
+                        <span class="text-accent font-bold">Founder</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Side -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <p class="text-accent font-semibold tracking-wider uppercase mb-2">Der Kopf hinter N3XT LEVEL
+                </p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Tamas Horvat</h2>
+                <h3 class="text-xl text-gray-300 font-medium mb-6">Founder & Lead Developer</h3>
+                <p class="text-gray-400 text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
+                    "Mein Ziel ist es, österreichische Unternehmen durch den Einsatz modernster KI-Technologien
+                    auf
+                    das nächste Level zu heben. Ich kombiniere technisches Know-how mit lokaler
+                    Verlässlichkeit."
+                </p>
+                <div class="mt-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Signature_sample.svg"
+                        alt="Signature" class="h-12 w-auto opacity-70 invert mx-auto md:mx-0">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+`;

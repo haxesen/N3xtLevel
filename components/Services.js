@@ -1,4 +1,4 @@
-const Services = `
+export const Services = `
 <!-- Services Section -->
 <section id="services" class="py-32 bg-black relative">
     <div class="max-w-7xl mx-auto px-6">

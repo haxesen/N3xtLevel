@@ -1,4 +1,4 @@
-const Contact = `
+export const Contact = `
 <!-- Contact Section -->
 <section id="contact" class="py-32 bg-black relative overflow-hidden">
     <!-- Glow effects -->

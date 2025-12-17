@@ -1,4 +1,4 @@
-const PremiumContent = `
+export const PremiumContent = `
 <!-- Premium Content Section -->
 <section class="py-32 bg-black relative border-t border-white/5 overflow-hidden">
      <!-- Background Effect -->

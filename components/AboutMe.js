@@ -1,4 +1,4 @@
-const AboutMe = `
+export const AboutMe = `
 <!-- The Mind Behind Section -->
 <section class="py-32 bg-black relative border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">

@@ -1,4 +1,4 @@
-const Portfolio = `
+export const Portfolio = `
 <!-- Portfolio Section -->
 <section id="portfolio" class="py-32 bg-dark border-t border-white/5 relative">
     <div class="max-w-7xl mx-auto px-6">

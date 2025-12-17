@@ -1,4 +1,4 @@
-const Hero = `
+export const Hero = `
 <!-- Hero Section -->
 <section class="min-h-screen flex items-center justify-center relative pt-20">
     <!-- Background Glows -->

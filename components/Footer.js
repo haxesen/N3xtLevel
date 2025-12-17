@@ -1,4 +1,4 @@
-const Footer = `
+export const Footer = `
 <!-- Footer -->
 <footer class="py-12 border-t border-white/5 bg-black">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">

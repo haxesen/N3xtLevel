@@ -15,11 +15,11 @@ export const Footer = `
         </div>
 
         <div class="flex space-x-8 text-sm text-gray-400">
-            <button onclick="openModal('impressumModal')"
+            <button data-modal-open="impressumModal"
                 class="hover:text-accent transition-colors">Impressum</button>
-            <button onclick="openModal('datenschutzModal')"
+            <button data-modal-open="datenschutzModal"
                 class="hover:text-accent transition-colors">Datenschutz</button>
-            <button onclick="openModal('agbModal')" class="hover:text-accent transition-colors">AGB</button>
+            <button data-modal-open="agbModal" class="hover:text-accent transition-colors">AGB</button>
         </div>
     </div>
 </footer>

@@ -31,7 +31,7 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-300">
-                <button data-modal-close class="hover:text-white transition-colors">Leistungen</button>
+                <a href="#services" class="hover:text-white transition-colors">Leistungen</a>
                 <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
                 <a href="#contact" class="hover:text-white transition-colors">Kontakt</a>
                 <a href="#contact"
@@ -41,7 +41,7 @@
             </div>
 
             <!-- Mobile Menu Icon -->
-            <button data-modal-close class="md:hidden text-white" aria-label="Menu">
+            <button class="md:hidden text-white" aria-label="Menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -74,7 +74,90 @@
         <div id="contact-container"></div>
         <div id="footer-container"></div>
 
-        <!-- No more scripts here, handled by main.js -->
+    </main>
+
+    <!-- Modals -->
+
+    <!-- Impressum Modal -->
+    <div id="impressumModal"
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div
+            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold mb-6 text-white">Impressum</h2>
+            <div class="text-gray-300 space-y-4 leading-relaxed">
+                <p><strong>N3XT LEVEL AI Agency</strong><br>
+                    Musterstraße 123<br>
+                    1010 Wien, Österreich</p>
+                <p><strong>Kontakt:</strong><br>
+                    Telefon: +43 1 234 567 89<br>
+                    E-Mail: office@n3xtlevel.at</p>
+                <p><strong>Geschäftsführung:</strong><br>
+                    Tamas Horvat</p>
+                <p><strong>Umsatzsteuer-ID:</strong><br>
+                    ATU12345678</p>
+                <p><strong>Unternehmensgegenstand:</strong><br>
+                    Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutzModal"
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div
+            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold mb-6 text-white">Datenschutzerklärung</h2>
+            <div class="text-gray-300 space-y-4 leading-relaxed">
+                <h3 class="text-xl font-semibold text-white mt-4">1. Datenschutz auf einen Blick</h3>
+                <p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie
+                    darüber, wie wir Ihre Daten verarbeiten.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">2. Datenerfassung auf unserer Website</h3>
+                <p>Wenn Sie unser Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (z.B. Name, E-Mail)
+                    zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre
+                    Einwilligung weiter.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">3. Analyse-Tools</h3>
+                <p>Wir nutzen derzeit keine externen Tracking-Tools wie Google Analytics. Ihre Privatsphäre steht an
+                    erster Stelle.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGB Modal -->
+    <div id="agbModal"
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div
+            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold mb-6 text-white">Allgemeine Geschäftsbedingungen</h2>
+            <div class="text-gray-300 space-y-4 leading-relaxed">
+                <h3 class="text-xl font-semibold text-white mt-4">1. Geltungsbereich</h3>
+                <p>Diese AGB gelten für alle Geschäftsbeziehungen zwischen N3XT LEVEL und dem Kunden.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">2. Leistungen</h3>
+                <p>Der Umfang der vertraglichen Leistungen ergibt sich aus dem jeweiligen Angebot.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">3. Vertragsabschluss</h3>
+                <p>Der Vertrag kommt durch die Annahme des Angebots durch den Kunden zustande.</p>
+                <p class="text-sm text-gray-500 mt-4">* Dies ist eine beispielhafte Darstellung.</p>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

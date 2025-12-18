@@ -14,7 +14,7 @@ export const Hero = `
             class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-[1.1] animate-fade-in-up">
             Bringen Sie Ihr Business<br>
             auf das <span class="text-accent drop-shadow-[0_0_15px_rgba(255,69,0,0.3)]">N<span
-                    class="text-[#ff0000]">3</span>XT LEVEL.</span>
+                    class="text-black">3</span>XT LEVEL.</span>
         </h1>
         <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed animate-fade-in-up"
             style="animation-delay: 0.2s;">

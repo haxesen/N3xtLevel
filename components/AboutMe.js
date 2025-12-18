@@ -16,7 +16,7 @@ export const AboutMe = (lang = 'de') => {
         },
         hu: {
             badge: "A N3XT LEVEL motorja",
-            name: "Horváth Tamás",
+            name: "Horvat Tamás",
             role: "Alapító & Vezető Fejlesztő",
             desc: "\"Célom, hogy a legmodernebb AI technológiák segítségével emeljem a vállalkozásokat a következő szintre. A technikai tudást a megbízhatósággal ötvözöm.\"",
             signature_font: "'Mr De Haviland', cursive"

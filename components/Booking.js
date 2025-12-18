@@ -49,55 +49,22 @@ export const Booking = `
 
             <!-- Right Content: Calendar UI -->
             <div class="w-full xl:w-2/3 reveal" style="transition-delay: 200ms;">
-                <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-                    <!-- Glow Effect inside card -->
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none"></div>
+                <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl overflow-hidden shadow-2xl relative h-[600px]">
+                    <!-- Cal inline embed code begins -->
+                    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
+                    <script type="text/javascript">
+                    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                    Cal("init", "30min", {origin:"https://app.cal.com"});
 
-                    <!-- Calendar Header -->
-                    <div class="flex justify-between items-center mb-8">
-                        <h3 id="currentMonthYear" class="text-2xl font-bold text-white">December 2025</h3>
-                        <div class="flex gap-2">
-                            <button id="prevMonth" class="w-10 h-10 rounded-full border border-white/10 text-white hover:bg-white/5 transition-colors flex items-center justify-center">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button id="nextMonth" class="w-10 h-10 rounded-full border border-white/10 text-white hover:bg-white/5 transition-colors flex items-center justify-center">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
+                    Cal.ns["30min"]("inline", {
+                        elementOrSelector:"#my-cal-inline-30min",
+                        config: {"layout":"month_view", "theme":"dark"},
+                        calLink: "tamas-horvat-rti5dl/30min",
+                    });
 
-                    <!-- Calendar Grid -->
-                    <div class="grid grid-cols-7 gap-4 mb-4 text-center">
-                        <!-- Weekdays -->
-                        <div class="text-gray-500 text-sm font-medium py-2">So</div>
-                        <div class="text-gray-500 text-sm font-medium py-2">Mo</div>
-                        <div class="text-gray-500 text-sm font-medium py-2">Di</div>
-                        <div class="text-gray-500 text-sm font-medium py-2">Mi</div>
-                        <div class="text-gray-500 text-sm font-medium py-2">Do</div>
-                        <div class="text-gray-500 text-sm font-medium py-2">Fr</div>
-                        <div class="text-gray-500 text-sm font-medium py-2">Sa</div>
-                    </div>
-                    
-                    <div id="calendarDays" class="grid grid-cols-7 gap-4 text-center">
-                        <!-- JS will inject days here -->
-                    </div>
-
-                    <!-- Time Selection (Hidden by default, shown when day picked) -->
-                    <div id="timeSelection" class="hidden mt-8 pt-6 border-t border-white/10 animate-fade-in">
-                        <h4 class="text-white font-bold mb-4">Verfügbare Zeiten für <span id="selectedDateText" class="text-accent"></span></h4>
-                        <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                            <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">09:00</button>
-                            <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">10:00</button>
-                            <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">11:00</button>
-                            <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">14:00</button>
-                            <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">15:30</button>
-                            <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">17:00</button>
-                        </div>
-                        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="w-full mt-6 bg-accent text-white font-bold py-3 rounded-lg hover:bg-accent-hover transition-all">
-                            Termin anfragen
-                        </button>
-                    </div>
-
+                    Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view", "theme":"dark"});
+                    </script>
+                    <!-- Cal inline embed code ends -->
                 </div>
             </div>
         </div>

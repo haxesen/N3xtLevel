@@ -32,7 +32,7 @@ export const AboutMe = `
                     Verlässlichkeit."
                 </p>
                 <div class="mt-8">
-                    <img src="/signature.png" alt="Tamas Horvat Signature" class="h-32 w-auto invert opacity-90 mx-auto md:mx-0">
+                    <img src="/signature.png" alt="Tamas Horvat Signature" class="h-48 w-auto invert opacity-90 mx-auto md:mx-0">
                 </div>
             </div>
         </div>

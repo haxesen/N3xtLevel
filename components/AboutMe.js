@@ -31,8 +31,8 @@ export const AboutMe = `
                     das nächste Level zu heben. Ich kombiniere technisches Know-how mit lokaler
                     Verlässlichkeit."
                 </p>
-                <div class="mt-8">
-                    <img src="/signature.png" alt="Tamas Horvat Signature" class="h-48 w-auto invert opacity-90 mx-auto md:mx-0">
+                <div class="mt-10">
+                    <p class="text-8xl text-white transform -rotate-6 origin-left tracking-wide opacity-90" style="font-family: 'Mr De Haviland', cursive;">Tamas Horvat</p>
                 </div>
             </div>
         </div>

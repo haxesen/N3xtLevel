@@ -4,7 +4,9 @@ import './style.css';
 import { Hero } from './components/Hero.js';
 import { Services } from './components/Services.js';
 import { Process } from './components/Process.js';
+import { Process } from './components/Process.js';
 import { PremiumContent } from './components/PremiumContent.js';
+import { Stats } from './components/Stats.js';
 import { AboutMe } from './components/AboutMe.js';
 import { Portfolio } from './components/Portfolio.js';
 import { Booking } from './components/Booking.js';
@@ -17,7 +19,9 @@ import { CookieBanner } from './components/CookieBanner.js';
 document.getElementById('hero-container').innerHTML = Hero;
 document.getElementById('services-container').innerHTML = Services;
 document.getElementById('process-container').innerHTML = Process;
+document.getElementById('process-container').innerHTML = Process;
 document.getElementById('premium-content-container').innerHTML = PremiumContent;
+document.getElementById('stats-container').innerHTML = Stats;
 document.getElementById('about-me-container').innerHTML = AboutMe;
 document.getElementById('portfolio-container').innerHTML = Portfolio;
 document.getElementById('booking-container').innerHTML = Booking;
@@ -416,6 +420,48 @@ const initLogic = () => {
             localStorage.setItem('cookieConsent', 'declined');
             hideCookieBanner();
         });
+    }
+
+    // --- Stats Counter Animation ---
+    const counters = document.querySelectorAll('.counter');
+    const statsSection = document.getElementById('stats');
+    let hasAnimated = false;
+
+    const animateStats = () => {
+        counters.forEach(counter => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const duration = 2000; // ms
+            const stepTime = 20;
+            const steps = duration / stepTime;
+            const increment = target / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                // Format: if target is small float (like 0.4), show 1 decimal, else no decimal
+                if (target % 1 !== 0) {
+                    counter.innerText = current.toFixed(1);
+                } else {
+                    counter.innerText = Math.round(current);
+                }
+            }, stepTime);
+        });
+    };
+
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateStats();
+                    hasAnimated = true;
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(statsSection);
     }
 
     // Scroll Reveal Animation

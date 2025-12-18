@@ -82,7 +82,7 @@
     <div id="impressumModal"
         class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
         <div
-            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            class="bg-[#0a0a0a] border-2 border-[#FF8C00] shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto">
             <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -90,19 +90,48 @@
                 </svg>
             </button>
             <h2 class="text-3xl font-bold mb-6 text-white">Impressum</h2>
-            <div class="text-gray-300 space-y-4 leading-relaxed">
-                <p><strong>N3XT LEVEL AI Agency</strong><br>
-                    Musterstraße 123<br>
-                    1010 Wien, Österreich</p>
-                <p><strong>Kontakt:</strong><br>
-                    Telefon: +43 1 234 567 89<br>
-                    E-Mail: office@n3xtlevel.at</p>
-                <p><strong>Geschäftsführung:</strong><br>
-                    Tamas Horvat</p>
-                <p><strong>Umsatzsteuer-ID:</strong><br>
-                    ATU12345678</p>
-                <p><strong>Unternehmensgegenstand:</strong><br>
-                    Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik.</p>
+            <div class="space-y-8 text-gray-300">
+                <!-- Details -->
+                <section class="space-y-2">
+                    <p class="text-lg font-semibold text-white">Angaben gemäß § 5 TMG</p>
+                    <p class="font-bold text-lg text-white mt-4">Tamas Horvat</p>
+                    <p>Hauptstraße 32</p>
+                    <p>2000 Stockerau</p>
+                    <p>Österreich</p>
+                </section>
+
+                <!-- Kontakt -->
+                <section class="space-y-2 pt-4">
+                    <h2 class="text-lg font-semibold text-white">Kontakt</h2>
+                    <p>E-Mail: <a href="mailto:haxesen@gmail.com"
+                            class="text-accent hover:underline">haxesen@gmail.com</a></p>
+                </section>
+
+                <!-- Description -->
+                <section class="space-y-2 pt-4">
+                    <h2 class="text-lg font-semibold text-white">Unternehmensgegenstand</h2>
+                    <p>IT-Dienstleistungen & Webdesign</p>
+                </section>
+
+                <!-- Disclaimers -->
+                <section class="pt-8 text-sm text-gray-500 space-y-4 border-t border-white/10 mt-12">
+                    <h3 class="font-bold text-white">Haftung für Inhalte</h3>
+                    <p>
+                        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+                        allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch
+                        nicht
+                        verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
+                        Umständen
+                        zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                    </p>
+                    <h3 class="font-bold text-white">Urheberrecht</h3>
+                    <p>
+                        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                        österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+                        Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
+                        jeweiligen Autors bzw. Erstellers.
+                    </p>
+                </section>
             </div>
         </div>
     </div>
@@ -111,7 +140,7 @@
     <div id="datenschutzModal"
         class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
         <div
-            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            class="bg-[#0a0a0a] border-2 border-[#FF8C00] shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto">
             <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -119,17 +148,52 @@
                 </svg>
             </button>
             <h2 class="text-3xl font-bold mb-6 text-white">Datenschutzerklärung</h2>
-            <div class="text-gray-300 space-y-4 leading-relaxed">
-                <h3 class="text-xl font-semibold text-white mt-4">1. Datenschutz auf einen Blick</h3>
-                <p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie
-                    darüber, wie wir Ihre Daten verarbeiten.</p>
-                <h3 class="text-xl font-semibold text-white mt-4">2. Datenerfassung auf unserer Website</h3>
-                <p>Wenn Sie unser Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (z.B. Name, E-Mail)
-                    zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre
-                    Einwilligung weiter.</p>
-                <h3 class="text-xl font-semibold text-white mt-4">3. Analyse-Tools</h3>
-                <p>Wir nutzen derzeit keine externen Tracking-Tools wie Google Analytics. Ihre Privatsphäre steht an
-                    erster Stelle.</p>
+            <div class="space-y-12 text-gray-300 leading-relaxed">
+                <!-- 1. General Information -->
+                <section>
+                    <h3 class="text-lg font-semibold text-accent mb-2">1. Datenschutz auf einen Blick</h3>
+                    <p class="mb-4">
+                        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen
+                        Daten passiert, wenn Sie diese Website besuchen.
+                    </p>
+                    <h4 class="font-bold text-white mb-1">Verantwortliche Stelle:</h4>
+                    <p>
+                        <strong>Tamas Horvat</strong><br>
+                        Hauptstraße 32<br>
+                        2000 Stockerau<br>
+                        E-Mail: <a href="mailto:haxesen@gmail.com"
+                            class="text-accent hover:underline">haxesen@gmail.com</a>
+                    </p>
+                </section>
+
+                <!-- 2. Data Collection (Server Logs) -->
+                <section>
+                    <h3 class="text-lg font-semibold text-accent mb-2">2. Datenerfassung auf unserer Website</h3>
+                    <h4 class="font-bold text-white mb-1">Server-Log-Dateien</h4>
+                    <p>
+                        Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten
+                        Server-Log-Dateien (Browsertyp, Betriebssystem, IP-Adresse, etc.).
+                    </p>
+                </section>
+
+                <!-- 3. Contact Form -->
+                <section>
+                    <h3 class="text-lg font-semibold text-accent mb-2">3. Kontaktformular</h3>
+                    <p>
+                        Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben inklusive der von
+                        Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese
+                        Daten geben wir nicht ohne Ihre Einwilligung weiter.
+                    </p>
+                </section>
+
+                <!-- 4. User Rights -->
+                <section>
+                    <h3 class="text-lg font-semibold text-accent mb-2">4. Ihre Rechte</h3>
+                    <p>
+                        Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
+                        personenbezogenen Daten sowie ein Recht auf Berichtigung oder Löschung dieser Daten.
+                    </p>
+                </section>
             </div>
         </div>
     </div>
@@ -138,7 +202,7 @@
     <div id="agbModal"
         class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
         <div
-            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            class="bg-[#0a0a0a] border-2 border-[#FF8C00] shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto">
             <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">

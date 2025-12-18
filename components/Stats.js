@@ -1,4 +1,28 @@
-export const Stats = `
+export const Stats = (lang = 'de') => {
+    const content = {
+        de: {
+            stat1: "Ladezeit",
+            stat2: "Google SEO Score",
+            stat3: "AI Support",
+            stat4: "Made in Austria"
+        },
+        en: {
+            stat1: "Load Time",
+            stat2: "Google SEO Score",
+            stat3: "AI Support",
+            stat4: "Made in Austria"
+        },
+        hu: {
+            stat1: "Betöltési idő",
+            stat2: "Google SEO Pont",
+            stat3: "AI Ügyfélszolgálat",
+            stat4: "Osztrák Minőség"
+        }
+    };
+
+    const t = content[lang] || content.de;
+
+    return `
 <!-- Stats Counter Section -->
 <section id="stats" class="py-20 bg-[#050505] border-y border-white/5 relative overflow-hidden">
     <!-- Background Elements -->
@@ -14,7 +38,7 @@ export const Stats = `
                     <span class="counter" data-target="0.4">0</span>
                     <span class="text-accent">s</span>
                 </div>
-                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">Ladezeit</p>
+                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">${t.stat1}</p>
             </div>
 
             <!-- Stat 2 -->
@@ -23,7 +47,7 @@ export const Stats = `
                     <span class="counter" data-target="100">0</span>
                     <span class="text-accent">/100</span>
                 </div>
-                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">Google SEO Score</p>
+                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">${t.stat2}</p>
             </div>
 
             <!-- Stat 3 -->
@@ -32,7 +56,7 @@ export const Stats = `
                     <span class="counter" data-target="24">0</span>
                     <span class="text-accent">/7</span>
                 </div>
-                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">AI Support</p>
+                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">${t.stat3}</p>
             </div>
 
             <!-- Stat 4 -->
@@ -41,10 +65,11 @@ export const Stats = `
                     <span class="counter" data-target="100">0</span>
                     <span class="text-accent">%</span>
                 </div>
-                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">Made in Austria</p>
+                <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold">${t.stat4}</p>
             </div>
 
         </div>
     </div>
 </section>
 `;
+};

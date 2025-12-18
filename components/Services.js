@@ -1,10 +1,46 @@
-export const Services = `
+export const Services = (lang = 'de') => {
+    const content = {
+        de: {
+            title_prefix: "Unsere",
+            title_highlight: "Leistungen",
+            card1_title: "Modernes Webdesign",
+            card1_desc: "High-End Interfaces, die Ihre Marke perfekt in Szene setzen. Ästhetisch, intuitiv und conversion-optimiert.",
+            card2_title: "SEO & Google-Ranking",
+            card2_desc: "Wir bringen Sie nach oben. Durch datengetriebene Strategien erhöhen wir Ihre Sichtbarkeit und Reichweite nachhaltig.",
+            card3_title: "KI-Automatisierung",
+            card3_desc: "Verschaffen Sie sich einen Wettbewerbsvorteil durch intelligente Prozessautomatisierung und KI-Integrationen."
+        },
+        en: {
+            title_prefix: "Our",
+            title_highlight: "Services",
+            card1_title: "Modern Web Design",
+            card1_desc: "High-end interfaces that perfectly showcase your brand. Aesthetic, intuitive, and optimize for conversion.",
+            card2_title: "SEO & Google Ranking",
+            card2_desc: "We take you to the top. Using data-driven strategies to sustainably increase your visibility and reach.",
+            card3_title: "AI Automation",
+            card3_desc: "Gain a competitive edge through intelligent process automation and cutting-edge AI integrations."
+        },
+        hu: {
+            title_prefix: "",
+            title_highlight: "Szolgáltatásaink",
+            card1_title: "Modern Webdizájn",
+            card1_desc: "Csúcskategóriás felületek, amelyek tökéletesen bemutatják márkáját. Esztétikus, intuitív és konverzióra optimalizált.",
+            card2_title: "SEO & Google Rangsor",
+            card2_desc: "A csúcsra juttatjuk. Adatvezérelt stratégiákkal fenntarthatóan növeljük láthatóságát és elérését.",
+            card3_title: "AI Automatizáció",
+            card3_desc: "Szerezzen versenyelőnyt intelligens folyamatautomatizálással és mesterséges intelligencia integrációval."
+        }
+    };
+
+    const t = content[lang] || content.de;
+
+    return `
 <!-- Services Section -->
 <section id="services" class="py-32 bg-black relative">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-24 reveal">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Unsere <span
-                    class="text-accent">Leistungen</span></h2>
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">${t.title_prefix} <span
+                    class="text-accent">${t.title_highlight}</span></h2>
             <div class="w-24 h-1 bg-accent mx-auto rounded-full"></div>
         </div>
 
@@ -20,10 +56,9 @@ export const Services = `
                             d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 text-white">Modernes Webdesign</h3>
+                <h3 class="text-2xl font-bold mb-4 text-white">${t.card1_title}</h3>
                 <p class="text-gray-400 group-hover:text-gray-300 leading-relaxed transition-colors">
-                    High-End Interfaces, die Ihre Marke perfekt in Szene setzen. Ästhetisch, intuitiv und
-                    conversion-optimiert.
+                    ${t.card1_desc}
                 </p>
             </div>
 
@@ -38,11 +73,9 @@ export const Services = `
                             d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 text-white">SEO & Google-Ranking</h3>
+                <h3 class="text-2xl font-bold mb-4 text-white">${t.card2_title}</h3>
                 <p class="text-gray-400 group-hover:text-gray-300 leading-relaxed transition-colors">
-                    Wir bringen Sie nach oben. Durch datengetriebene Strategien erhöhen wir Ihre Sichtbarkeit
-                    und
-                    Reichweite nachhaltig.
+                    ${t.card2_desc}
                 </p>
             </div>
 
@@ -57,13 +90,13 @@ export const Services = `
                             d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 text-white">KI-Automatisierung</h3>
+                <h3 class="text-2xl font-bold mb-4 text-white">${t.card3_title}</h3>
                 <p class="text-gray-400 group-hover:text-gray-300 leading-relaxed transition-colors">
-                    Verschaffen Sie sich einen Wettbewerbsvorteil durch intelligente Prozessautomatisierung und
-                    KI-Integrationen.
+                    ${t.card3_desc}
                 </p>
             </div>
         </div>
     </div>
 </section>
 `;
+};

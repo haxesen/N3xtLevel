@@ -1,4 +1,46 @@
-export const PremiumContent = `
+export const PremiumContent = (lang = 'de') => {
+    const content = {
+        de: {
+            badge: "Premium Content",
+            h2: "Einzigartiger Content für einen einzigartigen Auftritt",
+            p: "Ein modernes Webdesign wirkt erst durch erstklassige visuelle Inhalte. Wir überlassen nichts dem Zufall: Auf Wunsch erstellen wir exklusives Bild- und Videomaterial direkt für Ihre neue Webseite.",
+            feat1_title: "Eigene Drohnen-Produktion",
+            feat1_desc: "Spektakuläre 4K-Luftaufnahmen für den perfekten ersten Eindruck.",
+            feat2_title: "Authentische Business-Fotos",
+            feat2_desc: "Wir setzen Sie und Ihr Team professionell in Szene.",
+            feat3_title: "Werbe- & Imagevideos",
+            feat3_desc: "Dynamischer Content, der Ihre Besucher fesselt.",
+            quote: "\"Alles aus einer Hand – für eine Webseite, die sich von der Masse abhebt.\""
+        },
+        en: {
+            badge: "Premium Content",
+            h2: "Unique Content for a Unique Presence",
+            p: "Modern web design only truly shines with top-tier visual content. We leave nothing to chance: Upon request, we create exclusive image and video material directly for your new website.",
+            feat1_title: "In-house Drone Production",
+            feat1_desc: "Spectacular 4K aerial shots for the perfect first impression.",
+            feat2_title: "Authentic Business Photography",
+            feat2_desc: "We showcase you and your team professionally.",
+            feat3_title: "Promotional & Brand Videos",
+            feat3_desc: "Dynamic content that captivates your visitors.",
+            quote: "\"All from a single source – for a website that stands out from the crowd.\""
+        },
+        hu: {
+            badge: "Prémium Tartalom",
+            h2: "Egyedi tartalom az egyedi megjelenésért",
+            p: "A modern webdizájn csak első osztályú vizuális tartalommal érvényesül igazán. Nem bízunk semmit a véletlenre: Igény esetén exkluzív kép- és videóanyagot készítünk közvetlenül az új weboldalához.",
+            feat1_title: "Saját Drón Produkció",
+            feat1_desc: "Látványos 4K légi felvételek a tökéletes első benyomásért.",
+            feat2_title: "Hiteles Üzleti Fotók",
+            feat2_desc: "Professzionális módon mutatjuk be Önt és csapatát.",
+            feat3_title: "Reklám- és Imázsvideók",
+            feat3_desc: "Dinamikus tartalom, amely magával ragadja látogatóit.",
+            quote: "\"Minden egy kézből – egy weboldalért, amely kiemelkedik a tömegből.\""
+        }
+    };
+
+    const t = content[lang] || content.de;
+
+    return `
 <!-- Premium Content Section -->
 <section class="py-32 bg-black relative border-t border-white/5 overflow-hidden">
      <!-- Background Effect -->
@@ -20,10 +62,10 @@ export const PremiumContent = `
 
             <!-- Text Side -->
             <div class="w-full md:w-1/2">
-                <p class="text-accent font-semibold tracking-wider uppercase mb-2">Premium Content</p>
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">Einzigartiger Content für einen einzigartigen Auftritt</h2>
+                <p class="text-accent font-semibold tracking-wider uppercase mb-2">${t.badge}</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">${t.h2}</h2>
                 <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                    Ein modernes Webdesign wirkt erst durch erstklassige visuelle Inhalte. Wir überlassen nichts dem Zufall: Auf Wunsch erstellen wir exklusives Bild- und Videomaterial direkt für Ihre neue Webseite.
+                    ${t.p}
                 </p>
 
                 <div class="space-y-6">
@@ -33,8 +75,8 @@ export const PremiumContent = `
                             <i class="fas fa-paper-plane text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-white font-bold text-lg mb-1">Eigene Drohnen-Produktion</h4>
-                            <p class="text-gray-400 text-sm">Spektakuläre 4K-Luftaufnahmen für den perfekten ersten Eindruck.</p>
+                            <h4 class="text-white font-bold text-lg mb-1">${t.feat1_title}</h4>
+                            <p class="text-gray-400 text-sm">${t.feat1_desc}</p>
                         </div>
                     </div>
                     <!-- Feature 2 -->
@@ -43,8 +85,8 @@ export const PremiumContent = `
                             <i class="fas fa-camera text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-white font-bold text-lg mb-1">Authentische Business-Fotos</h4>
-                            <p class="text-gray-400 text-sm">Wir setzen Sie und Ihr Team professionell in Szene.</p>
+                            <h4 class="text-white font-bold text-lg mb-1">${t.feat2_title}</h4>
+                            <p class="text-gray-400 text-sm">${t.feat2_desc}</p>
                         </div>
                     </div>
                     <!-- Feature 3 -->
@@ -53,17 +95,18 @@ export const PremiumContent = `
                             <i class="fas fa-video text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-white font-bold text-lg mb-1">Werbe- & Imagevideos</h4>
-                            <p class="text-gray-400 text-sm">Dynamischer Content, der Ihre Besucher fesselt.</p>
+                            <h4 class="text-white font-bold text-lg mb-1">${t.feat3_title}</h4>
+                            <p class="text-gray-400 text-sm">${t.feat3_desc}</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="mt-8 pt-8 border-t border-white/10">
-                    <p class="text-white font-medium italic">"Alles aus einer Hand – für eine Webseite, die sich von der Masse abhebt."</p>
+                    <p class="text-white font-medium italic">${t.quote}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 `;
+};

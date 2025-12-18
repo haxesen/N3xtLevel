@@ -22,33 +22,121 @@ document.getElementById('footer-container').innerHTML = Footer;
 
 // Initialize animations and Logic
 const initLogic = () => {
-    // --- Cal.com Modal Initialization ---
-    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "30min", { origin: "https://app.cal.com" });
+    // --- Custom Internal Booking Logic ---
+    const calendarDays = document.getElementById('calendarDays');
+    const currentMonthYear = document.getElementById('currentMonthYear');
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
+    const timeSelection = document.getElementById('timeSelection');
+    const selectedDateText = document.getElementById('selectedDateText');
+    const confirmBookingBtn = document.getElementById('confirmBookingBtn');
 
-    // Preload styles
-    Cal.ns["30min"]("ui", {
-        "styles": {
-            "branding": {
-                "brandColor": "#FF4500"
+    // State
+    let currentDate = new Date();
+    let selectedDay = null;
+    let selectedTime = null;
+
+    const renderCalendar = () => {
+        if (!calendarDays || !currentMonthYear) return;
+
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+
+        // German Month Names
+        const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+        currentMonthYear.innerText = `${monthNames[month]} ${year}`;
+
+        // Days
+        const firstDay = new Date(year, month, 1).getDay();
+        const firstDayIndex = firstDay === 0 ? 6 : firstDay - 1; // Mon=0
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        calendarDays.innerHTML = '';
+
+        // Empty slots
+        for (let i = 0; i < firstDayIndex; i++) {
+            calendarDays.appendChild(document.createElement('div'));
+        }
+
+        // Days
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayBtn = document.createElement('button');
+            dayBtn.innerText = i;
+            dayBtn.classList.add('w-10', 'h-10', 'rounded-full', 'mx-auto', 'flex', 'items-center', 'justify-center', 'text-gray-300', 'hover:bg-white/10', 'transition-all', 'text-sm', 'font-medium');
+
+            // Today?
+            const today = new Date();
+            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                dayBtn.classList.add('border', 'border-accent', 'text-accent');
             }
-        },
-        "hideEventTypeDetails": false,
-        "layout": "month_view",
-        "theme": "dark"
-    });
 
-    // Trigger Logic
-    const openBookingModalBtn = document.getElementById('openBookingModal');
-    if (openBookingModalBtn) {
-        openBookingModalBtn.addEventListener('click', () => {
-            Cal.ns["30min"]("modal", {
-                calLink: "tamas-horvat-rti5dl/30min",
-                config: {
-                    "layout": "month_view",
-                    "theme": "dark"
-                }
+            // Click Handler
+            dayBtn.addEventListener('click', () => {
+                // Remove active class from others
+                calendarDays.querySelectorAll('button').forEach(b => b.classList.remove('bg-accent', 'text-white'));
+
+                // Add active
+                dayBtn.classList.add('bg-accent', 'text-white');
+                selectedDay = i;
+
+                // Show times
+                timeSelection.classList.remove('hidden');
+                selectedDateText.innerText = `${i}. ${monthNames[month]} ${year}`;
             });
+
+            calendarDays.appendChild(dayBtn);
+        }
+    };
+
+    // Init Calendar
+    if (calendarDays) {
+        renderCalendar();
+
+        prevMonthBtn?.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        nextMonthBtn?.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Time Slots
+        const timeSlots = document.querySelectorAll('.time-slot');
+        timeSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                timeSlots.forEach(s => s.classList.remove('bg-accent', 'text-white', 'border-accent'));
+                slot.classList.add('bg-accent', 'text-white', 'border-accent');
+                selectedTime = slot.innerText;
+            });
+        });
+
+        // Confirm Action
+        confirmBookingBtn?.addEventListener('click', () => {
+            if (!selectedTime) {
+                alert("Bitte wählen Sie eine Uhrzeit aus.");
+                return;
+            }
+
+            // Generate Message
+            const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+            const msg = `Ich möchte einen Beratungstermin anfragen.\n\nDatum: ${selectedDay}. ${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}\nUhrzeit: ${selectedTime}`;
+
+            // Populate Contact Form
+            const contactSection = document.getElementById('contact');
+            const messageInput = document.querySelector('textarea[name="message"]');
+
+            if (messageInput) {
+                messageInput.value = msg;
+                // Scroll to contact
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                // Optional: Focus and highlight
+                setTimeout(() => {
+                    messageInput.focus();
+                    messageInput.classList.add('ring-2', 'ring-accent');
+                }, 800);
+            }
         });
     }
 

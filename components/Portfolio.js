@@ -14,50 +14,50 @@ export const Portfolio = `
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1 -->
+            <!-- Project 1: Beauty & Wellness -->
             <div class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
-                    alt="Dashboard"
+                <img src="https://images.unsplash.com/photo-1600334019640-eb827a4d52d9?auto=format&fit=crop&q=80&w=1000"
+                    alt="Beauty Salon"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
                 <div
                     class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p class="text-accent text-sm font-bold mb-2 uppercase tracking-wider">FinTech</p>
-                    <h3 class="text-2xl font-bold text-white mb-2">Alpha Analytics</h3>
+                    <p class="text-accent text-sm font-bold mb-2 uppercase tracking-wider">Beauty & Wellness</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">Glow & Relax</h3>
                     <p
                         class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                        KI-gestütztes Dashboard für Finanzanalysen.</p>
+                        Online-Terminbuchung & Elegantes Design für mehr Kunden.</p>
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project 2: Gastronomy -->
             <div class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
                 style="transition-delay: 100ms;">
-                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1000"
-                    alt="E-Commerce"
+                <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21?auto=format&fit=crop&q=80&w=1000"
+                    alt="Bakery & Ice Cream"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
                 <div
                     class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p class="text-accent text-sm font-bold mb-2 uppercase tracking-wider">E-Commerce</p>
-                    <h3 class="text-2xl font-bold text-white mb-2">Lumina Shop</h3>
+                    <p class="text-accent text-sm font-bold mb-2 uppercase tracking-wider">Gastronomie</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">Eiscafe Müller</h3>
                     <p
                         class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                        Performance-optimierter Online Store.</p>
+                        Digitale Speisekarte & Lokale SEO-Optimierung.</p>
                 </div>
             </div>
 
-            <!-- Project 3 -->
+            <!-- Project 3: Medical -->
             <div class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
                 style="transition-delay: 200ms;">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000"
-                    alt="Corporate"
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000"
+                    alt="Medical Practice"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
                 <div
                     class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p class="text-accent text-sm font-bold mb-2 uppercase tracking-wider">Corporate</p>
-                    <h3 class="text-2xl font-bold text-white mb-2">BauWesen AG</h3>
+                    <p class="text-accent text-sm font-bold mb-2 uppercase tracking-wider">Gesundheit</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">Praxis Dr. Weber</h3>
                     <p
                         class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                        Moderne Unternehmenswebseite.</p>
+                        Vertrauensvolle Patientenkommunikation & Rezept-Service.</p>
                 </div>
             </div>
         </div>

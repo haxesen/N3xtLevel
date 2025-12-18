@@ -17,8 +17,6 @@ import { CookieBanner } from './components/CookieBanner.js';
 
 // --- State Management ---
 let currentLang = localStorage.getItem('n3xt_lang') || 'de';
-// Store booking details temporarily until form submission
-let pendingBooking = null;
 // Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqZlg_LU9S3A36C-Cub7JTJomOkN1YN4KbRMjsCRt2H4wdSmsdgLf7Q_pyofxNM_-/exec";
 // Formspree ID (Primary)
@@ -118,16 +116,6 @@ const setupCalendar = () => {
     if (prevMonthBtn) prevMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); render(); };
     if (nextMonthBtn) nextMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); render(); };
 
-    // Time Slots
-    const slots = document.querySelectorAll('.time-slot');
-    slots.forEach(slot => {
-        slot.onclick = () => {
-            slots.forEach(s => s.classList.remove('bg-accent', 'text-white', 'border-accent'));
-            slot.classList.add('bg-accent', 'text-white', 'border-accent');
-            selectedTime = slot.innerText;
-        };
-    });
-
     // Confirm Logic
     if (confirmBookingBtn) {
         confirmBookingBtn.onclick = () => {
@@ -136,16 +124,16 @@ const setupCalendar = () => {
                 return;
             }
 
-            // Save Pending Booking Data
+            // Save Pending Booking Data to LocalStorage (Persistent across refresh)
             const year = currentDate.getFullYear();
             const month = currentDate.getMonth() + 1; // 1-based
-            // Format YYYY-MM-DD for Google Script
             const isoDate = `${year}-${month.toString().padStart(2, '0')}-${selectedDay.toString().padStart(2, '0')}`;
 
-            pendingBooking = {
+            const bookingData = {
                 date: isoDate,
                 time: selectedTime
             };
+            localStorage.setItem('n3xt_pending_booking', JSON.stringify(bookingData));
 
             // Scroll to Contact Form and prefill
             const contactSec = document.getElementById('contact');
@@ -182,18 +170,20 @@ const setupContactForm = () => {
         const data = Object.fromEntries(formData.entries());
 
         // 1. Google Calendar Sync (Separate Process)
-        if (pendingBooking) {
+        const storedBooking = localStorage.getItem('n3xt_pending_booking');
+
+        if (storedBooking) {
             try {
+                const bookingDetails = JSON.parse(storedBooking);
                 const googlePayload = {
                     name: data.name,
                     email: data.email,
                     message: data.message,
-                    date: pendingBooking.date,
-                    time: pendingBooking.time
+                    date: bookingDetails.date,
+                    time: bookingDetails.time
                 };
 
-                // FIX: Use text/plain to avoid CORS Preflight request
-                // Google Apps Script endpoint will consume the body anyway
+                // Fire and forget, text/plain for CORS safety
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -202,7 +192,8 @@ const setupContactForm = () => {
                 }).then(() => console.log('Google Sync initiated'))
                     .catch(err => console.warn('Google Sync failed:', err));
 
-                pendingBooking = null;
+                // Clear storage
+                localStorage.removeItem('n3xt_pending_booking');
             } catch (err) {
                 console.warn('Calendar sync logic error:', err);
             }

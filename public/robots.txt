@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://n3xt-level.eu/sitemap.xml

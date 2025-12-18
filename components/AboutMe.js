@@ -32,8 +32,7 @@ export const AboutMe = `
                     Verlässlichkeit."
                 </p>
                 <div class="mt-8">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Signature_sample.svg"
-                        alt="Signature" class="h-12 w-auto opacity-70 invert mx-auto md:mx-0">
+                    <p class="text-4xl text-gray-300 transform -rotate-2 origin-left" style="font-family: 'Great Vibes', cursive;">Tamas Horvat</p>
                 </div>
             </div>
         </div>

@@ -354,12 +354,44 @@ const initLogic = () => {
         }, 1000);
     };
 
-    // --- Cookie Banner Logic ---
+    // --- Cookie Banner Logic & Google Analytics ---
     const cookieBanner = document.getElementById('cookie-banner');
     const cookieAcceptBtn = document.getElementById('cookie-accept');
     const cookieDeclineBtn = document.getElementById('cookie-decline');
 
-    if (cookieBanner && !localStorage.getItem('cookieConsent')) {
+    // WICHTIG: Hier später Ihre eigene ID einfügen!
+    // IMPORTANT: Replace this placeholder with your real ID later!
+    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+    const loadGoogleAnalytics = () => {
+        if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
+            console.log('Google Analytics: Placeholder ID detected. Script not loaded.');
+            return;
+        }
+
+        // Prevent duplicate loading
+        if (document.getElementById('ga-script')) return;
+
+        console.log('Google Analytics: Loading...');
+
+        // Inject Script
+        const script = document.createElement('script');
+        script.id = 'ga-script';
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        document.head.appendChild(script);
+
+        // Init Config
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID, { 'anonymize_ip': true });
+    };
+
+    // Check if previously accepted
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+        loadGoogleAnalytics();
+    } else if (cookieBanner && !localStorage.getItem('cookieConsent')) {
         setTimeout(() => {
             cookieBanner.classList.remove('translate-y-full');
         }, 1000); // 1 second delay
@@ -373,7 +405,7 @@ const initLogic = () => {
         cookieAcceptBtn.addEventListener('click', () => {
             localStorage.setItem('cookieConsent', 'accepted');
             hideCookieBanner();
-            // Here you would trigger Analytics scripts if implemented
+            loadGoogleAnalytics(); // Start tracking immediately
         });
     }
 

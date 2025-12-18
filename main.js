@@ -19,7 +19,7 @@ import { CookieBanner } from './components/CookieBanner.js';
 let currentLang = localStorage.getItem('n3xt_lang') || 'de';
 // Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqZlg_LU9S3A36C-Cub7JTJomOkN1YN4KbRMjsCRt2H4wdSmsdgLf7Q_pyofxNM_-/exec";
-// Formspree ID (Primary)
+// Formspree ID
 const FORMSPREE_URL = "https://formspree.io/f/mvzppned";
 
 
@@ -35,17 +35,27 @@ const setupCalendar = () => {
     const selectedDateText = document.getElementById('selectedDateText');
     const confirmBookingBtn = document.getElementById('confirmBookingBtn');
 
-    if (!calendarDays) return; // Exit if booking section not present
+    if (!calendarDays) return;
 
     let currentDate = new Date();
     let selectedDay = null;
     let selectedTime = null;
 
+    // Time Slots Logic
+    const slots = document.querySelectorAll('.time-slot');
+    slots.forEach(slot => {
+        slot.onclick = () => {
+            // Visual feedback
+            slots.forEach(s => s.classList.remove('bg-accent', 'text-white', 'border-accent'));
+            slot.classList.add('bg-accent', 'text-white', 'border-accent');
+            selectedTime = slot.innerText;
+        };
+    });
+
     const render = () => {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
 
-        // Month Names localized
         const monthNames = {
             de: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
             en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -61,12 +71,10 @@ const setupCalendar = () => {
 
         calendarDays.innerHTML = '';
 
-        // Padding
         for (let i = 0; i < padding; i++) {
             calendarDays.appendChild(document.createElement('div'));
         }
 
-        // Days
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
@@ -76,22 +84,17 @@ const setupCalendar = () => {
 
             const checkDate = new Date(year, month, i);
 
-            // Check if past date
             if (checkDate < today) {
-                // Disabled State
                 btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-700 cursor-default opacity-30';
             } else {
-                // Active State
                 btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-300 hover:bg-white/10 transition-all text-sm font-medium';
 
-                // Highlight today
                 const realToday = new Date();
                 if (i === realToday.getDate() && month === realToday.getMonth() && year === realToday.getFullYear()) {
                     btn.classList.add('border', 'border-accent', 'text-accent');
                 }
 
                 btn.onclick = () => {
-                    // Deselect others
                     calendarDays.querySelectorAll('button').forEach(b => {
                         if (!b.classList.contains('cursor-default')) {
                             b.classList.remove('bg-accent', 'text-white');
@@ -101,10 +104,14 @@ const setupCalendar = () => {
                     btn.classList.add('bg-accent', 'text-white');
                     selectedDay = i;
 
+                    // Reset selected time when day changes
+                    selectedTime = null;
+                    slots.forEach(s => s.classList.remove('bg-accent', 'text-white', 'border-accent'));
+
                     selectedDateText.innerText = `${i}. ${currentMonthNames[month]} ${year}`;
                     timeSelection.classList.remove('hidden');
                     timeSelection.classList.add('block');
-                    timeSelection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    setTimeout(() => timeSelection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
                 };
             }
             calendarDays.appendChild(btn);
@@ -116,7 +123,6 @@ const setupCalendar = () => {
     if (prevMonthBtn) prevMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); render(); };
     if (nextMonthBtn) nextMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); render(); };
 
-    // Confirm Logic
     if (confirmBookingBtn) {
         confirmBookingBtn.onclick = () => {
             if (!selectedTime) {
@@ -124,9 +130,8 @@ const setupCalendar = () => {
                 return;
             }
 
-            // Save Pending Booking Data to LocalStorage (Persistent across refresh)
             const year = currentDate.getFullYear();
-            const month = currentDate.getMonth() + 1; // 1-based
+            const month = currentDate.getMonth() + 1;
             const isoDate = `${year}-${month.toString().padStart(2, '0')}-${selectedDay.toString().padStart(2, '0')}`;
 
             const bookingData = {
@@ -135,7 +140,6 @@ const setupCalendar = () => {
             };
             localStorage.setItem('n3xt_pending_booking', JSON.stringify(bookingData));
 
-            // Scroll to Contact Form and prefill
             const contactSec = document.getElementById('contact');
             const msgArea = document.querySelector('textarea[name="message"]');
             if (contactSec && msgArea) {
@@ -169,7 +173,6 @@ const setupContactForm = () => {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        // 1. Google Calendar Sync (Separate Process)
         const storedBooking = localStorage.getItem('n3xt_pending_booking');
 
         if (storedBooking) {
@@ -183,7 +186,6 @@ const setupContactForm = () => {
                     time: bookingDetails.time
                 };
 
-                // Fire and forget, text/plain for CORS safety
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -192,16 +194,13 @@ const setupContactForm = () => {
                 }).then(() => console.log('Google Sync initiated'))
                     .catch(err => console.warn('Google Sync failed:', err));
 
-                // Clear storage
                 localStorage.removeItem('n3xt_pending_booking');
             } catch (err) {
                 console.warn('Calendar sync logic error:', err);
             }
         }
 
-        // 2. Formspree / Email Submission (Main Blocking Process)
         try {
-            // Force URL to resolve caching issues
             const res = await fetch(FORMSPREE_URL, {
                 method: 'POST',
                 body: formData,
@@ -225,7 +224,7 @@ const setupContactForm = () => {
             }
         } catch (err) {
             console.error('Network Error Details:', err);
-            alert('Network error. Please try again or check your internet connection.');
+            alert('Network error. Please try again.');
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;
@@ -279,7 +278,6 @@ const setupReveal = () => {
 
 // 5. Update UI (Main Re-render function)
 const updateUI = () => {
-    // 2. Re-render Components
     const renderComp = (id, fn) => {
         const el = document.getElementById(id);
         if (el) el.innerHTML = fn ? fn(currentLang) : '';
@@ -297,7 +295,6 @@ const updateUI = () => {
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);
 
-    // 1. Language Switcher Logic
     const flagSpan = document.getElementById('current-lang-flag');
     const langTextSpan = document.getElementById('current-lang-text');
     const langBtn = document.getElementById('lang-switch');
@@ -319,17 +316,14 @@ const updateUI = () => {
         };
     }
 
-    // 3. Re-initialize Logic that depends on DOM
     setupCalendar();
     setupContactForm();
     setupStats();
     setupReveal();
 
-    // Dynamic Year
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
 
-    // Email Protection
     document.querySelectorAll('.protected-email').forEach(el => {
         const u = el.dataset.u;
         const d = el.dataset.d;
@@ -339,14 +333,11 @@ const updateUI = () => {
 
 // --- Initial Setup ---
 
-// Render Static Components once
 document.getElementById('chatbot-place').innerHTML = Chatbot;
 document.getElementById('cookie-banner-container').innerHTML = CookieBanner;
 
-// Initial UI Render
 updateUI();
 
-// Mobile Menu Toggle Logic
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('button[aria-label="Menu"]');
     if (btn) {
@@ -355,7 +346,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// --- Chatbot Logic ---
 const initChatbot = () => {
     const toggle = document.getElementById('chat-toggle');
     const windowEl = document.getElementById('chat-window');
@@ -433,9 +423,7 @@ const initChatbot = () => {
 };
 initChatbot();
 
-// --- Cookie Banner & Modal Global Logic ---
 const initGlobals = () => {
-    // Modal Delegation
     document.addEventListener('click', e => {
         const open = e.target.closest('[data-modal-open]');
         if (open) {
@@ -448,7 +436,6 @@ const initGlobals = () => {
         }
     });
 
-    // Cookie Values
     const banner = document.getElementById('cookie-banner');
     if (banner && !localStorage.getItem('cookieConsent')) {
         setTimeout(() => banner.classList.remove('translate-y-full'), 1000);

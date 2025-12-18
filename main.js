@@ -14,37 +14,13 @@ import { Footer } from './components/Footer.js';
 import { Chatbot } from './components/Chatbot.js';
 import { CookieBanner } from './components/CookieBanner.js';
 
-// Render Components
-document.getElementById('hero-container').innerHTML = Hero('de');
-document.getElementById('services-container').innerHTML = Services;
-document.getElementById('process-container').innerHTML = Process;
-document.getElementById('premium-content-container').innerHTML = PremiumContent;
-document.getElementById('stats-container').innerHTML = Stats;
-document.getElementById('about-me-container').innerHTML = AboutMe;
-document.getElementById('portfolio-container').innerHTML = Portfolio;
-document.getElementById('booking-container').innerHTML = Booking;
-document.getElementById('contact-container').innerHTML = Contact;
-document.getElementById('footer-container').innerHTML = Footer;
-document.getElementById('chatbot-place').innerHTML = Chatbot;
-document.getElementById('cookie-banner-container').innerHTML = CookieBanner;
+// --- State Management ---
+let currentLang = localStorage.getItem('n3xt_lang') || 'de';
 
-// Initialize animations and Logic
-const initLogic = () => {
-    // --- Email Obfuscation (Security) ---
-    const protectEmails = () => {
-        const mailElements = document.querySelectorAll('.protected-email');
-        mailElements.forEach(el => {
-            const user = el.getAttribute('data-u');
-            const domain = el.getAttribute('data-d');
-            if (user && domain) {
-                const email = `${user}@${domain}`;
-                el.innerHTML = `<a href="mailto:${email}" class="hover:text-accent transition-colors">${email}</a>`;
-            }
-        });
-    };
-    protectEmails();
+// --- Helper Functions ---
 
-    // --- Custom Internal Booking Logic ---
+// 1. Calendar / Booking Logic
+const setupCalendar = () => {
     const calendarDays = document.getElementById('calendarDays');
     const currentMonthYear = document.getElementById('currentMonthYear');
     const prevMonthBtn = document.getElementById('prevMonth');
@@ -53,644 +29,375 @@ const initLogic = () => {
     const selectedDateText = document.getElementById('selectedDateText');
     const confirmBookingBtn = document.getElementById('confirmBookingBtn');
 
-    // State
+    if (!calendarDays) return; // Exit if booking section not present
+
     let currentDate = new Date();
     let selectedDay = null;
     let selectedTime = null;
 
-    const renderCalendar = () => {
-        if (!calendarDays || !currentMonthYear) return;
-
+    const render = () => {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
 
-        // German Month Names
-        const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-        currentMonthYear.innerText = `${monthNames[month]} ${year}`;
+        // Month Names localized
+        const monthNames = {
+            de: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            hu: ["Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"]
+        };
+        const currentMonthNames = monthNames[currentLang] || monthNames.de;
 
-        // Days
+        currentMonthYear.innerText = `${currentMonthNames[month]} ${year}`;
+
         const firstDay = new Date(year, month, 1).getDay();
-        const firstDayIndex = firstDay === 0 ? 6 : firstDay - 1; // Mon=0
+        // Adjust for Monday start (ISO 8601) if needed, but simple Sunday=0 is fine for logic if UI aligns
+        // Our Booking.js UI has headers [Sun...Sat] or [Mon...Sun]?
+        // Checking Booking.js:
+        // DE: So, Mo, Di... (Sun start implied if standard American grid, or Mon start European?)
+        // Let's assume standard JS getDay() 0=Sunday.
+        // If we want Mon start (European standard), we shift.
+        // Let's stick to standard 0=Sunday for simplicity with grid.
+
+        const padding = firstDay;
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
         calendarDays.innerHTML = '';
 
-        // Empty slots
-        for (let i = 0; i < firstDayIndex; i++) {
+        // Padding
+        for (let i = 0; i < padding; i++) {
             calendarDays.appendChild(document.createElement('div'));
         }
 
         // Days
         for (let i = 1; i <= daysInMonth; i++) {
-            const dayBtn = document.createElement('button');
-            dayBtn.innerText = i;
-            dayBtn.classList.add('w-10', 'h-10', 'rounded-full', 'mx-auto', 'flex', 'items-center', 'justify-center', 'text-gray-300', 'hover:bg-white/10', 'transition-all', 'text-sm', 'font-medium');
+            const btn = document.createElement('button');
+            btn.innerText = i;
+            btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-300 hover:bg-white/10 transition-all text-sm font-medium';
 
-            // Today?
+            // Highlight today
             const today = new Date();
             if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                dayBtn.classList.add('border', 'border-accent', 'text-accent');
+                btn.classList.add('border', 'border-accent', 'text-accent');
             }
 
-            // Click Handler
-            dayBtn.addEventListener('click', () => {
-                // Remove active class from others
+            btn.onclick = () => {
+                // Deselect all
                 calendarDays.querySelectorAll('button').forEach(b => b.classList.remove('bg-accent', 'text-white'));
-
-                // Add active
-                dayBtn.classList.add('bg-accent', 'text-white');
+                btn.classList.add('bg-accent', 'text-white');
                 selectedDay = i;
 
-                // Show times
+                selectedDateText.innerText = `${i}. ${currentMonthNames[month]} ${year}`;
                 timeSelection.classList.remove('hidden');
-                selectedDateText.innerText = `${i}. ${monthNames[month]} ${year}`;
-            });
-
-            calendarDays.appendChild(dayBtn);
+                timeSelection.classList.add('block');
+                timeSelection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            };
+            calendarDays.appendChild(btn);
         }
     };
 
-    // Init Calendar
-    if (calendarDays) {
-        renderCalendar();
+    render();
 
-        prevMonthBtn?.addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar();
-        });
+    prevMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); render(); };
+    nextMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); render(); };
 
-        nextMonthBtn?.addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar();
-        });
+    // Time Slots
+    const slots = document.querySelectorAll('.time-slot');
+    slots.forEach(slot => {
+        slot.onclick = () => {
+            slots.forEach(s => s.classList.remove('bg-accent', 'text-white', 'border-accent'));
+            slot.classList.add('bg-accent', 'text-white', 'border-accent');
+            selectedTime = slot.innerText;
+        };
+    });
 
-        // Time Slots
-        const timeSlots = document.querySelectorAll('.time-slot');
-        timeSlots.forEach(slot => {
-            slot.addEventListener('click', () => {
-                timeSlots.forEach(s => s.classList.remove('bg-accent', 'text-white', 'border-accent'));
-                slot.classList.add('bg-accent', 'text-white', 'border-accent');
-                selectedTime = slot.innerText;
-            });
-        });
-
-        // Confirm Action -> Open Modal
-        confirmBookingBtn?.addEventListener('click', () => {
+    // Confirm Logic
+    if (confirmBookingBtn) {
+        confirmBookingBtn.onclick = () => {
             if (!selectedTime) {
-                alert("Bitte wählen Sie eine Uhrzeit aus.");
+                alert(currentLang === 'hu' ? 'Kérjük válasszon időpontot!' : (currentLang === 'en' ? 'Please select a time!' : 'Bitte wählen Sie eine Uhrzeit!'));
                 return;
             }
-
-            // Generate Message with Date/Time
-            const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-            const msg = `Ich möchte einen Beratungstermin anfragen.\n\nDatum: ${selectedDay}. ${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}\nUhrzeit: ${selectedTime}\n\nMeine Nachricht:`;
-
-            // Populate Modal Message
-            const bookingModal = document.getElementById('bookingModal');
-            const bookingMessage = document.getElementById('bookingMessage');
-
-            if (bookingModal && bookingMessage) {
-                // Confirm Booking - Open Email/Modal
-                const confirmBtn = document.getElementById('confirmBookingBtn');
-                if (confirmBtn) {
-                    confirmBtn.addEventListener('click', () => {
-                        if (!selectedTime || !selectedDay) {
-                            alert("Bitte wählen Sie ein Datum und eine Uhrzeit aus.");
-                            return;
-                        }
-
-                        // Generate Message with Date/Time
-                        const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-                        const msg = `Ich möchte einen Beratungstermin anfragen.\n\nDatum: ${selectedDay}. ${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}\nUhrzeit: ${selectedTime}\n\nMeine Nachricht:`;
-
-                        // Populate Modal Message
-                        const bookingModal = document.getElementById('bookingModal');
-                        const bookingMessage = document.getElementById('bookingMessage');
-
-                        if (bookingModal && bookingMessage) {
-                            bookingMessage.value = msg;
-                            bookingModal.classList.remove('hidden');
-                        }
-                    });
-                }
-            };
-            // Call the new calendar logic function if the calendar elements exist
-            if (document.getElementById('calendarDays')) {
-                initCalendarLogic();
+            // Scroll to Contact Form and prefill
+            const contactSec = document.getElementById('contact');
+            const msgArea = document.querySelector('textarea[name="message"]');
+            if (contactSec && msgArea) {
+                contactSec.scrollIntoView({ behavior: 'smooth' });
+                msgArea.value = (currentLang === 'hu' ? `Időpontfoglalás: ${selectedDateText.innerText}, ${selectedTime}` :
+                    (currentLang === 'en' ? `Booking Request: ${selectedDateText.innerText}, ${selectedTime}` :
+                        `Terminanfrage: ${selectedDateText.innerText}, ${selectedTime}`)) + "\n\n";
+                msgArea.focus();
             }
-
-            // --- Booking Modal Logic ---
-            const bookingModal = document.getElementById('bookingModal');
-            const closeBookingModalBtn = document.getElementById('closeBookingModal');
-            const bookingModalBackdrop = document.getElementById('bookingModalBackdrop');
-            const bookingForm = document.getElementById('bookingForm');
-            const bookingFormStatus = document.getElementById('bookingFormStatus');
-
-            const openBookingModal = (prefillMessage = "") => {
-                const bookingMessage = document.getElementById('bookingMessage');
-                if (bookingMessage && prefillMessage) {
-                    bookingMessage.value = prefillMessage + bookingMessage.value;
-                }
-                if (bookingModal) bookingModal.classList.remove('hidden');
-            };
-
-            const closeBookingModal = () => {
-                if (bookingModal) bookingModal.classList.add('hidden');
-            };
-
-            if (closeBookingModalBtn) closeBookingModalBtn.addEventListener('click', closeBookingModal);
-            if (bookingModalBackdrop) bookingModalBackdrop.addEventListener('click', closeBookingModal);
-
-            // Form Handling (Booking Modal)
-            if (bookingForm) {
-                bookingForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const submitBtn = bookingForm.querySelector('button[type="submit"]');
-                    const originalBtnText = submitBtn.innerText;
-
-                    submitBtn.disabled = true;
-                    submitBtn.innerText = "Wird gesendet...";
-                    submitBtn.classList.add('opacity-70');
-
-                    const formData = new FormData(bookingForm);
-
-                    try {
-                        const response = await fetch(bookingForm.action, {
-                            method: bookingForm.method,
-                            body: formData,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
-                        });
-
-                        if (response.ok) {
-                            bookingFormStatus.innerHTML = '<span class="text-green-500 font-bold"><i class="fas fa-check-circle"></i> Anfrage erfolgreich gesendet!</span>';
-                            bookingFormStatus.classList.remove('hidden');
-                            bookingForm.reset();
-                            setTimeout(() => {
-                                closeBookingModal();
-                                bookingFormStatus.classList.add('hidden');
-                            }, 2000);
-                        } else {
-                            const data = await response.json();
-                            if (Object.hasOwn(data, 'errors')) {
-                                bookingFormStatus.innerHTML = `<span class="text-red-500">${data["errors"].map(error => error["message"]).join(", ")}</span>`;
-                            } else {
-                                bookingFormStatus.innerHTML = '<span class="text-red-500">Oops! Es ist ein Fehler aufgetreten.</span>';
-                            }
-                            bookingFormStatus.classList.remove('hidden');
-                        }
-                    } catch (error) {
-                        bookingFormStatus.innerHTML = '<span class="text-red-500">Netzwerkfehler. Bitte versuchen Sie es später erneut.</span>';
-                        bookingFormStatus.classList.remove('hidden');
-                    } finally {
-                        submitBtn.disabled = false;
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.classList.remove('opacity-70');
-                    }
-                });
-            }
-
-            // --- Chatbot Logic ---
-            const chatToggle = document.getElementById('chat-toggle');
-            const chatWindow = document.getElementById('chat-window');
-            const closeChat = document.getElementById('close-chat');
-            const chatMessages = document.getElementById('chat-messages');
-            const chatOptions = document.getElementById('chat-options');
-            let isChatOpen = false;
-            let hasGreeted = false;
-
-            const toggleChat = () => {
-                isChatOpen = !isChatOpen;
-                if (isChatOpen) {
-                    chatWindow.classList.remove('invisible', 'opacity-0', 'scale-90');
-                    chatWindow.classList.add('opacity-100', 'scale-100');
-                    // Remove notification dot
-                    const dots = chatToggle.querySelectorAll('span');
-                    dots.forEach(d => d.style.display = 'none');
-
-                    if (!hasGreeted) {
-                        setTimeout(() => botTyping(), 500);
-                        setTimeout(() => {
-                            addMessage('bot', 'Hallo! 👋 Ich bin der N3xt Level AI Assistent.');
-                        }, 1500);
-                        setTimeout(() => botTyping(), 2000);
-                        setTimeout(() => {
-                            addMessage('bot', 'Wie kann ich Ihnen heute helfen?');
-                            showOptions([
-                                { text: '🗓️ Termin buchen', action: 'booking' },
-                                { text: '💰 Preise anfragen', action: 'pricing' },
-                                { text: '🚀 Webdesign Infos', action: 'webdesign' }
-                            ]);
-                            hasGreeted = true;
-                        }, 3000);
-                    }
-                } else {
-                    chatWindow.classList.add('invisible', 'opacity-0', 'scale-90');
-                    chatWindow.classList.remove('opacity-100', 'scale-100');
-                }
-            };
-
-            if (chatToggle) chatToggle.addEventListener('click', toggleChat);
-            if (closeChat) closeChat.addEventListener('click', toggleChat);
-
-            const addMessage = (sender, text) => {
-                // Remove typing indicator if exists
-                const typingIndicator = document.getElementById('typing-indicator');
-                if (typingIndicator) typingIndicator.remove();
-
-                const msgDiv = document.createElement('div');
-                msgDiv.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate-fade-in`;
-
-                const bubble = document.createElement('div');
-                bubble.className = `max-w-[80%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot'
-                    ? 'bg-white/10 text-gray-200 rounded-tl-none'
-                    : 'bg-accent text-white rounded-tr-none'
-                    }`;
-                bubble.innerText = text;
-
-                msgDiv.appendChild(bubble);
-                chatMessages.appendChild(msgDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            };
-
-            const botTyping = () => {
-                const msgDiv = document.createElement('div');
-                msgDiv.id = 'typing-indicator';
-                msgDiv.className = 'flex justify-start animate-fade-in';
-                msgDiv.innerHTML = `
-            <div class="bg-white/10 text-gray-200 rounded-2xl rounded-tl-none px-4 py-3 flex gap-1 items-center">
-                <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
-                <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
-                <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
-            </div>
-        `;
-                chatMessages.appendChild(msgDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            };
-
-            const showOptions = (options) => {
-                chatOptions.innerHTML = '';
-                options.forEach(opt => {
-                    const btn = document.createElement('button');
-                    btn.className = 'bg-white/5 border border-white/10 hover:border-accent hover:bg-accent/10 text-xs text-white px-3 py-2 rounded-lg transition-all mb-1';
-                    btn.innerText = opt.text;
-                    btn.addEventListener('click', () => handleOptionClick(opt));
-                    chatOptions.appendChild(btn);
-                });
-            };
-
-            const handleOptionClick = (opt) => {
-                addMessage('user', opt.text);
-                chatOptions.innerHTML = ''; // Clear options
-
-                botTyping();
-
-                setTimeout(() => {
-                    if (opt.action === 'booking') {
-                        addMessage('bot', 'Eine hervorragende Wahl! Ich öffne den Terminkalender für Sie...');
-                        setTimeout(() => {
-                            toggleChat();
-                            openBookingModal("Referenz: Chatbot Gespräch\n");
-                        }, 1500);
-                    } else if (opt.action === 'pricing') {
-                        addMessage('bot', 'Unsere Projekte starten ab €1.500 für professionelle Webseiten. Da jede Lösung maßgeschneidert ist, erstelle ich Ihnen gerne ein genaues Angebot.');
-                        showOptions([
-                            { text: '🗓️ Beratungsgespräch buchen', action: 'booking' },
-                            { text: '📧 Angebot per Mail', action: 'email_offer' }
-                        ]);
-                    } else if (opt.action === 'webdesign') {
-                        addMessage('bot', 'Wir nutzen modernste KI-gestützte Technologien für extrem schnelle Ladezeiten und Top-Rankings bei Google.');
-                        showOptions([
-                            { text: '✨ Portfolio ansehen', action: 'portfolio' },
-                            { text: '🗓️ Beratungstermin', action: 'booking' }
-                        ]);
-                    } else if (opt.action === 'email_offer') {
-                        addMessage('bot', 'Gerne! Bitte nutzen Sie unser Kontaktformular weiter unten, um uns Ihre Eckdaten zu senden.');
-                        setTimeout(() => {
-                            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                            toggleChat();
-                        }, 2000);
-                    } else if (opt.action === 'portfolio') {
-                        addMessage('bot', 'Ich scrolle Sie zu unseren Referenzen...');
-                        setTimeout(() => {
-                            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
-                            toggleChat();
-                        }, 1500);
-                    }
-                }, 1000);
-            };
-
-            // --- Cookie Banner Logic & Google Analytics ---
-            const cookieBanner = document.getElementById('cookie-banner');
-            const cookieAcceptBtn = document.getElementById('cookie-accept');
-            const cookieDeclineBtn = document.getElementById('cookie-decline');
-
-            // WICHTIG: Hier später Ihre eigene ID einfügen!
-            // IMPORTANT: Replace this placeholder with your real ID later!
-            const GA_MEASUREMENT_ID = 'G-345GNE46LZ';
-
-            const loadGoogleAnalytics = () => {
-                if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
-                    console.log('Google Analytics: Placeholder ID detected. Script not loaded.');
-                    return;
-                }
-
-                // Prevent duplicate loading
-                if (document.getElementById('ga-script')) return;
-
-                console.log('Google Analytics: Loading...');
-
-                // Inject Script
-                const script = document.createElement('script');
-                script.id = 'ga-script';
-                script.async = true;
-                script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-                document.head.appendChild(script);
-
-                // Init Config
-                window.dataLayer = window.dataLayer || [];
-                function gtag() { dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', GA_MEASUREMENT_ID, { 'anonymize_ip': true });
-            };
-
-            // Check if previously accepted
-            if (localStorage.getItem('cookieConsent') === 'accepted') {
-                loadGoogleAnalytics();
-            } else if (cookieBanner && !localStorage.getItem('cookieConsent')) {
-                setTimeout(() => {
-                    cookieBanner.classList.remove('translate-y-full');
-                }, 1000); // 1 second delay
-            }
-
-            const hideCookieBanner = () => {
-                if (cookieBanner) cookieBanner.classList.add('translate-y-full');
-            };
-
-            if (cookieAcceptBtn) {
-                cookieAcceptBtn.addEventListener('click', () => {
-                    localStorage.setItem('cookieConsent', 'accepted');
-                    hideCookieBanner();
-                    loadGoogleAnalytics(); // Start tracking immediately
-                });
-            }
-
-            if (cookieDeclineBtn) {
-                cookieDeclineBtn.addEventListener('click', () => {
-                    localStorage.setItem('cookieConsent', 'declined');
-                    hideCookieBanner();
-                });
-            }
-
-            // --- Stats Counter Animation ---
-            const counters = document.querySelectorAll('.counter');
-            const statsSection = document.getElementById('stats');
-            let hasAnimated = false;
-
-            const animateStats = () => {
-                counters.forEach(counter => {
-                    const target = parseFloat(counter.getAttribute('data-target'));
-                    const duration = 2000; // ms
-                    const stepTime = 20;
-                    const steps = duration / stepTime;
-                    const increment = target / steps;
-                    let current = 0;
-
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        // Format: if target is small float (like 0.4), show 1 decimal, else no decimal
-                        if (target % 1 !== 0) {
-                            counter.innerText = current.toFixed(1);
-                        } else {
-                            counter.innerText = Math.round(current);
-                        }
-                    }, stepTime);
-                });
-            };
-
-            // --- Language Switcher Logic (DE -> EN -> HU) ---
-            const langSwitchBtn = document.getElementById('lang-switch');
-            const flagSpan = document.getElementById('current-lang-flag');
-            const langTextSpan = document.getElementById('current-lang-text');
-
-            let currentLang = localStorage.getItem('n3xt_lang') || 'de';
-
-            const updateUI = () => {
-                // Update Navbar Button
-                if (currentLang === 'hu') {
-                    flagSpan.innerText = '🇭🇺';
-                    langTextSpan.innerText = 'HU';
-                } else if (currentLang === 'en') {
-                    flagSpan.innerText = '🇬🇧';
-                    langTextSpan.innerText = 'EN';
-                } else {
-                    flagSpan.innerText = '🇦🇹';
-                    langTextSpan.innerText = 'DE';
-                }
-
-                // Helper to safely render
-                const render = (id, component) => {
-                    const el = document.getElementById(id);
-                    if (el) el.innerHTML = component(currentLang);
-                };
-
-                // Re-render ALL Dynamic Components
-                render('hero-container', Hero);
-                render('services-container', Services);
-                render('process-container', Process);
-                render('premium-content-container', PremiumContent);
-                render('stats-container', Stats);
-                render('about-me-container', AboutMe);
-                render('portfolio-container', Portfolio);
-                render('booking-container', Booking);
-                render('contact-container', Contact);
-                render('footer-container', Footer);
-
-                // --- Re-Attach Event Listeners & Logic after DOM Replacement ---
-
-                // 1. Reveal Animations for new elements
-                const newReveals = document.querySelectorAll('.reveal');
-                const revealObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                        }
-                    });
-                }, { threshold: 0.1 });
-                newReveals.forEach(el => revealObserver.observe(el));
-
-                // 2. Stats Counter Re-init
-                const statsEl = document.getElementById('stats');
-                if (statsEl) {
-                    // Reset animated state to allow re-animation on language switch if desired, 
-                    // or just re-observe. Let's create a new observer.
-                    hasAnimated = false; // Allow re-animation
-                    const statsObserver = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting && !hasAnimated) {
-                                animateStats();
-                                hasAnimated = true;
-                            }
-                        });
-                    }, { threshold: 0.5 });
-                    statsObserver.observe(statsEl);
-                }
-
-                // 3. Contact Form Logic Re-attach
-                const newContactForm = document.getElementById('contactForm');
-                if (newContactForm) {
-                    newContactForm.addEventListener('submit', handleContactSubmit);
-                }
-
-                // 4. Booking System Logic Re-attach (Calendar)
-                // Since we replaced the Booking HTML, we need to restart the calendar logic
-                initCalendarLogic();
-
-                // 5. Dynamic Year in Footer
-                const yearEl = document.getElementById('year');
-                if (yearEl) yearEl.textContent = new Date().getFullYear();
-            };
-
-            // Initial Render UI update 
-            updateUI();
-
-            if (langSwitchBtn) {
-                langSwitchBtn.addEventListener('click', () => {
-                    // Cycle: DE -> EN -> HU -> DE
-                    if (currentLang === 'de') currentLang = 'en';
-                    else if (currentLang === 'en') currentLang = 'hu';
-                    else currentLang = 'de';
-
-                    localStorage.setItem('n3xt_lang', currentLang);
-                    updateUI();
-                });
-            }
-
-            if (statsSection) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !hasAnimated) {
-                            animateStats();
-                            hasAnimated = true;
-                        }
-                    });
-                }, { threshold: 0.5 });
-                observer.observe(statsSection);
-            }
-
-            // Scroll Reveal Animation
-            const revealElements = document.querySelectorAll('.reveal');
-
-            const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                const elementVisible = 100;
-
-                revealElements.forEach((reveal) => {
-                    const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveal.classList.add('active');
-                    }
-                });
-            };
-
-            if (revealElements.length > 0) {
-                window.addEventListener('scroll', revealOnScroll);
-                revealOnScroll(); // Trigger once on load
-            }
-
-            // Named function to handle form submission (re-used in updateUI)
-            const handleContactSubmit = async (e) => {
-                e.preventDefault();
-                const form = e.target;
-                const msgContainer = document.getElementById('formStatus'); // Note: ID in HTML is 'formStatus' inside form? No, let's check Contact.js. Yes id="formStatus".
-                // Wait, Contact.js has `id="formContent"` and `id="successMessage"`.
-                // The success message logic in previous Contact code was: show successMessage overlay.
-
-                const successOverlay = document.getElementById('successMessage');
-                const formContent = document.getElementById('formContent');
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerText;
-
-                submitBtn.innerText = currentLang === 'hu' ? 'Küldés...' : (currentLang === 'en' ? 'Sending...' : 'Wird gesendet...');
-                submitBtn.disabled = true;
-
-                const formData = new FormData(form);
-
-                try {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    });
-
-                    if (response.ok) {
-                        form.reset();
-                        // Show Success Overlay
-                        if (successOverlay && formContent) {
-                            formContent.classList.add('hidden');
-                            successOverlay.classList.remove('hidden');
-                            successOverlay.classList.add('flex'); // Ensure flex is added
-                        }
-                    } else {
-                        const data = await response.json();
-                        alert(data.errors ? data.errors.map(e => e.message).join(", ") : 'Server Error');
-                    }
-                } catch (error) {
-                    alert('Network Error. Please try again.');
-                } finally {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
-                }
-            };
-
-            // Dynamic Year
-            const yearEl = document.getElementById('year');
-            if (yearEl) yearEl.textContent = new Date().getFullYear();
         };
+    }
+};
 
-        // Global Event Delegation for Modals
-        document.addEventListener('click', (e) => {
-            // Open Modal
-            const openBtn = e.target.closest('[data-modal-open]');
-            if (openBtn) {
-                const modalId = openBtn.getAttribute('data-modal-open');
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+// 2. Contact Form Logic
+const setupContactForm = () => {
+    const form = document.getElementById('contactForm');
+    const successOverlay = document.getElementById('successMessage');
+    const formContent = document.getElementById('formContent');
+    const statusMsg = document.getElementById('formStatus');
+
+    if (!form) return;
+
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+
+        btn.innerText = currentLang === 'hu' ? 'Küldés...' : (currentLang === 'en' ? 'Sending...' : 'Wird gesendet...');
+        btn.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (res.ok) {
+                form.reset();
+                if (successOverlay && formContent) {
+                    formContent.classList.add('hidden');
+                    successOverlay.classList.remove('hidden');
+                    successOverlay.classList.add('flex');
+                } else if (statusMsg) {
+                    statusMsg.innerText = "Success!";
+                    statusMsg.classList.remove('hidden');
                 }
+            } else {
+                alert('Error sending message.');
             }
+        } catch (err) {
+            alert('Network error.');
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    };
+};
 
-            // Close Modal (Button)
-            if (e.target.closest('[data-modal-close]')) {
-                const modal = e.target.closest('.modal-backdrop');
-                if (modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            }
+// 3. Stats Animation
+const setupStats = () => {
+    const section = document.getElementById('stats');
+    if (!section) return;
 
-            // Close Modal (Outside Click)
-            if (e.target.classList.contains('modal-backdrop')) {
-                e.target.classList.remove('active');
-                document.body.style.overflow = '';
+    const counters = document.querySelectorAll('.counter');
+    let hasAnimated = false;
+
+    const animate = () => {
+        counters.forEach(c => {
+            const target = +c.getAttribute('data-target');
+            const duration = 1500;
+            const inc = target / (duration / 16);
+            let val = 0;
+            const timer = setInterval(() => {
+                val += inc;
+                if (val >= target) { val = target; clearInterval(timer); }
+                c.innerText = target % 1 !== 0 ? val.toFixed(1) : Math.round(val);
+            }, 16);
+        });
+    };
+
+    new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting && !hasAnimated) {
+                animate();
+                hasAnimated = true;
             }
         });
+    }).observe(section);
+};
 
-        // Close on ESC key
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal-backdrop').forEach(modal => {
-                    modal.classList.remove('active');
-                });
-                document.body.style.overflow = '';
-            }
+// 4. Reveal Animation
+const setupReveal = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('active');
         });
+    }, { threshold: 0.1 });
 
-        // Run Init Logic
-        initLogic();
+    reveals.forEach(el => observer.observe(el));
+};
+
+// 5. Update UI (Main Re-render function)
+const updateUI = () => {
+    // 1. Update Language Switcher Display
+    const flagSpan = document.getElementById('current-lang-flag');
+    const langTextSpan = document.getElementById('current-lang-text');
+    if (flagSpan && langTextSpan) {
+        if (currentLang === 'hu') { flagSpan.innerText = '🇭🇺'; langTextSpan.innerText = 'HU'; }
+        else if (currentLang === 'en') { flagSpan.innerText = '🇬🇧'; langTextSpan.innerText = 'EN'; }
+        else { flagSpan.innerText = '🇦🇹'; langTextSpan.innerText = 'DE'; }
+    }
+
+    // 2. Re-render Components
+    const renderComp = (id, fn) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = fn ? fn(currentLang) : '';
+    };
+
+    renderComp('hero-container', Hero);
+    renderComp('services-container', Services);
+    renderComp('process-container', Process);
+    renderComp('premium-content-container', PremiumContent);
+    renderComp('stats-container', Stats);
+    renderComp('about-me-container', AboutMe);
+    renderComp('portfolio-container', Portfolio);
+    renderComp('booking-container', Booking);
+    renderComp('contact-container', Contact);
+    renderComp('footer-container', Footer);
+
+    // 3. Re-initialize Logic that depends on DOM
+    setupCalendar();
+    setupContactForm();
+    setupStats();
+    setupReveal();
+
+    // Dynamic Year
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+
+    // Email Protection
+    document.querySelectorAll('.protected-email').forEach(el => {
+        const u = el.dataset.u;
+        const d = el.dataset.d;
+        if (u && d) el.innerHTML = `<a href="mailto:${u}@${d}" class="hover:text-accent transition-colors">${u}@${d}</a>`;
+    });
+};
+
+// --- Initial Setup ---
+
+// Render Static Components once
+document.getElementById('chatbot-place').innerHTML = Chatbot;
+document.getElementById('cookie-banner-container').innerHTML = CookieBanner;
+
+// Initial UI Render
+updateUI();
+
+// Event Listener for Language Switcher
+const langBtn = document.getElementById('lang-switch');
+if (langBtn) {
+    langBtn.onclick = () => {
+        if (currentLang === 'de') currentLang = 'en';
+        else if (currentLang === 'en') currentLang = 'hu';
+        else currentLang = 'de';
+
+        localStorage.setItem('n3xt_lang', currentLang);
+        updateUI();
+    };
+}
+
+// --- Chatbot Logic (Static, doesn't need re-render) ---
+const initChatbot = () => {
+    const toggle = document.getElementById('chat-toggle');
+    const windowEl = document.getElementById('chat-window');
+    const close = document.getElementById('close-chat');
+    const msgs = document.getElementById('chat-messages');
+    const opts = document.getElementById('chat-options');
+
+    if (!toggle || !windowEl) return;
+
+    let isOpen = false;
+    let hasGreeted = false;
+
+    const toggleFunc = () => {
+        isOpen = !isOpen;
+        if (isOpen) {
+            windowEl.classList.remove('invisible', 'opacity-0', 'scale-90');
+            windowEl.classList.add('opacity-100', 'scale-100');
+            toggle.querySelectorAll('span').forEach(s => s.style.display = 'none');
+
+            if (!hasGreeted) {
+                setTimeout(() => addMsg('bot', currentLang === 'hu' ? 'Szia! 👋 Miben segíthetek?' : 'Hallo! 👋 Wie kann ich helfen?'), 500);
+                setTimeout(() => showOpts([
+                    { text: '🗓️ Booking', action: 'booking' },
+                    { text: '💰 Pricing', action: 'pricing' }
+                ]), 1500);
+                hasGreeted = true;
+            }
+        } else {
+            windowEl.classList.add('invisible', 'opacity-0', 'scale-90');
+            windowEl.classList.remove('opacity-100', 'scale-100');
+        }
+    };
+
+    toggle.onclick = toggleFunc;
+    if (close) close.onclick = toggleFunc;
+
+    const addMsg = (sender, text) => {
+        const div = document.createElement('div');
+        div.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate-fade-in my-2`;
+        div.innerHTML = `<div class="max-w-[80%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot' ? 'bg-white/10 text-gray-200 rounded-tl-none' : 'bg-accent text-white rounded-tr-none'}">${text}</div>`;
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+    };
+
+    const showOpts = (options) => {
+        opts.innerHTML = '';
+        options.forEach(o => {
+            const b = document.createElement('button');
+            b.className = 'bg-white/5 border border-white/10 hover:border-accent text-xs text-white px-3 py-2 rounded-lg mb-1 mr-1 transition-colors';
+            b.innerText = o.text;
+            b.onclick = () => {
+                addMsg('user', o.text);
+                opts.innerHTML = '';
+                setTimeout(() => handleAction(o.action), 500);
+            };
+            opts.appendChild(b);
+        });
+    };
+
+    const handleAction = (action) => {
+        const responses = {
+            booking: { de: "Ich öffne den Kalender.", en: "Opening calendar.", hu: "Megnyitom a naptárat." },
+            pricing: { de: "Ab €1.500.", en: "Starting at €1,500.", hu: "€1.500-tól kezdődően." }
+        };
+        const txt = responses[action][currentLang] || responses[action].de;
+        addMsg('bot', txt);
+
+        if (action === 'booking') {
+            setTimeout(() => {
+                toggleFunc();
+                document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+            }, 1000);
+        }
+    };
+};
+initChatbot();
+
+// --- Cookie Banner & Modal Global Logic ---
+const initGlobals = () => {
+    // Modal Delegation
+    document.addEventListener('click', e => {
+        const open = e.target.closest('[data-modal-open]');
+        if (open) {
+            const m = document.getElementById(open.dataset.modalOpen);
+            if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        }
+        if (e.target.closest('[data-modal-close]') || e.target.classList.contains('modal-backdrop')) {
+            document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Cookie Values
+    const banner = document.getElementById('cookie-banner');
+    if (banner && !localStorage.getItem('cookieConsent')) {
+        setTimeout(() => banner.classList.remove('translate-y-full'), 1000);
+    }
+    const accept = document.getElementById('cookie-accept');
+    if (accept) accept.onclick = () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        if (banner) banner.classList.add('translate-y-full');
+    };
+    const decline = document.getElementById('cookie-decline');
+    if (decline) decline.onclick = () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        if (banner) banner.classList.add('translate-y-full');
+    };
+};
+initGlobals();

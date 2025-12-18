@@ -21,6 +21,8 @@ let currentLang = localStorage.getItem('n3xt_lang') || 'de';
 let pendingBooking = null;
 // Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqZlg_LU9S3A36C-Cub7JTJomOkN1YN4KbRMjsCRt2H4wdSmsdgLf7Q_pyofxNM_-/exec";
+// Formspree ID (Primary)
+const FORMSPREE_URL = "https://formspree.io/f/mvzppned";
 
 
 // --- Helper Functions ---
@@ -190,7 +192,7 @@ const setupContactForm = () => {
                     time: pendingBooking.time
                 };
 
-                // Fire and forget - don't await blocking the main request
+                // Fire and forget
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -207,7 +209,8 @@ const setupContactForm = () => {
 
         // 2. Formspree / Email Submission (Main Blocking Process)
         try {
-            const res = await fetch(form.action, {
+            // Force URL to resolve caching issues
+            const res = await fetch(FORMSPREE_URL, {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }
@@ -224,13 +227,13 @@ const setupContactForm = () => {
                     statusMsg.classList.remove('hidden');
                 }
             } else {
-                const errorData = await res.json();
+                const errorData = await res.json().catch(() => ({}));
                 console.error('Formspree Error Details:', errorData);
-                alert(`Error sending message: ${errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Unknown'}`);
+                alert(`Error sending message: ${errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Check console for details.'}`);
             }
         } catch (err) {
             console.error('Network Error Details:', err);
-            alert('Network error. Please try again.');
+            alert('Network error. Please try again or check your internet connection.');
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;

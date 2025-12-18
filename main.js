@@ -69,28 +69,47 @@ const setupCalendar = () => {
         }
 
         // Days
+        // Days
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
         for (let i = 1; i <= daysInMonth; i++) {
             const btn = document.createElement('button');
             btn.innerText = i;
-            btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-300 hover:bg-white/10 transition-all text-sm font-medium';
 
-            // Highlight today
-            const today = new Date();
-            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                btn.classList.add('border', 'border-accent', 'text-accent');
+            const checkDate = new Date(year, month, i);
+
+            // Check if past date
+            if (checkDate < today) {
+                // Disabled State
+                btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-700 cursor-default opacity-30';
+                // No click event
+            } else {
+                // Active State
+                btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-300 hover:bg-white/10 transition-all text-sm font-medium';
+
+                // Highlight today
+                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    btn.classList.add('border', 'border-accent', 'text-accent');
+                }
+
+                btn.onclick = () => {
+                    // Deselect others (but preserve disabled look for pas days)
+                    calendarDays.querySelectorAll('button').forEach(b => {
+                        if (!b.classList.contains('cursor-default')) {
+                            b.classList.remove('bg-accent', 'text-white');
+                        }
+                    });
+
+                    btn.classList.add('bg-accent', 'text-white');
+                    selectedDay = i;
+
+                    selectedDateText.innerText = `${i}. ${currentMonthNames[month]} ${year}`;
+                    timeSelection.classList.remove('hidden');
+                    timeSelection.classList.add('block');
+                    timeSelection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                };
             }
-
-            btn.onclick = () => {
-                // Deselect all
-                calendarDays.querySelectorAll('button').forEach(b => b.classList.remove('bg-accent', 'text-white'));
-                btn.classList.add('bg-accent', 'text-white');
-                selectedDay = i;
-
-                selectedDateText.innerText = `${i}. ${currentMonthNames[month]} ${year}`;
-                timeSelection.classList.remove('hidden');
-                timeSelection.classList.add('block');
-                timeSelection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            };
             calendarDays.appendChild(btn);
         }
     };

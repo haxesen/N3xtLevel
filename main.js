@@ -17,6 +17,11 @@ import { CookieBanner } from './components/CookieBanner.js';
 
 // --- State Management ---
 let currentLang = localStorage.getItem('n3xt_lang') || 'de';
+// Store booking details temporarily until form submission
+let pendingBooking = null;
+// Google Apps Script Web App URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqZlg_LU9S3A36C-Cub7JTJomOkN1YN4KbRMjsCRt2H4wdSmsdgLf7Q_pyofxNM_-/exec";
+
 
 // --- Helper Functions ---
 
@@ -128,6 +133,18 @@ const setupCalendar = () => {
                 alert(currentLang === 'hu' ? 'Kérjük válasszon időpontot!' : (currentLang === 'en' ? 'Please select a time!' : 'Bitte wählen Sie eine Uhrzeit!'));
                 return;
             }
+
+            // Save Pending Booking Data
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth() + 1; // 1-based
+            // Format YYYY-MM-DD for Google Script
+            const isoDate = `${year}-${month.toString().padStart(2, '0')}-${selectedDay.toString().padStart(2, '0')}`;
+
+            pendingBooking = {
+                date: isoDate,
+                time: selectedTime
+            };
+
             // Scroll to Contact Form and prefill
             const contactSec = document.getElementById('contact');
             const msgArea = document.querySelector('textarea[name="message"]');
@@ -160,8 +177,39 @@ const setupContactForm = () => {
         btn.disabled = true;
 
         const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        // --- Google Calendar Sync ---
+        if (pendingBooking) {
+            try {
+                const googlePayload = {
+                    name: data.name,
+                    email: data.email,
+                    message: data.message,
+                    date: pendingBooking.date,
+                    time: pendingBooking.time
+                };
+
+                // Send to Google Script
+                // mode: 'no-cors' is needed because we can't read the response from Google Scripts easily due to CORS policies on redirect,
+                // but the request actually goes through!
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(googlePayload)
+                });
+
+                // Reset pending booking
+                pendingBooking = null;
+            } catch (err) {
+                console.warn('Calendar sync error (non-fatal):', err);
+            }
+        }
+        // ---------------------------
 
         try {
+            // Send to Formspree (Email)
             const res = await fetch(form.action, {
                 method: 'POST',
                 body: formData,
@@ -242,7 +290,7 @@ const updateUI = () => {
         if (el) el.innerHTML = fn ? fn(currentLang) : '';
     };
 
-    renderComp('navbar-container', Navbar); // Navbar (containing Lang Switch)
+    renderComp('navbar-container', Navbar);
     renderComp('hero-container', Hero);
     renderComp('services-container', Services);
     renderComp('process-container', Process);
@@ -254,10 +302,10 @@ const updateUI = () => {
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);
 
-    // 1. Language Switcher Logic (Button is re-rendered with Navbar)
-    const langBtn = document.getElementById('lang-switch');
+    // 1. Language Switcher Logic
     const flagSpan = document.getElementById('current-lang-flag');
     const langTextSpan = document.getElementById('current-lang-text');
+    const langBtn = document.getElementById('lang-switch');
 
     if (flagSpan && langTextSpan) {
         if (currentLang === 'hu') { flagSpan.innerText = '🇭🇺'; langTextSpan.innerText = 'HU'; }
@@ -303,7 +351,7 @@ document.getElementById('cookie-banner-container').innerHTML = CookieBanner;
 // Initial UI Render
 updateUI();
 
-// Mobile Menu Toggle Logic (Global delegation since navbar is dynamic)
+// Mobile Menu Toggle Logic
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('button[aria-label="Menu"]');
     if (btn) {
@@ -312,7 +360,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// --- Chatbot Logic (Static, doesn't need re-render) ---
+// --- Chatbot Logic ---
 const initChatbot = () => {
     const toggle = document.getElementById('chat-toggle');
     const windowEl = document.getElementById('chat-window');
@@ -382,7 +430,6 @@ const initChatbot = () => {
 
         if (action === 'booking') {
             setTimeout(() => {
-                // If on mobile/desktop, keep chat open or close? Usually close if navigating.
                 toggleFunc();
                 document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
             }, 1000);

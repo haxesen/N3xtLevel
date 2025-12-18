@@ -3,6 +3,7 @@ import './style.css';
 // Import Components
 import { Hero } from './components/Hero.js';
 import { Services } from './components/Services.js';
+import { Process } from './components/Process.js';
 import { PremiumContent } from './components/PremiumContent.js';
 import { AboutMe } from './components/AboutMe.js';
 import { Portfolio } from './components/Portfolio.js';
@@ -15,6 +16,7 @@ import { CookieBanner } from './components/CookieBanner.js';
 // Render Components
 document.getElementById('hero-container').innerHTML = Hero;
 document.getElementById('services-container').innerHTML = Services;
+document.getElementById('process-container').innerHTML = Process;
 document.getElementById('premium-content-container').innerHTML = PremiumContent;
 document.getElementById('about-me-container').innerHTML = AboutMe;
 document.getElementById('portfolio-container').innerHTML = Portfolio;

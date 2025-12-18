@@ -80,20 +80,21 @@
 
     <!-- Impressum Modal -->
     <div id="impressumModal"
-        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
         <div
-            class="bg-[#0a0a0a] border-2 border-[#FF8C00] shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto">
-            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+            class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
+            <button data-modal-close
+                class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <h2 class="text-3xl font-bold mb-6 text-white">Impressum</h2>
+            <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Impressum</h2>
             <div class="space-y-8 text-gray-300">
                 <!-- Details -->
                 <section class="space-y-2">
-                    <p class="text-lg font-semibold text-white">Angaben gemäß § 5 TMG</p>
+                    <p class="text-lg font-semibold text-accent">Angaben gemäß § 5 TMG</p>
                     <p class="font-bold text-lg text-white mt-4">Tamas Horvat</p>
                     <p>Hauptstraße 32</p>
                     <p>2000 Stockerau</p>
@@ -102,14 +103,14 @@
 
                 <!-- Kontakt -->
                 <section class="space-y-2 pt-4">
-                    <h2 class="text-lg font-semibold text-white">Kontakt</h2>
+                    <h2 class="text-lg font-semibold text-accent">Kontakt</h2>
                     <p>E-Mail: <a href="mailto:haxesen@gmail.com"
                             class="text-accent hover:underline">haxesen@gmail.com</a></p>
                 </section>
 
                 <!-- Description -->
                 <section class="space-y-2 pt-4">
-                    <h2 class="text-lg font-semibold text-white">Unternehmensgegenstand</h2>
+                    <h2 class="text-lg font-semibold text-accent">Unternehmensgegenstand</h2>
                     <p>IT-Dienstleistungen & Webdesign</p>
                 </section>
 
@@ -138,16 +139,17 @@
 
     <!-- Datenschutz Modal -->
     <div id="datenschutzModal"
-        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
         <div
-            class="bg-[#0a0a0a] border-2 border-[#FF8C00] shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto">
-            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+            class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
+            <button data-modal-close
+                class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <h2 class="text-3xl font-bold mb-6 text-white">Datenschutzerklärung</h2>
+            <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Datenschutzerklärung</h2>
             <div class="space-y-12 text-gray-300 leading-relaxed">
                 <!-- 1. General Information -->
                 <section>
@@ -200,22 +202,24 @@
 
     <!-- AGB Modal -->
     <div id="agbModal"
-        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
         <div
-            class="bg-[#0a0a0a] border-2 border-[#FF8C00] shadow-[0_0_15px_rgba(255,140,0,0.5)] w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto">
-            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+            class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
+            <button data-modal-close
+                class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <h2 class="text-3xl font-bold mb-6 text-white">Allgemeine Geschäftsbedingungen</h2>
+            <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Allgemeine
+                Geschäftsbedingungen</h2>
             <div class="text-gray-300 space-y-4 leading-relaxed">
-                <h3 class="text-xl font-semibold text-white mt-4">1. Geltungsbereich</h3>
+                <h3 class="text-xl font-semibold text-accent mt-4">1. Geltungsbereich</h3>
                 <p>Diese AGB gelten für alle Geschäftsbeziehungen zwischen N3XT LEVEL und dem Kunden.</p>
-                <h3 class="text-xl font-semibold text-white mt-4">2. Leistungen</h3>
+                <h3 class="text-xl font-semibold text-accent mt-4">2. Leistungen</h3>
                 <p>Der Umfang der vertraglichen Leistungen ergibt sich aus dem jeweiligen Angebot.</p>
-                <h3 class="text-xl font-semibold text-white mt-4">3. Vertragsabschluss</h3>
+                <h3 class="text-xl font-semibold text-accent mt-4">3. Vertragsabschluss</h3>
                 <p>Der Vertrag kommt durch die Annahme des Angebots durch den Kunden zustande.</p>
                 <p class="text-sm text-gray-500 mt-4">* Dies ist eine beispielhafte Darstellung.</p>
             </div>

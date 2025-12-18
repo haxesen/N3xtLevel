@@ -31,7 +31,7 @@ export const Booking = `
                         </div>
                         <div>
                             <h4 class="text-white font-bold">Email</h4>
-                            <p class="text-gray-400">office@n3xtlevel.at</p>
+                            <p class="text-gray-400">office@n3xt-level.eu</p>
                         </div>
                     </div>
                     

@@ -10,6 +10,7 @@ import { Booking } from './components/Booking.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
 import { Chatbot } from './components/Chatbot.js';
+import { CookieBanner } from './components/CookieBanner.js';
 
 // Render Components
 document.getElementById('hero-container').innerHTML = Hero;
@@ -21,6 +22,7 @@ document.getElementById('booking-container').innerHTML = Booking;
 document.getElementById('contact-container').innerHTML = Contact;
 document.getElementById('footer-container').innerHTML = Footer;
 document.getElementById('chatbot-place').innerHTML = Chatbot;
+document.getElementById('cookie-banner-container').innerHTML = CookieBanner;
 
 // Initialize animations and Logic
 const initLogic = () => {
@@ -351,6 +353,36 @@ const initLogic = () => {
             }
         }, 1000);
     };
+
+    // --- Cookie Banner Logic ---
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieAcceptBtn = document.getElementById('cookie-accept');
+    const cookieDeclineBtn = document.getElementById('cookie-decline');
+
+    if (cookieBanner && !localStorage.getItem('cookieConsent')) {
+        setTimeout(() => {
+            cookieBanner.classList.remove('translate-y-full');
+        }, 1000); // 1 second delay
+    }
+
+    const hideCookieBanner = () => {
+        if (cookieBanner) cookieBanner.classList.add('translate-y-full');
+    };
+
+    if (cookieAcceptBtn) {
+        cookieAcceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            hideCookieBanner();
+            // Here you would trigger Analytics scripts if implemented
+        });
+    }
+
+    if (cookieDeclineBtn) {
+        cookieDeclineBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            hideCookieBanner();
+        });
+    }
 
     // Scroll Reveal Animation
     const revealElements = document.querySelectorAll('.reveal');

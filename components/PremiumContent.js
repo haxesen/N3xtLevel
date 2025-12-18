@@ -10,7 +10,7 @@ export const PremiumContent = `
             <div class="w-full md:w-1/2">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
                     <div class="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <img src="assets/drone_placeholder.svg" alt="Professional Drone Photography" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <img src="/drone_shot.jpg" alt="Professional Drone Photography" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
                     <!-- Overlay Text -->
                      <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent">
                         <p class="text-white text-sm font-bold uppercase tracking-wider">Cinematic Production</p>

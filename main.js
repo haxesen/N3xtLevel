@@ -179,7 +179,7 @@ const setupContactForm = () => {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        // --- Google Calendar Sync ---
+        // 1. Google Calendar Sync (Separate Process)
         if (pendingBooking) {
             try {
                 const googlePayload = {
@@ -190,26 +190,23 @@ const setupContactForm = () => {
                     time: pendingBooking.time
                 };
 
-                // Send to Google Script
-                // mode: 'no-cors' is needed because we can't read the response from Google Scripts easily due to CORS policies on redirect,
-                // but the request actually goes through!
-                await fetch(GOOGLE_SCRIPT_URL, {
+                // Fire and forget - don't await blocking the main request
+                fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(googlePayload)
-                });
+                }).then(() => console.log('Google Sync initiated'))
+                    .catch(err => console.warn('Google Sync failed:', err));
 
-                // Reset pending booking
                 pendingBooking = null;
             } catch (err) {
-                console.warn('Calendar sync error (non-fatal):', err);
+                console.warn('Calendar sync logic error:', err);
             }
         }
-        // ---------------------------
 
+        // 2. Formspree / Email Submission (Main Blocking Process)
         try {
-            // Send to Formspree (Email)
             const res = await fetch(form.action, {
                 method: 'POST',
                 body: formData,
@@ -227,10 +224,13 @@ const setupContactForm = () => {
                     statusMsg.classList.remove('hidden');
                 }
             } else {
-                alert('Error sending message.');
+                const errorData = await res.json();
+                console.error('Formspree Error Details:', errorData);
+                alert(`Error sending message: ${errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Unknown'}`);
             }
         } catch (err) {
-            alert('Network error.');
+            console.error('Network Error Details:', err);
+            alert('Network error. Please try again.');
         } finally {
             btn.innerText = originalText;
             btn.disabled = false;

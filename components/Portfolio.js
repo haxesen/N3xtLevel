@@ -16,7 +16,7 @@ export const Portfolio = `
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1: Beauty & Wellness -->
             <div class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]">
-                <img src="https://images.unsplash.com/photo-1600334019640-eb827a4d52d9?auto=format&fit=crop&q=80&w=1000"
+                <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=1000"
                     alt="Beauty Salon"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
                 <div

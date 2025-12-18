@@ -3,49 +3,66 @@
  * N3XT LEVEL - GOOGLE CALENDAR INTEGRATION
  * ==========================================
  * 
- * Ezt a kódot másold be a Google Apps Script szerkesztőjébe.
- * (Részletes útmutató a SETUP_GUIDE.md fájlban)
+ * BEÁLLÍTÁS:
+ * Ha külön naptárba szeretnéd menteni a foglalásokat,
+ * írd át az alábbi 'primary' szót a naptárad azonosítójára!
+ * (Pl: 'hu.hungarian#holiday@group.v.calendar.google.com' vagy hasonló hosszú kód)
  */
+var CALENDAR_ID = 'primary'; 
 
 function doPost(e) {
-  // CORS (Cross-Origin Resource Sharing) engedélyezése
-  // Ez teszi lehetővé, hogy a weboldalad kommunikáljon a Google-lel
+  // CORS engedélyezése
   
   // 1. Adatok feldolgozása
   try {
-    var data = JSON.parse(e.postData.contents);
+    var data;
+    // Megpróbáljuk JSON-ként, de ha stringként jön (text/plain miatt), azt is kezeljük
+    try { 
+      data = JSON.parse(e.postData.contents); 
+    } catch(err) {
+      // Ha esetleg url-encoded lenne vagy sima objektum (ritka Apps Scriptnél így, de biztos ami biztos)
+      data = e.parameter || {}; 
+    }
+
     var name = data.name;
     var email = data.email;
-    var dateStr = data.date; // ÉÉÉÉ-HH-NN formátum elvárt
-    var timeStr = data.time; // ÓÓ:PP formátum
+    var dateStr = data.date; 
+    var timeStr = data.time; 
     var message = data.message || "Nincs üzenet";
 
-    // Dátum és Idő összeállítása
-    // Figyelem: A dateStr és timeStr formátuma kritikus!
-    // Feltételezzük: date="2025-12-18", time="14:00"
-    var startTime = new Date(dateStr + 'T' + timeStr + ':00');
-    var endTime = new Date(startTime.getTime() + (60 * 60 * 1000)); // +1 óra alapértelmezetten
+    // Dátum validáció
+    if(!dateStr || !timeStr) {
+      return responseJSON({ status: 'error', message: 'Hiányzó dátum vagy idő!' });
+    }
 
-    // 2. Naptár Esemény Létrehozása
-    var calendar = CalendarApp.getDefaultCalendar();
+    var startTime = new Date(dateStr + 'T' + timeStr + ':00');
+    var endTime = new Date(startTime.getTime() + (60 * 60 * 1000)); // +1 óra
+
+    // 2. Naptár Kiválasztása
+    var calendar = CalendarApp.getCalendarById(CALENDAR_ID);
+    
+    // Ha nem találja (pl. elírt ID), visszaváltunk az alapértelmezettre biztonságból
+    if (!calendar) {
+      calendar = CalendarApp.getDefaultCalendar();
+      message += "\n\n(Megj: A rendszer az alapértelmezett naptárat használta, mert a megadott CALENDAR_ID nem található.)";
+    }
     
     // Ellenőrizzük, szabad-e az időpont (ütközésvizsgálat)
     var conflicts = calendar.getEvents(startTime, endTime);
     if (conflicts.length > 0) {
-      return responseJSON({ status: 'error', message: 'Ez az időpont sajnos már foglalt.' });
+      return responseJSON({ status: 'error', message: 'Ez az időpont ebben a naptárban már foglalt.' });
     }
 
     // Esemény létrehozása
     var event = calendar.createEvent(
-      'Konultáció: ' + name,
+      'Konzultáció: ' + name,
       startTime,
       endTime,
       {
-        description: 'Ügyfél email: ' + email + '\n\nÜzenet:\n' + message + '\n\nFoglalás forrása: N3XT LEVEL Weboldal'
+        description: 'Ügyfél email: ' + email + '\n\nÜzenet:\n' + message + '\n\nForrás: N3XT LEVEL Weboldal'
       }
     );
 
-    // Opcionális: Szín beállítása (pl. '11' = Paradicsom piros, '10' = Bazsalikom zöld)
     event.setColor(CalendarApp.EventColor.PALE_BLUE);
 
     return responseJSON({ status: 'success', message: 'Időpont sikeresen foglalva!' });

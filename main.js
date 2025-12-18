@@ -112,51 +112,88 @@ const initLogic = () => {
             });
         });
 
-        // Confirm Action
+        // Confirm Action -> Open Modal
         confirmBookingBtn?.addEventListener('click', () => {
-            const bookingNameInput = document.getElementById('bookingName');
-            const bookingEmailInput = document.getElementById('bookingEmail');
-
-            const bookingName = bookingNameInput?.value.trim();
-            const bookingEmail = bookingEmailInput?.value.trim();
-
             if (!selectedTime) {
                 alert("Bitte wählen Sie eine Uhrzeit aus.");
                 return;
             }
 
-            if (!bookingName || !bookingEmail) {
-                alert("Bitte geben Sie Ihren Namen und Ihre E-Mail-Adresse ein.");
-                // Highlight empty fields
-                if (!bookingName) bookingNameInput.classList.add('border-red-500');
-                if (!bookingEmail) bookingEmailInput.classList.add('border-red-500');
-                return;
-            }
-
-            // Generate Message
+            // Generate Message with Date/Time
             const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-            const msg = `Ich möchte einen Beratungstermin anfragen.\n\nDatum: ${selectedDay}. ${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}\nUhrzeit: ${selectedTime}`;
+            const msg = `Ich möchte einen Beratungstermin anfragen.\n\nDatum: ${selectedDay}. ${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}\nUhrzeit: ${selectedTime}\n\nMeine Nachricht:`;
 
-            // Populate Contact Form
-            const contactSection = document.getElementById('contact');
-            const targetNameInput = document.querySelector('input[name="name"]');
-            const targetEmailInput = document.querySelector('input[name="email"]');
-            const targetMessageInput = document.querySelector('textarea[name="message"]');
+            // Populate Modal Message
+            const bookingModal = document.getElementById('bookingModal');
+            const bookingMessage = document.getElementById('bookingMessage');
 
-            if (targetMessageInput) {
-                targetMessageInput.value = msg;
-                if (targetNameInput) targetNameInput.value = bookingName;
-                if (targetEmailInput) targetEmailInput.value = bookingEmail;
+            if (bookingModal && bookingMessage) {
+                bookingMessage.value = msg;
+                bookingModal.classList.remove('hidden');
+            }
+        });
+    }
 
-                // Scroll to contact
-                contactSection.scrollIntoView({ behavior: 'smooth' });
+    // --- Booking Modal Logic ---
+    const bookingModal = document.getElementById('bookingModal');
+    const closeBookingModalBtn = document.getElementById('closeBookingModal');
+    const bookingModalBackdrop = document.getElementById('bookingModalBackdrop');
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingFormStatus = document.getElementById('bookingFormStatus');
 
-                // Highlight fields to flash success
-                setTimeout(() => {
-                    targetMessageInput.classList.add('ring-2', 'ring-accent');
-                    targetNameInput?.classList.add('ring-2', 'ring-accent');
-                    targetEmailInput?.classList.add('ring-2', 'ring-accent');
-                }, 800);
+    const closeBookingModal = () => {
+        if (bookingModal) bookingModal.classList.add('hidden');
+    };
+
+    if (closeBookingModalBtn) closeBookingModalBtn.addEventListener('click', closeBookingModal);
+    if (bookingModalBackdrop) bookingModalBackdrop.addEventListener('click', closeBookingModal);
+
+    // Form Handling (Booking Modal)
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Wird gesendet...";
+            submitBtn.classList.add('opacity-70');
+
+            const formData = new FormData(bookingForm);
+
+            try {
+                const response = await fetch(bookingForm.action, {
+                    method: bookingForm.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    bookingFormStatus.innerHTML = '<span class="text-green-500 font-bold"><i class="fas fa-check-circle"></i> Anfrage erfolgreich gesendet!</span>';
+                    bookingFormStatus.classList.remove('hidden');
+                    bookingForm.reset();
+                    setTimeout(() => {
+                        closeBookingModal();
+                        bookingFormStatus.classList.add('hidden');
+                    }, 2000);
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        bookingFormStatus.innerHTML = `<span class="text-red-500">${data["errors"].map(error => error["message"]).join(", ")}</span>`;
+                    } else {
+                        bookingFormStatus.innerHTML = '<span class="text-red-500">Oops! Es ist ein Fehler aufgetreten.</span>';
+                    }
+                    bookingFormStatus.classList.remove('hidden');
+                }
+            } catch (error) {
+                bookingFormStatus.innerHTML = '<span class="text-red-500">Netzwerkfehler. Bitte versuchen Sie es später erneut.</span>';
+                bookingFormStatus.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalBtnText;
+                submitBtn.classList.remove('opacity-70');
             }
         });
     }

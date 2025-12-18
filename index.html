@@ -78,6 +78,57 @@
 
     </main>
 
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="bookingModalBackdrop"></div>
+
+        <!-- Modal Content -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
+            <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 shadow-2xl relative">
+                <!-- Close Button -->
+                <button id="closeBookingModal"
+                    class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <h2 class="text-3xl font-bold text-white mb-2 text-center">Termin <span
+                        class="text-accent">bestätigen</span></h2>
+                <p class="text-gray-400 text-center mb-8">Lassen Sie uns gemeinsam etwas Großartiges erschaffen.</p>
+
+                <form id="bookingForm" action="https://formspree.io/f/xzzzdnko" method="POST" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-gray-300">Name</label>
+                            <input type="text" name="name" required placeholder="Ihr Name"
+                                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-gray-300">E-Mail</label>
+                            <input type="email" name="email" required placeholder="ihre@email.com"
+                                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-gray-300">Nachricht & Details</label>
+                        <textarea name="message" id="bookingMessage" required rows="4"
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-accent text-white font-bold py-4 rounded-lg hover:bg-accent-hover transition-all shadow-glow mt-4 text-lg">
+                        Anfrage absenden
+                    </button>
+
+                    <p id="bookingFormStatus" class="text-center text-sm mt-4 hidden"></p>
+                    <p class="text-xs text-gray-600 text-center mt-4">Mit dem Absenden stimmen Sie unserer
+                        Datenschutzerklärung zu.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Modals -->
 
     <!-- Impressum Modal -->

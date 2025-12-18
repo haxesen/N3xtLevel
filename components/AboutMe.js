@@ -32,7 +32,7 @@ export const AboutMe = `
                     Verlässlichkeit."
                 </p>
                 <div class="mt-8">
-                    <p class="text-6xl text-gray-300 transform -rotate-3 origin-left tracking-wider" style="font-family: 'Monsieur La Doulaise', cursive;">Tamas Horvat</p>
+                    <img src="/signature.png" alt="Tamas Horvat Signature" class="h-24 w-auto invert opacity-90 mx-auto md:mx-0">
                 </div>
             </div>
         </div>

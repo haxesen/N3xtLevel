@@ -6,6 +6,7 @@ import { Services } from './components/Services.js';
 import { PremiumContent } from './components/PremiumContent.js';
 import { AboutMe } from './components/AboutMe.js';
 import { Portfolio } from './components/Portfolio.js';
+import { Booking } from './components/Booking.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
 
@@ -15,11 +16,103 @@ document.getElementById('services-container').innerHTML = Services;
 document.getElementById('premium-content-container').innerHTML = PremiumContent;
 document.getElementById('about-me-container').innerHTML = AboutMe;
 document.getElementById('portfolio-container').innerHTML = Portfolio;
+document.getElementById('booking-container').innerHTML = Booking;
 document.getElementById('contact-container').innerHTML = Contact;
 document.getElementById('footer-container').innerHTML = Footer;
 
 // Initialize animations and Logic
 const initLogic = () => {
+    // --- Calendar Logic ---
+    const calendarDays = document.getElementById('calendarDays');
+    const currentMonthYear = document.getElementById('currentMonthYear');
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
+    const timeSelection = document.getElementById('timeSelection');
+    const selectedDateText = document.getElementById('selectedDateText');
+
+    if (calendarDays && currentMonthYear) {
+        let currentDate = new Date();
+        // Set to Dec 2025 initially if you want to match the screenshot, 
+        // OR just use current real date. Let's use current real date for functionality.
+        // currentDate = new Date(2025, 11, 1); // Uncomment to force Dec 2025
+
+        const renderCalendar = () => {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+
+            // German Month Names
+            const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+
+            currentMonthYear.innerText = `${monthNames[month]} ${year}`;
+
+            // First day of the month
+            const firstDay = new Date(year, month, 1).getDay(); // 0 = Sunday, 1 = Monday...
+            // Adjust so Monday is first (standard in DACH)
+            // 0 (Sun) -> 6, 1 (Mon) -> 0
+            const firstDayIndex = firstDay === 0 ? 6 : firstDay - 1;
+
+            // Days in month
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // Clear previous
+            calendarDays.innerHTML = '';
+
+            // Empty placeholders for days before the 1st
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyDiv = document.createElement('div');
+                calendarDays.appendChild(emptyDiv);
+            }
+
+            // Days
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayBtn = document.createElement('button');
+                dayBtn.innerText = i;
+                dayBtn.classList.add('w-10', 'h-10', 'rounded-full', 'mx-auto', 'flex', 'items-center', 'justify-center', 'text-gray-300', 'hover:bg-white/10', 'transition-all', 'text-sm', 'font-medium');
+
+                // Today highlighter (if current month view is real today)
+                const today = new Date();
+                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    dayBtn.classList.add('border', 'border-accent', 'text-accent');
+                }
+
+                dayBtn.addEventListener('click', () => {
+                    // Reset all active states
+                    const allDays = calendarDays.querySelectorAll('button');
+                    allDays.forEach(btn => btn.classList.remove('bg-accent', 'text-white'));
+
+                    // Set active
+                    dayBtn.classList.add('bg-accent', 'text-white');
+
+                    // Show Time Selection
+                    timeSelection.classList.remove('hidden');
+                    selectedDateText.innerText = `${i}. ${monthNames[month]} ${year}`;
+                });
+
+                calendarDays.appendChild(dayBtn);
+            }
+        };
+
+        renderCalendar();
+
+        prevMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        nextMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Time slot selection logic
+        const timeSlots = document.querySelectorAll('.time-slot');
+        timeSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                timeSlots.forEach(s => s.classList.remove('bg-accent', 'text-white', 'border-accent'));
+                slot.classList.add('bg-accent', 'text-white', 'border-accent');
+            });
+        });
+    }
     // Scroll Reveal Animation
     const revealElements = document.querySelectorAll('.reveal');
 

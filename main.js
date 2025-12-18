@@ -361,7 +361,7 @@ const initLogic = () => {
 
     // WICHTIG: Hier später Ihre eigene ID einfügen!
     // IMPORTANT: Replace this placeholder with your real ID later!
-    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+    const GA_MEASUREMENT_ID = 'G-345GNE46LZ';
 
     const loadGoogleAnalytics = () => {
         if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {

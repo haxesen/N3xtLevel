@@ -11,8 +11,8 @@ export const Contact = `
             class="bg-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-white/5 box-shadow-2xl reveal relative overflow-hidden">
             <div id="formContent">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Projekt <span
-                            class="text-accent">starten</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Senden Sie uns eine <span
+                            class="text-accent">Nachricht</span>
                     </h2>
                     <p class="text-gray-400">Lassen Sie uns gemeinsam etwas Großartiges erschaffen.</p>
                 </div>

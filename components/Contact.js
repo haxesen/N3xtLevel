@@ -68,7 +68,7 @@ export const Contact = (lang = 'de') => {
                     <p class="text-gray-400">${t.subtitle}</p>
                 </div>
 
-                <form id="contactForm" action="https://formspree.io/f/xzzzdnko" method="POST" class="space-y-6">
+                <form id="contactForm" action="https://formspree.io/f/mvzppned" method="POST" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="group">
                             <label

@@ -2,10 +2,10 @@ export const Booking = `
 <!-- Booking Section -->
 <section id="booking" class="py-32 bg-black relative border-t border-white/5">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="flex flex-col lg:flex-row gap-16 items-start">
+        <div class="flex flex-col xl:flex-row gap-16 items-start">
             
             <!-- Left Content -->
-            <div class="w-full lg:w-1/3 reveal">
+            <div class="w-full xl:w-1/3 reveal">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
                     Persönliches <br>
                     <span class="text-accent">Beratungsgespräch</span>
@@ -48,7 +48,7 @@ export const Booking = `
             </div>
 
             <!-- Right Content: Calendar UI -->
-            <div class="w-full lg:w-2/3 reveal" style="transition-delay: 200ms;">
+            <div class="w-full xl:w-2/3 reveal" style="transition-delay: 200ms;">
                 <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
                     <!-- Glow Effect inside card -->
                     <div class="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none"></div>

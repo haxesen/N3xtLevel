@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N3XT LEVEL | KI-Web-Lösungen</title>
+    <meta name="description"
+        content="KI-optimierte Web-Lösungen für den Unternehmenserfolg. Modernes Webdesign, SEO & Automatisierung.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Vite Main Entry -->
+  <script type="module" crossorigin src="/assets/index-5NDeMir7.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DlKAB3QC.css">
+</head>
+
+<body class="antialiased font-sans selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black tracking-tighter hover:text-accent transition-colors duration-300">
+                N<span class="text-[#ff0000]">3</span>XT LEVEL<span class="text-accent">.</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-300">
+                <a href="#services" class="hover:text-white transition-colors">Leistungen</a>
+                <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-white transition-colors">Kontakt</a>
+                <a href="#contact"
+                    class="px-6 py-2.5 bg-white/5 border border-white/10 text-white rounded font-semibold hover:bg-accent hover:border-accent hover:shadow-glow transition-all duration-300">
+                    Anfragen
+                </a>
+            </div>
+
+            <!-- Mobile Menu Icon -->
+            <button class="md:hidden text-white" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dynamic Components Container -->
+    <div id="hero-container"></div>
+
+    <!-- Social Sidebar (Desktop) -->
+    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-6">
+        <a href="#" class="social-btn text-2xl"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn text-2xl"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn text-2xl"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn text-xl"><i class="fab fa-x-twitter"></i></a>
+    </div>
+
+    <main class="relative bg-black text-white overflow-hidden">
+        <!-- Glow effects -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4">
+        </div>
+
+        <div id="services-container"></div>
+        <div id="premium-content-container"></div>
+        <div id="about-me-container"></div>
+        <div id="portfolio-container"></div>
+        <div id="contact-container"></div>
+        <div id="footer-container"></div>
+
+    </main>
+
+    <!-- Modals -->
+
+    <!-- Impressum Modal -->
+    <div id="impressumModal"
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div
+            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold mb-6 text-white">Impressum</h2>
+            <div class="text-gray-300 space-y-4 leading-relaxed">
+                <p><strong>N3XT LEVEL AI Agency</strong><br>
+                    Musterstraße 123<br>
+                    1010 Wien, Österreich</p>
+                <p><strong>Kontakt:</strong><br>
+                    Telefon: +43 1 234 567 89<br>
+                    E-Mail: office@n3xtlevel.at</p>
+                <p><strong>Geschäftsführung:</strong><br>
+                    Tamas Horvat</p>
+                <p><strong>Umsatzsteuer-ID:</strong><br>
+                    ATU12345678</p>
+                <p><strong>Unternehmensgegenstand:</strong><br>
+                    Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutzModal"
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div
+            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold mb-6 text-white">Datenschutzerklärung</h2>
+            <div class="text-gray-300 space-y-4 leading-relaxed">
+                <h3 class="text-xl font-semibold text-white mt-4">1. Datenschutz auf einen Blick</h3>
+                <p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie
+                    darüber, wie wir Ihre Daten verarbeiten.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">2. Datenerfassung auf unserer Website</h3>
+                <p>Wenn Sie unser Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (z.B. Name, E-Mail)
+                    zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre
+                    Einwilligung weiter.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">3. Analyse-Tools</h3>
+                <p>Wir nutzen derzeit keine externen Tracking-Tools wie Google Analytics. Ihre Privatsphäre steht an
+                    erster Stelle.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGB Modal -->
+    <div id="agbModal"
+        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div
+            class="bg-[#0a0a0a] border border-white/10 w-full max-w-2xl mx-4 rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button data-modal-close class="absolute top-6 right-6 text-gray-400 hover:text-accent transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold mb-6 text-white">Allgemeine Geschäftsbedingungen</h2>
+            <div class="text-gray-300 space-y-4 leading-relaxed">
+                <h3 class="text-xl font-semibold text-white mt-4">1. Geltungsbereich</h3>
+                <p>Diese AGB gelten für alle Geschäftsbeziehungen zwischen N3XT LEVEL und dem Kunden.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">2. Leistungen</h3>
+                <p>Der Umfang der vertraglichen Leistungen ergibt sich aus dem jeweiligen Angebot.</p>
+                <h3 class="text-xl font-semibold text-white mt-4">3. Vertragsabschluss</h3>
+                <p>Der Vertrag kommt durch die Annahme des Angebots durch den Kunden zustande.</p>
+                <p class="text-sm text-gray-500 mt-4">* Dies ist eine beispielhafte Darstellung.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

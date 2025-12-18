@@ -114,8 +114,22 @@ const initLogic = () => {
 
         // Confirm Action
         confirmBookingBtn?.addEventListener('click', () => {
+            const bookingNameInput = document.getElementById('bookingName');
+            const bookingEmailInput = document.getElementById('bookingEmail');
+
+            const bookingName = bookingNameInput?.value.trim();
+            const bookingEmail = bookingEmailInput?.value.trim();
+
             if (!selectedTime) {
                 alert("Bitte wählen Sie eine Uhrzeit aus.");
+                return;
+            }
+
+            if (!bookingName || !bookingEmail) {
+                alert("Bitte geben Sie Ihren Namen und Ihre E-Mail-Adresse ein.");
+                // Highlight empty fields
+                if (!bookingName) bookingNameInput.classList.add('border-red-500');
+                if (!bookingEmail) bookingEmailInput.classList.add('border-red-500');
                 return;
             }
 
@@ -125,16 +139,23 @@ const initLogic = () => {
 
             // Populate Contact Form
             const contactSection = document.getElementById('contact');
-            const messageInput = document.querySelector('textarea[name="message"]');
+            const targetNameInput = document.querySelector('input[name="name"]');
+            const targetEmailInput = document.querySelector('input[name="email"]');
+            const targetMessageInput = document.querySelector('textarea[name="message"]');
 
-            if (messageInput) {
-                messageInput.value = msg;
+            if (targetMessageInput) {
+                targetMessageInput.value = msg;
+                if (targetNameInput) targetNameInput.value = bookingName;
+                if (targetEmailInput) targetEmailInput.value = bookingEmail;
+
                 // Scroll to contact
                 contactSection.scrollIntoView({ behavior: 'smooth' });
-                // Optional: Focus and highlight
+
+                // Highlight fields to flash success
                 setTimeout(() => {
-                    messageInput.focus();
-                    messageInput.classList.add('ring-2', 'ring-accent');
+                    targetMessageInput.classList.add('ring-2', 'ring-accent');
+                    targetNameInput?.classList.add('ring-2', 'ring-accent');
+                    targetEmailInput?.classList.add('ring-2', 'ring-accent');
                 }, 800);
             }
         });

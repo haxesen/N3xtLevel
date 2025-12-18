@@ -92,6 +92,13 @@ export const Booking = `
                             <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">15:30</button>
                             <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">17:00</button>
                         </div>
+                        
+                        <!-- Mini Form for Instant Data Capture -->
+                        <div class="mt-6 space-y-4">
+                            <input type="text" id="bookingName" placeholder="Ihr Name" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-all">
+                            <input type="email" id="bookingEmail" placeholder="Ihre E-Mail Adresse" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-all">
+                        </div>
+
                         <button id="confirmBookingBtn" class="w-full mt-6 bg-accent text-white font-bold py-3 rounded-lg hover:bg-accent-hover transition-all shadow-glow">
                             Termin anfragen
                         </button>

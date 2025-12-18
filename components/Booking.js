@@ -1,7 +1,7 @@
 export const Booking = `
 <!-- Booking Section -->
 <section id="booking" class="py-32 bg-black relative border-t border-white/5">
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col xl:flex-row gap-16 items-start">
             
             <!-- Left Content -->

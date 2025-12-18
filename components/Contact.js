@@ -17,19 +17,19 @@ export const Contact = `
                     <p class="text-gray-400">Lassen Sie uns gemeinsam etwas Großartiges erschaffen.</p>
                 </div>
 
-                <form id="contactForm" class="space-y-6">
+                <form id="contactForm" action="https://formspree.io/f/mvzppned" method="POST" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="group">
                             <label
                                 class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">Name</label>
-                            <input type="text" required
+                            <input type="text" name="name" required
                                 class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
                                 placeholder="Max Mustermann">
                         </div>
                         <div class="group">
                             <label
                                 class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">E-Mail</label>
-                            <input type="email" required
+                            <input type="email" name="email" required
                                 class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
                                 placeholder="max@unternehmen.de">
                         </div>
@@ -37,7 +37,7 @@ export const Contact = `
                     <div class="group">
                         <label
                             class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">Nachricht</label>
-                        <textarea rows="4" required
+                        <textarea name="message" rows="4" required
                             class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600 resize-none"
                             placeholder="Erzählen Sie uns von Ihrem Vorhaben..."></textarea>
                     </div>
@@ -46,6 +46,7 @@ export const Contact = `
                         class="w-full bg-accent text-white font-bold text-lg py-5 rounded-lg hover:bg-accent-hover transition-all duration-300 shadow-glow hover:shadow-glow-intense hover:-translate-y-1">
                         Anfrage absenden
                     </button>
+                    <p id="formStatus" class="text-center text-accent font-semibold hidden opacity-0 transition-opacity duration-300 mt-4"></p>
                     <p class="text-xs text-center text-gray-600 mt-4">Mit dem Absenden stimmen Sie unserer
                         Datenschutzerklärung zu.</p>
                 </form>

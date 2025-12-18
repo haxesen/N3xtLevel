@@ -42,22 +42,57 @@ const initLogic = () => {
 
     // Form Handling
     const contactForm = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
-    const formContent = document.getElementById('formContent');
+    const formStatus = document.getElementById('formStatus');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Animate out
-            formContent.style.opacity = '0';
-            formContent.style.transition = 'opacity 0.5s ease';
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Wird gesendet...';
+            submitBtn.disabled = true;
 
-            setTimeout(() => {
-                formContent.classList.add('hidden');
-                successMessage.classList.remove('hidden');
-                successMessage.classList.add('animate-fade-in');
-            }, 500);
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success State
+                    contactForm.reset();
+                    submitBtn.style.display = 'none'; // Hide button to prevent resubmission
+
+                    formStatus.innerText = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.';
+                    formStatus.classList.remove('hidden', 'opacity-0');
+                    formStatus.classList.add('text-accent', 'animate-fade-in');
+
+                } else {
+                    // Error State (Server Side)
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        throw new Error('Serverfehler');
+                    }
+                }
+            } catch (error) {
+                // Network Error
+                formStatus.innerText = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.';
+                formStatus.classList.remove('hidden', 'opacity-0');
+                formStatus.classList.add('text-red-500'); // Use red for errors if possible, or accent if tied to theme
+            } finally {
+                if (!submitBtn.style.display || submitBtn.style.display !== 'none') {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            }
         });
     }
 

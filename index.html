@@ -31,42 +31,8 @@
 
 <body class="antialiased font-sans selection:bg-accent selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black tracking-tighter hover:text-accent transition-colors duration-300">
-                N<span class="text-[#ff0000]">3</span>XT LEVEL<span class="text-accent">.</span>
-            </a>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-300">
-                <a href="#services" class="hover:text-white transition-colors">Leistungen</a>
-                <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
-                <a href="#contact" class="hover:text-white transition-colors">Kontakt</a>
-                <a href="#contact"
-                    class="px-6 py-2.5 bg-white/5 border border-white/10 text-white rounded font-semibold hover:bg-accent hover:border-accent hover:shadow-glow transition-all duration-300">
-                    Anfragen
-                </a>
-
-                <!-- Language Switcher -->
-                <button id="lang-switch"
-                    class="flex items-center gap-2 bg-black/50 border border-white/10 hover:border-accent px-3 py-2 rounded-full transition-all group ml-4"
-                    title="Sprache wechseln / Change Language">
-                    <span id="current-lang-flag" class="text-xl">🇦🇹</span>
-                    <span class="text-xs text-gray-400 group-hover:text-white uppercase font-bold w-4"
-                        id="current-lang-text">DE</span>
-                </button>
-            </div>
-
-            <!-- Mobile Menu Icon -->
-            <button class="md:hidden text-white" aria-label="Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-    </nav>
+    <!-- Navigation (Dynamic) -->
+    <div id="navbar-container"></div>
 
     <!-- Dynamic Components Container -->
     <div id="hero-container"></div>

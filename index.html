@@ -83,209 +83,219 @@
         <div id="booking-container"></div>
         <div id="contact-container"></div>
         <div id="footer-container"></div>
+        <div id="chatbot-place"></div>
 
-    </main>
+        <!-- Booking Modal -->
+        <div id="bookingModal" class="fixed inset-0 z-[100] hidden">
+            <!-- Backdrop -->
+            <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="bookingModalBackdrop"></div>
 
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="fixed inset-0 z-[100] hidden">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="bookingModalBackdrop"></div>
-
-        <!-- Modal Content -->
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
-            <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 shadow-2xl relative">
-                <!-- Close Button -->
-                <button id="closeBookingModal"
-                    class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-
-                <h2 class="text-3xl font-bold text-white mb-2 text-center">Termin <span
-                        class="text-accent">bestätigen</span></h2>
-                <p class="text-gray-400 text-center mb-8">Lassen Sie uns gemeinsam etwas Großartiges erschaffen.</p>
-
-                <form id="bookingForm" action="https://formspree.io/f/xzzzdnko" method="POST" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-gray-300">Name</label>
-                            <input type="text" name="name" required placeholder="Ihr Name"
-                                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-gray-300">E-Mail</label>
-                            <input type="email" name="email" required placeholder="ihre@email.com"
-                                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all">
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-sm font-bold text-gray-300">Nachricht & Details</label>
-                        <textarea name="message" id="bookingMessage" required rows="4"
-                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all"></textarea>
-                    </div>
-
-                    <button type="submit"
-                        class="w-full bg-accent text-white font-bold py-4 rounded-lg hover:bg-accent-hover transition-all shadow-glow mt-4 text-lg">
-                        Anfrage absenden
+            <!-- Modal Content -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
+                <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 shadow-2xl relative">
+                    <!-- Close Button -->
+                    <button id="closeBookingModal"
+                        class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-times text-xl"></i>
                     </button>
 
-                    <p id="bookingFormStatus" class="text-center text-sm mt-4 hidden"></p>
-                    <p class="text-xs text-gray-600 text-center mt-4">Mit dem Absenden stimmen Sie unserer
-                        Datenschutzerklärung zu.</p>
-                </form>
+                    <h2 class="text-3xl font-bold text-white mb-2 text-center">Termin <span
+                            class="text-accent">bestätigen</span></h2>
+                    <p class="text-gray-400 text-center mb-8">Lassen Sie uns gemeinsam etwas Großartiges erschaffen.</p>
+
+                    <form id="bookingForm" action="https://formspree.io/f/xzzzdnko" method="POST" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-300">Name</label>
+                                <input type="text" name="name" required placeholder="Ihr Name"
+                                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-300">E-Mail</label>
+                                <input type="email" name="email" required placeholder="ihre@email.com"
+                                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-gray-300">Nachricht & Details</label>
+                            <textarea name="message" id="bookingMessage" required rows="4"
+                                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-all"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-accent text-white font-bold py-4 rounded-lg hover:bg-accent-hover transition-all shadow-glow mt-4 text-lg">
+                            Anfrage absenden
+                        </button>
+
+                        <p id="bookingFormStatus" class="text-center text-sm mt-4 hidden"></p>
+                        <p class="text-xs text-gray-600 text-center mt-4">Mit dem Absenden stimmen Sie unserer
+                            Datenschutzerklärung zu.</p>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modals -->
+        <!-- Modals -->
 
-    <!-- Impressum Modal -->
-    <div id="impressumModal"
-        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
-        <div
-            class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
-            <button data-modal-close
-                class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Impressum</h2>
-            <div class="space-y-8 text-gray-300">
-                <!-- Details -->
-                <section class="space-y-2">
-                    <p class="text-lg font-semibold text-accent">Angaben gemäß § 5 TMG</p>
-                    <p class="font-bold text-lg text-white mt-4">Tamas Horvat</p>
-                    <p>Hauptstraße 32</p>
-                    <p>2000 Stockerau</p>
-                    <p>Österreich</p>
-                </section>
+        <!-- Impressum Modal -->
+        <div id="impressumModal"
+            class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
+            <div
+                class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
+                <button data-modal-close
+                    class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Impressum</h2>
+                <div class="space-y-8 text-gray-300">
+                    <!-- Details -->
+                    <section class="space-y-2">
+                        <p class="text-lg font-semibold text-accent">Angaben gemäß § 5 TMG</p>
+                        <p class="font-bold text-lg text-white mt-4">Tamas Horvat</p>
+                        <p>Hauptstraße 32</p>
+                        <p>2000 Stockerau</p>
+                        <p>Österreich</p>
+                    </section>
 
-                <!-- Kontakt -->
-                <section class="space-y-2 pt-4">
-                    <h2 class="text-lg font-semibold text-accent">Kontakt</h2>
-                    <p>E-Mail: <a href="mailto:info@n3xt-level.eu"
-                            class="text-accent hover:underline">info@n3xt-level.eu</a></p>
-                </section>
+                    <!-- Kontakt -->
+                    <section class="space-y-2 pt-4">
+                        <h2 class="text-lg font-semibold text-accent">Kontakt</h2>
+                        <p>E-Mail: <a href="mailto:info@n3xt-level.eu"
+                                class="text-accent hover:underline">info@n3xt-level.eu</a></p>
+                    </section>
 
-                <!-- Description -->
-                <section class="space-y-2 pt-4">
-                    <h2 class="text-lg font-semibold text-accent">Unternehmensgegenstand</h2>
-                    <p>IT-Dienstleistungen & Webdesign</p>
-                </section>
+                    <!-- Description -->
+                    <section class="space-y-2 pt-4">
+                        <h2 class="text-lg font-semibold text-accent">Unternehmensgegenstand</h2>
+                        <p>IT-Dienstleistungen & Webdesign</p>
+                    </section>
 
-                <!-- Disclaimers -->
-                <section class="pt-8 text-sm text-gray-500 space-y-4 border-t border-white/10 mt-12">
-                    <h3 class="font-bold text-white">Haftung für Inhalte</h3>
-                    <p>
-                        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
-                        allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch
-                        nicht
-                        verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
-                        Umständen
-                        zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-                    </p>
-                    <h3 class="font-bold text-white">Urheberrecht</h3>
-                    <p>
-                        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
-                        österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
-                        Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
-                        jeweiligen Autors bzw. Erstellers.
-                    </p>
-                </section>
+                    <!-- Disclaimers -->
+                    <section class="pt-8 text-sm text-gray-500 space-y-4 border-t border-white/10 mt-12">
+                        <h3 class="font-bold text-white">Haftung für Inhalte</h3>
+                        <p>
+                            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach
+                            den
+                            allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter
+                            jedoch
+                            nicht
+                            verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
+                            Umständen
+                            zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                        </p>
+                        <h3 class="font-bold text-white">Urheberrecht</h3>
+                        <p>
+                            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                            österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art
+                            der
+                            Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung
+                            des
+                            jeweiligen Autors bzw. Erstellers.
+                        </p>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Datenschutz Modal -->
-    <div id="datenschutzModal"
-        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
-        <div
-            class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
-            <button data-modal-close
-                class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Datenschutzerklärung</h2>
-            <div class="space-y-12 text-gray-300 leading-relaxed">
-                <!-- 1. General Information -->
-                <section>
-                    <h3 class="text-lg font-semibold text-accent mb-2">1. Datenschutz auf einen Blick</h3>
-                    <p class="mb-4">
-                        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen
-                        Daten passiert, wenn Sie diese Website besuchen.
-                    </p>
-                    <h4 class="font-bold text-white mb-1">Verantwortliche Stelle:</h4>
-                    <p>
-                        <strong>Tamas Horvat</strong><br>
-                        Hauptstraße 32<br>
-                        2000 Stockerau<br>
-                        E-Mail: <a href="mailto:haxesen@gmail.com"
-                            class="text-accent hover:underline">haxesen@gmail.com</a>
-                    </p>
-                </section>
+        <!-- Datenschutz Modal -->
+        <div id="datenschutzModal"
+            class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
+            <div
+                class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
+                <button data-modal-close
+                    class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Datenschutzerklärung
+                </h2>
+                <div class="space-y-12 text-gray-300 leading-relaxed">
+                    <!-- 1. General Information -->
+                    <section>
+                        <h3 class="text-lg font-semibold text-accent mb-2">1. Datenschutz auf einen Blick</h3>
+                        <p class="mb-4">
+                            Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
+                            personenbezogenen
+                            Daten passiert, wenn Sie diese Website besuchen.
+                        </p>
+                        <h4 class="font-bold text-white mb-1">Verantwortliche Stelle:</h4>
+                        <p>
+                            <strong>Tamas Horvat</strong><br>
+                            Hauptstraße 32<br>
+                            2000 Stockerau<br>
+                            E-Mail: <a href="mailto:haxesen@gmail.com"
+                                class="text-accent hover:underline">haxesen@gmail.com</a>
+                        </p>
+                    </section>
 
-                <!-- 2. Data Collection (Server Logs) -->
-                <section>
-                    <h3 class="text-lg font-semibold text-accent mb-2">2. Datenerfassung auf unserer Website</h3>
-                    <h4 class="font-bold text-white mb-1">Server-Log-Dateien</h4>
-                    <p>
-                        Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten
-                        Server-Log-Dateien (Browsertyp, Betriebssystem, IP-Adresse, etc.).
-                    </p>
-                </section>
+                    <!-- 2. Data Collection (Server Logs) -->
+                    <section>
+                        <h3 class="text-lg font-semibold text-accent mb-2">2. Datenerfassung auf unserer Website</h3>
+                        <h4 class="font-bold text-white mb-1">Server-Log-Dateien</h4>
+                        <p>
+                            Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten
+                            Server-Log-Dateien (Browsertyp, Betriebssystem, IP-Adresse, etc.).
+                        </p>
+                    </section>
 
-                <!-- 3. Contact Form -->
-                <section>
-                    <h3 class="text-lg font-semibold text-accent mb-2">3. Kontaktformular</h3>
-                    <p>
-                        Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben inklusive der von
-                        Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese
-                        Daten geben wir nicht ohne Ihre Einwilligung weiter.
-                    </p>
-                </section>
+                    <!-- 3. Contact Form -->
+                    <section>
+                        <h3 class="text-lg font-semibold text-accent mb-2">3. Kontaktformular</h3>
+                        <p>
+                            Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben inklusive der
+                            von
+                            Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage bei uns gespeichert.
+                            Diese
+                            Daten geben wir nicht ohne Ihre Einwilligung weiter.
+                        </p>
+                    </section>
 
-                <!-- 4. User Rights -->
-                <section>
-                    <h3 class="text-lg font-semibold text-accent mb-2">4. Ihre Rechte</h3>
-                    <p>
-                        Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
-                        personenbezogenen Daten sowie ein Recht auf Berichtigung oder Löschung dieser Daten.
-                    </p>
-                </section>
+                    <!-- 4. User Rights -->
+                    <section>
+                        <h3 class="text-lg font-semibold text-accent mb-2">4. Ihre Rechte</h3>
+                        <p>
+                            Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
+                            personenbezogenen Daten sowie ein Recht auf Berichtigung oder Löschung dieser Daten.
+                        </p>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- AGB Modal -->
-    <div id="agbModal"
-        class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
-        <div
-            class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
-            <button data-modal-close
-                class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Allgemeine
-                Geschäftsbedingungen</h2>
-            <div class="text-gray-300 space-y-4 leading-relaxed">
-                <h3 class="text-xl font-semibold text-accent mt-4">1. Geltungsbereich</h3>
-                <p>Diese AGB gelten für alle Geschäftsbeziehungen zwischen N3XT LEVEL und dem Kunden.</p>
-                <h3 class="text-xl font-semibold text-accent mt-4">2. Leistungen</h3>
-                <p>Der Umfang der vertraglichen Leistungen ergibt sich aus dem jeweiligen Angebot.</p>
-                <h3 class="text-xl font-semibold text-accent mt-4">3. Vertragsabschluss</h3>
-                <p>Der Vertrag kommt durch die Annahme des Angebots durch den Kunden zustande.</p>
-                <p class="text-sm text-gray-500 mt-4">* Dies ist eine beispielhafte Darstellung.</p>
+        <!-- AGB Modal -->
+        <div id="agbModal"
+            class="modal-backdrop fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 p-4">
+            <div
+                class="bg-[#0a0a0a] border-2 border-accent shadow-glow w-full max-w-2xl rounded-3xl p-6 md:p-8 relative max-h-[80vh] overflow-y-auto custom-scrollbar">
+                <button data-modal-close
+                    class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-accent transition-colors z-10 bg-[#0a0a0a] rounded-full p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Allgemeine
+                    Geschäftsbedingungen</h2>
+                <div class="text-gray-300 space-y-4 leading-relaxed">
+                    <h3 class="text-xl font-semibold text-accent mt-4">1. Geltungsbereich</h3>
+                    <p>Diese AGB gelten für alle Geschäftsbeziehungen zwischen N3XT LEVEL und dem Kunden.</p>
+                    <h3 class="text-xl font-semibold text-accent mt-4">2. Leistungen</h3>
+                    <p>Der Umfang der vertraglichen Leistungen ergibt sich aus dem jeweiligen Angebot.</p>
+                    <h3 class="text-xl font-semibold text-accent mt-4">3. Vertragsabschluss</h3>
+                    <p>Der Vertrag kommt durch die Annahme des Angebots durch den Kunden zustande.</p>
+                    <p class="text-sm text-gray-500 mt-4">* Dies ist eine beispielhafte Darstellung.</p>
+                </div>
             </div>
         </div>
-    </div>
 
 </body>
 

@@ -9,6 +9,7 @@ import { Portfolio } from './components/Portfolio.js';
 import { Booking } from './components/Booking.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
+import { Chatbot } from './components/Chatbot.js';
 
 // Render Components
 document.getElementById('hero-container').innerHTML = Hero;
@@ -19,6 +20,7 @@ document.getElementById('portfolio-container').innerHTML = Portfolio;
 document.getElementById('booking-container').innerHTML = Booking;
 document.getElementById('contact-container').innerHTML = Contact;
 document.getElementById('footer-container').innerHTML = Footer;
+document.getElementById('chatbot-place').innerHTML = Chatbot;
 
 // Initialize animations and Logic
 const initLogic = () => {
@@ -141,6 +143,14 @@ const initLogic = () => {
     const bookingForm = document.getElementById('bookingForm');
     const bookingFormStatus = document.getElementById('bookingFormStatus');
 
+    const openBookingModal = (prefillMessage = "") => {
+        const bookingMessage = document.getElementById('bookingMessage');
+        if (bookingMessage && prefillMessage) {
+            bookingMessage.value = prefillMessage + bookingMessage.value;
+        }
+        if (bookingModal) bookingModal.classList.remove('hidden');
+    };
+
     const closeBookingModal = () => {
         if (bookingModal) bookingModal.classList.add('hidden');
     };
@@ -197,6 +207,136 @@ const initLogic = () => {
             }
         });
     }
+
+    // --- Chatbot Logic ---
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const closeChat = document.getElementById('close-chat');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatOptions = document.getElementById('chat-options');
+    let isChatOpen = false;
+    let hasGreeted = false;
+
+    const toggleChat = () => {
+        isChatOpen = !isChatOpen;
+        if (isChatOpen) {
+            chatWindow.classList.remove('invisible', 'opacity-0', 'scale-90');
+            chatWindow.classList.add('opacity-100', 'scale-100');
+            // Remove notification dot
+            const dots = chatToggle.querySelectorAll('span');
+            dots.forEach(d => d.style.display = 'none');
+
+            if (!hasGreeted) {
+                setTimeout(() => botTyping(), 500);
+                setTimeout(() => {
+                    addMessage('bot', 'Hallo! 👋 Ich bin der N3xt Level AI Assistent.');
+                }, 1500);
+                setTimeout(() => botTyping(), 2000);
+                setTimeout(() => {
+                    addMessage('bot', 'Wie kann ich Ihnen heute helfen?');
+                    showOptions([
+                        { text: '🗓️ Termin buchen', action: 'booking' },
+                        { text: '💰 Preise anfragen', action: 'pricing' },
+                        { text: '🚀 Webdesign Infos', action: 'webdesign' }
+                    ]);
+                    hasGreeted = true;
+                }, 3000);
+            }
+        } else {
+            chatWindow.classList.add('invisible', 'opacity-0', 'scale-90');
+            chatWindow.classList.remove('opacity-100', 'scale-100');
+        }
+    };
+
+    if (chatToggle) chatToggle.addEventListener('click', toggleChat);
+    if (closeChat) closeChat.addEventListener('click', toggleChat);
+
+    const addMessage = (sender, text) => {
+        // Remove typing indicator if exists
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) typingIndicator.remove();
+
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate-fade-in`;
+
+        const bubble = document.createElement('div');
+        bubble.className = `max-w-[80%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot'
+                ? 'bg-white/10 text-gray-200 rounded-tl-none'
+                : 'bg-accent text-white rounded-tr-none'
+            }`;
+        bubble.innerText = text;
+
+        msgDiv.appendChild(bubble);
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const botTyping = () => {
+        const msgDiv = document.createElement('div');
+        msgDiv.id = 'typing-indicator';
+        msgDiv.className = 'flex justify-start animate-fade-in';
+        msgDiv.innerHTML = `
+            <div class="bg-white/10 text-gray-200 rounded-2xl rounded-tl-none px-4 py-3 flex gap-1 items-center">
+                <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+                <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+                <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+            </div>
+        `;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const showOptions = (options) => {
+        chatOptions.innerHTML = '';
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'bg-white/5 border border-white/10 hover:border-accent hover:bg-accent/10 text-xs text-white px-3 py-2 rounded-lg transition-all mb-1';
+            btn.innerText = opt.text;
+            btn.addEventListener('click', () => handleOptionClick(opt));
+            chatOptions.appendChild(btn);
+        });
+    };
+
+    const handleOptionClick = (opt) => {
+        addMessage('user', opt.text);
+        chatOptions.innerHTML = ''; // Clear options
+
+        botTyping();
+
+        setTimeout(() => {
+            if (opt.action === 'booking') {
+                addMessage('bot', 'Eine hervorragende Wahl! Ich öffne den Terminkalender für Sie...');
+                setTimeout(() => {
+                    toggleChat();
+                    openBookingModal("Referenz: Chatbot Gespräch\n");
+                }, 1500);
+            } else if (opt.action === 'pricing') {
+                addMessage('bot', 'Unsere Projekte starten ab €1.500 für professionelle Webseiten. Da jede Lösung maßgeschneidert ist, erstelle ich Ihnen gerne ein genaues Angebot.');
+                showOptions([
+                    { text: '🗓️ Beratungsgespräch buchen', action: 'booking' },
+                    { text: '📧 Angebot per Mail', action: 'email_offer' }
+                ]);
+            } else if (opt.action === 'webdesign') {
+                addMessage('bot', 'Wir nutzen modernste KI-gestützte Technologien für extrem schnelle Ladezeiten und Top-Rankings bei Google.');
+                showOptions([
+                    { text: '✨ Portfolio ansehen', action: 'portfolio' },
+                    { text: '🗓️ Beratungstermin', action: 'booking' }
+                ]);
+            } else if (opt.action === 'email_offer') {
+                addMessage('bot', 'Gerne! Bitte nutzen Sie unser Kontaktformular weiter unten, um uns Ihre Eckdaten zu senden.');
+                setTimeout(() => {
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                    toggleChat();
+                }, 2000);
+            } else if (opt.action === 'portfolio') {
+                addMessage('bot', 'Ich scrolle Sie zu unseren Referenzen...');
+                setTimeout(() => {
+                    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+                    toggleChat();
+                }, 1500);
+            }
+        }, 1000);
+    };
 
     // Scroll Reveal Animation
     const revealElements = document.querySelectorAll('.reveal');

@@ -15,7 +15,7 @@ import { Chatbot } from './components/Chatbot.js';
 import { CookieBanner } from './components/CookieBanner.js';
 
 // Render Components
-document.getElementById('hero-container').innerHTML = Hero;
+document.getElementById('hero-container').innerHTML = Hero('de');
 document.getElementById('services-container').innerHTML = Services;
 document.getElementById('process-container').innerHTML = Process;
 document.getElementById('premium-content-container').innerHTML = PremiumContent;

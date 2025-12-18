@@ -1,6 +1,7 @@
 import './style.css';
 
 // Import Components
+import { Navbar } from './components/Navbar.js';
 import { Hero } from './components/Hero.js';
 import { Services } from './components/Services.js';
 import { Process } from './components/Process.js';
@@ -47,17 +48,9 @@ const setupCalendar = () => {
         };
         const currentMonthNames = monthNames[currentLang] || monthNames.de;
 
-        currentMonthYear.innerText = `${currentMonthNames[month]} ${year}`;
+        if (currentMonthYear) currentMonthYear.innerText = `${currentMonthNames[month]} ${year}`;
 
         const firstDay = new Date(year, month, 1).getDay();
-        // Adjust for Monday start (ISO 8601) if needed, but simple Sunday=0 is fine for logic if UI aligns
-        // Our Booking.js UI has headers [Sun...Sat] or [Mon...Sun]?
-        // Checking Booking.js:
-        // DE: So, Mo, Di... (Sun start implied if standard American grid, or Mon start European?)
-        // Let's assume standard JS getDay() 0=Sunday.
-        // If we want Mon start (European standard), we shift.
-        // Let's stick to standard 0=Sunday for simplicity with grid.
-
         const padding = firstDay;
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
@@ -68,7 +61,6 @@ const setupCalendar = () => {
             calendarDays.appendChild(document.createElement('div'));
         }
 
-        // Days
         // Days
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -83,18 +75,18 @@ const setupCalendar = () => {
             if (checkDate < today) {
                 // Disabled State
                 btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-700 cursor-default opacity-30';
-                // No click event
             } else {
                 // Active State
                 btn.className = 'w-10 h-10 rounded-full mx-auto flex items-center justify-center text-gray-300 hover:bg-white/10 transition-all text-sm font-medium';
 
                 // Highlight today
-                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                const realToday = new Date();
+                if (i === realToday.getDate() && month === realToday.getMonth() && year === realToday.getFullYear()) {
                     btn.classList.add('border', 'border-accent', 'text-accent');
                 }
 
                 btn.onclick = () => {
-                    // Deselect others (but preserve disabled look for pas days)
+                    // Deselect others
                     calendarDays.querySelectorAll('button').forEach(b => {
                         if (!b.classList.contains('cursor-default')) {
                             b.classList.remove('bg-accent', 'text-white');
@@ -116,8 +108,8 @@ const setupCalendar = () => {
 
     render();
 
-    prevMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); render(); };
-    nextMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); render(); };
+    if (prevMonthBtn) prevMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() - 1); render(); };
+    if (nextMonthBtn) nextMonthBtn.onclick = () => { currentDate.setMonth(currentDate.getMonth() + 1); render(); };
 
     // Time Slots
     const slots = document.querySelectorAll('.time-slot');
@@ -244,21 +236,13 @@ const setupReveal = () => {
 
 // 5. Update UI (Main Re-render function)
 const updateUI = () => {
-    // 1. Update Language Switcher Display
-    const flagSpan = document.getElementById('current-lang-flag');
-    const langTextSpan = document.getElementById('current-lang-text');
-    if (flagSpan && langTextSpan) {
-        if (currentLang === 'hu') { flagSpan.innerText = '🇭🇺'; langTextSpan.innerText = 'HU'; }
-        else if (currentLang === 'en') { flagSpan.innerText = '🇬🇧'; langTextSpan.innerText = 'EN'; }
-        else { flagSpan.innerText = '🇦🇹'; langTextSpan.innerText = 'DE'; }
-    }
-
     // 2. Re-render Components
     const renderComp = (id, fn) => {
         const el = document.getElementById(id);
         if (el) el.innerHTML = fn ? fn(currentLang) : '';
     };
 
+    renderComp('navbar-container', Navbar); // Navbar (containing Lang Switch)
     renderComp('hero-container', Hero);
     renderComp('services-container', Services);
     renderComp('process-container', Process);
@@ -269,6 +253,28 @@ const updateUI = () => {
     renderComp('booking-container', Booking);
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);
+
+    // 1. Language Switcher Logic (Button is re-rendered with Navbar)
+    const langBtn = document.getElementById('lang-switch');
+    const flagSpan = document.getElementById('current-lang-flag');
+    const langTextSpan = document.getElementById('current-lang-text');
+
+    if (flagSpan && langTextSpan) {
+        if (currentLang === 'hu') { flagSpan.innerText = '🇭🇺'; langTextSpan.innerText = 'HU'; }
+        else if (currentLang === 'en') { flagSpan.innerText = '🇬🇧'; langTextSpan.innerText = 'EN'; }
+        else { flagSpan.innerText = '🇦🇹'; langTextSpan.innerText = 'DE'; }
+    }
+
+    if (langBtn) {
+        langBtn.onclick = () => {
+            if (currentLang === 'de') currentLang = 'en';
+            else if (currentLang === 'en') currentLang = 'hu';
+            else currentLang = 'de';
+
+            localStorage.setItem('n3xt_lang', currentLang);
+            updateUI();
+        };
+    }
 
     // 3. Re-initialize Logic that depends on DOM
     setupCalendar();
@@ -297,18 +303,14 @@ document.getElementById('cookie-banner-container').innerHTML = CookieBanner;
 // Initial UI Render
 updateUI();
 
-// Event Listener for Language Switcher
-const langBtn = document.getElementById('lang-switch');
-if (langBtn) {
-    langBtn.onclick = () => {
-        if (currentLang === 'de') currentLang = 'en';
-        else if (currentLang === 'en') currentLang = 'hu';
-        else currentLang = 'de';
-
-        localStorage.setItem('n3xt_lang', currentLang);
-        updateUI();
-    };
-}
+// Mobile Menu Toggle Logic (Global delegation since navbar is dynamic)
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[aria-label="Menu"]');
+    if (btn) {
+        const menu = document.getElementById('mobile-menu');
+        if (menu) menu.classList.toggle('hidden');
+    }
+});
 
 // --- Chatbot Logic (Static, doesn't need re-render) ---
 const initChatbot = () => {
@@ -333,8 +335,8 @@ const initChatbot = () => {
             if (!hasGreeted) {
                 setTimeout(() => addMsg('bot', currentLang === 'hu' ? 'Szia! 👋 Miben segíthetek?' : 'Hallo! 👋 Wie kann ich helfen?'), 500);
                 setTimeout(() => showOpts([
-                    { text: '🗓️ Booking', action: 'booking' },
-                    { text: '💰 Pricing', action: 'pricing' }
+                    { text: currentLang === 'hu' ? '🗓️ Időpont' : (currentLang === 'en' ? '🗓️ Booking' : '🗓️ Termin'), action: 'booking' },
+                    { text: currentLang === 'hu' ? '💰 Árak' : (currentLang === 'en' ? '💰 Pricing' : '💰 Preise'), action: 'pricing' }
                 ]), 1500);
                 hasGreeted = true;
             }
@@ -380,6 +382,7 @@ const initChatbot = () => {
 
         if (action === 'booking') {
             setTimeout(() => {
+                // If on mobile/desktop, keep chat open or close? Usually close if navigating.
                 toggleFunc();
                 document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
             }, 1000);

@@ -24,6 +24,20 @@ document.getElementById('chatbot-place').innerHTML = Chatbot;
 
 // Initialize animations and Logic
 const initLogic = () => {
+    // --- Email Obfuscation (Security) ---
+    const protectEmails = () => {
+        const mailElements = document.querySelectorAll('.protected-email');
+        mailElements.forEach(el => {
+            const user = el.getAttribute('data-u');
+            const domain = el.getAttribute('data-d');
+            if (user && domain) {
+                const email = `${user}@${domain}`;
+                el.innerHTML = `<a href="mailto:${email}" class="hover:text-accent transition-colors">${email}</a>`;
+            }
+        });
+    };
+    protectEmails();
+
     // --- Custom Internal Booking Logic ---
     const calendarDays = document.getElementById('calendarDays');
     const currentMonthYear = document.getElementById('currentMonthYear');
@@ -261,8 +275,8 @@ const initLogic = () => {
 
         const bubble = document.createElement('div');
         bubble.className = `max-w-[80%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot'
-                ? 'bg-white/10 text-gray-200 rounded-tl-none'
-                : 'bg-accent text-white rounded-tr-none'
+            ? 'bg-white/10 text-gray-200 rounded-tl-none'
+            : 'bg-accent text-white rounded-tr-none'
             }`;
         bubble.innerText = text;
 

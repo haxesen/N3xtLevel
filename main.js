@@ -32,7 +32,16 @@ const initLogic = () => {
         calLink: "tamas-horvat-rti5dl/30min",
     });
 
-    Cal.ns["30min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view", "theme": "dark" });
+    Cal.ns["30min"]("ui", {
+        "styles": {
+            "branding": {
+                "brandColor": "#FF4500"
+            }
+        },
+        "hideEventTypeDetails": false,
+        "layout": "month_view",
+        "theme": "dark"
+    });
 
     // Scroll Reveal Animation
     const revealElements = document.querySelectorAll('.reveal');

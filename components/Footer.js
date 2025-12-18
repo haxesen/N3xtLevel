@@ -1,4 +1,25 @@
-export const Footer = `
+export const Footer = (lang = 'de') => {
+    const content = {
+        de: {
+            impressum: "Impressum",
+            datenschutz: "Datenschutz",
+            agb: "AGB"
+        },
+        en: {
+            impressum: "Imprint",
+            datenschutz: "Privacy Policy",
+            agb: "Terms"
+        },
+        hu: {
+            impressum: "Impresszum",
+            datenschutz: "Adatvédelem",
+            agb: "ÁSZF"
+        }
+    };
+
+    const t = content[lang] || content.de;
+
+    return `
 <!-- Footer -->
 <footer class="py-12 border-t border-white/5 bg-black">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -16,11 +37,12 @@ export const Footer = `
 
         <div class="flex space-x-8 text-sm text-gray-400">
             <button data-modal-open="impressumModal"
-                class="hover:text-accent transition-colors">Impressum</button>
+                class="hover:text-accent transition-colors">${t.impressum}</button>
             <button data-modal-open="datenschutzModal"
-                class="hover:text-accent transition-colors">Datenschutz</button>
-            <button data-modal-open="agbModal" class="hover:text-accent transition-colors">AGB</button>
+                class="hover:text-accent transition-colors">${t.datenschutz}</button>
+            <button data-modal-open="agbModal" class="hover:text-accent transition-colors">${t.agb}</button>
         </div>
     </div>
 </footer>
 `;
+};

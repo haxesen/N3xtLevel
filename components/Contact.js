@@ -1,4 +1,55 @@
-export const Contact = `
+export const Contact = (lang = 'de') => {
+    const content = {
+        de: {
+            title_prefix: "Senden Sie uns eine",
+            title_highlight: "Nachricht",
+            subtitle: "Lassen Sie uns gemeinsam etwas Großartiges erschaffen.",
+            name_label: "Name",
+            name_placeholder: "Max Mustermann",
+            email_label: "E-Mail",
+            email_placeholder: "max@unternehmen.de",
+            msg_label: "Nachricht",
+            msg_placeholder: "Erzählen Sie uns von Ihrem Vorhaben...",
+            btn: "Anfrage absenden",
+            legal_consent: "Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.",
+            success_title: "Vielen Dank!",
+            success_msg: "Wir bringen Ihr Business bald auf das N3xt Level.<br>Ich melde mich in Kürze bei Ihnen!"
+        },
+        en: {
+            title_prefix: "Send us a",
+            title_highlight: "Message",
+            subtitle: "Let's create something amazing together.",
+            name_label: "Name",
+            name_placeholder: "John Doe",
+            email_label: "Email",
+            email_placeholder: "john@company.com",
+            msg_label: "Message",
+            msg_placeholder: "Tell us about your project...",
+            btn: "Send Request",
+            legal_consent: "By sending this, you agree to our Privacy Policy.",
+            success_title: "Thank You!",
+            success_msg: "We will take your business to the N3xt Level soon.<br>I will contact you shortly!"
+        },
+        hu: {
+            title_prefix: "Kérjük, írjon",
+            title_highlight: "Üzenetet",
+            subtitle: "Alkossunk együtt valami nagyszerűt.",
+            name_label: "Név",
+            name_placeholder: "Minta János",
+            email_label: "E-mail",
+            email_placeholder: "janos@ceg.hu",
+            msg_label: "Üzenet",
+            msg_placeholder: "Meséljen a terveiről...",
+            btn: "Küldés",
+            legal_consent: "Az elküldéssel elfogadja az Adatvédelmi Nyilatkozatunkat.",
+            success_title: "Köszönjük!",
+            success_msg: "Hamarosan N3xt Level-re emeljük vállalkozását.<br>Nemsokára jelentkezem!"
+        }
+    };
+
+    const t = content[lang] || content.de;
+
+    return `
 <!-- Contact Section -->
 <section id="contact" class="py-32 bg-black relative overflow-hidden">
     <!-- Glow effects -->
@@ -11,44 +62,43 @@ export const Contact = `
             class="bg-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-white/5 box-shadow-2xl reveal relative overflow-hidden">
             <div id="formContent">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Senden Sie uns eine <span
-                            class="text-accent">Nachricht</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">${t.title_prefix} <span
+                            class="text-accent">${t.title_highlight}</span>
                     </h2>
-                    <p class="text-gray-400">Lassen Sie uns gemeinsam etwas Großartiges erschaffen.</p>
+                    <p class="text-gray-400">${t.subtitle}</p>
                 </div>
 
-                <form id="contactForm" action="https://formspree.io/f/mvzppned" method="POST" class="space-y-6">
+                <form id="contactForm" action="https://formspree.io/f/xzzzdnko" method="POST" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="group">
                             <label
-                                class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">Name</label>
+                                class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.name_label}</label>
                             <input type="text" name="name" required
                                 class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
-                                placeholder="Max Mustermann">
+                                placeholder="${t.name_placeholder}">
                         </div>
                         <div class="group">
                             <label
-                                class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">E-Mail</label>
+                                class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.email_label}</label>
                             <input type="email" name="email" required
                                 class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
-                                placeholder="max@unternehmen.de">
+                                placeholder="${t.email_placeholder}">
                         </div>
                     </div>
                     <div class="group">
                         <label
-                            class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">Nachricht</label>
+                            class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.msg_label}</label>
                         <textarea name="message" rows="4" required
                             class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600 resize-none"
-                            placeholder="Erzählen Sie uns von Ihrem Vorhaben..."></textarea>
+                            placeholder="${t.msg_placeholder}"></textarea>
                     </div>
 
                     <button type="submit"
                         class="w-full bg-accent text-white font-bold text-lg py-5 rounded-lg hover:bg-accent-hover transition-all duration-300 shadow-glow hover:shadow-glow-intense hover:-translate-y-1">
-                        Anfrage absenden
+                        ${t.btn}
                     </button>
                     <p id="formStatus" class="text-center text-accent font-semibold hidden opacity-0 transition-opacity duration-300 mt-4"></p>
-                    <p class="text-xs text-center text-gray-600 mt-4">Mit dem Absenden stimmen Sie unserer
-                        Datenschutzerklärung zu.</p>
+                    <p class="text-xs text-center text-gray-600 mt-4">${t.legal_consent}</p>
                 </form>
             </div>
 
@@ -63,12 +113,13 @@ export const Contact = `
                             d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
-                <h3 class="text-3xl font-bold text-white mb-4">Vielen Dank!</h3>
+                <h3 class="text-3xl font-bold text-white mb-4">${t.success_title}</h3>
                 <p class="text-accent text-xl text-center font-medium leading-relaxed">
-                    Wir bringen Ihr Business bald auf das N3xt Level.<br>Ich melde mich in Kürze bei Ihnen!
+                    ${t.success_msg}
                 </p>
             </div>
         </div>
     </div>
 </section>
 `;
+};

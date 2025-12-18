@@ -1,4 +1,31 @@
-export const AboutMe = `
+export const AboutMe = (lang = 'de') => {
+    const content = {
+        de: {
+            badge: "Der Kopf hinter N3XT LEVEL",
+            name: "Tamas Horvat",
+            role: "Founder & Lead Developer",
+            desc: "\"Mein Ziel ist es, österreichische Unternehmen durch den Einsatz modernster KI-Technologien auf das nächste Level zu heben. Ich kombiniere technisches Know-how mit lokaler Verlässlichkeit.\"",
+            signature_font: "'Mr De Haviland', cursive"
+        },
+        en: {
+            badge: "The Mind Behind N3XT LEVEL",
+            name: "Tamas Horvat",
+            role: "Founder & Lead Developer",
+            desc: "\"My goal is to take Austrian businesses to the next level using cutting-edge AI technologies. I combine technical expertise with local reliability.\"",
+            signature_font: "'Mr De Haviland', cursive"
+        },
+        hu: {
+            badge: "A N3XT LEVEL motorja",
+            name: "Horváth Tamás",
+            role: "Alapító & Vezető Fejlesztő",
+            desc: "\"Célom, hogy a legmodernebb AI technológiák segítségével emeljem a vállalkozásokat a következő szintre. A technikai tudást a megbízhatósággal ötvözöm.\"",
+            signature_font: "'Mr De Haviland', cursive"
+        }
+    };
+
+    const t = content[lang] || content.de;
+
+    return `
 <!-- The Mind Behind Section -->
 <section class="py-32 bg-black relative border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">
@@ -9,7 +36,7 @@ export const AboutMe = `
                     <div
                         class="absolute inset-0 border-2 border-accent rounded-full animate-pulse-slow blur-sm">
                     </div>
-                    <img src="/profile.jpg" alt="Tamas Horvat"
+                    <img src="/profile.jpg" alt="${t.name}"
                         class="relative z-10 w-full h-full object-cover rounded-full border-2 border-accent shadow-glow">
                     <!-- Decorative Elements -->
                     <div
@@ -21,21 +48,18 @@ export const AboutMe = `
 
             <!-- Text Side -->
             <div class="w-full md:w-1/2 text-center md:text-left">
-                <p class="text-accent font-semibold tracking-wider uppercase mb-2">Der Kopf hinter N3XT LEVEL
-                </p>
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Tamas Horvat</h2>
-                <h3 class="text-xl text-gray-300 font-medium mb-6">Founder & Lead Developer</h3>
+                <p class="text-accent font-semibold tracking-wider uppercase mb-2">${t.badge}</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">${t.name}</h2>
+                <h3 class="text-xl text-gray-300 font-medium mb-6">${t.role}</h3>
                 <p class="text-gray-400 text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
-                    "Mein Ziel ist es, österreichische Unternehmen durch den Einsatz modernster KI-Technologien
-                    auf
-                    das nächste Level zu heben. Ich kombiniere technisches Know-how mit lokaler
-                    Verlässlichkeit."
+                    ${t.desc}
                 </p>
                 <div class="mt-10">
-                    <p class="text-8xl text-white transform -rotate-6 origin-left tracking-wide opacity-90" style="font-family: 'Mr De Haviland', cursive;">Tamas Horvat</p>
+                    <p class="text-8xl text-white transform -rotate-6 origin-left tracking-wide opacity-90" style="font-family: ${t.signature_font};">${t.name}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 `;
+};

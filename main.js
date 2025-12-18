@@ -450,6 +450,62 @@ const initLogic = () => {
         });
     };
 
+    // --- Language Switcher Logic (DE -> EN -> HU) ---
+    const langSwitchBtn = document.getElementById('lang-switch');
+    const flagSpan = document.getElementById('current-lang-flag');
+    const langTextSpan = document.getElementById('current-lang-text');
+
+    let currentLang = localStorage.getItem('n3xt_lang') || 'de';
+
+    const updateUI = () => {
+        // Update Navbar Button
+        if (currentLang === 'hu') {
+            flagSpan.innerText = '🇭🇺';
+            langTextSpan.innerText = 'HU';
+        } else if (currentLang === 'en') {
+            flagSpan.innerText = '🇬🇧';
+            langTextSpan.innerText = 'EN';
+        } else {
+            flagSpan.innerText = '🇦🇹';
+            langTextSpan.innerText = 'DE';
+        }
+
+        // Re-render Dynamic Components
+        // Hero is now dynamic
+        const heroContainer = document.getElementById('hero-container');
+        if (heroContainer) {
+            heroContainer.innerHTML = Hero(currentLang);
+
+            // Re-attach scroll listeners or other logic if needed? 
+            // Hero buttons use inline onclick, so that is fine.
+            // Reveal animations need to be re-observed
+            const newReveals = heroContainer.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            newReveals.forEach(el => observer.observe(el));
+        }
+    };
+
+    // Initial Render UI update 
+    updateUI();
+
+    if (langSwitchBtn) {
+        langSwitchBtn.addEventListener('click', () => {
+            // Cycle: DE -> EN -> HU -> DE
+            if (currentLang === 'de') currentLang = 'en';
+            else if (currentLang === 'en') currentLang = 'hu';
+            else currentLang = 'de';
+
+            localStorage.setItem('n3xt_lang', currentLang);
+            updateUI();
+        });
+    }
+
     if (statsSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

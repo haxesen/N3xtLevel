@@ -192,11 +192,12 @@ const setupContactForm = () => {
                     time: pendingBooking.time
                 };
 
-                // Fire and forget
+                // FIX: Use text/plain to avoid CORS Preflight request
+                // Google Apps Script endpoint will consume the body anyway
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(googlePayload)
                 }).then(() => console.log('Google Sync initiated'))
                     .catch(err => console.warn('Google Sync failed:', err));

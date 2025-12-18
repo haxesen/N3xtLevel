@@ -32,7 +32,7 @@ export const AboutMe = `
                     Verlässlichkeit."
                 </p>
                 <div class="mt-8">
-                    <p class="text-4xl text-gray-300 transform -rotate-2 origin-left" style="font-family: 'Great Vibes', cursive;">Tamas Horvat</p>
+                    <p class="text-6xl text-gray-300 transform -rotate-3 origin-left tracking-wider" style="font-family: 'Monsieur La Doulaise', cursive;">Tamas Horvat</p>
                 </div>
             </div>
         </div>

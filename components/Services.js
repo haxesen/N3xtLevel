@@ -38,7 +38,6 @@ export const Services = (lang = 'de') => {
     const t = content[lang] || content.de;
 
     return `
-    return `
         < !--Services Section-- >
             <section id="services" class="py-32 bg-black relative overflow-hidden">
                 <!-- Mobile Glow -->
@@ -118,5 +117,4 @@ export const Services = (lang = 'de') => {
                 </div>
             </section>
     `;
-`;
 };

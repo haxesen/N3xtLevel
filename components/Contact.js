@@ -13,7 +13,7 @@ export const Contact = (lang = 'de') => {
             btn: "Anfrage absenden",
             legal_consent: "Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.",
             success_title: "Vielen Dank!",
-            success_msg: "Wir bringen Ihr Business bald auf das N3xt Level.<br>Ich melde mich in Kürze bei Ihnen!"
+            success_msg: "Wir bringen Ihr Business bald auf das N3XT LEVEL.<br>Ich melde mich in Kürze bei Ihnen!"
         },
         en: {
             title_prefix: "Send us a",
@@ -28,7 +28,7 @@ export const Contact = (lang = 'de') => {
             btn: "Send Request",
             legal_consent: "By sending this, you agree to our Privacy Policy.",
             success_title: "Thank You!",
-            success_msg: "We will take your business to the N3xt Level soon.<br>I will contact you shortly!"
+            success_msg: "We will take your business to the N3XT LEVEL soon.<br>I will contact you shortly!"
         },
         hu: {
             title_prefix: "Kérjük, írjon",
@@ -43,7 +43,7 @@ export const Contact = (lang = 'de') => {
             btn: "Küldés",
             legal_consent: "Az elküldéssel elfogadja az Adatvédelmi Nyilatkozatunkat.",
             success_title: "Köszönjük!",
-            success_msg: "Hamarosan N3xt Level-re emeljük vállalkozását.<br>Nemsokára jelentkezem!"
+            success_msg: "Hamarosan N3XT LEVEL-re emeljük vállalkozását.<br>Nemsokára jelentkezem!"
         }
     };
 

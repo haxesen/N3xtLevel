@@ -38,7 +38,7 @@ export const Services = (lang = 'de') => {
     const t = content[lang] || content.de;
 
     return `
-        < !--Services Section-- >
+
             <section id="services" class="py-32 bg-black relative overflow-hidden">
                 <!-- Mobile Glow -->
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-accent/20 rounded-full blur-[90px] pointer-events-none md:hidden"></div>

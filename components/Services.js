@@ -36,7 +36,10 @@ export const Services = (lang = 'de') => {
 
     return `
 <!-- Services Section -->
-<section id="services" class="py-32 bg-black relative">
+<section id="services" class="py-32 bg-black relative overflow-hidden">
+    <!-- Mobile Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-accent/20 rounded-full blur-[90px] pointer-events-none md:hidden"></div>
+
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-24 reveal">
             <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">${t.title_prefix} <span

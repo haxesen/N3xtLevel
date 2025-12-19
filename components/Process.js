@@ -49,6 +49,8 @@ export const Process = (lang = 'de') => {
     return `
 <!-- Process / Timeline Section -->
 <section id="process" class="py-24 bg-black relative overflow-hidden">
+    <!-- Mobile Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-accent/20 rounded-full blur-[90px] pointer-events-none md:hidden"></div>
     <!-- Background Glow -->
     <div class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 -translate-x-1/2"></div>
 

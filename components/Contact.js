@@ -53,8 +53,12 @@ export const Contact = (lang = 'de') => {
 <!-- Contact Section -->
 <section id="contact" class="py-32 bg-black relative overflow-hidden">
     <!-- Glow effects -->
+    <!-- Mobile Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-accent/20 rounded-full blur-[90px] pointer-events-none md:hidden"></div>
+    
+    <!-- Desktop Glow -->
     <div
-        class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4">
+        class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4 hidden md:block">
     </div>
 
     <div class="max-w-3xl mx-auto px-6 relative z-10">

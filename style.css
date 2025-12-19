@@ -3,10 +3,16 @@
 @tailwind utilities;
 
 /* Custom styles from index.html */
+html,
+body {
+    overflow-x: hidden;
+    position: relative;
+    /* Ensure overflow hidden works */
+}
+
 body {
     background-color: #000000;
     color: #ffffff;
-    overflow-x: hidden;
 }
 
 .glass {

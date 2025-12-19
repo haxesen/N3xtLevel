@@ -49,7 +49,7 @@ export const Hero = (lang = 'de') => {
 
     return `
 <!-- Hero Section -->
-<section class="min-h-screen flex items-center justify-center relative pt-20">
+<section class="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
     <!-- Background Glows -->
     <div
         class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none">

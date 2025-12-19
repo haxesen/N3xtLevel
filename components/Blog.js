@@ -22,10 +22,10 @@ export const Blog = (lang = 'de') => {
                 },
                 {
                     date: "15. Nov 2024",
-                    category: "Case Study",
-                    title: "30% mehr Umsatz durch Redesign",
-                    desc: "Ein Blick hinter die Kulissen: Wie wir einem lokalen Unternehmen zu mehr Anfragen verholfen haben.",
-                    icon: "fa-chart-line"
+                    category: "Web Strategie",
+                    title: "Mehr Kunden durch SEO",
+                    desc: "Wie Sie mit lokaler Suchmaschinenoptimierung Ihre Sichtbarkeit in der Region massiv steigern können.",
+                    icon: "fa-search-location"
                 }
             ]
         },
@@ -51,10 +51,10 @@ export const Blog = (lang = 'de') => {
                 },
                 {
                     date: "Nov 15, 2024",
-                    category: "Case Study",
-                    title: "30% Revenue Growth via Redesign",
-                    desc: "Behind the scenes: How we helped a local business generate more leads.",
-                    icon: "fa-chart-line"
+                    category: "Web Strategy",
+                    title: "More Customers via SEO",
+                    desc: "How to massively increase your visibility in the region with local Search Engine Optimization.",
+                    icon: "fa-search-location"
                 }
             ]
         },
@@ -80,10 +80,10 @@ export const Blog = (lang = 'de') => {
                 },
                 {
                     date: "2024. Nov 15.",
-                    category: "Esettanulmány",
-                    title: "30% Bevételnövekedés Redesign által",
-                    desc: "Bepillantás a kulisszák mögé: Hogyan szereztünk több ügyfelet egy helyi vállalkozásnak.",
-                    icon: "fa-chart-line"
+                    category: "Web Stratégia",
+                    title: "Több Ügyfél SEO-val",
+                    desc: "Hogyan növelheted drasztikusan a láthatóságodat a régióban a helyi keresőoptimalizálás segítségével.",
+                    icon: "fa-search-location"
                 }
             ]
         }

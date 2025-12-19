@@ -513,6 +513,38 @@ const initChatbot = () => {
                 nextOpts = [{ val: 'booking', label: { de: 'Projekt starten', en: 'Start Project', hu: 'Projekt indítása' } }];
             }
 
+            // 3.6 Location
+            else if (action === 'location') {
+                const t = {
+                    de: "Unser Sitz ist in Stockerau, aber wir arbeiten weltweit online. Persönliche Treffen sind im Raum Wien möglich.",
+                    en: "We are based in Stockerau, but work online globally. Personal meetings are possible in the Vienna area.",
+                    hu: "Székhelyünk Stockerauban van, de online bárhol elérhetőek vagyunk. Személyes találkozóra is van lehetőség Bécs környékén."
+                };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'booking', label: { de: 'Termin vereinbaren', en: 'Schedule Meeting', hu: 'Találkozó egyeztetése' } }];
+            }
+
+            // 3.7 Support
+            else if (action === 'support') {
+                const t = {
+                    de: "Ja! Wir bieten Wartungspakete an, damit Ihre Webseite immer sicher und aktuell bleibt.",
+                    en: "Yes! We offer maintenance packages to keep your website safe and up-to-date.",
+                    hu: "Igen! Karbantartási csomagjainkkal biztosítjuk, hogy weboldala mindig biztonságos és naprakész legyen."
+                };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'pricing', label: { de: 'Preise ansehen', en: 'See Pricing', hu: 'Árak megtekintése' } }];
+            }
+
+            // 3.8 Guarantee
+            else if (action === 'guarantee') {
+                const t = {
+                    de: "Wir bieten volle Gewährleistung auf unsere technische Arbeit. Fehler werden kostenlos behoben.",
+                    en: "We offer a full warranty on our technical work. Bugs are fixed for free.",
+                    hu: "Minden munkánkra garanciát vállalunk. Ha technikai hiba lépne fel, azt ingyenesen javítjuk."
+                };
+                resp = t[currentLang] || t.de;
+            }
+
             // 4. Navigation
             else if (action.startsWith('nav_')) {
                 const target = action.split('_')[1]; // e.g. 'portfolio'
@@ -564,6 +596,23 @@ const initChatbot = () => {
         }
         if (lower.includes('email') || lower.includes('kontakt') || lower.includes('mail') || lower.includes('contact')) {
             addMsg('bot', 'info@n3xt-level.eu');
+            return;
+        }
+
+        if (lower.includes('wo') || lower.includes('where') || lower.includes('hol') || lower.includes('cím') || lower.includes('address') || lower.includes('adresse') || lower.includes('ort') || lower.includes('hely') || lower.includes('meet') || lower.includes('talál') || lower.includes('treffen')) {
+            handleAction('location');
+            return;
+        }
+        if (lower.includes('wartung') || lower.includes('support') || lower.includes('karbantart') || lower.includes('update') || lower.includes('frissít') || lower.includes('maintain') || lower.includes('pfleg')) {
+            handleAction('support');
+            return;
+        }
+        if (lower.includes('garantie') || lower.includes('guarantee') || lower.includes('garancia') || lower.includes('gewähr') || lower.includes('biztos')) {
+            handleAction('guarantee');
+            return;
+        }
+        if (lower.includes('ref') || lower.includes('beispiel') || lower.includes('example') || lower.includes('példa') || lower.includes('work') || lower.includes('arb') || lower.includes('munka') || lower.includes('portfolio') || lower.includes('case')) {
+            handleAction('nav_portfolio');
             return;
         }
 

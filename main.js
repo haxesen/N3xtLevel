@@ -784,6 +784,7 @@ const initChatbot = () => {
     if (close) close.onclick = toggleFunc;
 };
 initChatbot();
+initServiceModal();
 
 const initGlobals = () => {
     document.addEventListener('click', e => {

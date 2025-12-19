@@ -37,9 +37,9 @@ export const Chatbot = `
                 <!-- Quick Replies (Injected via JS) -->
             </div>
             <form id="chat-input-form" class="relative">
-                <input type="text" id="chat-input" placeholder="Schreiben Sie eine Nachricht..." disabled
-                    class="w-full bg-white/5 border border-white/10 rounded-full pl-4 pr-12 py-3 text-sm text-white focus:outline-none focus:border-accent transition-all cursor-not-allowed opacity-50">
-                <button type="submit" disabled class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-accent/20 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all disabled:opacity-0">
+                <input type="text" id="chat-input" placeholder="Schreiben Sie eine Nachricht... (beta)" 
+                    class="w-full bg-white/5 border border-white/10 rounded-full pl-4 pr-12 py-3 text-sm text-white focus:outline-none focus:border-accent transition-all">
+                <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-accent/20 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all">
                     <i class="fas fa-paper-plane text-xs"></i>
                 </button>
             </form>

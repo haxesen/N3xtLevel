@@ -511,6 +511,73 @@ const initChatbot = () => {
         }, 800); // 800ms Typing delay
     };
 
+    // --- Input Processing (Keyword Matching) ---
+    const processInput = (text) => {
+        const lower = text.toLowerCase();
+
+        // 1. Direct Intents
+        if (lower.includes('termin') || lower.includes('book') || lower.includes('időpont') || lower.includes('naptár')) {
+            handleAction('booking');
+            return;
+        }
+        if (lower.includes('preis') || lower.includes('cost') || lower.includes('ár') || lower.includes('budget') || lower.includes('euro')) {
+            handleAction('pricing');
+            return;
+        }
+        if (lower.includes('web') || lower.includes('design') || lower.includes('site')) {
+            handleAction('price_web');
+            return;
+        }
+        if (lower.includes('seo') || lower.includes('search') || lower.includes('google') || lower.includes('rank')) {
+            handleAction('price_seo');
+            return;
+        }
+        if (lower.includes('ai') || lower.includes('automat') || lower.includes('intel')) {
+            handleAction('price_ai');
+            return;
+        }
+        if (lower.includes('email') || lower.includes('kontakt') || lower.includes('mail') || lower.includes('contact')) {
+            addMsg('bot', 'info@n3xt-level.eu');
+            return;
+        }
+
+        // 2. Greetings
+        if (lower.includes('hallo') || lower.includes('hi') || lower.includes('szia') || lower.includes('hello')) {
+            const t = { de: "Hallo! Wie kann ich helfen?", en: "Hello! How can I help?", hu: "Szia! Miben segíthetek?" };
+            addMsg('bot', t[currentLang] || t.de);
+            return;
+        }
+
+        // 3. Fallback
+        showTyping();
+        setTimeout(() => {
+            const t = {
+                de: "Entschuldigung, ich bin ein einfacher Bot. Bitte wählen Sie eine Option:",
+                en: "Sorry, I am a simple bot. Please choose an option:",
+                hu: "Bocsánat, én csak egy egyszerű robot vagyok. Kérlek válassz:"
+            };
+            addMsg('bot', t[currentLang] || t.de);
+            showOpts([
+                { val: 'booking', label: { de: '🗓️ Termin', en: '🗓️ Booking', hu: '🗓️ Időpont' } },
+                { val: 'pricing', label: { de: '💰 Preise', en: '💰 Pricing', hu: '💰 Árak' } },
+                { val: 'services', label: { de: '🚀 Leistungen', en: '🚀 Services', hu: '🚀 Szolgáltatások' } }
+            ]);
+        }, 1000);
+    };
+
+    const form = document.getElementById('chat-input-form');
+    const input = document.getElementById('chat-input');
+    if (form && input) {
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            const val = input.value.trim();
+            if (!val) return;
+            addMsg('user', val);
+            input.value = '';
+            processInput(val);
+        };
+    }
+
     // --- Main Toggle ---
     const toggleFunc = () => {
         isOpen = !isOpen;

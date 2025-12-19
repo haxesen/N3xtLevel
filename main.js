@@ -278,6 +278,28 @@ const setupReveal = () => {
 
 // 5. Update UI (Main Re-render function)
 const updateUI = () => {
+    // 0. Update Meta Data (SEO)
+    const metaData = {
+        de: {
+            title: "N3XT LEVEL | KI-Web-Lösungen",
+            desc: "KI-optimierte Web-Lösungen für den Unternehmenserfolg. Modernes Webdesign, SEO & Automation aus Österreich."
+        },
+        en: {
+            title: "N3XT LEVEL | AI Web Solutions",
+            desc: "AI-optimized web solutions for business success. Modern web design, SEO & Automation from Austria."
+        },
+        hu: {
+            title: "N3XT LEVEL | AI Weboldal Megoldások",
+            desc: "MI-optimalizált webes megoldások az üzleti sikerért. Modern webdizájn, SEO és automatizálás Ausztriából."
+        }
+    };
+    const currentMeta = metaData[currentLang] || metaData.de;
+
+    document.title = currentMeta.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', currentMeta.desc);
+    document.documentElement.lang = currentLang;
+
     const renderComp = (id, fn) => {
         const el = document.getElementById(id);
         if (el) el.innerHTML = fn ? fn(currentLang) : '';

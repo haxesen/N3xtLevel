@@ -52,7 +52,7 @@ export const Services = (lang = 'de') => {
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Card 1 -->
-                        <div
+                        <div onclick="openServiceModal('web')"
                             class="group reveal p-10 rounded-3xl bg-card-bg border border-white/5 hover:border-accent/40 hover:bg-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow relative overflow-hidden flex flex-col cursor-pointer">
                             <div
                                 class="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/20 flex items-center justify-center mb-8 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-500">
@@ -73,7 +73,7 @@ export const Services = (lang = 'de') => {
                         </div>
 
                         <!-- Card 2 -->
-                        <div class="group reveal p-10 rounded-3xl bg-card-bg border border-white/5 hover:border-accent/40 hover:bg-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow relative overflow-hidden flex flex-col cursor-pointer"
+                        <div onclick="openServiceModal('seo')" class="group reveal p-10 rounded-3xl bg-card-bg border border-white/5 hover:border-accent/40 hover:bg-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow relative overflow-hidden flex flex-col cursor-pointer"
                             style="transition-delay: 100ms;">
                             <div
                                 class="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/20 flex items-center justify-center mb-8 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-500">
@@ -94,7 +94,7 @@ export const Services = (lang = 'de') => {
                         </div>
 
                         <!-- Card 3 -->
-                        <div class="group reveal p-10 rounded-3xl bg-card-bg border border-white/5 hover:border-accent/40 hover:bg-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow relative overflow-hidden flex flex-col cursor-pointer"
+                        <div onclick="openServiceModal('ai')" class="group reveal p-10 rounded-3xl bg-card-bg border border-white/5 hover:border-accent/40 hover:bg-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow relative overflow-hidden flex flex-col cursor-pointer"
                             style="transition-delay: 200ms;">
                             <div
                                 class="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/20 flex items-center justify-center mb-8 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-500">

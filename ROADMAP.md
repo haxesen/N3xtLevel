@@ -1,19 +1,7 @@
 # N3XT LEVEL - Projekt Roadmap
 
-## 🚀 Jövőbeli Fejlesztések (Todo)
-
-### 📅 Foglalási Rendszer
-- [ ] Google Calendar: Dedikált naptárazonosító (Calendar ID) használata a 'primary' helyett (Kód előkészítve: Code.gs).
-
-### 🤖 Chatbot Finomhangolás (Prioritás)
-- [ ] Logika bővítése több válasszal és forgatókönyvvel.
-- [ ] Esetleges integráció valódi AI modellel (OpenAI API) a statikus válaszok helyett.
-- [ ] Dizájn és animációk további csiszolása.
-
-### 📈 Egyéb
-- [x] Technikai SEO: Schema.org (JSON-LD) és dinamikus Meta tagek implementálása. ✅
-- [ ] Blog szekció kialakítása (Megfontolás alatt / Tervezési fázis).
-- [ ] További esettanulmányok (Case Studies) feltöltése a Portfólióba.
+## 🚀 Projekt Roadmap
+*A részletes feladatokat és teendőket lásd a `TODO.md` fájlban.*
 
 ## 🔗 Projekt Ressourcen & Dashboards
 

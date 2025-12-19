@@ -51,11 +51,18 @@ export const Hero = (lang = 'de') => {
 <!-- Hero Section -->
 <section class="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
     <!-- Background Glows -->
+    <!-- Background Glows -->
+    <!-- Mobile Glow (Stronger, Centered) -->
     <div
-        class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none">
+        class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-accent/25 rounded-full blur-[90px] pointer-events-none md:hidden">
+    </div>
+
+    <!-- Desktop Glows -->
+    <div
+        class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none hidden md:block">
     </div>
     <div
-        class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none">
+        class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none hidden md:block">
     </div>
 
     <div class="max-w-7xl mx-auto px-6 text-center z-10">

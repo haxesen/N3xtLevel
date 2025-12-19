@@ -49,23 +49,18 @@ export const Hero = (lang = 'de') => {
 
     return `
 <!-- Hero Section -->
-<section class="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
-    <!-- Background Glows -->
-    <!-- Background Glows -->
-    <!-- Mobile Glow (Stronger, Centered) -->
-    <div
-        class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-accent/25 rounded-full blur-[90px] pointer-events-none md:hidden">
-    </div>
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <!-- Background Canvas (Neural Network) -->
+    <canvas id="neural-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-30"></canvas>
+    
+    <!-- Background Glow (Mobile) -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-accent/20 rounded-full blur-[80px] -z-10 md:hidden animate-pulse-slow"></div>
+    
+    <!-- Background Glow (Desktop) -->
+    <div class="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] -z-10 animate-morph"></div>
+    <div class="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] -z-10 animate-morph" style="animation-delay: 2s"></div>
 
-    <!-- Desktop Glows -->
-    <div
-        class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none hidden md:block">
-    </div>
-    <div
-        class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none hidden md:block">
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 text-center z-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
         <h1
             class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-[1.1] animate-fade-in-up">
             ${t.h1_line1}<br>

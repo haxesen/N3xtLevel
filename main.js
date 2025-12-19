@@ -4,16 +4,17 @@ import './style.css';
 import { Navbar } from './components/Navbar.js';
 import { Hero } from './components/Hero.js';
 import { Services } from './components/Services.js';
-import { Process } from './components/Process.js';
 import { PremiumContent } from './components/PremiumContent.js';
-import { Stats } from './components/Stats.js';
 import { AboutMe } from './components/AboutMe.js';
 import { Portfolio } from './components/Portfolio.js';
+import { Process } from './components/Process.js';
+import { Stats } from './components/Stats.js';
 import { Booking } from './components/Booking.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
 import { Chatbot } from './components/Chatbot.js';
 import { CookieBanner } from './components/CookieBanner.js';
+import { initParticles } from './components/Particles.js';
 
 // --- State Management ---
 let currentLang = localStorage.getItem('n3xt_lang') || 'de';
@@ -316,6 +317,9 @@ const updateUI = () => {
     renderComp('booking-container', Booking);
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);
+
+    // Initialize Particles (Canvas)
+    requestAnimationFrame(() => initParticles('neural-canvas'));
 
     // 1. Language Switcher Logic
     const flags = document.querySelectorAll('.current-lang-flag');

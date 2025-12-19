@@ -569,15 +569,41 @@ const initChatbot = () => {
     const processInput = (text) => {
         const lower = text.toLowerCase();
 
-        // 1. Direct Intents
+        // 1. Specific Questions (High Priority)
+        // Duration
+        if (lower.includes('dauer') || lower.includes('lange') || lower.includes('long') || lower.includes('time') || lower.includes('idő') || lower.includes('mikor') || lower.includes('fertig')) {
+            handleAction('duration');
+            return;
+        }
+        // Location
+        if (lower.includes('wo') || lower.includes('where') || lower.includes('hol') || lower.includes('cím') || lower.includes('address') || lower.includes('adresse') || lower.includes('ort') || lower.includes('hely') || lower.includes('meet') || lower.includes('talál') || lower.includes('treffen')) {
+            handleAction('location');
+            return;
+        }
+        // Support
+        if (lower.includes('wartung') || lower.includes('support') || lower.includes('karbantart') || lower.includes('update') || lower.includes('frissít') || lower.includes('maintain') || lower.includes('pfleg')) {
+            handleAction('support');
+            return;
+        }
+        // Guarantee
+        if (lower.includes('garantie') || lower.includes('guarantee') || lower.includes('garancia') || lower.includes('gewähr') || lower.includes('biztos')) {
+            handleAction('guarantee');
+            return;
+        }
+
+        // 2. Action Intents
+        // Booking
         if (lower.includes('termin') || lower.includes('book') || lower.includes('időpont') || lower.includes('naptár')) {
             handleAction('booking');
             return;
         }
-        if (lower.includes('preis') || lower.includes('cost') || lower.includes('ár') || lower.includes('budget') || lower.includes('euro')) {
+        // Pricing (General)
+        if (lower.includes('preis') || lower.includes('cost') || lower.includes('ár') || lower.includes('budget') || lower.includes('euro') || lower.includes('kerül')) {
             handleAction('pricing');
             return;
         }
+
+        // 3. Category / Service Intents (Lower Priority than specific Qs)
         if (lower.includes('web') || lower.includes('design') || lower.includes('site')) {
             handleAction('price_web');
             return;
@@ -590,8 +616,10 @@ const initChatbot = () => {
             handleAction('price_ai');
             return;
         }
-        if (lower.includes('dauer') || lower.includes('lange') || lower.includes('long') || lower.includes('time') || lower.includes('idő') || lower.includes('mikor') || lower.includes('fertig')) {
-            handleAction('duration');
+
+        // 4. Navigation / Info
+        if (lower.includes('ref') || lower.includes('beispiel') || lower.includes('example') || lower.includes('példa') || lower.includes('work') || lower.includes('arb') || lower.includes('munka') || lower.includes('portfolio') || lower.includes('case')) {
+            handleAction('nav_portfolio');
             return;
         }
         if (lower.includes('email') || lower.includes('kontakt') || lower.includes('mail') || lower.includes('contact')) {
@@ -599,24 +627,7 @@ const initChatbot = () => {
             return;
         }
 
-        if (lower.includes('wo') || lower.includes('where') || lower.includes('hol') || lower.includes('cím') || lower.includes('address') || lower.includes('adresse') || lower.includes('ort') || lower.includes('hely') || lower.includes('meet') || lower.includes('talál') || lower.includes('treffen')) {
-            handleAction('location');
-            return;
-        }
-        if (lower.includes('wartung') || lower.includes('support') || lower.includes('karbantart') || lower.includes('update') || lower.includes('frissít') || lower.includes('maintain') || lower.includes('pfleg')) {
-            handleAction('support');
-            return;
-        }
-        if (lower.includes('garantie') || lower.includes('guarantee') || lower.includes('garancia') || lower.includes('gewähr') || lower.includes('biztos')) {
-            handleAction('guarantee');
-            return;
-        }
-        if (lower.includes('ref') || lower.includes('beispiel') || lower.includes('example') || lower.includes('példa') || lower.includes('work') || lower.includes('arb') || lower.includes('munka') || lower.includes('portfolio') || lower.includes('case')) {
-            handleAction('nav_portfolio');
-            return;
-        }
-
-        // 2. Greetings
+        // 5. Greetings
         if (lower.includes('hallo') || lower.includes('hi') || lower.includes('szia') || lower.includes('hello')) {
             const t = { de: "Hallo! Wie kann ich helfen?", en: "Hello! How can I help?", hu: "Szia! Miben segíthetek?" };
             addMsg('bot', t[currentLang] || t.de);

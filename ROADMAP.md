@@ -11,7 +11,8 @@
 - [ ] Dizájn és animációk további csiszolása.
 
 ### 📈 Egyéb
-- [ ] Blog szekció kialakítása (SEO tartalommarketinghez).
+- [x] Technikai SEO: Schema.org (JSON-LD) és dinamikus Meta tagek implementálása. ✅
+- [ ] Blog szekció kialakítása (Megfontolás alatt / Tervezési fázis).
 - [ ] További esettanulmányok (Case Studies) feltöltése a Portfólióba.
 
 ## 🔗 Projekt Ressourcen & Dashboards

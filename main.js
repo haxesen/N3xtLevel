@@ -315,7 +315,7 @@ const updateUI = () => {
     renderComp('stats-container', Stats);
     renderComp('about-me-container', AboutMe);
     renderComp('portfolio-container', Portfolio);
-    renderComp('blog-container', Blog);
+    // renderComp('blog-container', Blog); // TODO: Enable when content is ready
     renderComp('booking-container', Booking);
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);

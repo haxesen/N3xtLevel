@@ -385,6 +385,91 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// --- Service Modal Logic ---
+const initServiceModal = () => {
+    // 1. Create Modal HTML if not exists
+    if (!document.getElementById('service-modal')) {
+        const modal = document.createElement('div');
+        modal.id = 'service-modal';
+        modal.className = 'fixed inset-0 z-[60] hidden transition-opacity duration-300 opacity-0 pointer-events-none'; // Start hidden
+        modal.innerHTML = `
+            <div class="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity" onclick="closeServiceModal()"></div>
+            <div class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-[#0a0a0a] border border-accent/30 rounded-3xl p-8 shadow-[0_0_50px_rgba(0,240,255,0.15)] transform scale-95 transition-all duration-300">
+                <button class="absolute top-5 right-5 text-gray-500 hover:text-white transition-colors" onclick="closeServiceModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+                <div id="modal-icon" class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 text-accent mx-auto"></div>
+                <h3 id="modal-title" class="text-2xl font-bold mb-6 text-white text-center"></h3>
+                <ul id="modal-list" class="space-y-3 mb-8 text-gray-300"></ul>
+                <button onclick="closeServiceModal(); navTo('contact')" class="w-full bg-accent hover:bg-accent/90 text-black font-bold py-4 rounded-xl transition-all hover:scale-[1.02] shadow-lg shadow-accent/20 flex items-center justify-center gap-2 group">
+                    <span id="modal-btn-text">Interesse?</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    // 2. Data
+    const data = {
+        web: {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+            de: { title: "Modernes Webdesign", btn: "Jetzt anfragen", points: ["Verkaufspsychologisch optimiert", "Responsive (Handy & Tablet)", "Blitzschnelle Ladezeiten", "SEO-Grundoptimierung"] },
+            en: { title: "Modern Web Design", btn: "Inquire Now", points: ["Optimized for conversion", "Fully Responsive (Mobile)", "Blazing fast loading", "Basic SEO included"] },
+            hu: { title: "Modern Webdizájn", btn: "Ajánlatkérés", points: ["Eladásra optimalizált felépítés", "Mobil & Tablet barát", "Villámgyors betöltés", "Alap SEO beállítással"] }
+        },
+        seo: {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+            de: { title: "SEO & Ranking", btn: "Beratung buchen", points: ["Top Google-Platzierungen", "Keyword-Analyse", "Technische Optimierung", "Mehr organische Besucher"] },
+            en: { title: "SEO & Ranking", btn: "Book Consultation", points: ["Top Google Rankings", "Keyword Analysis", "Technical Optimization", "More organic traffic"] },
+            hu: { title: "SEO & Keresőoptimalizálás", btn: "Konzultáció", points: ["Top Google helyezések", "Kulcsszó elemzés", "Technikai optimalizálás", "Több organikus látogató"] }
+        },
+        ai: {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>`,
+            de: { title: "KI & Automation", btn: "Lösung finden", points: ["Intelligente Chatbots", "Prozessautomatisierung", "Datenanalyse & Insights", "24/7 Kundenbetreuung"] },
+            en: { title: "AI & Automation", btn: "Find Solution", points: ["Intelligent Chatbots", "Process Automation", "Data Analysis & Insights", "24/7 Customer Support"] },
+            hu: { title: "AI & Automatizáció", btn: "Megoldás keresése", points: ["Intelligens Chatbotok", "Folyamat automatizálás", "Adatelemzés & Insightok", "0-24 Ügyfélkiszolgálás"] }
+        }
+    };
+
+    // 3. Global Functions
+    window.openServiceModal = (type) => {
+        const item = data[type];
+        const content = item[currentLang] || item.de;
+
+        document.getElementById('modal-icon').innerHTML = item.icon;
+        document.getElementById('modal-title').innerText = content.title;
+        document.getElementById('modal-btn-text').innerText = content.btn;
+
+        const list = document.getElementById('modal-list');
+        list.innerHTML = content.points.map(p => `
+            <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <span class="text-sm md:text-base leading-relaxed">${p}</span>
+            </li>
+        `).join('');
+
+        const el = document.getElementById('service-modal');
+        el.classList.remove('hidden', 'pointer-events-none');
+        // Small timeout for transition
+        setTimeout(() => {
+            el.classList.remove('opacity-0');
+            el.querySelector('div.transform').classList.remove('scale-95');
+            el.querySelector('div.transform').classList.add('scale-100');
+        }, 10);
+    };
+
+    window.closeServiceModal = () => {
+        const el = document.getElementById('service-modal');
+        el.classList.add('opacity-0');
+        el.querySelector('div.transform').classList.add('scale-95');
+        el.querySelector('div.transform').classList.remove('scale-100');
+        setTimeout(() => {
+            el.classList.add('hidden', 'pointer-events-none');
+        }, 300);
+    };
+};
+
 const initChatbot = () => {
     const toggle = document.getElementById('chat-toggle');
     const windowEl = document.getElementById('chat-window');

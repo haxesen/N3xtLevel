@@ -25,6 +25,44 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "N3XT LEVEL",
+      "image": "https://n3xt-level.eu/og-image.jpg",
+      "@id": "https://n3xt-level.eu",
+      "url": "https://n3xt-level.eu",
+      "email": "info@n3xt-level.eu",
+      "founder": {
+        "@type": "Person",
+        "name": "Tamas Horvat"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hauptstraße 32",
+        "addressLocality": "Stockerau",
+        "postalCode": "2000",
+        "addressCountry": "AT"
+      },
+      "description": "KI-optimierte Web-Lösungen für den Unternehmenserfolg. Modernes Webdesign, SEO & Automatisierung aus Österreich.",
+      "priceRange": "€€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    }
+    </script>
+
     <!-- Vite Main Entry -->
     <script type="module" src="/main.js"></script>
 </head>

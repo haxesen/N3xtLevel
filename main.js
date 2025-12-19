@@ -12,6 +12,7 @@ import { Stats } from './components/Stats.js';
 import { Booking } from './components/Booking.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
+import { Blog } from './components/Blog.js';
 import { Chatbot } from './components/Chatbot.js';
 import { CookieBanner } from './components/CookieBanner.js';
 import { initParticles } from './components/Particles.js';
@@ -314,6 +315,7 @@ const updateUI = () => {
     renderComp('stats-container', Stats);
     renderComp('about-me-container', AboutMe);
     renderComp('portfolio-container', Portfolio);
+    renderComp('blog-container', Blog);
     renderComp('booking-container', Booking);
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);

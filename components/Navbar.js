@@ -56,7 +56,7 @@ export const Navbar = (lang = 'de') => {
             </div>
 
             <!-- Mobile Menu Icon -->
-            <button class="md:hidden text-white" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <button class="md:hidden text-white" aria-label="Menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />

@@ -502,6 +502,17 @@ const initChatbot = () => {
                 ];
             }
 
+            // 3.5 Duration / Time
+            else if (action === 'duration') {
+                const t = {
+                    de: "Das ist individuell, da wir für jeden Kunden maßgeschneiderte Lösungen erstellen. Eine stilvolle Basis-Webseite ist jedoch meist in **1 Woche** fertig.",
+                    en: "This varies, as we create custom solutions for every client. However, a stylish basic website is usually ready in **1 week**.",
+                    hu: "Ez egyéni, mivel minden ügyfelünknek testreszabott weboldalt készítünk. Egy stílusos, letisztult alap weblap átlagosan **1 hét** alatt készül el."
+                };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'booking', label: { de: 'Projekt starten', en: 'Start Project', hu: 'Projekt indítása' } }];
+            }
+
             // 4. Navigation
             else if (action.startsWith('nav_')) {
                 const target = action.split('_')[1]; // e.g. 'portfolio'
@@ -545,6 +556,10 @@ const initChatbot = () => {
         }
         if (lower.includes('ai') || lower.includes('automat') || lower.includes('intel')) {
             handleAction('price_ai');
+            return;
+        }
+        if (lower.includes('dauer') || lower.includes('lange') || lower.includes('long') || lower.includes('time') || lower.includes('idő') || lower.includes('mikor') || lower.includes('fertig')) {
+            handleAction('duration');
             return;
         }
         if (lower.includes('email') || lower.includes('kontakt') || lower.includes('mail') || lower.includes('contact')) {

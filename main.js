@@ -345,6 +345,17 @@ const updateUI = () => {
     setupStats();
     setupReveal();
 
+    // Update Chatbot Placeholder
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) {
+        const ph = {
+            de: "Schreiben Sie eine Nachricht...",
+            en: "Type a message...",
+            hu: "Írj egy üzenetet..."
+        };
+        chatInput.placeholder = ph[currentLang] || ph.de;
+    }
+
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
 

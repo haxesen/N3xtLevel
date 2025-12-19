@@ -2,6 +2,9 @@
 
 ## 🚀 Jövőbeli Fejlesztések (Todo)
 
+### 📅 Foglalási Rendszer
+- [ ] Google Calendar: Dedikált naptárazonosító (Calendar ID) használata a 'primary' helyett (Kód előkészítve: Code.gs).
+
 ### 🤖 Chatbot Finomhangolás (Prioritás)
 - [ ] Logika bővítése több válasszal és forgatókönyvvel.
 - [ ] Esetleges integráció valódi AI modellel (OpenAI API) a statikus válaszok helyett.
@@ -24,7 +27,7 @@
 
 ### 📨 Kontakt & Formulare
 - **Formspree**: [formspree.io](https://formspree.io/)
-  - *Form ID*: `xzzzdnko`
+  - *Form ID*: `mvzppned`
   - *Zweck*: Hier landen alle Kontaktanfragen und Terminbuchungen.
 
 ### 💻 Entwicklung & Hosting

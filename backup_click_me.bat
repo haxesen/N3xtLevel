@@ -19,6 +19,14 @@ git archive --format=zip --output="%filename%" HEAD
 
 if %errorlevel% equ 0 (
     echo [SIKER] A biztonsagi mentes elkeszult! ✅
+    
+    :: Régi mentések törlése (Max 5 marad)
+    echo.
+    echo Takaritas: A legrégebbi mentesek torlese (Max 5 marad)...
+    for /f "skip=5 delims=" %%F in ('dir /b /o-d "..\N3xtLevel_Backup_*.zip"') do (
+        echo Torles: %%F
+        del "..\%%F"
+    )
 ) else (
     echo [HIBA] Valami nem sikerult. Ellenorizd, hogy van-e git telepitve. ❌
 )

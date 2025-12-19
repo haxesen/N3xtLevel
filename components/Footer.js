@@ -27,6 +27,9 @@ export const Footer = (lang = 'de') => {
             &copy; <span id="year"></span> N<span class="text-[#ff0000]">3</span>XT LEVEL. Excellence in Code.
         </div>
 
+        <!-- Email -->
+        <a href="mailto:info@n3xt-level.eu" class="text-gray-500 hover:text-accent transition-colors font-medium">info@n3xt-level.eu</a>
+
         <!-- Social Icons (Footer) -->
         <div class="flex space-x-6 items-center">
             <a href="#" class="social-btn text-xl"><i class="fab fa-facebook-f"></i></a>

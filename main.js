@@ -382,6 +382,136 @@ const initChatbot = () => {
     let isOpen = false;
     let hasGreeted = false;
 
+    // --- Helpers ---
+    const showTyping = () => {
+        const id = 'typing-indicator';
+        if (document.getElementById(id)) return;
+        const div = document.createElement('div');
+        div.id = id;
+        div.className = 'flex justify-start animate-fade-in my-2';
+        div.innerHTML = `<div class="bg-white/10 text-gray-200 rounded-2xl rounded-tl-none px-4 py-2 text-sm flex gap-1 items-center">
+            <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></span>
+            <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+            <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+        </div>`;
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+    };
+
+    const hideTyping = () => {
+        const el = document.getElementById('typing-indicator');
+        if (el) el.remove();
+    };
+
+    const addMsg = (sender, text) => {
+        hideTyping();
+        const div = document.createElement('div');
+        div.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate-fade-in my-2`;
+        div.innerHTML = `<div class="max-w-[85%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot' ? 'bg-white/10 text-gray-200 rounded-tl-none' : 'bg-accent text-white rounded-tr-none'} shadow-sm">${text}</div>`;
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+    };
+
+    const navTo = (id) => {
+        toggleFunc(); // Close chat
+        setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 300);
+    };
+
+    const showOpts = (options) => {
+        opts.innerHTML = '';
+        options.forEach(o => {
+            const b = document.createElement('button');
+            b.className = 'bg-white/5 border border-white/10 hover:border-accent text-xs text-white px-3 py-2 rounded-lg mb-1 mr-1 transition-colors animate-fade-in';
+            // Support both old 'text' and new 'label.{lang}' formats
+            const txt = o.label ? (o.label[currentLang] || o.label.de) : o.text;
+            b.innerHTML = txt;
+            b.onclick = () => {
+                addMsg('user', b.innerText);
+                opts.innerHTML = ''; // Clear triggers
+                handleAction(o.val || o.action);
+            };
+            opts.appendChild(b);
+        });
+    };
+
+    // --- Decision Engine ---
+    const handleAction = (action) => {
+        showTyping();
+
+        setTimeout(() => {
+            let resp = "";
+            let nextOpts = [];
+
+            // 1. Booking
+            if (action === 'booking') {
+                const t = { de: "Ich öffne den Kalender für Sie.", en: "Opening the calendar for you.", hu: "Megnyitom a naptárat." };
+                addMsg('bot', t[currentLang] || t.de);
+                setTimeout(() => navTo('booking'), 1000);
+                return;
+            }
+
+            // 2. Pricing
+            else if (action === 'pricing') {
+                const t = {
+                    de: "Das hängt vom Projekt ab. Was interessiert Sie?",
+                    en: "That depends on the project. What are you interested in?",
+                    hu: "Ez a projekttől függ. Mi érdekli?"
+                };
+                resp = t[currentLang] || t.de;
+                nextOpts = [
+                    { val: 'price_web', label: { de: 'Webseite', en: 'Website', hu: 'Weboldal' } },
+                    { val: 'price_seo', label: { de: 'SEO & Ranking', en: 'SEO & Ranking', hu: 'SEO & Rangsor' } },
+                    { val: 'price_ai', label: { de: 'AI & Automation', en: 'AI & Automation', hu: 'AI & Automatizálás' } }
+                ];
+            }
+            // Sub-Pricing
+            else if (action === 'price_web') {
+                const t = { de: "Eine professionelle Webseite startet bei uns ab **€1.490**.", en: "A professional website starts at **€1,490**.", hu: "Egy profi weboldal nálunk **€1.490**-tól indul." };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'booking', label: { de: 'Termin buchen', en: 'Book Meeting', hu: 'Időpontfoglalás' } }];
+            }
+            else if (action === 'price_seo') {
+                const t = { de: "SEO-Pakete starten ab **€490 / Monat**.", en: "SEO packages start at **€490 / month**.", hu: "SEO csomagok **€490 / hó**-tól indulnak." };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'booking', label: { de: 'Analyse anfordern', en: 'Request Audit', hu: 'Elemzés kérése' } }];
+            }
+            else if (action === 'price_ai') {
+                const t = { de: "AI-Lösungen sind sehr individuell. Lassen Sie uns darüber sprechen.", en: "AI solutions are custom. Let's talk about it.", hu: "Az AI megoldások egyediek. Beszéljünk róla!" };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'booking', label: { de: 'Beratung buchen', en: 'Book Consult', hu: 'Konzultáció' } }];
+            }
+
+            // 3. Services
+            else if (action === 'services') {
+                const t = { de: "Wir bieten Webdesign, SEO und AI-Automatisierung. Wohin soll es gehen?", en: "We offer Web Design, SEO, and AI Automation. Where to?", hu: "Webdizájnt, SEO-t és AI automatizációt kínálunk. Hová lépjünk?" };
+                resp = t[currentLang] || t.de;
+                nextOpts = [
+                    { val: 'nav_portfolio', label: { de: 'Zum Portfolio', en: 'Go to Portfolio', hu: 'Portfólió' } },
+                    { val: 'nav_services', label: { de: 'Zu den Leistungen', en: 'Go to Services', hu: 'Szolgáltatások' } }
+                ];
+            }
+
+            // 4. Navigation
+            else if (action.startsWith('nav_')) {
+                const target = action.split('_')[1]; // e.g. 'portfolio'
+                const t = { de: "Gern! Ich bringe Sie hin.", en: "Sure! Taking you there.", hu: "Máris odaviszem." };
+                addMsg('bot', t[currentLang] || t.de);
+                setTimeout(() => navTo(target), 1000);
+                return;
+            }
+
+            // Unknown
+            else {
+                resp = "...";
+            }
+
+            addMsg('bot', resp);
+            if (nextOpts.length > 0) showOpts(nextOpts);
+
+        }, 800); // 800ms Typing delay
+    };
+
+    // --- Main Toggle ---
     const toggleFunc = () => {
         isOpen = !isOpen;
         if (isOpen) {
@@ -390,12 +520,17 @@ const initChatbot = () => {
             toggle.querySelectorAll('span').forEach(s => s.style.display = 'none');
 
             if (!hasGreeted) {
-                setTimeout(() => addMsg('bot', currentLang === 'hu' ? 'Szia! 👋 Miben segíthetek?' : 'Hallo! 👋 Wie kann ich helfen?'), 500);
-                setTimeout(() => showOpts([
-                    { text: currentLang === 'hu' ? '🗓️ Időpont' : (currentLang === 'en' ? '🗓️ Booking' : '🗓️ Termin'), action: 'booking' },
-                    { text: currentLang === 'hu' ? '💰 Árak' : (currentLang === 'en' ? '💰 Pricing' : '💰 Preise'), action: 'pricing' }
-                ]), 1500);
-                hasGreeted = true;
+                showTyping();
+                setTimeout(() => {
+                    const t = { de: "Hallo! 👋 Wie kann ich helfen?", en: "Hello! 👋 How can I help?", hu: "Szia! 👋 Miben segíthetek?" };
+                    addMsg('bot', t[currentLang] || t.de);
+                    showOpts([
+                        { val: 'booking', label: { de: '🗓️ Termin', en: '🗓️ Booking', hu: '🗓️ Időpont' } },
+                        { val: 'pricing', label: { de: '💰 Preise', en: '💰 Pricing', hu: '💰 Árak' } },
+                        { val: 'services', label: { de: '🚀 Leistungen', en: '🚀 Services', hu: '🚀 Szolgáltatások' } }
+                    ]);
+                    hasGreeted = true;
+                }, 1000);
             }
         } else {
             windowEl.classList.add('invisible', 'opacity-0', 'scale-90');
@@ -405,45 +540,6 @@ const initChatbot = () => {
 
     toggle.onclick = toggleFunc;
     if (close) close.onclick = toggleFunc;
-
-    const addMsg = (sender, text) => {
-        const div = document.createElement('div');
-        div.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate-fade-in my-2`;
-        div.innerHTML = `<div class="max-w-[80%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot' ? 'bg-white/10 text-gray-200 rounded-tl-none' : 'bg-accent text-white rounded-tr-none'}">${text}</div>`;
-        msgs.appendChild(div);
-        msgs.scrollTop = msgs.scrollHeight;
-    };
-
-    const showOpts = (options) => {
-        opts.innerHTML = '';
-        options.forEach(o => {
-            const b = document.createElement('button');
-            b.className = 'bg-white/5 border border-white/10 hover:border-accent text-xs text-white px-3 py-2 rounded-lg mb-1 mr-1 transition-colors';
-            b.innerText = o.text;
-            b.onclick = () => {
-                addMsg('user', o.text);
-                opts.innerHTML = '';
-                setTimeout(() => handleAction(o.action), 500);
-            };
-            opts.appendChild(b);
-        });
-    };
-
-    const handleAction = (action) => {
-        const responses = {
-            booking: { de: "Ich öffne den Kalender.", en: "Opening calendar.", hu: "Megnyitom a naptárat." },
-            pricing: { de: "Ab €1.500.", en: "Starting at €1,500.", hu: "€1.500-tól kezdődően." }
-        };
-        const txt = responses[action][currentLang] || responses[action].de;
-        addMsg('bot', txt);
-
-        if (action === 'booking') {
-            setTimeout(() => {
-                toggleFunc();
-                document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-            }, 1000);
-        }
-    };
 };
 initChatbot();
 

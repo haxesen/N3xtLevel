@@ -49,9 +49,9 @@ export const Navbar = (lang = 'de') => {
                 </a>
                 
                 <!-- Language Switcher -->
-                <button id="lang-switch" class="flex items-center gap-2 bg-black/50 border border-white/10 hover:border-accent px-3 py-2 rounded-full transition-all group ml-4" title="Sprache wechseln / Change Language">
-                    <span id="current-lang-flag" class="text-xl">🇦🇹</span>
-                    <span class="text-xs text-gray-400 group-hover:text-white uppercase font-bold w-4" id="current-lang-text">DE</span>
+                <button class="lang-switch-btn flex items-center gap-2 bg-black/50 border border-white/10 hover:border-accent px-3 py-2 rounded-full transition-all group ml-4" title="Sprache wechseln / Change Language">
+                    <span class="current-lang-flag text-xl">🇦🇹</span>
+                    <span class="text-xs text-gray-400 group-hover:text-white uppercase font-bold w-4 current-lang-text">DE</span>
                 </button>
             </div>
 
@@ -65,11 +65,17 @@ export const Navbar = (lang = 'de') => {
         </div>
 
         <!-- Mobile Menu Dropdown (Simplified) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 absolute w-full">
-            <div class="flex flex-col p-6 space-y-4 text-center">
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 absolute w-full backdrop-blur-xl">
+            <div class="flex flex-col p-6 space-y-6 text-center">
                 ${navItems}
-                <a href="#contact" class="text-accent font-bold">${t.btn}</a>
-                <!-- Mobile Lang Switcher could be added here too -->
+                <a href="#contact" class="text-accent font-bold text-lg">${t.btn}</a>
+                
+                <!-- Mobile Language Switcher -->
+                <button class="lang-switch-btn flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:border-accent px-6 py-3 rounded-xl transition-all group mx-auto w-full max-w-xs">
+                    <span class="current-lang-flag text-2xl">🇦🇹</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white uppercase font-bold current-lang-text">DE</span>
+                    <span class="text-xs text-gray-500 ml-auto group-hover:text-accent">Change Language</span>
+                </button>
             </div>
         </div>
     </nav>

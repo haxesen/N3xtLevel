@@ -295,18 +295,20 @@ const updateUI = () => {
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);
 
-    const flagSpan = document.getElementById('current-lang-flag');
-    const langTextSpan = document.getElementById('current-lang-text');
-    const langBtn = document.getElementById('lang-switch');
+    // 1. Language Switcher Logic
+    const flags = document.querySelectorAll('.current-lang-flag');
+    const texts = document.querySelectorAll('.current-lang-text');
+    const btns = document.querySelectorAll('.lang-switch-btn');
 
-    if (flagSpan && langTextSpan) {
-        if (currentLang === 'hu') { flagSpan.innerText = '🇭🇺'; langTextSpan.innerText = 'HU'; }
-        else if (currentLang === 'en') { flagSpan.innerText = '🇬🇧'; langTextSpan.innerText = 'EN'; }
-        else { flagSpan.innerText = '🇦🇹'; langTextSpan.innerText = 'DE'; }
-    }
+    let flag = '🇦🇹'; let txt = 'DE';
+    if (currentLang === 'hu') { flag = '🇭🇺'; txt = 'HU'; }
+    else if (currentLang === 'en') { flag = '🇬🇧'; txt = 'EN'; }
 
-    if (langBtn) {
-        langBtn.onclick = () => {
+    flags.forEach(el => el.innerText = flag);
+    texts.forEach(el => el.innerText = txt);
+
+    btns.forEach(btn => {
+        btn.onclick = () => {
             if (currentLang === 'de') currentLang = 'en';
             else if (currentLang === 'en') currentLang = 'hu';
             else currentLang = 'de';
@@ -314,7 +316,7 @@ const updateUI = () => {
             localStorage.setItem('n3xt_lang', currentLang);
             updateUI();
         };
-    }
+    });
 
     setupCalendar();
     setupContactForm();

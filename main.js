@@ -373,7 +373,7 @@ const updateUI = () => {
 // --- Initial Setup ---
 
 document.getElementById('chatbot-place').innerHTML = Chatbot;
-document.getElementById('cookie-banner-container').innerHTML = CookieBanner;
+document.getElementById('cookie-banner-container').innerHTML = CookieBanner(currentLang);
 
 updateUI();
 

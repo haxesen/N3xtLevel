@@ -4,8 +4,11 @@ set "d=%date:~-4%-%date:~3,2%-%date:~0,2%"
 set "t=%time:~0,2%-%time:~3,2%"
 set "t=%t: =0%"
 
-:: A fájl neve ez lesz: N3xtLevel_Backup_EV-HO-NAP_ORA-PERC.zip
-set "filename=..\N3xtLevel_Backup_%d%_%t%.zip"
+:: Almappa létrehozása ha nem létezik
+if not exist "..\BACKUP" mkdir "..\BACKUP"
+
+:: A fájl neve ez lesz: BACKUP\N3xtLevel_Backup_EV-HO-NAP_ORA-PERC.zip
+set "filename=..\BACKUP\N3xtLevel_Backup_%d%_%t%.zip"
 
 echo ==========================================
 echo   N3XT LEVEL - BIZTONSAGI MENTES (BACKUP)
@@ -26,10 +29,10 @@ echo [SIKER] A biztonsagi mentes elkeszult! ✅
 
 :: Régi mentések törlése (Max 5 marad)
 echo.
-echo Takaritas: A legrégebbi mentesek torlese (Max 5 marad)...
-for /f "skip=5 delims=" %%F in ('dir /b /o-d "..\N3xtLevel_Backup_*.zip"') do (
+echo Takaritas: A legrégebbi mentesek torlese a BACKUP mappabol (Max 5 marad)...
+for /f "skip=5 delims=" %%F in ('dir /b /o-d "..\BACKUP\N3xtLevel_Backup_*.zip"') do (
     echo Torles: %%F
-    del "..\%%F"
+    del "..\BACKUP\%%F"
 )
 
 :end

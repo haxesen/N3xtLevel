@@ -1,0 +1,30 @@
+N3XT LEVEL - VISSZAÁLLÍTÁSI ÚTMUTATÓ (RESTORE GUIDE)
+=====================================================
+
+Ha ezt a fájlt olvasod, valószínűleg új gépen vagy rendszeren kell újraélesztened a projektet a ZIP mentésből.
+Ne aggódj, egyszerű lesz! Kövesd ezt a 4 lépést:
+
+1. KICSOMAGOLÁS 📦
+   - Másold a 'N3xtLevel_Backup_....zip' fájlt az új gépre.
+   - Csomagold ki egy mappába (pl. 'C:\Projektek\N3xtLevel').
+
+2. KÖRNYEZET ELŐKÉSZÍTÉSE ⚙️
+   - Győződj meg róla, hogy a 'Node.js' telepítve van a gépen.
+   - Ha nincs, töltsd le innen és telepítsd: https://nodejs.org/ (LTS verzió ajánlott).
+   - Ellenőrzés: Nyiss egy terminált és írd be: `node -v` (ha kiír egy számot, jó vagy).
+
+3. TELEPÍTÉS (INSTALL) 📥
+   - Nyisd meg a kicsomagolt projekt mappáját a terminálban (vagy VS Code-ban).
+   - Futtasd le ezt a parancsot:
+     npm install
+   
+   (Ez letölti a 'package.json'-ban lévő összes szükséges kiegészítőt az internetről. Ez eltarthat 1-2 percig.)
+
+4. INDÍTÁS 🚀
+   - Ha végzett a telepítés, indítsd el a fejlesztői szervert:
+     npm run dev
+   
+   - Az oldalad most már fut a böngészőben (általában: http://localhost:5173).
+
+Sok sikert! 
+- A te AI Asszisztened 🤖

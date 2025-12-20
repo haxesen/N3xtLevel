@@ -162,6 +162,20 @@ const setupContactForm = () => {
 
     if (!form) return;
 
+    // Check for pending booking and pre-fill
+    const pendingBooking = localStorage.getItem('n3xt_pending_booking');
+    if (pendingBooking) {
+        try {
+            const pb = JSON.parse(pendingBooking);
+            const msgArea = form.querySelector('textarea[name="message"]');
+            if (msgArea && !msgArea.value) {
+                msgArea.value = (currentLang === 'hu' ? `Időpontfoglalás kérés:\nDátum: ${pb.date}\nIdő: ${pb.time}` :
+                    (currentLang === 'en' ? `Booking Request:\nDate: ${pb.date}\nTime: ${pb.time}` :
+                        `Terminanfrage:\nDatum: ${pb.date}\nUhrzeit: ${pb.time}`)) + "\n\n";
+            }
+        } catch (e) { console.error(e); }
+    }
+
     form.onsubmit = async (e) => {
         e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');

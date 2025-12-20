@@ -634,12 +634,6 @@ window.hubSelect = (type, btn) => {
         content.classList.add('scale-100');
     }, 10);
 };
-setTimeout(() => {
-    modal.classList.remove('opacity-0');
-    content.classList.remove('scale-95');
-    content.classList.add('scale-100');
-}, 10);
-};
 
 // 5. Update UI (Main Re-render function)
 const updateUI = () => {

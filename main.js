@@ -363,6 +363,33 @@ window.toggleSelection = (category, value) => {
     window.updateSummary();
 };
 
+window.updateAvailableFeatures = () => {
+    const type = window.calcState.type;
+    const featureCards = document.querySelectorAll('.uic-card-feat');
+
+    featureCards.forEach(card => {
+        const featureKey = card.getAttribute('data-value');
+
+        // Reset basic state
+        card.classList.remove('opacity-20', 'pointer-events-none', 'grayscale');
+        card.title = "";
+
+        // Rule 1: Landing Page cannot have Blog
+        // (One-Pager structure doesn't support complex blog modules)
+        if (type === 'landing') {
+            if (featureKey === 'blog') {
+                card.classList.add('opacity-20', 'pointer-events-none', 'grayscale');
+                card.title = "Blog ist für One-Pager nicht verfügbar / Blog not available for One-Pager";
+
+                // Deselect if active
+                if (window.calcState.features.includes(featureKey)) {
+                    window.toggleSelection('feature', featureKey);
+                }
+            }
+        }
+    });
+};
+
 window.changeStep = (delta) => {
     let newStep = window.calcState.step + delta;
     if (newStep < 0 || newStep > 2) return;
@@ -391,6 +418,10 @@ window.goToStep = (step) => {
     // if (step > 1 && window.calcState.features.length === 0) { ... }
 
     window.calcState.step = step;
+
+    // Update Logical constraints
+    if (step === 1) window.updateAvailableFeatures();
+
     document.querySelectorAll('.uic-view').forEach((el, idx) => {
         if (idx === step) { el.classList.remove('hidden'); el.classList.add('animate-fade-in'); }
         else { el.classList.add('hidden'); el.classList.remove('animate-fade-in'); }

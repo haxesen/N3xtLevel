@@ -98,7 +98,7 @@ export const Contact = (lang = 'de') => {
                     </div>
 
                     <button type="submit"
-                        class="w-full bg-accent text-white font-bold text-lg py-5 rounded-lg hover:bg-accent-hover transition-all duration-300 shadow-glow hover:shadow-glow-intense hover:-translate-y-1">
+                        class="w-full bg-gradient-to-r from-accent to-[#FF8C00] text-white font-bold text-lg py-5 rounded-lg hover:from-accent-hover hover:to-[#FF4500] transition-all duration-300 shadow-glow hover:shadow-glow-intense hover:-translate-y-1 transform">
                         ${t.btn}
                     </button>
                     <p id="formStatus" class="text-center text-accent font-semibold hidden opacity-0 transition-opacity duration-300 mt-4"></p>

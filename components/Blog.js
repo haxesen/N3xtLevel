@@ -107,7 +107,7 @@ export const Blog = (lang = 'de') => {
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 ${t.articles.map((article, index) => `
-                <div class="group cursor-pointer" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                <div class="group cursor-pointer" onclick="window.openCalculator()">
                     <div class="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
                         <div class="absolute inset-0 bg-accent/20 group-hover:bg-transparent transition-colors z-10"></div>
                         <img src="${article.img}" alt="${article.title}" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700">

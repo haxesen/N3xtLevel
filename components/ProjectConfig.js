@@ -56,7 +56,9 @@ export const ProjectConfig = (lang = 'de') => {
                 name: "Ihr Name",
                 email: "Ihre E-Mail",
                 phone: "Telefon (Optional)"
-            }
+            },
+            summary_title: "Zusammenfassung",
+            summary_placeholder: "Wählen Sie Ihre Optionen..."
         },
         en: {
             teaser_title: "Start Your Project",
@@ -91,7 +93,9 @@ export const ProjectConfig = (lang = 'de') => {
                 name: "Your Name",
                 email: "Your Email",
                 phone: "Phone (Optional)"
-            }
+            },
+            summary_title: "Summary",
+            summary_placeholder: "Select your options..."
         },
         hu: {
             teaser_title: "Indítsa el Projektjét",
@@ -126,7 +130,9 @@ export const ProjectConfig = (lang = 'de') => {
                 name: "Az Ön neve",
                 email: "Email címe",
                 phone: "Telefonszám (Opcionális)"
-            }
+            },
+            summary_title: "Összegzés",
+            summary_placeholder: "Válasszon opciókat..."
         }
     }[lang];
 
@@ -250,8 +256,8 @@ export const ProjectConfig = (lang = 'de') => {
 
                             <div class="p-6 bg-accent/5 rounded-xl border border-accent/20 mt-6 relative overflow-hidden">
                                 <div class="absolute top-0 right-0 p-4 opacity-10 text-4xl text-accent"><i class="fas fa-file-invoice"></i></div>
-                                <h4 class="text-accent font-bold mb-2 text-sm uppercase tracking-wider">Zusammenfassung</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed" id="uic-summary-text">Wählen Sie Ihre Optionen...</p>
+                                <h4 class="text-accent font-bold mb-2 text-sm uppercase tracking-wider">${t.summary_title}</h4>
+                                <p class="text-sm text-gray-300 leading-relaxed" id="uic-summary-text">${t.summary_placeholder}</p>
                             </div>
                          </div>
                     </div>

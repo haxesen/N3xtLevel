@@ -440,9 +440,26 @@ window.goToStep = (step) => {
 window.updateSummary = () => {
     const txt = document.getElementById('uic-summary-text');
     if (!txt) return;
-    const typeLabel = window.calcState.type ? window.calcState.type.toUpperCase() : '-';
-    const feats = window.calcState.features.length > 0 ? window.calcState.features.join(', ') : 'None';
-    txt.innerHTML = `<strong>Selected:</strong> ${typeLabel} <br> <span class="text-gray-400 text-xs">${feats}</span>`;
+
+    const tr = {
+        de: { sel: "Ausgewählt:", none: "Keine" },
+        en: { sel: "Selected:", none: "None" },
+        hu: { sel: "Kiválasztva:", none: "Nincs" }
+    }[currentLang] || { sel: "Selected:", none: "None" };
+
+    const typeLabel = window.calcState.type ?
+        (document.querySelector(`.uic-card-type[data-value="${window.calcState.type}"] h4`)?.innerText || window.calcState.type.toUpperCase())
+        : '-';
+
+    // Translate feature keys to their titles if possible, or leave as is
+    const feats = window.calcState.features.length > 0 ?
+        window.calcState.features.map(f => {
+            const el = document.querySelector(`.uic-card-feat[data-value="${f}"] span.font-bold`);
+            return el ? el.innerText : f;
+        }).join(', ')
+        : tr.none;
+
+    txt.innerHTML = `<strong>${tr.sel}</strong> ${typeLabel} <br> <span class="text-gray-400 text-xs">${feats}</span>`;
 };
 
 window.submitConfig = async () => {
@@ -484,6 +501,43 @@ window.submitConfig = async () => {
 
 
 window.openCalculator = () => {
+    // Reset State
+    window.calcState = { step: 0, type: null, features: [] };
+
+    // Reset UI selections
+    document.querySelectorAll('.uic-card-type').forEach(el => {
+        el.classList.remove('border-accent', 'bg-white/10');
+        const check = el.querySelector('.uic-check-circle');
+        if (check) check.classList.add('opacity-0');
+        const icon = el.querySelector('div.w-12');
+        if (icon) {
+            icon.classList.add('bg-accent/10', 'text-accent');
+            icon.classList.remove('bg-accent', 'text-black');
+        }
+    });
+
+    document.querySelectorAll('.uic-card-feat').forEach(el => {
+        el.classList.remove('border-accent', 'bg-white/10');
+        const badge = el.querySelector('.uic-feat-check');
+        if (badge) badge.classList.add('opacity-0');
+        const icon = el.querySelector('.text-3xl');
+        if (icon) {
+            icon.classList.add('text-gray-500');
+            icon.classList.remove('text-accent');
+        }
+    });
+
+    // Reset Form
+    const nameInput = document.getElementById('uic-name');
+    const emailInput = document.getElementById('uic-email');
+    const phoneInput = document.getElementById('uic-phone');
+    if (nameInput) nameInput.value = '';
+    if (emailInput) emailInput.value = '';
+    if (phoneInput) phoneInput.value = '';
+
+    window.goToStep(0);
+    window.updateSummary();
+
     const modal = document.getElementById('project-config-modal');
     const content = document.getElementById('project-config-content');
     if (modal && content) {

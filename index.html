@@ -91,6 +91,8 @@
 
         <div id="services-container"></div>
         <div id="process-container"></div>
+        <div id="pricing-container"></div>
+
         <div id="premium-content-container"></div>
         <div id="stats-container"></div>
         <div id="about-me-container"></div>
@@ -168,53 +170,10 @@
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Impressum</h2>
-                <div class="space-y-8 text-gray-300">
-                    <!-- Details -->
-                    <section class="space-y-2">
-                        <p class="text-lg font-semibold text-accent">Angaben gemäß § 5 TMG</p>
-                        <p class="font-bold text-lg text-white mt-4">Tamas Horvat</p>
-                        <p>Hauptstraße 32</p>
-                        <p>2000 Stockerau</p>
-                        <p>Österreich</p>
-                    </section>
-
-                    <!-- Kontakt -->
-                    <section class="space-y-2 pt-4">
-                        <h2 class="text-lg font-semibold text-accent">Kontakt</h2>
-                        <p>E-Mail: <span class="protected-email text-accent" data-u="info"
-                                data-d="n3xt-level.eu">Lade...</span></p>
-                    </section>
-
-                    <!-- Description -->
-                    <section class="space-y-2 pt-4">
-                        <h2 class="text-lg font-semibold text-accent">Unternehmensgegenstand</h2>
-                        <p>IT-Dienstleistungen & Webdesign</p>
-                    </section>
-
-                    <!-- Disclaimers -->
-                    <section class="pt-8 text-sm text-gray-500 space-y-4 border-t border-white/10 mt-12">
-                        <h3 class="font-bold text-white">Haftung für Inhalte</h3>
-                        <p>
-                            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach
-                            den
-                            allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter
-                            jedoch
-                            nicht
-                            verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
-                            Umständen
-                            zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-                        </p>
-                        <h3 class="font-bold text-white">Urheberrecht</h3>
-                        <p>
-                            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
-                            österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art
-                            der
-                            Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung
-                            des
-                            jeweiligen Autors bzw. Erstellers.
-                        </p>
-                    </section>
+                <h2 id="modal-title-impressum"
+                    class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Impressum</h2>
+                <div id="modal-content-impressum" class="text-gray-300">
+                    <!-- Dynamic Content -->
                 </div>
             </div>
         </div>
@@ -232,57 +191,11 @@
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Datenschutzerklärung
+                <h2 id="modal-title-datenschutz"
+                    class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Datenschutzerklärung
                 </h2>
-                <div class="space-y-12 text-gray-300 leading-relaxed">
-                    <!-- 1. General Information -->
-                    <section>
-                        <h3 class="text-lg font-semibold text-accent mb-2">1. Datenschutz auf einen Blick</h3>
-                        <p class="mb-4">
-                            Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
-                            personenbezogenen
-                            Daten passiert, wenn Sie diese Website besuchen.
-                        </p>
-                        <h4 class="font-bold text-white mb-1">Verantwortliche Stelle:</h4>
-                        <p>
-                            <strong>Tamas Horvat</strong><br>
-                            Hauptstraße 32<br>
-                            2000 Stockerau<br>
-                            E-Mail: <a href="mailto:info@n3xt-level.eu"
-                                class="text-accent hover:underline">info@n3xt-level.eu</a>
-                        </p>
-                    </section>
-
-                    <!-- 2. Data Collection (Server Logs) -->
-                    <section>
-                        <h3 class="text-lg font-semibold text-accent mb-2">2. Datenerfassung auf unserer Website</h3>
-                        <h4 class="font-bold text-white mb-1">Server-Log-Dateien</h4>
-                        <p>
-                            Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten
-                            Server-Log-Dateien (Browsertyp, Betriebssystem, IP-Adresse, etc.).
-                        </p>
-                    </section>
-
-                    <!-- 3. Contact Form -->
-                    <section>
-                        <h3 class="text-lg font-semibold text-accent mb-2">3. Kontaktformular</h3>
-                        <p>
-                            Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben inklusive der
-                            von
-                            Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage bei uns gespeichert.
-                            Diese
-                            Daten geben wir nicht ohne Ihre Einwilligung weiter.
-                        </p>
-                    </section>
-
-                    <!-- 4. User Rights -->
-                    <section>
-                        <h3 class="text-lg font-semibold text-accent mb-2">4. Ihre Rechte</h3>
-                        <p>
-                            Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
-                            personenbezogenen Daten sowie ein Recht auf Berichtigung oder Löschung dieser Daten.
-                        </p>
-                    </section>
+                <div id="modal-content-datenschutz" class="text-gray-300">
+                    <!-- Dynamic Content -->
                 </div>
             </div>
         </div>
@@ -300,16 +213,10 @@
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <h2 class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">Allgemeine
-                    Geschäftsbedingungen</h2>
-                <div class="text-gray-300 space-y-4 leading-relaxed">
-                    <h3 class="text-xl font-semibold text-accent mt-4">1. Geltungsbereich</h3>
-                    <p>Diese AGB gelten für alle Geschäftsbeziehungen zwischen N3XT LEVEL und dem Kunden.</p>
-                    <h3 class="text-xl font-semibold text-accent mt-4">2. Leistungen</h3>
-                    <p>Der Umfang der vertraglichen Leistungen ergibt sich aus dem jeweiligen Angebot.</p>
-                    <h3 class="text-xl font-semibold text-accent mt-4">3. Vertragsabschluss</h3>
-                    <p>Der Vertrag kommt durch die Annahme des Angebots durch den Kunden zustande.</p>
-                    <p class="text-sm text-gray-500 mt-4">* Dies ist eine beispielhafte Darstellung.</p>
+                <h2 id="modal-title-agb" class="text-3xl font-bold mb-6 text-white sticky top-0 bg-[#0a0a0a] py-2 z-0">
+                    Allgemeine Geschäftsbedingungen</h2>
+                <div id="modal-content-agb" class="text-gray-300">
+                    <!-- Dynamic Content -->
                 </div>
             </div>
         </div>

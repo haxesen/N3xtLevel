@@ -13,6 +13,9 @@ import { Booking } from './components/Booking.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
 import { Blog } from './components/Blog.js';
+import { Pricing } from './components/Pricing.js';
+
+import { LegalTexts } from './components/LegalTexts.js';
 import { Chatbot } from './components/Chatbot.js';
 import { CookieBanner } from './components/CookieBanner.js';
 import { initParticles } from './components/Particles.js';
@@ -311,6 +314,7 @@ const updateUI = () => {
     renderComp('hero-container', Hero);
     renderComp('services-container', Services);
     renderComp('process-container', Process);
+    renderComp('pricing-container', Pricing);
     renderComp('premium-content-container', PremiumContent);
     renderComp('stats-container', Stats);
     renderComp('about-me-container', AboutMe);
@@ -319,6 +323,22 @@ const updateUI = () => {
     renderComp('booking-container', Booking);
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);
+
+    // Update Legal Texts
+    const legalTypes = ['impressum', 'datenschutz', 'agb'];
+    legalTypes.forEach(type => {
+        const contentEl = document.getElementById(`modal-content-${type}`);
+        const titleEl = document.getElementById(`modal-title-${type}`);
+        if (contentEl) contentEl.innerHTML = LegalTexts[type][currentLang];
+
+        // Update Titles
+        const titles = {
+            impressum: { de: "Impressum", en: "Legal Disclosure", hu: "Impresszum" },
+            datenschutz: { de: "Datenschutzerklärung", en: "Privacy Policy", hu: "Adatvédelmi Nyilatkozat" },
+            agb: { de: "Allgemeine Geschäftsbedingungen", en: "Terms & Conditions", hu: "Általános Szerződési Feltételek" }
+        };
+        if (titleEl) titleEl.innerText = titles[type][currentLang];
+    });
 
     // Initialize Particles (Canvas)
     requestAnimationFrame(() => initParticles('neural-canvas'));

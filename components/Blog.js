@@ -7,23 +7,23 @@ export const Blog = (lang = 'de') => {
                 {
                     category: "Praxis & Gesundheit",
                     date: "Fallstudie",
-                    title: "Dr. Müller: Mehr Patienten, weniger Telefon.",
-                    excerpt: "Wie eine lokale Zahnarztpraxis durch Online-Terminbuchung und SEO täglich 2 Stunden Admin-Zeit spart und 30% mehr Neupatienten gewinnt.",
+                    title: "Zahnarztpraxis: 30% mehr Patienten",
+                    excerpt: "Wie eine lokale Praxis durch Online-Terminbuchung und SEO täglich 2 Stunden Admin-Zeit spart und neue Patienten gewinnt.",
                     img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
                     category: "Handwerk & Bau",
                     date: "Lösung",
-                    title: "Hans der Dachdecker: 24/7 Service dank AI.",
-                    excerpt: "Während Hans auf dem Dach steht, beantwortet unser AI-Chatbot Preisanfragen und filtert echte Aufträge vor. Kein verpasster Kunde mehr.",
+                    title: "Dachdeckerei: Kundenanfragen auf Autopilot",
+                    excerpt: "Während das Team auf dem Dach steht, beantwortet unser AI-Chatbot Preisanfragen und filtert echte Aufträge vor.",
                     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
                     category: "Gastronomie & Lokal",
                     date: "SEO Strategie",
-                    title: "Café Vienna: Nr. 1 auf Google Maps.",
+                    title: "Café & Bistro: Nr. 1 auf Google Maps",
                     excerpt: "Vom Geheimtipp zum Stadtgespräch. Durch gezieltes 'Local SEO' haben wir die Sichtbarkeit in der Google-Suche verdoppelt.",
                     img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
@@ -38,24 +38,24 @@ export const Blog = (lang = 'de') => {
                 {
                     category: "Practice & Health",
                     date: "Case Study",
-                    title: "Dr. Müller: More patients, less calls.",
-                    excerpt: "How a local dental practice saves 2 hours of admin time daily and gains 30% more new patients via online booking and SEO.",
+                    title: "Dental Practice: 30% More Patients",
+                    excerpt: "How a local practice saves 2 hours of admin time daily and gains new patients via online booking and SEO.",
                     img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
                     category: "Crafts & Construction",
                     date: "Solution",
-                    title: "Hans the Roofer: 24/7 Service via AI.",
-                    excerpt: "While Hans is on the roof, our AI Chatbot answers price inquiries and qualifies leads. No more missed customers.",
+                    title: "Roofing Company: Inquiries on Autopilot",
+                    excerpt: "While the team is on the roof, our AI Chatbot answers price inquiries and filters for real jobs.",
                     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
                     category: "Gastronomy & Local",
                     date: "SEO Strategy",
-                    title: "Café Vienna: #1 on Google Maps.",
-                    excerpt: "From hidden gem to talk of the town. Through targeted 'Local SEO', we doubled visibility in Google/Maps searches.",
+                    title: "Cafe & Bistro: #1 on Google Maps",
+                    excerpt: "From hidden gem to talk of the town. Through targeted 'Local SEO', we doubled visibility in Google searches.",
                     img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 }
@@ -69,24 +69,24 @@ export const Blog = (lang = 'de') => {
                 {
                     category: "Praxis & Egészség",
                     date: "Esettanulmány",
-                    title: "Dr. Müller: Több páciens, kevesebb telefon.",
-                    excerpt: "Hogyan spórolt meg egy fogorvosi rendelő napi 2 óra adminisztrációt és szerzett +30% új pácienst az online foglalórendszerrel.",
+                    title: "Fogorvosi Rendelő: 30%-kal több páciens",
+                    excerpt: "Hogyan spórolt meg egy helyi rendelő napi 2 óra adminisztrációt és szerzett új pácienseket az online foglalórendszerrel.",
                     img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
                     category: "Építőipar & Kézműves",
                     date: "Megoldás",
-                    title: "Hans, az ács: 0-24 Ügyfélszolgálat AI-val.",
-                    excerpt: "Miközben Hans a tetőn dolgozik, az AI Chatbotunk megválaszolja az árakkal kapcsolatos kérdéseket és előszűri a munkákat. Nincs több elveszett hívás.",
+                    title: "Tetőfedő Vállalkozás: Ügyfélszolgálat AI-val",
+                    excerpt: "Miközben a csapat a tetőn dolgozik, az AI Chatbotunk megválaszolja az árakkal kapcsolatos kérdéseket és előszűri a munkákat.",
                     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
                     category: "Vendéglátás",
                     date: "SEO Stratégia",
-                    title: "Café Vienna: 1. hely a Google Térképen.",
-                    excerpt: "Rejtett helyből a város kedvence. Célzott 'Helyi SEO' stratégiával megdupláztuk a láthatóságot a Google keresőben.",
+                    title: "Kávézó: 1. hely a Google Térképen",
+                    excerpt: "Rejtett helyből a város kedvence. Célzott 'Helyi SEO' stratégiával megdupláztuk a láthatóságot a keresőben.",
                     img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 }

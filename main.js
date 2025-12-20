@@ -443,6 +443,39 @@ window.closeCalculator = () => {
     }
 };
 
+// --- Universal Modal Logic (Booking / Contact) ---
+const initUniversalModal = () => {
+    if (!document.getElementById('univ-modal')) {
+        const div = document.createElement('div');
+        div.id = 'univ-modal';
+        div.className = 'fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300';
+        div.innerHTML = `
+            <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeUnivModal()"></div>
+            <div class="relative w-full h-full md:h-auto md:max-w-4xl md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-[#0a0a0a] border border-white/10 md:rounded-3xl shadow-2xl p-0 overflow-y-auto transform scale-95 transition-transform duration-300 flex flex-col max-h-screen" id="univ-content">
+                <button onclick="closeUnivModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-50 bg-black/50 rounded-full p-2">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                <div id="univ-body" class="p-6 md:p-12"></div>
+            </div>
+        `;
+        document.body.appendChild(div);
+    }
+};
+
+window.closeUnivModal = () => {
+    const modal = document.getElementById('univ-modal');
+    const content = document.getElementById('univ-content');
+    if (modal && content) {
+        modal.classList.add('opacity-0');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+};
+
 window.hubSelect = (type, btn) => {
     initUniversalModal(); // Ensure exists
     const modal = document.getElementById('univ-modal');

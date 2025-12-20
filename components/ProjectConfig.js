@@ -1,4 +1,25 @@
 export const ProjectConfig = (lang = 'de') => {
+
+    // Icon Mappings
+    const icons = {
+        types: {
+            website: "fa-laptop-code",
+            seo: "fa-chart-line",
+            ai: "fa-robot",
+            content: "fa-camera-retro"
+        },
+        features: {
+            multilang: "fa-globe",
+            booking: "fa-calendar-check",
+            chatbot: "fa-comments",
+            seo_setup: "fa-magnifying-glass",
+            blog: "fa-newspaper",
+            cms: "fa-pen-to-square",
+            darkmode: "fa-moon",
+            drone: "fa-helicopter"
+        }
+    };
+
     const t = {
         de: {
             // Teaser
@@ -10,24 +31,24 @@ export const ProjectConfig = (lang = 'de') => {
             title: "Projekt Konfigurator",
             subtitle: "Wählen Sie Ihre Wunsch-Features.",
             step1: "Was benötigen Sie?",
-            step2: "Welche Extras?",
-            step3: "Kontaktdaten",
+            step2: "Gewünschte Extras & Funktionen",
+            step3: "Ihre Kontaktdaten",
             btn_next: "Weiter",
             btn_back: "Zurück",
             btn_send: "Anfrage senden",
             types: {
-                website: "Webseite (Corporate / Landing Page)",
-                seo: "SEO & Sichtbarkeit",
-                ai: "AI & Automatisierung",
-                content: "Foto / Video / Drohne"
+                website: { title: "Webseite", desc: "Corporate Website, Landing Page oder Portfolio." },
+                seo: { title: "SEO & Sichtbarkeit", desc: "Google Ranking, Local SEO & Optimierung." },
+                ai: { title: "AI & Automation", desc: "Chatbots, Automatisierung & KI-Lösungen." },
+                content: { title: "Content Creation", desc: "Foto, Video, Drohnenaufnahmen & Texte." }
             },
             features: {
-                multilang: "Mehrsprachigkeit (DE/EN/...)",
+                multilang: "Mehrsprachigkeit",
                 booking: "Buchungssystem",
-                chatbot: "AI Chatbot",
-                seo_setup: "SEO Grundoptimierung",
+                chatbot: "AI Chatbot Integration",
+                seo_setup: "SEO Basis-Setup",
                 blog: "Blog / News Bereich",
-                cms: "Einfach selbst bearbeitbar",
+                cms: "CMS (Selbstverwaltung)",
                 darkmode: "Premium Dark Mode",
                 drone: "Drohnenaufnahmen"
             },
@@ -51,10 +72,10 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Back",
             btn_send: "Send Request",
             types: {
-                website: "Website (Corporate / Landing Page)",
-                seo: "SEO & Visibility",
-                ai: "AI & Automation",
-                content: "Photo / Video / Drone"
+                website: { title: "Website", desc: "Corporate Website, Landing Page or Portfolio." },
+                seo: { title: "SEO & Visibility", desc: "Google Ranking, Local SEO & Optimization." },
+                ai: { title: "AI & Automation", desc: "Chatbots, Automation & AI Solutions." },
+                content: { title: "Content Creation", desc: "Photo, Video, Drone Shots & Copywriting." }
             },
             features: {
                 multilang: "Multi-language",
@@ -62,7 +83,7 @@ export const ProjectConfig = (lang = 'de') => {
                 chatbot: "AI Chatbot",
                 seo_setup: "Basic SEO Setup",
                 blog: "Blog / News Section",
-                cms: "Easy to Edit",
+                cms: "Easy to Edit (CMS)",
                 darkmode: "Premium Dark Mode",
                 drone: "Drone Shots"
             },
@@ -86,14 +107,14 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Vissza",
             btn_send: "Ajánlatkérés Küldése",
             types: {
-                website: "Weboldal (Landing / Céges)",
-                seo: "SEO & Láthatóság",
-                ai: "AI & Automatizálás",
-                content: "Fotó / Videó / Drón"
+                website: { title: "Weboldal", desc: "Céges weboldal, Landing Page vagy Portfólió." },
+                seo: { title: "SEO & Láthatóság", desc: "Google rangsorolás, Local SEO & Optimalizálás." },
+                ai: { title: "AI & Automatizálás", desc: "Chatbotok, Automatizálás & MI megoldások." },
+                content: { title: "Tartalomgyártás", desc: "Fotó, Videó, Drónfelvételek & Szövegírás." }
             },
             features: {
                 multilang: "Többnyelvűség",
-                booking: "Időpontfoglaló Rendszer",
+                booking: "Időpontfoglaló",
                 chatbot: "AI Chatbot",
                 seo_setup: "SEO Alapbeállítás",
                 blog: "Blog / Hírek modul",
@@ -130,37 +151,47 @@ export const ProjectConfig = (lang = 'de') => {
             <!-- Wizard -->
             <div class="relative overflow-hidden">
                 <!-- Progress Bar -->
-                <div class="flex items-center justify-between mb-10 px-4 relative">
+                <div class="flex items-center justify-between mb-12 px-4 relative max-w-2xl mx-auto">
                     <div class="absolute top-1/2 left-0 w-full h-1 bg-white/5 -z-10 rounded-full"></div>
                     <div id="uic-progress-track" class="absolute top-1/2 left-0 h-1 bg-accent -z-10 rounded-full transition-all duration-500" style="width: 0%"></div>
                     
-                    <div class="uic-step active flex flex-col items-center gap-2 cursor-pointer" onclick="goToStep(0)">
-                        <div class="w-8 h-8 rounded-full bg-accent text-black font-bold flex items-center justify-center shadow-glow transition-all duration-300">1</div>
-                        <span class="text-[10px] md:text-xs text-accent font-medium uppercase hidden md:block">${t.step1}</span>
+                    <div class="uic-step active flex flex-col items-center gap-2 cursor-pointer transition-opacity duration-300" onclick="goToStep(0)">
+                        <div class="w-10 h-10 rounded-full bg-accent text-black font-bold flex items-center justify-center shadow-glow transition-all duration-300"><i class="fas fa-list-check"></i></div>
+                        <span class="text-[10px] md:text-sm text-accent font-medium uppercase hidden md:block mt-1">${t.step1}</span>
                     </div>
-                    <div class="uic-step flex flex-col items-center gap-2 cursor-pointer opacity-40" onclick="goToStep(1)">
-                        <div class="w-8 h-8 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300">2</div>
-                        <span class="text-[10px] md:text-xs text-gray-400 font-medium uppercase hidden md:block">${t.step2}</span>
+                    <div class="uic-step flex flex-col items-center gap-2 cursor-pointer opacity-40 hover:opacity-100 transition-opacity duration-300" onclick="goToStep(1)">
+                        <div class="w-10 h-10 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300"><i class="fas fa-puzzle-piece"></i></div>
+                        <span class="text-[10px] md:text-sm text-gray-400 font-medium uppercase hidden md:block mt-1">${t.step2}</span>
                     </div>
-                    <div class="uic-step flex flex-col items-center gap-2 cursor-pointer opacity-40" onclick="goToStep(2)">
-                        <div class="w-8 h-8 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300">3</div>
-                        <span class="text-[10px] md:text-xs text-gray-400 font-medium uppercase hidden md:block">${t.step3}</span>
+                    <div class="uic-step flex flex-col items-center gap-2 cursor-pointer opacity-40 hover:opacity-100 transition-opacity duration-300" onclick="goToStep(2)">
+                        <div class="w-10 h-10 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300"><i class="fas fa-paper-plane"></i></div>
+                        <span class="text-[10px] md:text-sm text-gray-400 font-medium uppercase hidden md:block mt-1">${t.step3}</span>
                     </div>
                 </div>
 
                 <!-- Steps Content -->
-                <div class="min-h-[350px]">
+                <div class="min-h-[400px]">
                     <!-- Step 1: Types -->
                     <div id="uic-step-0" class="uic-view animate-fade-in block">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            ${Object.entries(t.types).map(([key, label]) => `
+                            ${Object.entries(t.types).map(([key, data]) => `
                                 <div onclick="toggleSelection('type', '${key}')" 
-                                     class="uic-card-type p-6 rounded-xl border border-white/10 bg-white/5 hover:border-accent/50 cursor-pointer transition-all duration-300 flex items-center gap-4 hover:shadow-lg"
+                                     class="uic-card-type p-6 rounded-2xl border border-white/10 bg-white/5 hover:border-accent hover:bg-white/10 cursor-pointer transition-all duration-300 flex items-start gap-4 hover:shadow-glow group h-full"
                                      data-value="${key}">
-                                    <div class="w-6 h-6 rounded-full border-2 border-white/20 flex-shrink-0 flex items-center justify-center">
-                                        <div class="w-3 h-3 rounded-full bg-accent opacity-0 transition-opacity"></div>
+                                    
+                                    <div class="w-12 h-12 rounded-xl bg-accent/10 text-accent flex-shrink-0 flex items-center justify-center group-hover:bg-accent group-hover:text-black transition-all duration-300 border border-accent/20">
+                                        <i class="fas ${icons.types[key]} text-xl"></i>
                                     </div>
-                                    <span class="text-white font-medium text-sm md:text-base">${label}</span>
+                                    
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-start">
+                                            <h4 class="text-white font-bold text-lg mb-1 group-hover:text-accent transition-colors">${data.title}</h4>
+                                            <div class="w-5 h-5 rounded-full border border-white/30 flex items-center justify-center ml-2">
+                                                 <div class="w-2.5 h-2.5 rounded-full bg-accent opacity-0 transition-opacity uic-check-circle"></div>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-400 text-sm leading-relaxed">${data.desc}</p>
+                                    </div>
                                 </div>
                             `).join('')}
                         </div>
@@ -168,15 +199,22 @@ export const ProjectConfig = (lang = 'de') => {
 
                     <!-- Step 2: Features -->
                     <div id="uic-step-1" class="uic-view hidden">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             ${Object.entries(t.features).map(([key, label]) => `
                                 <div onclick="toggleSelection('feature', '${key}')" 
-                                     class="uic-card-feat p-5 rounded-xl border border-white/10 bg-white/5 hover:border-accent/50 cursor-pointer transition-all duration-300 flex items-center gap-4 hover:bg-white/10"
+                                     class="uic-card-feat p-4 rounded-xl border border-white/10 bg-white/5 hover:border-accent/40 cursor-pointer transition-all duration-300 flex flex-col items-center justify-center text-center gap-3 hover:bg-white/10 group h-32"
                                      data-value="${key}">
-                                    <div class="w-5 h-5 rounded border border-white/30 flex-shrink-0 flex items-center justify-center">
-                                        <i class="fas fa-check text-xs text-accent opacity-0 transition-opacity"></i>
-                                    </div>
-                                    <span class="text-gray-300 group-hover:text-white transition-colors text-sm md:text-base">${label}</span>
+                                    
+                                     <div class="relative">
+                                        <div class="text-3xl text-gray-500 group-hover:text-accent transition-colors duration-300">
+                                            <i class="fas ${icons.features[key]}"></i>
+                                        </div>
+                                        <div class="absolute -top-2 -right-3 w-5 h-5 bg-accent rounded-full text-black text-xs flex items-center justify-center opacity-0 transition-opacity uic-feat-check shadow-lg font-bold">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                     </div>
+
+                                    <span class="text-gray-300 group-hover:text-white transition-colors text-sm font-medium leading-tight">${label}</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -184,31 +222,53 @@ export const ProjectConfig = (lang = 'de') => {
 
                     <!-- Step 3: Contact -->
                     <div id="uic-step-2" class="uic-view hidden">
-                         <div class="max-w-md mx-auto space-y-4">
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-2">${t.form.name}</label>
-                                <input type="text" id="uic-name" class="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent outline-none">
+                         <div class="max-w-md mx-auto space-y-5">
+                            <div class="group">
+                                <label class="block text-sm text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.form.name}</label>
+                                <div class="relative">
+                                    <input type="text" id="uic-name" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white focus:border-accent outline-none transition-all focus:bg-white/10 focus:shadow-[0_0_15px_rgba(255,69,0,0.1)]">
+                                    <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-accent transition-colors"></i>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-2">${t.form.email}</label>
-                                <input type="email" id="uic-email" class="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent outline-none">
+                            
+                            <div class="group">
+                                <label class="block text-sm text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.form.email}</label>
+                                <div class="relative">
+                                    <input type="email" id="uic-email" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white focus:border-accent outline-none transition-all focus:bg-white/10 focus:shadow-[0_0_15px_rgba(255,69,0,0.1)]">
+                                    <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-accent transition-colors"></i>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-2">${t.form.phone}</label>
-                                <input type="tel" id="uic-phone" class="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent outline-none">
+                            
+                            <div class="group">
+                                <label class="block text-sm text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.form.phone}</label>
+                                <div class="relative">
+                                    <input type="tel" id="uic-phone" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white focus:border-accent outline-none transition-all focus:bg-white/10 focus:shadow-[0_0_15px_rgba(255,69,0,0.1)]">
+                                    <i class="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-accent transition-colors"></i>
+                                </div>
                             </div>
-                            <div class="p-4 bg-accent/10 rounded-lg border border-accent/20 mt-4">
-                                <p class="text-sm text-accent text-center" id="uic-summary-text">Summary...</p>
+
+                            <div class="p-6 bg-accent/5 rounded-xl border border-accent/20 mt-6 relative overflow-hidden">
+                                <div class="absolute top-0 right-0 p-4 opacity-10 text-4xl text-accent"><i class="fas fa-file-invoice"></i></div>
+                                <h4 class="text-accent font-bold mb-2 text-sm uppercase tracking-wider">Zusammenfassung</h4>
+                                <p class="text-sm text-gray-300 leading-relaxed" id="uic-summary-text">Wählen Sie Ihre Optionen...</p>
                             </div>
                          </div>
                     </div>
                 </div>
 
                 <!-- Navigation -->
-                <div class="flex justify-between mt-8 pt-8 border-t border-white/10">
-                    <button id="uic-btn-back" onclick="changeStep(-1)" class="px-6 py-3 rounded-lg text-gray-400 hover:text-white font-medium transition-colors hidden">${t.btn_back}</button>
-                    <button id="uic-btn-next" onclick="changeStep(1)" class="ml-auto px-8 py-3 rounded-lg bg-white text-black font-bold hover:bg-gray-200 transition-all shadow-lg transform hover:-translate-y-1">${t.btn_next}</button>
-                    <button id="uic-btn-send" onclick="submitConfig()" class="ml-auto px-8 py-3 rounded-lg bg-accent text-white font-bold hover:bg-accent-hover transition-all shadow-glow hidden">${t.btn_send}</button>
+                <div class="flex justify-between items-center mt-8 pt-8 border-t border-white/10">
+                    <button id="uic-btn-back" onclick="changeStep(-1)" class="px-6 py-3 rounded-xl text-gray-400 hover:text-white font-medium transition-colors hidden flex items-center gap-2 group">
+                        <i class="fas fa-arrow-left text-sm group-hover:-translate-x-1 transition-transform"></i> ${t.btn_back}
+                    </button>
+                    
+                    <button id="uic-btn-next" onclick="changeStep(1)" class="ml-auto px-10 py-4 rounded-xl bg-white text-black font-bold hover:bg-gray-200 transition-all shadow-lg transform hover:-translate-y-1 flex items-center gap-3">
+                        ${t.btn_next} <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <button id="uic-btn-send" onclick="submitConfig()" class="ml-auto px-10 py-4 rounded-xl bg-accent text-white font-bold hover:bg-accent-hover transition-all shadow-glow hover:shadow-glow-intense transform hover:-translate-y-1 hidden flex items-center gap-3">
+                        <i class="fas fa-paper-plane"></i> ${t.btn_send}
+                    </button>
                 </div>
             </div>
         </div>

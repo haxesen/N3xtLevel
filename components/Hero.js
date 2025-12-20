@@ -72,13 +72,13 @@ export const Hero = (lang = 'de') => {
         </p>
         <div class="flex flex-col sm:flex-row justify-center items-center gap-6 animate-fade-in-up"
             style="animation-delay: 0.4s;">
-            <a href="#contact"
-                class="group relative px-10 py-5 bg-accent text-white text-lg font-bold rounded overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-glow-intense">
+            <button onclick="window.openCalculator()"
+                class="group relative px-10 py-5 bg-accent text-white text-lg font-bold rounded overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-glow-intense cursor-pointer">
                 <span class="relative z-10">${t.cta_primary}</span>
                 <div
                     class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 </div>
-            </a>
+            </button>
             <a href="#portfolio"
                 class="px-10 py-5 border border-white/20 text-white text-lg font-medium rounded hover:bg-white/5 hover:border-white transition-all duration-300">
                 ${t.cta_secondary}

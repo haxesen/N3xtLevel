@@ -308,12 +308,27 @@ window.toggleSelection = (category, value) => {
     if (category === 'type') {
         window.calcState.type = value;
         document.querySelectorAll('.uic-card-type').forEach(el => {
+            const iconContainer = el.querySelector('div.w-12');
+            const checkCircle = el.querySelector('.uic-check-circle');
+
             if (el.dataset.value === value) {
+                // Active State
                 el.classList.add('border-accent', 'bg-white/10');
-                el.querySelector('.w-3').classList.remove('opacity-0');
+                if (checkCircle) checkCircle.classList.remove('opacity-0');
+
+                if (iconContainer) {
+                    iconContainer.classList.remove('bg-accent/10', 'text-accent');
+                    iconContainer.classList.add('bg-accent', 'text-black');
+                }
             } else {
+                // Inactive State
                 el.classList.remove('border-accent', 'bg-white/10');
-                el.querySelector('.w-3').classList.add('opacity-0');
+                if (checkCircle) checkCircle.classList.add('opacity-0');
+
+                if (iconContainer) {
+                    iconContainer.classList.add('bg-accent/10', 'text-accent');
+                    iconContainer.classList.remove('bg-accent', 'text-black');
+                }
             }
         });
     } else if (category === 'feature') {
@@ -323,12 +338,25 @@ window.toggleSelection = (category, value) => {
 
         const el = document.querySelector(`.uic-card-feat[data-value="${value}"]`);
         if (el) {
+            const checkBadge = el.querySelector('.uic-feat-check');
+            const mainIcon = el.querySelector('.text-3xl');
+
             if (idx === -1) {
+                // Selected
                 el.classList.add('border-accent', 'bg-white/10');
-                el.querySelector('.fa-check').classList.remove('opacity-0');
+                if (checkBadge) checkBadge.classList.remove('opacity-0');
+                if (mainIcon) {
+                    mainIcon.classList.remove('text-gray-500');
+                    mainIcon.classList.add('text-accent');
+                }
             } else {
+                // Deselected
                 el.classList.remove('border-accent', 'bg-white/10');
-                el.querySelector('.fa-check').classList.add('opacity-0');
+                if (checkBadge) checkBadge.classList.add('opacity-0');
+                if (mainIcon) {
+                    mainIcon.classList.add('text-gray-500');
+                    mainIcon.classList.remove('text-accent');
+                }
             }
         }
     }

@@ -185,33 +185,17 @@ const setupContactForm = () => {
         btn.disabled = true;
 
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
         const storedBooking = localStorage.getItem('n3xt_pending_booking');
+        let bookingDetails = null;
 
+        // Enhance Formspree Data with Booking Info
         if (storedBooking) {
             try {
-                const bookingDetails = JSON.parse(storedBooking);
-                const googlePayload = {
-                    name: data.name,
-                    email: data.email,
-                    message: data.message,
-                    date: bookingDetails.date,
-                    time: bookingDetails.time
-                };
-
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify(googlePayload)
-                }).then(() => console.log('Google Sync initiated'))
-                    .catch(err => console.warn('Google Sync failed:', err));
-
-                localStorage.removeItem('n3xt_pending_booking');
-            } catch (err) {
-                console.warn('Calendar sync logic error:', err);
-            }
+                bookingDetails = JSON.parse(storedBooking);
+                formData.append('Booking Date', bookingDetails.date);
+                formData.append('Booking Time', bookingDetails.time);
+                formData.append('_subject', `📅 Booking Request: ${bookingDetails.date} @ ${bookingDetails.time}`);
+            } catch (err) { console.warn(err); }
         }
 
         try {
@@ -222,6 +206,28 @@ const setupContactForm = () => {
             });
 
             if (res.ok) {
+                // 1. Google Calendar Sync (Only if Formspree success)
+                if (storedBooking && bookingDetails) {
+                    const googlePayload = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        message: formData.get('message'),
+                        date: bookingDetails.date,
+                        time: bookingDetails.time
+                    };
+
+                    fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(googlePayload)
+                    }).then(() => console.log('Google Sync initiated'))
+                        .catch(err => console.warn('Google Sync failed:', err));
+
+                    localStorage.removeItem('n3xt_pending_booking');
+                }
+
+                // 2. UI Feedback
                 form.reset();
                 if (successOverlay && formContent) {
                     formContent.classList.add('hidden');

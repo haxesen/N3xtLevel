@@ -147,15 +147,8 @@ const setupCalendar = () => {
             };
             localStorage.setItem('n3xt_pending_booking', JSON.stringify(bookingData));
 
-            const contactSec = document.getElementById('contact');
-            const msgArea = document.querySelector('textarea[name="message"]');
-            if (contactSec && msgArea) {
-                contactSec.scrollIntoView({ behavior: 'smooth' });
-                msgArea.value = (currentLang === 'hu' ? `Időpontfoglalás: ${selectedDateText.innerText}, ${selectedTime}` :
-                    (currentLang === 'en' ? `Booking Request: ${selectedDateText.innerText}, ${selectedTime}` :
-                        `Terminanfrage: ${selectedDateText.innerText}, ${selectedTime}`)) + "\n\n";
-                msgArea.focus();
-            }
+            // Switch to Contact Form via Hub
+            if (window.hubSelect) window.hubSelect('message');
         };
     }
 };

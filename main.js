@@ -498,6 +498,14 @@ window.hubSelect = (type, btn) => {
     // CRITICAL FIX: Remove 'reveal' class because intersection observer might not trigger inside modal
     html = html.replace(/reveal/g, '');
 
+    // STYLE FIX: Strip large section padding and background to fit modal elegance
+    html = html.replace(/py-32/g, 'py-0');
+    html = html.replace(/py-24/g, 'py-0');
+    html = html.replace(/py-20/g, 'py-0');
+    html = html.replace(/bg-black/g, '');
+    html = html.replace(/border-t/g, '');
+    html = html.replace(/border-white\/5/g, '');
+
     // Inject HTML directly (skipping regex to avoid mismatches)
     // We wrap it to handle styles if needed
     body.innerHTML = `<div class="w-full modal-inner-content">${html}</div>`;

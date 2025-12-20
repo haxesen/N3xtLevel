@@ -611,39 +611,14 @@ window.hubSelect = (type, btn) => {
     const lang = localStorage.getItem('n3xt_lang') || 'de';
     let html = '';
 
+    // Pass 'true' for isModal to get streamlined content
     if (type === 'calendar') {
-        html = Booking(lang);
+        html = Booking(lang, true);
     } else if (type === 'message') {
-        html = Contact(lang);
+        html = Contact(lang, true);
     }
 
-    // CRITICAL FIX: Remove 'reveal' class because intersection observer might not trigger inside modal
-    html = html.replace(/reveal/g, '');
-
-    // STYLE FIX: Strip large section padding and background to fit modal elegance
-    html = html.replace(/py-32/g, 'py-0');
-    html = html.replace(/py-24/g, 'py-0');
-    html = html.replace(/py-20/g, 'py-0');
-
-    // Remove Inner Card Styles (Box-in-Box removal)
-    html = html.replace(/bg-black/g, '');
-    html = html.replace(/bg-\[#0a0a0a\]/g, '');
-    html = html.replace(/bg-\[#0f0f0f\]/g, ''); // Fix for Booking Card
-    html = html.replace(/border-t/g, '');
-    html = html.replace(/border border-white\/5/g, '');
-    html = html.replace(/border border-white\/10/g, ''); // Fix for Booking Border
-    html = html.replace(/border-white\/5/g, '');
-    html = html.replace(/shadow-2xl/g, '');
-    html = html.replace(/box-shadow-2xl/g, '');
-    html = html.replace(/rounded-3xl/g, '');
-    html = html.replace(/max-w-[a-z0-9-]+/g, 'w-full'); // Remove inner max-width constraints
-
-    // Remove Orange Glows (cleaner look)
-    html = html.replace(/bg-accent\/5/g, 'hidden');
-    html = html.replace(/bg-accent\/20/g, 'hidden');
-
-    // Inject HTML directly (skipping regex to avoid mismatches)
-    // We wrap it to handle styles if needed
+    // Inject HTML directly
     body.innerHTML = `<div class="w-full modal-inner-content">${html}</div>`;
 
     // Re-initialize logic
@@ -658,6 +633,12 @@ window.hubSelect = (type, btn) => {
         content.classList.remove('scale-95');
         content.classList.add('scale-100');
     }, 10);
+};
+setTimeout(() => {
+    modal.classList.remove('opacity-0');
+    content.classList.remove('scale-95');
+    content.classList.add('scale-100');
+}, 10);
 };
 
 // 5. Update UI (Main Re-render function)

@@ -1,4 +1,4 @@
-export const Booking = (lang = 'de') => {
+export const Booking = (lang = 'de', isModal = false) => {
     const content = {
         de: {
             title_prefix: "Persönliches",
@@ -34,14 +34,12 @@ export const Booking = (lang = 'de') => {
     // Helper to generate day headers
     const dayHeaders = t.days.map(d => `<div class="text-gray-500 text-sm font-medium py-2">${d}</div>`).join('');
 
-    return `
-<!-- Booking Section -->
-<section id="booking" class="py-32 bg-black relative border-t border-white/5">
+    const innerContent = `
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="flex flex-col gap-10 items-center lg:items-start">
 
                         <!-- Left Content -->
-                        <div class="w-full reveal">
+                        <div class="w-full ${isModal ? '' : 'reveal'}">
                             <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight break-words hyphens-auto">
                                 ${t.title_prefix} <br>
                                     <span class="text-accent">${t.title_highlight}</span>
@@ -65,7 +63,7 @@ export const Booking = (lang = 'de') => {
                         </div>
 
                         <!-- Right Content: Calendar UI -->
-                        <div class="w-full reveal" style="transition-delay: 200ms;">
+                        <div class="w-full ${isModal ? '' : 'reveal'}" style="transition-delay: 200ms;">
                             <div class="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-glow relative overflow-hidden group hover:border-accent/30 transition-colors">
                                 <!-- Glow Effect inside card -->
                                 <div class="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none"></div>
@@ -113,6 +111,16 @@ export const Booking = (lang = 'de') => {
                         </div>
                     </div>
                 </div>
-            </section>
+    `;
+
+    if (isModal) {
+        return innerContent;
+    }
+
+    return `
+<!-- Booking Section -->
+<section id="booking" class="py-32 bg-black relative border-t border-white/5">
+    ${innerContent}
+</section>
     `;
 };

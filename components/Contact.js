@@ -1,4 +1,4 @@
-export const Contact = (lang = 'de') => {
+export const Contact = (lang = 'de', isModal = false) => {
     const content = {
         de: {
             title_prefix: "Senden Sie uns eine",
@@ -49,21 +49,7 @@ export const Contact = (lang = 'de') => {
 
     const t = content[lang] || content.de;
 
-    return `
-<!-- Contact Section -->
-<section id="contact" class="py-32 bg-black relative overflow-hidden">
-    <!-- Glow effects -->
-    <!-- Mobile Glow -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-accent/20 rounded-full blur-[90px] pointer-events-none md:hidden"></div>
-    
-    <!-- Desktop Glow -->
-    <div
-        class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4 hidden md:block">
-    </div>
-
-    <div class="max-w-3xl mx-auto px-6 relative z-10">
-        <div
-            class="bg-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-white/5 box-shadow-2xl reveal relative overflow-hidden">
+    const formHTML = `
             <div id="formContent">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-5xl font-bold mb-4">${t.title_prefix} <span
@@ -122,6 +108,29 @@ export const Contact = (lang = 'de') => {
                     ${t.success_msg}
                 </p>
             </div>
+    `;
+
+    if (isModal) {
+        // Return streamlined content for modal
+        return `<div class="w-full relative">${formHTML}</div>`;
+    }
+
+    return `
+<!-- Contact Section -->
+<section id="contact" class="py-32 bg-black relative overflow-hidden">
+    <!-- Glow effects -->
+    <!-- Mobile Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-accent/20 rounded-full blur-[90px] pointer-events-none md:hidden"></div>
+    
+    <!-- Desktop Glow -->
+    <div
+        class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4 hidden md:block">
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 relative z-10">
+        <div
+            class="bg-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-white/5 box-shadow-2xl reveal relative overflow-hidden">
+            ${formHTML}
         </div>
     </div>
 </section>

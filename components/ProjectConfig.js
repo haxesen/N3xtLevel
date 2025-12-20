@@ -1,22 +1,23 @@
 export const ProjectConfig = (lang = 'de') => {
 
     // Icon Mappings
+    // Icon Mappings
     const icons = {
         types: {
+            landing: "fa-rocket",
             website: "fa-laptop-code",
             ecommerce: "fa-cart-shopping",
-            ai: "fa-robot",
-            content: "fa-camera-retro"
+            webapp: "fa-code-branch"
         },
         features: {
-            multilang: "fa-globe",
-            booking: "fa-calendar-check",
-            chatbot: "fa-comments",
-            seo_setup: "fa-magnifying-glass",
+            content_ai: "fa-robot",
+            seo_pro: "fa-magnifying-glass-chart",
+            chat_sales: "fa-comments-dollar",
+            automation: "fa-gears",
             blog: "fa-newspaper",
-            cms: "fa-pen-to-square",
-            darkmode: "fa-moon",
-            drone: "fa-helicopter"
+            booking: "fa-calendar-check",
+            multilang: "fa-globe",
+            design: "fa-palette"
         }
     };
 
@@ -37,20 +38,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Zurück",
             btn_send: "Anfrage senden",
             types: {
-                website: { title: "Webseite", desc: "Modernes Corporate Design oder Landing Page." },
-                ecommerce: { title: "E-Commerce", desc: "Komplett-Webshop mit Zahlungssystem." },
-                ai: { title: "AI & Automation", desc: "Chatbots, Workflows & Prozessoptimierung." },
-                content: { title: "Media & Content", desc: "Profi Foto- & Videoproduktion." }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
+                website: { title: "Corporate Website", desc: "Mehrseitiger Auftritt mit CMS." },
+                ecommerce: { title: "E-Commerce", desc: "Webshop mit Payment-System." },
+                webapp: { title: "Custom Web-App", desc: "SaaS, Portale & Plattformen." }
             },
             features: {
-                multilang: { title: "Mehrsprachigkeit", desc: "DE/EN/HU Integration für internationale Reichweite." },
-                booking: { title: "Buchungssystem", desc: "Automatische Terminvergabe & Kalender-Sync." },
-                chatbot: { title: "AI Chatbot", desc: "24/7 Kundensupport mit eigener Datenbasis." },
-                seo_setup: { title: "SEO Pro Setup", desc: "Technisches SEO für Top Google-Rankings." },
-                blog: { title: "Blog / News", desc: "Content-Marketing Modul mit Editor." },
-                cms: { title: "CMS System", desc: "Inhalte einfach selbst verwalten." },
-                darkmode: { title: "Premium Dark Mode", desc: "Exklusives Design für Augenkomfort." },
-                drone: { title: "Drohnenaufnahmen", desc: "Cinematische 4K Luftaufnahmen." }
+                content_ai: { title: "AI Content Boost", desc: "Texte & Bilder fixfertig generiert." },
+                seo_pro: { title: "SEO & Analytics", desc: "Top-Rankings & Conversion-Tracking." },
+                chat_sales: { title: "Sales Chatbot", desc: "Verkauft 24/7 automatisch." },
+                automation: { title: "Workflows", desc: "Zapier, Make & Auto-Emails." },
+                blog: { title: "Blog / News", desc: "Content-Modul für Reichweite." },
+                booking: { title: "Buchungssystem", desc: "Termine automatisch verwalten." },
+                multilang: { title: "Mehrsprachigkeit", desc: "International skalieren (DE/EN/HU)." },
+                design: { title: "Premium Motion", desc: "High-End Animationen & Design." }
             },
             form: {
                 name: "Ihr Name",
@@ -74,20 +75,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Back",
             btn_send: "Send Request",
             types: {
-                website: { title: "Website", desc: "Modern Corporate Design or Landing Page." },
-                ecommerce: { title: "E-Commerce", desc: "Complete Webshop with Payment Systems." },
-                ai: { title: "AI & Automation", desc: "Chatbots, Workflows & Process Optimization." },
-                content: { title: "Media & Content", desc: "Pro Photo & Video Production." }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
+                website: { title: "Corporate Website", desc: "Multi-page site with CMS." },
+                ecommerce: { title: "E-Commerce", desc: "Webshop with Payment System." },
+                webapp: { title: "Custom Web-App", desc: "SaaS, Portals & Platforms." }
             },
             features: {
-                multilang: { title: "Multi-language", desc: "DE/EN/HU integration for global reach." },
-                booking: { title: "Booking System", desc: "Auto scheduling & Calendar Sync." },
-                chatbot: { title: "AI Chatbot", desc: "24/7 Support trained on your data." },
-                seo_setup: { title: "SEO Pro Setup", desc: "Technical SEO for top Google rankings." },
-                blog: { title: "Blog / News", desc: "Content marketing module with editor." },
-                cms: { title: "CMS System", desc: "Manage content easily yourself." },
-                darkmode: { title: "Premium Dark Mode", desc: "Exclusive design for eye comfort." },
-                drone: { title: "Drone Shots", desc: "Cinematic 4K aerial footage." }
+                content_ai: { title: "AI Content Boost", desc: "Text & Images generated for you." },
+                seo_pro: { title: "SEO & Analytics", desc: "Top Rankings & Conversion Tracking." },
+                chat_sales: { title: "Sales Chatbot", desc: "Sells 24/7 automatically." },
+                automation: { title: "Workflows", desc: "Zapier, Make & Auto-Emails." },
+                blog: { title: "Blog / News", desc: "Content module for reach." },
+                booking: { title: "Booking System", desc: "Manage appointments automatically." },
+                multilang: { title: "Multi-language", desc: "Scale internationally (DE/EN/HU)." },
+                design: { title: "Premium Motion", desc: "High-end animations & design." }
             },
             form: {
                 name: "Your Name",
@@ -111,20 +112,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Vissza",
             btn_send: "Ajánlatkérés Küldése",
             types: {
-                website: { title: "Weboldal", desc: "Modern céges weboldal vagy Landing Page." },
-                ecommerce: { title: "E-Commerce", desc: "Komplett Webshop fizetési rendszerrel." },
-                ai: { title: "AI & Automatizálás", desc: "Chatbotok, Workflowk & Folyamatoptimalizálás." },
-                content: { title: "Média & Tartalom", desc: "Profi Fotó- és Videógyártás." }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
+                website: { title: "Céges Weboldal", desc: "Többoldalas szájt CMS-sel." },
+                ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel." },
+                webapp: { title: "Egyedi Web-App", desc: "SaaS, Portálok & Platformok." }
             },
             features: {
-                multilang: { title: "Többnyelvűség", desc: "DE/EN/HU integráció a nemzetközi sikerért." },
-                booking: { title: "Időpontfoglaló", desc: "Automata naptár és foglalási rendszer." },
-                chatbot: { title: "AI Chatbot", desc: "0-24 Ügyfélszolgálat saját tudásbázissal." },
-                seo_setup: { title: "SEO Pro Setup", desc: "Technikai optimalizálás a Google helyezésért." },
-                blog: { title: "Blog / Hírek", desc: "Tartalommarketing modul saját szerkesztővel." },
-                cms: { title: "CMS Rendszer", desc: "Kezelje tartalmait programozói tudás nélkül." },
-                darkmode: { title: "Prémium Dark Mode", desc: "Exkluzív sötét mód a szemkímélő élményért." },
-                drone: { title: "Drónfelvételek", desc: "Lenyűgöző 4K légifelvételek." }
+                content_ai: { title: "AI Tartalom", desc: "Szövegírás & Képek generálása." },
+                seo_pro: { title: "SEO & Analytics", desc: "Top helyezések & Mérés." },
+                chat_sales: { title: "Sales Chatbot", desc: "0-24 automata értékesítés." },
+                automation: { title: "Automatizálás", desc: "Zapier, Make & E-mailek." },
+                blog: { title: "Blog / Hírek", desc: "Tartalommodul a látogatókért." },
+                booking: { title: "Időpontfoglaló", desc: "Automata naptárkezelés." },
+                multilang: { title: "Többnyelvűség", desc: "Nemzetközi piac (DE/EN/HU)." },
+                design: { title: "Prémium Motion", desc: "High-End animációk & design." }
             },
             form: {
                 name: "Az Ön neve",

@@ -373,10 +373,8 @@ window.changeStep = (delta) => {
     }
 
     // Special Logic: Skip Features (Step 1) if Type is 'content'
-    if (window.calcState.type === 'content') {
-        if (window.calcState.step === 0 && delta > 0) newStep = 2; // Jump 0 -> 2
-        else if (window.calcState.step === 2 && delta < 0) newStep = 0; // Jump 2 -> 0
-    }
+    // Standard Step Change
+
 
     window.goToStep(newStep);
 };
@@ -389,10 +387,8 @@ window.goToStep = (step) => {
     }
 
     // Validation: Step 2 (Features) required for Step 3, BUT NOT for 'content'
-    if (step > 1 && window.calcState.type !== 'content' && window.calcState.features.length === 0) {
-        alert(currentLang === 'hu' ? 'Kérjük válasszon legalább egy funkciót!' : (currentLang === 'en' ? 'Please select at least one feature!' : 'Bitte wählen Sie mindestens eine Funktion!'));
-        return;
-    }
+    // Validation: Step 2 (Features) - Optional
+    // if (step > 1 && window.calcState.features.length === 0) { ... }
 
     window.calcState.step = step;
     document.querySelectorAll('.uic-view').forEach((el, idx) => {

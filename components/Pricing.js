@@ -9,7 +9,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€1.390",
                 period: "einmalig",
                 desc: "Für Start-ups & lokale Helden.",
-                features: ["Premium One-Pager", "Social Media Anbindung", "Mobile First Design", "SEO Basis-Paket"],
+                features: ["High-Conversion Landing Page", "Google Maps & Kontakt-Setup", "Ultra-Fast Speed Performance", "SEO Basis & Social Media"],
                 btn: "Jetzt starten"
             },
             professional: {
@@ -17,7 +17,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€2.490",
                 period: "einmalig",
                 desc: "Unser Bestseller für KMUs.",
-                features: ["Bis zu 6 Unterseiten", "CMS (Selbstverwaltung)", "Blog / News Modul", "Erweitertes SEO & Speed", "Kontaktformulare"],
+                features: ["Bis zu 7 Unterseiten & Blog", "CMS (Einfache Selbstverwaltung)", "AI-Optimierte Texte & Bilder", "Erweitertes Local SEO & Analytics", "DSGVO & Sicherheits-Paket"],
                 btn: "Durchstarten"
             },
             enterprise: {
@@ -25,7 +25,7 @@ export const Pricing = (lang = 'de') => {
                 price: "Ab €5.990",
                 period: "individuell",
                 desc: "Innovation & Marktführerschaft.",
-                features: ["Alles aus Professional", "E-Commerce / Webshop", "AI Chatbot Integration", "Mehrsprachigkeit", "Custom Web Apps"],
+                features: ["Custom Web-App / E-Commerce", "24/7 AI Sales Chatbot", "Automatisierte Workflows", "International (Mehrsprachig)", "Premium Priority Support"],
                 btn: "Beratung anfordern"
             },
             cta: {
@@ -42,7 +42,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€1,390",
                 period: "one-time",
                 desc: "For Start-ups & Local Heroes.",
-                features: ["Premium One-Pager", "Social Media Integration", "Mobile First Design", "Basic SEO Package"],
+                features: ["High-Conversion Landing Page", "Google Maps & Contact Setup", "Ultra-Fast Speed Performance", "Basic SEO & Social Media"],
                 btn: "Get Started"
             },
             professional: {
@@ -50,7 +50,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€2,490",
                 period: "one-time",
                 desc: "Our Bestseller for SMEs.",
-                features: ["Up to 6 Subpages", "CMS (Self-management)", "Blog / News Module", "Advanced SEO & Speed", "Contact Forms"],
+                features: ["Up to 7 Subpages & Blog", "CMS (Easy Self-Management)", "AI-Optimized Content & Images", "Advanced Local SEO & Analytics", "GDPR & Security Package"],
                 btn: "Boost Business"
             },
             enterprise: {
@@ -58,7 +58,7 @@ export const Pricing = (lang = 'de') => {
                 price: "From €5,990",
                 period: "individual",
                 desc: "Innovation & Market Leadership.",
-                features: ["Everything in Professional", "E-Commerce / Webshop", "AI Chatbot Integration", "Multi-language Support", "Custom Web Apps"],
+                features: ["Custom Web-App / E-Commerce", "24/7 AI Sales Chatbot", "Automated Workflows", "International (Multi-language)", "Premium Priority Support"],
                 btn: "Request Consult"
             },
             cta: {
@@ -75,7 +75,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€1.390",
                 period: "egyszeri",
                 desc: "Induló vállalkozásoknak.",
-                features: ["Prémium One-Pager", "Social Média Integráció", "Mobil-első Design", "Alap SEO Csomag"],
+                features: ["High-Conversion Landing Page", "Google Térkép & Kapcsolat", "Ultra-Gyors Betöltés", "Alap SEO & Social Media"],
                 btn: "Indítás"
             },
             professional: {
@@ -83,7 +83,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€2.490",
                 period: "egyszeri",
                 desc: "Bestseller KKV-knak.",
-                features: ["Akár 6 aloldal", "CMS (Szerkeszthető)", "Blog / Hírek Modul", "Haladó SEO & Sebesség", "Kapcsolati űrlapok"],
+                features: ["Akár 7 aloldal & Blog", "CMS (Könnyű Szerkeszthetőség)", "AI Szövegírás & Képek", "Haladó Helyi SEO & Analytics", "GDPR & Biztonsági Csomag"],
                 btn: "Turbózzuk fel"
             },
             enterprise: {
@@ -91,7 +91,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€5.990-tól",
                 period: "egyéni",
                 desc: "Innováció és Piacvezetés.",
-                features: ["Minden a Professional-ból", "E-Commerce / Webshop", "AI Chatbot Integráció", "Többnyelvűség", "Egyedi Web Appok"],
+                features: ["Egyedi Web-App / Webshop", "24/7 AI Sales Chatbot", "Automatizált Folyamatok", "Nemzetközi (Többnyelvűség)", "Prémium Priority Support"],
                 btn: "Konzultáció"
             },
             cta: {

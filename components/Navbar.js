@@ -29,9 +29,12 @@ export const Navbar = (lang = 'de') => {
     const t = content[lang] || content.de;
 
     // Build nav items HTML
-    const navItems = t.links.map(link =>
-        `<a href="${link.href}" class="hover:text-white transition-colors">${link.text}</a>`
-    ).join('');
+    const navItems = t.links.map(link => {
+        if (link.href === '#contact') {
+            return `<a href="#" onclick="window.hubSelect('message'); return false;" class="hover:text-white transition-colors">${link.text}</a>`;
+        }
+        return `<a href="${link.href}" class="hover:text-white transition-colors">${link.text}</a>`;
+    }).join('');
 
     return `
     <nav class="fixed top-0 w-full z-50 glass">
@@ -43,10 +46,10 @@ export const Navbar = (lang = 'de') => {
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-300">
                 ${navItems}
-                <a href="#contact"
+                <button onclick="window.openCalculator()"
                     class="px-6 py-2.5 bg-white/5 border border-white/10 text-white rounded font-semibold hover:bg-accent hover:border-accent hover:shadow-glow transition-all duration-300">
                     ${t.btn}
-                </a>
+                </button>
                 
                 <!-- Language Switcher -->
                 <button class="lang-switch-btn flex items-center gap-2 bg-black/50 border border-white/10 hover:border-accent px-3 py-2 rounded-full transition-all group ml-4" title="Sprache wechseln / Change Language">

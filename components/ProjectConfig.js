@@ -118,8 +118,8 @@ export const ProjectConfig = (lang = 'de') => {
         <!-- Modal Content -->
         <div class="relative w-full h-full md:h-auto md:max-w-4xl md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-[#0a0a0a] border border-white/10 md:rounded-3xl shadow-2xl p-6 md:p-12 overflow-y-auto transform scale-95 transition-transform duration-300" id="project-config-content">
             
-            <button onclick="closeCalculator()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors z-20">
-                <i class="fas fa-times text-2xl"></i>
+            <button onclick="closeCalculator()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-all z-20 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md shadow-lg group">
+                <i class="fas fa-times text-lg group-hover:rotate-90 transition-transform duration-300"></i>
             </button>
 
             <div class="text-center mb-10">

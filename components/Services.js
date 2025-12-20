@@ -52,11 +52,11 @@ export const Services = (lang = 'de') => {
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Card 1 -->
                         <div onclick="openServiceModal('web')"
-                            class="group reveal p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(0,240,255,0.15)] relative overflow-hidden flex flex-col cursor-pointer backdrop-blur-sm">
+                            class="group reveal p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)] relative overflow-hidden flex flex-col cursor-pointer backdrop-blur-sm">
                             <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             
                             <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center mb-6 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-all duration-500 group-hover:scale-110 relative z-10">
+                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center mb-6 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all duration-500 group-hover:scale-110 relative z-10">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -74,12 +74,12 @@ export const Services = (lang = 'de') => {
                         </div>
 
                         <!-- Card 2 -->
-                        <div onclick="openServiceModal('seo')" class="group reveal p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(0,240,255,0.15)] relative overflow-hidden flex flex-col cursor-pointer backdrop-blur-sm"
+                        <div onclick="openServiceModal('seo')" class="group reveal p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)] relative overflow-hidden flex flex-col cursor-pointer backdrop-blur-sm"
                             style="transition-delay: 100ms;">
                             <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                             <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center mb-6 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-all duration-500 group-hover:scale-110 relative z-10">
+                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center mb-6 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all duration-500 group-hover:scale-110 relative z-10">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -97,12 +97,12 @@ export const Services = (lang = 'de') => {
                         </div>
 
                         <!-- Card 3 -->
-                        <div onclick="openServiceModal('ai')" class="group reveal p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(0,240,255,0.15)] relative overflow-hidden flex flex-col cursor-pointer backdrop-blur-sm"
+                        <div onclick="openServiceModal('ai')" class="group reveal p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)] relative overflow-hidden flex flex-col cursor-pointer backdrop-blur-sm"
                             style="transition-delay: 200ms;">
                             <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                             <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center mb-6 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-all duration-500 group-hover:scale-110 relative z-10">
+                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center mb-6 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all duration-500 group-hover:scale-110 relative z-10">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"

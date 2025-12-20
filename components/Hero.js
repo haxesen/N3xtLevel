@@ -4,9 +4,9 @@ export const Hero = (lang = 'de') => {
             h1_line1: "Bringen Sie Ihr Business",
             h1_line2_prefix: "auf das",
             h1_span_text: "N3XT LEVEL.",
-            p_start: "KI-optimierte Web-Lösungen für maximalen",
-            p_highlight: "Unternehmenserfolg",
-            p_end: ".",
+            p_start: "Premium-Webseiten für",
+            p_highlight: "KMUs & lokale Dienstleister",
+            p_end: ". KI-optimierte Lösungen für maximalen Erfolg.",
             cta_primary: "Jetzt anfragen",
             cta_secondary: "Portfolio ansehen"
         },
@@ -14,9 +14,9 @@ export const Hero = (lang = 'de') => {
             h1_line1: "Take your Business",
             h1_line2_prefix: "to the",
             h1_span_text: "N3XT LEVEL.",
-            p_start: "AI-optimized web solutions for maximum",
-            p_highlight: "business success",
-            p_end: ".",
+            p_start: "Premium Websites for",
+            p_highlight: "SMEs & Local Services",
+            p_end: ". AI-optimized solutions for maximum success.",
             cta_primary: "Get in touch",
             cta_secondary: "View Portfolio"
         },
@@ -24,9 +24,9 @@ export const Hero = (lang = 'de') => {
             h1_line1: "Emelje vállalkozását",
             h1_line2_prefix: "a",
             h1_span_text: "N3XT LEVEL-re.",
-            p_start: "MI-optimalizált webes megoldások a maximális",
-            p_highlight: "üzleti sikerért",
-            p_end: ".",
+            p_start: "Prémium weboldalak",
+            p_highlight: "KKV-knak & Helyi Szolgáltatóknak",
+            p_end: ". MI-optimalizált megoldások a maximális sikerért.",
             cta_primary: "Ajánlatkérés",
             cta_secondary: "Portfólió"
         }

@@ -4,21 +4,21 @@ export const AboutMe = (lang = 'de') => {
             badge: "Der Kopf hinter N3XT LEVEL",
             name: "Tamas Horvat",
             role: "Founder & Lead Developer",
-            desc: "\"Mein Ziel ist es, österreichische Unternehmen durch den Einsatz modernster KI-Technologien auf das nächste Level zu heben. Ich kombiniere technisches Know-how mit lokaler Verlässlichkeit.\"",
+            desc: "\"Ich bin kein anonymes Agentur-Netzwerk, sondern Ihr persönlicher digitaler Partner. Ich helfe lokalen Unternehmen, die Vorteile künstlicher Intelligenz zu nutzen – verständlich, fair und effizient.\"",
             signature_font: "'Mr De Haviland', cursive"
         },
         en: {
             badge: "The Mind Behind N3XT LEVEL",
             name: "Tamas Horvat",
             role: "Founder & Lead Developer",
-            desc: "\"My goal is to take Austrian businesses to the next level using cutting-edge AI technologies. I combine technical expertise with local reliability.\"",
+            desc: "\"I am not an anonymous agency network, but your personal digital partner. I help local businesses leverage Artificial Intelligence – understandably, fairly, and efficiently.\"",
             signature_font: "'Mr De Haviland', cursive"
         },
         hu: {
             badge: "A N3XT LEVEL motorja",
             name: "Horvat Tamás",
             role: "Alapító & Vezető Fejlesztő",
-            desc: "\"Célom, hogy a legmodernebb AI technológiák segítségével emeljem a vállalkozásokat a következő szintre. A technikai tudást a megbízhatósággal ötvözöm.\"",
+            desc: "\"Nem egy személytelen ügynökség vagyok, hanem az Ön személyes digitális partnere. Segítek a helyi vállalkozásoknak kihasználni a mesterséges intelligencia előnyeit – érthetően, korrekten és hatékonyan.\"",
             signature_font: "'Mr De Haviland', cursive"
         }
     };

@@ -27,6 +27,11 @@ export const Pricing = (lang = 'de') => {
                 desc: "Maßgeschneiderte Web-Apps & Systeme.",
                 features: ["Alles aus Business Growth", "React / Next.js Apps", "KI-Chatbots", "Mehrsprachigkeit", "API Integrationen"],
                 btn: "Beratung anfordern"
+            },
+            cta: {
+                title: "Haben Sie individuelle Anforderungen?",
+                desc: "Nicht das Passende dabei? Nutzen Sie unseren Projekt Konfigurator für ein maßgeschneidertes Angebot.",
+                btn: "Kalkulator starten"
             }
         },
         en: {
@@ -55,6 +60,11 @@ export const Pricing = (lang = 'de') => {
                 desc: "Tailored Web Apps & Systems.",
                 features: ["Everything in Business Growth", "React / Next.js Apps", "AI Chatbots", "Multilingual", "API Integrations"],
                 btn: "Request Consult"
+            },
+            cta: {
+                title: "Have custom requirements?",
+                desc: "Didn't find what you need? Use our Project Configurator for a tailored offer.",
+                btn: "Start Calculator"
             }
         },
         hu: {
@@ -83,6 +93,11 @@ export const Pricing = (lang = 'de') => {
                 desc: "Egyedi Web-Appok és Rendszerek.",
                 features: ["Minden a Növekedés csomagból", "React / Next.js Appok", "AI Chatbotok", "Többnyelvűség", "API Integrációk"],
                 btn: "Konzultáció"
+            },
+            cta: {
+                title: "Egyedi igényeid vannak?",
+                desc: "Nem találod a megfelelőt? Használd a Projekt Konfigurátort egy személyre szabott ajánlatért.",
+                btn: "Kalkulátor Indítása"
             }
         }
     };
@@ -114,9 +129,9 @@ export const Pricing = (lang = 'de') => {
                 `).join('')}
             </ul>
 
-            <a href="#contact" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass}">
+            <button onclick="window.hubSelect('message')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass}">
                 ${data.btn}
-            </a>
+            </button>
         </div>
         `;
     };
@@ -135,6 +150,24 @@ export const Pricing = (lang = 'de') => {
                 ${renderCard('business', true)}
                 ${renderCard('dominance')}
             </div>
+
+            <!-- Custom Calculator CTA -->
+            <div class="mt-16 p-8 rounded-3xl border border-white/10 bg-white/5 text-center relative overflow-hidden group hover:border-accent/50 transition-colors">
+                <div class="absolute inset-0 bg-accent/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold text-white mb-4">
+                        ${t.cta.title}
+                    </h3>
+                    <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                        ${t.cta.desc}
+                    </p>
+                    <button onclick="window.openCalculator()" class="px-8 py-3 bg-transparent border border-accent text-accent hover:bg-accent hover:text-white rounded-xl font-bold transition-all shadow-glow hover:shadow-glow-intense flex items-center gap-2 mx-auto group-btn">
+                        <span>${t.cta.btn}</span>
+                        <i class="fas fa-calculator group-btn-hover:rotate-12 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </section>
     `;

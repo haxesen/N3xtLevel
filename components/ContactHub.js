@@ -89,25 +89,25 @@ export const ContactHub = (lang = 'de') => {
                 </div>
 
                 <!-- Card 2: Booking -->
-                <div class="group relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-cyan-400 text-3xl shadow-glow group-hover:scale-110 transition-transform">
+                <div class="group relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,69,0,0.15)] flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-accent text-3xl shadow-glow group-hover:scale-110 transition-transform">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">${t.card_book.title}</h3>
                     <p class="text-gray-400 mb-8 leading-relaxed">${t.card_book.desc}</p>
-                    <button onclick="hubSelect('calendar', this)" class="mt-auto px-8 py-3 bg-cyan-500 text-black font-bold rounded-lg hover:bg-cyan-400 transition-colors w-full shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                    <button onclick="hubSelect('calendar', this)" class="mt-auto px-8 py-3 bg-gradient-to-r from-accent to-[#FF8C00] text-white font-bold rounded-lg hover:from-accent-hover hover:to-[#FF4500] transition-all w-full shadow-glow">
                         ${t.card_book.btn}
                     </button>
                 </div>
 
                 <!-- Card 3: Message -->
-                <div class="group relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] flex flex-col items-center text-center">
+                <div class="group relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,69,0,0.15)] flex flex-col items-center text-center">
                     <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-purple-400 text-3xl shadow-glow group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">${t.card_msg.title}</h3>
                     <p class="text-gray-400 mb-8 leading-relaxed">${t.card_msg.desc}</p>
-                    <button onclick="hubSelect('message', this)" class="mt-auto px-8 py-3 bg-transparent border border-white/30 text-white font-bold rounded-lg hover:bg-white/10 transition-colors w-full">
+                    <button onclick="hubSelect('message', this)" class="mt-auto px-8 py-3 bg-gradient-to-r from-accent to-[#FF8C00] text-white font-bold rounded-lg hover:from-accent-hover hover:to-[#FF4500] transition-all w-full shadow-glow">
                         ${t.card_msg.btn}
                     </button>
                 </div>

@@ -4,8 +4,7 @@ export const ProjectConfig = (lang = 'de') => {
     const icons = {
         types: {
             website: "fa-laptop-code",
-            seo: "fa-chart-line",
-            ai: "fa-robot",
+            upgrade: "fa-screwdriver-wrench",
             content: "fa-camera-retro"
         },
         features: {
@@ -37,9 +36,8 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Zurück",
             btn_send: "Anfrage senden",
             types: {
-                website: { title: "Webseite", desc: "Corporate Website, Landing Page oder Portfolio." },
-                seo: { title: "SEO & Sichtbarkeit", desc: "Google Ranking, Local SEO & Optimierung." },
-                ai: { title: "AI & Automation", desc: "Chatbots, Automatisierung & KI-Lösungen." },
+                website: { title: "Neues Web-Projekt", desc: "Corporate Website, Landing Page oder Portfolio." },
+                upgrade: { title: "Website Optimierung", desc: "Relaunch, Erweiterung oder Modernisierung bestehender Seiten." },
                 content: { title: "Content Creation", desc: "Foto, Video, Drohnenaufnahmen & Texte." }
             },
             features: {
@@ -72,9 +70,8 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Back",
             btn_send: "Send Request",
             types: {
-                website: { title: "Website", desc: "Corporate Website, Landing Page or Portfolio." },
-                seo: { title: "SEO & Visibility", desc: "Google Ranking, Local SEO & Optimization." },
-                ai: { title: "AI & Automation", desc: "Chatbots, Automation & AI Solutions." },
+                website: { title: "New Web Project", desc: "Corporate Website, Landing Page or Portfolio." },
+                upgrade: { title: "Website Upgrade", desc: "Relaunch, Extension or Modernization." },
                 content: { title: "Content Creation", desc: "Photo, Video, Drone Shots & Copywriting." }
             },
             features: {
@@ -107,9 +104,8 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Vissza",
             btn_send: "Ajánlatkérés Küldése",
             types: {
-                website: { title: "Weboldal", desc: "Céges weboldal, Landing Page vagy Portfólió." },
-                seo: { title: "SEO & Láthatóság", desc: "Google rangsorolás, Local SEO & Optimalizálás." },
-                ai: { title: "AI & Automatizálás", desc: "Chatbotok, Automatizálás & MI megoldások." },
+                website: { title: "Új Weboldal", desc: "Céges weboldal, Landing Page vagy Portfólió." },
+                upgrade: { title: "Meglévő Weboldal fejlesztése", desc: "Relaunch, Modernizálás vagy Bővítés." },
                 content: { title: "Tartalomgyártás", desc: "Fotó, Videó, Drónfelvételek & Szövegírás." }
             },
             features: {

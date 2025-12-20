@@ -364,12 +364,20 @@ window.toggleSelection = (category, value) => {
 };
 
 window.changeStep = (delta) => {
-    const newStep = window.calcState.step + delta;
+    let newStep = window.calcState.step + delta;
     if (newStep < 0 || newStep > 2) return;
+
     if (window.calcState.step === 0 && delta > 0 && !window.calcState.type) {
         alert("Bitte wählen Sie zuerst einen Typ aus! / Kérjük válasszon típust!");
         return;
     }
+
+    // Special Logic: Skip Features (Step 1) if Type is 'content'
+    if (window.calcState.type === 'content') {
+        if (window.calcState.step === 0 && delta > 0) newStep = 2; // Jump 0 -> 2
+        else if (window.calcState.step === 2 && delta < 0) newStep = 0; // Jump 2 -> 0
+    }
+
     window.goToStep(newStep);
 };
 
@@ -380,8 +388,8 @@ window.goToStep = (step) => {
         return;
     }
 
-    // Validation: Step 2 (Features) required for Step 3
-    if (step > 1 && window.calcState.features.length === 0) {
+    // Validation: Step 2 (Features) required for Step 3, BUT NOT for 'content'
+    if (step > 1 && window.calcState.type !== 'content' && window.calcState.features.length === 0) {
         alert(currentLang === 'hu' ? 'Kérjük válasszon legalább egy funkciót!' : (currentLang === 'en' ? 'Please select at least one feature!' : 'Bitte wählen Sie mindestens eine Funktion!'));
         return;
     }
@@ -397,6 +405,8 @@ window.goToStep = (step) => {
 
     document.querySelectorAll('.uic-step').forEach((el, idx) => {
         const circle = el.querySelector('div');
+        // Logic: active if current step >= idx. 
+        // For 'content', if we are at step 2, step 1 should also appear 'completed' or just passed.
         if (idx <= step) {
             el.classList.remove('opacity-40');
             circle.classList.add('bg-accent', 'text-black', 'shadow-glow');

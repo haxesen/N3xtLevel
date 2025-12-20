@@ -352,6 +352,12 @@ window.goToStep = (step) => {
         return;
     }
 
+    // Validation: Step 2 (Features) required for Step 3
+    if (step > 1 && window.calcState.features.length === 0) {
+        alert(currentLang === 'hu' ? 'Kérjük válasszon legalább egy funkciót!' : (currentLang === 'en' ? 'Please select at least one feature!' : 'Bitte wählen Sie mindestens eine Funktion!'));
+        return;
+    }
+
     window.calcState.step = step;
     document.querySelectorAll('.uic-view').forEach((el, idx) => {
         if (idx === step) { el.classList.remove('hidden'); el.classList.add('animate-fade-in'); }

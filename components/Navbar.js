@@ -71,7 +71,7 @@ export const Navbar = (lang = 'de') => {
         <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 absolute w-full backdrop-blur-xl">
             <div class="flex flex-col p-6 space-y-6 text-center">
                 ${navItems}
-                <a href="#contact" class="text-accent font-bold text-lg">${t.btn}</a>
+                <button onclick="window.openCalculator()" class="text-accent font-bold text-lg">${t.btn}</button>
                 
                 <!-- Mobile Language Switcher -->
                 <button class="lang-switch-btn flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:border-accent px-6 py-3 rounded-xl transition-all group mx-auto w-full max-w-xs">

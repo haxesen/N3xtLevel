@@ -13,11 +13,11 @@ export const Blog = (lang = 'de') => {
                     link: "#contact"
                 },
                 {
-                    category: "Handwerk & Bau",
+                    category: "Beauty & Wellness",
                     date: "Lösung",
-                    title: "Dachdeckerei: Kundenanfragen auf Autopilot",
-                    excerpt: "Während das Team auf dem Dach steht, beantwortet unser AI-Chatbot Preisanfragen und filtert echte Aufträge vor.",
-                    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+                    title: "Beauty Salon: Voller Kalender, kein Stören",
+                    excerpt: "Während der Behandlung stört kein Telefon mehr. Unser System übernimmt Terminbuchungen und Fragen vollautomatisch.",
+                    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
@@ -44,11 +44,11 @@ export const Blog = (lang = 'de') => {
                     link: "#contact"
                 },
                 {
-                    category: "Crafts & Construction",
+                    category: "Beauty & Wellness",
                     date: "Solution",
-                    title: "Roofing Company: Inquiries on Autopilot",
-                    excerpt: "While the team is on the roof, our AI Chatbot answers price inquiries and filters for real jobs.",
-                    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+                    title: "Beauty Salon: Full Schedule, No Stress",
+                    excerpt: "No more phone ringing during treatments. Our system handles bookings and inquiries automatically.",
+                    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {
@@ -75,11 +75,11 @@ export const Blog = (lang = 'de') => {
                     link: "#contact"
                 },
                 {
-                    category: "Építőipar & Kézműves",
+                    category: "Szépség & Wellness",
                     date: "Megoldás",
-                    title: "Tetőfedő Vállalkozás: Ügyfélszolgálat AI-val",
-                    excerpt: "Miközben a csapat a tetőn dolgozik, az AI Chatbotunk megválaszolja az árakkal kapcsolatos kérdéseket és előszűri a munkákat.",
-                    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+                    title: "Szépségszalon: Teli naptár, nyugalom",
+                    excerpt: "Kezelés közben nem csörög a telefon. Rendszerünk automatikusan kezeli az időpontokat és a gyakori kérdéseket.",
+                    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800",
                     link: "#contact"
                 },
                 {

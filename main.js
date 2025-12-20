@@ -443,27 +443,44 @@ window.closeCalculator = () => {
     }
 };
 
-
 window.hubSelect = (type, btn) => {
-    const area = document.getElementById('hub-content-area');
-    if (!area) return;
+    initUniversalModal(); // Ensure exists
+    const modal = document.getElementById('univ-modal');
+    const content = document.getElementById('univ-content');
+    const body = document.getElementById('univ-body');
 
-    // Reset content
-    area.innerHTML = '';
+    if (!modal || !body) return;
+
+    // Reset & Prepare Content
+    body.innerHTML = '';
     const lang = localStorage.getItem('n3xt_lang') || 'de';
+    let html = '';
 
     if (type === 'calendar') {
-        area.innerHTML = Booking(lang);
-        setupCalendar();
+        html = Booking(lang);
     } else if (type === 'message') {
-        area.innerHTML = Contact(lang);
-        setupContactForm();
+        html = Contact(lang);
     }
 
-    // Scroll to content
+    // Cleanup Section classes for Modal context
+    // Replace standard section padding with minimal padding
+    html = html.replace(/section id=".*?" class=".*?"/, 'div class="w-full"');
+    html = html.replace('</section>', '</div>');
+
+    body.innerHTML = html;
+
+    // Re-initialize logic
+    if (type === 'calendar') setupCalendar();
+    if (type === 'message') setupContactForm();
+
+    // Show Modal
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
     setTimeout(() => {
-        area.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
+        modal.classList.remove('opacity-0');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+    }, 10);
 };
 
 // 5. Update UI (Main Re-render function)

@@ -465,10 +465,10 @@ const initUniversalModal = () => {
         div.innerHTML = `
             <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeUnivModal()"></div>
             <div class="relative w-full h-full md:h-auto md:max-w-4xl md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-[#0a0a0a] border border-white/10 md:rounded-3xl shadow-2xl p-0 overflow-y-auto transform scale-95 transition-transform duration-300 flex flex-col max-h-screen" id="univ-content">
-                <button onclick="closeUnivModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-50 bg-black/50 rounded-full p-2">
-                    <i class="fas fa-times text-xl"></i>
+                <button onclick="closeUnivModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition-all z-50 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md shadow-lg group">
+                    <i class="fas fa-times text-lg group-hover:rotate-90 transition-transform duration-300"></i>
                 </button>
-                <div id="univ-body" class="p-6 md:p-12"></div>
+                <div id="univ-body" class="p-8 md:p-12 relative z-10"></div>
             </div>
         `;
         document.body.appendChild(div);
@@ -526,6 +526,10 @@ window.hubSelect = (type, btn) => {
     html = html.replace(/box-shadow-2xl/g, '');
     html = html.replace(/rounded-3xl/g, '');
     html = html.replace(/max-w-[a-z0-9-]+/g, 'w-full'); // Remove inner max-width constraints
+
+    // Remove Orange Glows (cleaner look)
+    html = html.replace(/bg-accent\/5/g, 'hidden');
+    html = html.replace(/bg-accent\/20/g, 'hidden');
 
     // Inject HTML directly (skipping regex to avoid mismatches)
     // We wrap it to handle styles if needed

@@ -15,7 +15,7 @@ import { Footer } from './components/Footer.js';
 import { Blog } from './components/Blog.js';
 import { ProjectConfig } from './components/ProjectConfig.js';
 import { ContactHub } from './components/ContactHub.js';
-// import { Pricing } from './components/Pricing.js';
+import { Pricing } from './components/Pricing.js';
 
 import { LegalTexts } from './components/LegalTexts.js';
 import { Chatbot, initChatbotLogic } from './components/Chatbot.js';
@@ -601,6 +601,7 @@ const updateUI = () => {
     renderComp('hero-container', Hero);
 
     renderComp('services-container', Services);
+    renderComp('pricing-container', Pricing);
     renderComp('process-container', Process);
     renderComp('blog-container', Blog);
 

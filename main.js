@@ -413,6 +413,35 @@ window.submitConfig = async () => {
     }
 };
 
+
+window.openCalculator = () => {
+    const modal = document.getElementById('project-config-modal');
+    const content = document.getElementById('project-config-content');
+    if (modal && content) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }, 10);
+    }
+};
+
+window.closeCalculator = () => {
+    const modal = document.getElementById('project-config-modal');
+    const content = document.getElementById('project-config-content');
+    if (modal && content) {
+        modal.classList.add('opacity-0');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+};
+
 // 5. Update UI (Main Re-render function)
 const updateUI = () => {
     // 0. Update Meta Data (SEO)

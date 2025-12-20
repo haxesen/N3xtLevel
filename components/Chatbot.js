@@ -79,11 +79,11 @@ export const initChatbotLogic = () => {
         const div = document.createElement('div');
         div.id = id;
         div.className = 'flex justify-start animate-fade-in my-2';
-        div.innerHTML = `< div class="bg-white/10 text-gray-200 rounded-2xl rounded-tl-none px-4 py-2 text-sm flex gap-1 items-center" >
+        div.innerHTML = `<div class="bg-white/10 text-gray-200 rounded-2xl rounded-tl-none px-4 py-2 text-sm flex gap-1 items-center">
             <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></span>
             <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
             <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
-        </div > `;
+        </div>`;
         msgs.appendChild(div);
         msgs.scrollTop = msgs.scrollHeight;
     };
@@ -96,8 +96,8 @@ export const initChatbotLogic = () => {
     const addMsg = (sender, text) => {
         hideTyping();
         const div = document.createElement('div');
-        div.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate - fade -in my - 2`;
-        div.innerHTML = `< div class="max-w-[85%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot' ? 'bg-white/10 text-gray-200 rounded-tl-none' : 'bg-accent text-white rounded-tr-none'} shadow-sm" > ${text}</div > `;
+        div.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate-fade-in my-2`;
+        div.innerHTML = `<div class="max-w-[85%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot' ? 'bg-white/10 text-gray-200 rounded-tl-none' : 'bg-accent text-white rounded-tr-none'} shadow-sm">${text}</div>`;
         msgs.appendChild(div);
         msgs.scrollTop = msgs.scrollHeight;
     };

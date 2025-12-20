@@ -310,16 +310,6 @@ const updateUI = () => {
         if (el) el.innerHTML = fn ? fn(currentLang) : '';
     };
 
-    renderComp('navbar-container', Navbar);
-    renderComp('hero-container', Hero);
-    renderComp('services-container', Services);
-    renderComp('process-container', Process);
-    // renderComp('pricing-container', Pricing); // TODO: Redesign/Edit content before enabling
-    renderComp('blog-container', Blog);
-    renderComp('premium-content-container', PremiumContent);
-    renderComp('stats-container', Stats);
-    renderComp('about-me-container', AboutMe);
-    renderComp('portfolio-container', Portfolio);
     renderComp('booking-container', Booking);
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);

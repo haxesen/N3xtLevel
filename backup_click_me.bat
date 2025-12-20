@@ -37,5 +37,5 @@ for /f "skip=5 delims=" %%F in ('dir /b /o-d "BACKUP\N3xtLevel_Backup_*.zip"') d
 
 :end
 echo.
-echo A kilepeshez nyomj meg egy gombot...
-pause
+echo Kilepes 3 masodperc mulva...
+timeout /t 3 >nul

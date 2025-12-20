@@ -694,8 +694,8 @@ const initServiceModal = () => {
         modal.innerHTML = `
             <div class="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity" onclick="closeServiceModal()"></div>
             <div class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-[#0a0a0a] border border-accent/30 rounded-3xl p-8 shadow-[0_0_50px_rgba(0,240,255,0.15)] transform scale-95 transition-all duration-300">
-                <button class="absolute top-5 right-5 text-gray-500 hover:text-white transition-colors" onclick="closeServiceModal()">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                <button class="absolute top-5 right-5 text-gray-400 hover:text-white transition-all z-50 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md shadow-lg group" onclick="closeServiceModal()">
+                    <i class="fas fa-times text-lg group-hover:rotate-90 transition-transform duration-300"></i>
                 </button>
                 <div id="modal-icon" class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 text-accent mx-auto"></div>
                 <h3 id="modal-title" class="text-2xl font-bold mb-6 text-white text-center"></h3>

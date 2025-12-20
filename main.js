@@ -14,6 +14,7 @@ import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
 import { Blog } from './components/Blog.js';
 import { ProjectConfig } from './components/ProjectConfig.js';
+import { ContactHub } from './components/ContactHub.js';
 // import { Pricing } from './components/Pricing.js';
 
 import { LegalTexts } from './components/LegalTexts.js';
@@ -442,6 +443,29 @@ window.closeCalculator = () => {
     }
 };
 
+
+window.hubSelect = (type, btn) => {
+    const area = document.getElementById('hub-content-area');
+    if (!area) return;
+
+    // Reset content
+    area.innerHTML = '';
+    const lang = localStorage.getItem('n3xt_lang') || 'de';
+
+    if (type === 'calendar') {
+        area.innerHTML = Booking(lang);
+        setupCalendar();
+    } else if (type === 'message') {
+        area.innerHTML = Contact(lang);
+        setupContactForm();
+    }
+
+    // Scroll to content
+    setTimeout(() => {
+        area.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+};
+
 // 5. Update UI (Main Re-render function)
 const updateUI = () => {
     // 0. Update Meta Data (SEO)
@@ -476,7 +500,6 @@ const updateUI = () => {
 
     renderComp('services-container', Services);
     renderComp('process-container', Process);
-    renderComp('calculator-container', ProjectConfig);
     renderComp('blog-container', Blog);
 
     renderComp('premium-content-container', PremiumContent);
@@ -484,8 +507,10 @@ const updateUI = () => {
     renderComp('about-me-container', AboutMe);
     renderComp('portfolio-container', Portfolio);
 
-    renderComp('booking-container', Booking);
-    renderComp('contact-container', Contact);
+    // Unified Contact Hub
+    renderComp('contact-hub-container', ContactHub);
+    renderComp('calculator-modal-container', ProjectConfig); // Hidden Modal
+
     renderComp('footer-container', Footer);
 
     // Update Legal Texts

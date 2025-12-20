@@ -104,6 +104,17 @@ export const initChatbotLogic = () => {
 
     const navTo = (id) => {
         toggleFunc(); // Close chat
+
+        // ContactHub Handling
+        if (id === 'contact' && window.hubSelect) {
+            window.hubSelect('message');
+            return;
+        }
+        if (id === 'booking' && window.hubSelect) {
+            window.hubSelect('calendar');
+            return;
+        }
+
         setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 300);
     };
     window.navTo = navTo;

@@ -536,8 +536,10 @@ window.hubSelect = (type, btn) => {
     // Remove Inner Card Styles (Box-in-Box removal)
     html = html.replace(/bg-black/g, '');
     html = html.replace(/bg-\[#0a0a0a\]/g, '');
+    html = html.replace(/bg-\[#0f0f0f\]/g, ''); // Fix for Booking Card
     html = html.replace(/border-t/g, '');
     html = html.replace(/border border-white\/5/g, '');
+    html = html.replace(/border border-white\/10/g, ''); // Fix for Booking Border
     html = html.replace(/border-white\/5/g, '');
     html = html.replace(/shadow-2xl/g, '');
     html = html.replace(/box-shadow-2xl/g, '');

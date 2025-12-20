@@ -105,6 +105,7 @@ export const initChatbotLogic = () => {
         toggleFunc(); // Close chat
         setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 300);
     };
+    window.navTo = navTo;
 
     const showOpts = (options) => {
         opts.innerHTML = '';

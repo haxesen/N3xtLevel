@@ -233,6 +233,11 @@ const setupContactForm = () => {
                     formContent.classList.add('hidden');
                     successOverlay.classList.remove('hidden');
                     successOverlay.classList.add('flex');
+
+                    // Auto Access close after 4s
+                    setTimeout(() => {
+                        if (window.closeUnivModal) window.closeUnivModal();
+                    }, 4000);
                 } else if (statusMsg) {
                     statusMsg.innerText = "Success!";
                     statusMsg.classList.remove('hidden');

@@ -442,13 +442,22 @@ const updateUI = () => {
         if (el) el.innerHTML = fn ? fn(currentLang) : '';
     };
 
-    renderComp('booking-container', Booking);
-    renderComp('contact-container', Contact);
-    renderComp('footer-container', Footer);
+    renderComp('navbar-container', Navbar);
+    renderComp('hero-container', Hero);
+
     renderComp('services-container', Services);
     renderComp('process-container', Process);
     renderComp('calculator-container', ProjectConfig);
     renderComp('blog-container', Blog);
+
+    renderComp('premium-content-container', PremiumContent);
+    renderComp('stats-container', Stats);
+    renderComp('about-me-container', AboutMe);
+    renderComp('portfolio-container', Portfolio);
+
+    renderComp('booking-container', Booking);
+    renderComp('contact-container', Contact);
+    renderComp('footer-container', Footer);
 
     // Update Legal Texts
     const legalTypes = ['impressum', 'datenschutz', 'agb'];

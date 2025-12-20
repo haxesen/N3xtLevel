@@ -515,9 +515,17 @@ window.hubSelect = (type, btn) => {
     html = html.replace(/py-32/g, 'py-0');
     html = html.replace(/py-24/g, 'py-0');
     html = html.replace(/py-20/g, 'py-0');
+
+    // Remove Inner Card Styles (Box-in-Box removal)
     html = html.replace(/bg-black/g, '');
+    html = html.replace(/bg-\[#0a0a0a\]/g, '');
     html = html.replace(/border-t/g, '');
+    html = html.replace(/border border-white\/5/g, '');
     html = html.replace(/border-white\/5/g, '');
+    html = html.replace(/shadow-2xl/g, '');
+    html = html.replace(/box-shadow-2xl/g, '');
+    html = html.replace(/rounded-3xl/g, '');
+    html = html.replace(/max-w-[a-z0-9-]+/g, 'w-full'); // Remove inner max-width constraints
 
     // Inject HTML directly (skipping regex to avoid mismatches)
     // We wrap it to handle styles if needed

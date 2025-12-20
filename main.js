@@ -13,7 +13,8 @@ import { Booking } from './components/Booking.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
 import { Blog } from './components/Blog.js';
-import { Pricing } from './components/Pricing.js';
+import { ProjectConfig } from './components/ProjectConfig.js';
+// import { Pricing } from './components/Pricing.js';
 
 import { LegalTexts } from './components/LegalTexts.js';
 import { Chatbot } from './components/Chatbot.js';
@@ -281,6 +282,137 @@ const setupReveal = () => {
     reveals.forEach(el => observer.observe(el));
 };
 
+// --- Project Calculator Logic ---
+window.calcState = { step: 0, type: null, features: [] };
+
+window.toggleSelection = (category, value) => {
+    if (category === 'type') {
+        window.calcState.type = value;
+        document.querySelectorAll('.uic-card-type').forEach(el => {
+            if (el.dataset.value === value) {
+                el.classList.add('border-accent', 'bg-white/10');
+                el.querySelector('.w-3').classList.remove('opacity-0');
+            } else {
+                el.classList.remove('border-accent', 'bg-white/10');
+                el.querySelector('.w-3').classList.add('opacity-0');
+            }
+        });
+    } else if (category === 'feature') {
+        const idx = window.calcState.features.indexOf(value);
+        if (idx > -1) window.calcState.features.splice(idx, 1);
+        else window.calcState.features.push(value);
+
+        const el = document.querySelector(`.uic-card-feat[data-value="${value}"]`);
+        if (el) {
+            if (idx === -1) {
+                el.classList.add('border-accent', 'bg-white/10');
+                el.querySelector('.fa-check').classList.remove('opacity-0');
+            } else {
+                el.classList.remove('border-accent', 'bg-white/10');
+                el.querySelector('.fa-check').classList.add('opacity-0');
+            }
+        }
+    }
+    window.updateSummary();
+};
+
+window.changeStep = (delta) => {
+    const newStep = window.calcState.step + delta;
+    if (newStep < 0 || newStep > 2) return;
+    if (window.calcState.step === 0 && delta > 0 && !window.calcState.type) {
+        alert("Bitte wählen Sie zuerst einen Typ aus! / Kérjük válasszon típust!");
+        return;
+    }
+    window.goToStep(newStep);
+};
+
+window.goToStep = (step) => {
+    window.calcState.step = step;
+    document.querySelectorAll('.uic-view').forEach((el, idx) => {
+        if (idx === step) { el.classList.remove('hidden'); el.classList.add('animate-fade-in'); }
+        else { el.classList.add('hidden'); el.classList.remove('animate-fade-in'); }
+    });
+    const percent = (step / 2) * 100;
+    const track = document.getElementById('uic-progress-track');
+    if (track) track.style.width = `${percent}%`;
+
+    document.querySelectorAll('.uic-step').forEach((el, idx) => {
+        const circle = el.querySelector('div');
+        if (idx <= step) {
+            el.classList.remove('opacity-40');
+            circle.classList.add('bg-accent', 'text-black', 'shadow-glow');
+            circle.classList.remove('bg-white/10', 'text-white', 'border-white/10');
+        } else {
+            el.classList.add('opacity-40');
+            circle.classList.remove('bg-accent', 'text-black', 'shadow-glow');
+            circle.classList.add('bg-white/10', 'text-white', 'border-white/10');
+        }
+    });
+
+    const btnBack = document.getElementById('uic-btn-back');
+    const btnNext = document.getElementById('uic-btn-next');
+    const btnSend = document.getElementById('uic-btn-send');
+    if (btnBack) {
+        if (step === 0) btnBack.classList.add('hidden');
+        else btnBack.classList.remove('hidden');
+    }
+    if (btnNext && btnSend) {
+        if (step === 2) {
+            btnNext.classList.add('hidden');
+            btnSend.classList.remove('hidden');
+            window.updateSummary();
+        } else {
+            btnNext.classList.remove('hidden');
+            btnSend.classList.add('hidden');
+        }
+    }
+};
+
+window.updateSummary = () => {
+    const txt = document.getElementById('uic-summary-text');
+    if (!txt) return;
+    const typeLabel = window.calcState.type ? window.calcState.type.toUpperCase() : '-';
+    const feats = window.calcState.features.length > 0 ? window.calcState.features.join(', ') : 'None';
+    txt.innerHTML = `<strong>Selected:</strong> ${typeLabel} <br> <span class="text-gray-400 text-xs">${feats}</span>`;
+};
+
+window.submitConfig = async () => {
+    const name = document.getElementById('uic-name').value;
+    const email = document.getElementById('uic-email').value;
+    const phone = document.getElementById('uic-phone') ? document.getElementById('uic-phone').value : '';
+
+    if (!name || !email) {
+        alert("Name & Email required!");
+        return;
+    }
+
+    const data = {
+        _subject: "🚀 Neuer Projekt-Kalkulator Lead",
+        type: window.calcState.type,
+        features: window.calcState.features.join(', '),
+        name: name,
+        email: email,
+        phone: phone
+    };
+
+    const formData = new FormData();
+    for (const key in data) formData.append(key, data[key]);
+
+    try {
+        const response = await fetch("https://formspree.io/f/mvzppned", {
+            method: "POST", body: formData, headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+            alert("Danke! Wir melden uns in Kürze.");
+            location.reload();
+        } else {
+            alert("Fehler beim Senden.");
+        }
+    } catch (error) {
+        alert("Netzwerkfehler.");
+    }
+};
+
 // 5. Update UI (Main Re-render function)
 const updateUI = () => {
     // 0. Update Meta Data (SEO)
@@ -313,6 +445,10 @@ const updateUI = () => {
     renderComp('booking-container', Booking);
     renderComp('contact-container', Contact);
     renderComp('footer-container', Footer);
+    renderComp('services-container', Services);
+    renderComp('process-container', Process);
+    renderComp('calculator-container', ProjectConfig);
+    renderComp('blog-container', Blog);
 
     // Update Legal Texts
     const legalTypes = ['impressum', 'datenschutz', 'agb'];

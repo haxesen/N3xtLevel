@@ -1,10 +1,9 @@
 # N3XT LEVEL - Teendők (TODO)
 
 ## ⏳ Függőben lévő feladatok
-- [ ] **Blog Szekció Aktiválása:** 
-  - A kód kész (`components/Blog.js`), de jelenleg ki van kapcsolva a főoldalon.
-  - Teendő: 3 db valós, szakmai cikket írni (AI, SEO, Web témában).
-  - Aktiválás: A `main.js` fájlban vedd ki a kommentet a `// renderComp('blog-container', Blog);` sor elől.
+- [x] **Blog Szekció Aktiválása:** 
+  - 3 db konkrét esettanulmány (Fogorvos, Tetőfedő, Kávézó) hozzáadva.
+  - Aktiválva a főoldalon.
 - [ ] **Árazás Szekció (Pricing) Véglegesítése:**
   - Kód kész (`components/Pricing.js`), de átmenetileg kikapcsolva.
   - Teendő: Tartalom átszerkesztése (csomagok, árak).

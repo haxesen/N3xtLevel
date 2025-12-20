@@ -1,153 +1,143 @@
 export const Blog = (lang = 'de') => {
     const content = {
         de: {
-            title: "N3XT LEVEL",
-            title_highlight: "Insights",
-            subtitle: "Wissen, Trends & Strategien für Ihren digitalen Vorsprung.",
-            read_more: "Artikel lesen",
+            title: "Aktuelle Einblicke & Erfolgsgeschichten",
+            subtitle: "Konkrete Beispiele, wie wir lokalen Unternehmen helfen.",
             articles: [
                 {
-                    date: "12. Dez 2024",
-                    category: "AI Technology",
-                    title: "Warum Chatbots 2025 unverzichtbar sind",
-                    desc: "Automatisierter Kundenservice ist kein Trend mehr, sondern Standard. Wie Sie damit Zeit und Geld sparen.",
-                    icon: "fa-robot"
+                    category: "Praxis & Gesundheit",
+                    date: "Fallstudie",
+                    title: "Dr. Müller: Mehr Patienten, weniger Telefon.",
+                    excerpt: "Wie eine lokale Zahnarztpraxis durch Online-Terminbuchung und SEO täglich 2 Stunden Admin-Zeit spart und 30% mehr Neupatienten gewinnt.",
+                    img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 },
                 {
-                    date: "28. Nov 2024",
-                    category: "Web Performance",
-                    title: "Speed is King: Google Core Vitals",
-                    desc: "Ladezeiten unter 1 Sekunde? Warum langsame Webseiten Kunden kosten und wie wir das lösen.",
-                    icon: "fa-bolt"
+                    category: "Handwerk & Bau",
+                    date: "Lösung",
+                    title: "Hans der Dachdecker: 24/7 Service dank AI.",
+                    excerpt: "Während Hans auf dem Dach steht, beantwortet unser AI-Chatbot Preisanfragen und filtert echte Aufträge vor. Kein verpasster Kunde mehr.",
+                    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 },
                 {
-                    date: "15. Nov 2024",
-                    category: "Web Strategie",
-                    title: "Mehr Kunden durch SEO",
-                    desc: "Wie Sie mit lokaler Suchmaschinenoptimierung Ihre Sichtbarkeit in der Region massiv steigern können.",
-                    icon: "fa-search-location"
+                    category: "Gastronomie & Lokal",
+                    date: "SEO Strategie",
+                    title: "Café Vienna: Nr. 1 auf Google Maps.",
+                    excerpt: "Vom Geheimtipp zum Stadtgespräch. Durch gezieltes 'Local SEO' haben wir die Sichtbarkeit in der Google-Suche verdoppelt.",
+                    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 }
-            ]
+            ],
+            readMore: "Ähnliches Projekt starten"
         },
         en: {
-            title: "N3XT LEVEL",
-            title_highlight: "Insights",
-            subtitle: "Knowledge, Trends & Strategies for your digital advantage.",
-            read_more: "Read Article",
+            title: "Insights & Success Stories",
+            subtitle: "Concrete examples of how we help local businesses.",
             articles: [
                 {
-                    date: "Dec 12, 2024",
-                    category: "AI Technology",
-                    title: "Why Chatbots are essential in 2025",
-                    desc: "Automated customer service is no longer a trend, but a standard. How to save time and money.",
-                    icon: "fa-robot"
+                    category: "Practice & Health",
+                    date: "Case Study",
+                    title: "Dr. Müller: More patients, less calls.",
+                    excerpt: "How a local dental practice saves 2 hours of admin time daily and gains 30% more new patients via online booking and SEO.",
+                    img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 },
                 {
-                    date: "Nov 28, 2024",
-                    category: "Web Performance",
-                    title: "Speed is King: Google Core Vitals",
-                    desc: "Load times under 1 second? Why slow websites cost customers and how we solve it.",
-                    icon: "fa-bolt"
+                    category: "Crafts & Construction",
+                    date: "Solution",
+                    title: "Hans the Roofer: 24/7 Service via AI.",
+                    excerpt: "While Hans is on the roof, our AI Chatbot answers price inquiries and qualifies leads. No more missed customers.",
+                    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 },
                 {
-                    date: "Nov 15, 2024",
-                    category: "Web Strategy",
-                    title: "More Customers via SEO",
-                    desc: "How to massively increase your visibility in the region with local Search Engine Optimization.",
-                    icon: "fa-search-location"
+                    category: "Gastronomy & Local",
+                    date: "SEO Strategy",
+                    title: "Café Vienna: #1 on Google Maps.",
+                    excerpt: "From hidden gem to talk of the town. Through targeted 'Local SEO', we doubled visibility in Google/Maps searches.",
+                    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 }
-            ]
+            ],
+            readMore: "Start similar project"
         },
         hu: {
-            title: "N3XT LEVEL",
-            title_highlight: "Tudástár",
-            subtitle: "Tudás, Trendek & Stratégiák a digitális előnyért.",
-            read_more: "Tovább olvasom",
+            title: "Esettanulmányok & Megoldások",
+            subtitle: "Konkrét példák, hogyan segítünk a helyi vállalkozóknak.",
             articles: [
                 {
-                    date: "2024. Dec 12.",
-                    category: "AI Technológia",
-                    title: "Miért elengedhetetlenek a Chatbotok 2025-ben?",
-                    desc: "Az automatizált ügyfélszolgálat már nem trend, hanem elvárás. Hogyan spórolhatsz vele időt?",
-                    icon: "fa-robot"
+                    category: "Praxis & Egészség",
+                    date: "Esettanulmány",
+                    title: "Dr. Müller: Több páciens, kevesebb telefon.",
+                    excerpt: "Hogyan spórolt meg egy fogorvosi rendelő napi 2 óra adminisztrációt és szerzett +30% új pácienst az online foglalórendszerrel.",
+                    img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 },
                 {
-                    date: "2024. Nov 28.",
-                    category: "Web Teljesítmény",
-                    title: "A Sebesség a Király: Google Core Vitals",
-                    desc: "1 másodperc alatti betöltés? Miért veszítesz vevőket a lassú oldallal, és mi a megoldás?",
-                    icon: "fa-bolt"
+                    category: "Építőipar & Kézműves",
+                    date: "Megoldás",
+                    title: "Hans, az ács: 0-24 Ügyfélszolgálat AI-val.",
+                    excerpt: "Miközben Hans a tetőn dolgozik, az AI Chatbotunk megválaszolja az árakkal kapcsolatos kérdéseket és előszűri a munkákat. Nincs több elveszett hívás.",
+                    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 },
                 {
-                    date: "2024. Nov 15.",
-                    category: "Web Stratégia",
-                    title: "Több Ügyfél SEO-val",
-                    desc: "Hogyan növelheted drasztikusan a láthatóságodat a régióban a helyi keresőoptimalizálás segítségével.",
-                    icon: "fa-search-location"
+                    category: "Vendéglátás",
+                    date: "SEO Stratégia",
+                    title: "Café Vienna: 1. hely a Google Térképen.",
+                    excerpt: "Rejtett helyből a város kedvence. Célzott 'Helyi SEO' stratégiával megdupláztuk a láthatóságot a Google keresőben.",
+                    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
+                    link: "#contact"
                 }
-            ]
+            ],
+            readMore: "Hasonló projekt indítása"
         }
     };
 
     const t = content[lang] || content.de;
 
     return `
-<!-- Blog / Insights Section -->
-<section id="blog" class="py-24 bg-black relative border-t border-white/5 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+    <section id="blog" class="py-24 bg-black relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">${t.title}</h2>
+                <p class="text-xl text-gray-400 max-w-2xl">${t.subtitle}</p>
+            </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <!-- Header -->
-        <div class="text-center mb-16 reveal">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">${t.title} <span class="text-accent">${t.title_highlight}</span></h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-lg">${t.subtitle}</p>
-        </div>
-
-        <!-- Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            ${t.articles.map((article, index) => `
-                <article class="group relative bg-[#0a0a0a] rounded-3xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 reveal" style="transition-delay: ${index * 100}ms;">
-                    <!-- Hover Glow -->
-                    <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                    
-                    <!-- Decorative Top Border -->
-                    <div class="h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-
-                    <div class="p-8 flex flex-col h-full relative z-10">
-                        <!-- Header: Icon & Date -->
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:scale-110 transition-transform duration-300 shadow-glow-sm">
-                                <i class="fas ${article.icon} text-xl"></i>
-                            </div>
-                            <span class="text-xs font-mono text-gray-500 border border-white/10 px-2 py-1 rounded bg-black/50">${article.date}</span>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="flex-1">
-                            <span class="text-accent text-xs font-bold uppercase tracking-wider mb-3 block">${article.category}</span>
-                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors leading-tight">${article.title}</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-6">${article.desc}</p>
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                            <span class="text-white text-sm font-semibold group-hover:translate-x-1 transition-transform cursor-pointer">${t.read_more}</span>
-                            <i class="fas fa-arrow-right text-accent -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                ${t.articles.map((article, index) => `
+                <div class="group cursor-pointer" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    <div class="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+                        <div class="absolute inset-0 bg-accent/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="${article.img}" alt="${article.title}" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 z-20 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                            <span class="text-xs text-accent font-bold uppercase tracking-wider">${article.category}</span>
                         </div>
                     </div>
-                </article>
-            `).join('')}
+                    
+                    <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                        <span>${article.date}</span>
+                        <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                        <span>N3XT LEVEL</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors leading-tight">
+                        ${article.title}
+                    </h3>
+                    
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        ${article.excerpt}
+                    </p>
+                    
+                    <div class="text-white font-medium flex items-center gap-2 group-hover:gap-4 transition-all">
+                        ${t.readMore}
+                        <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                </div>
+                `).join('')}
+            </div>
         </div>
-        
-        <!-- View All Button (Optional) -->
-        <div class="text-center mt-16 reveal">
-             <button class="text-gray-500 hover:text-white transition-colors text-sm font-medium border-b border-transparent hover:border-accent pb-0.5">
-                ${lang === 'hu' ? 'Minden cikk megtekintése' : (lang === 'en' ? 'View all articles' : 'Alle Artikel ansehen')}
-             </button>
-        </div>
-
-    </div>
-</section>
-`;
+    </section>
+    `;
 };

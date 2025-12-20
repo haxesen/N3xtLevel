@@ -9,7 +9,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€1.390",
                 period: "einmalig",
                 desc: "Für Start-ups & lokale Helden.",
-                features: ["Premium One-Pager", "Rechtssicher (Impressum)", "Mobile First Design", "SEO Basis-Paket"],
+                features: ["Premium One-Pager", "Social Media Anbindung", "Mobile First Design", "SEO Basis-Paket"],
                 btn: "Jetzt starten"
             },
             professional: {
@@ -42,7 +42,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€1,390",
                 period: "one-time",
                 desc: "For Start-ups & Local Heroes.",
-                features: ["Premium One-Pager", "Legal Compliance", "Mobile First Design", "Basic SEO Package"],
+                features: ["Premium One-Pager", "Social Media Integration", "Mobile First Design", "Basic SEO Package"],
                 btn: "Get Started"
             },
             professional: {
@@ -75,7 +75,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€1.390",
                 period: "egyszeri",
                 desc: "Induló vállalkozásoknak.",
-                features: ["Prémium One-Pager", "Jogtiszta (Impresszum)", "Mobil-első Design", "Alap SEO Csomag"],
+                features: ["Prémium One-Pager", "Social Média Integráció", "Mobil-első Design", "Alap SEO Csomag"],
                 btn: "Indítás"
             },
             professional: {

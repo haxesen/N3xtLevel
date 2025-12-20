@@ -814,6 +814,28 @@ const initGlobals = () => {
         }
     });
 
+    // Global ESC Key Handler
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (typeof window.closeUnivModal === 'function') window.closeUnivModal(); // Universal
+            if (typeof window.closeServiceModal === 'function') window.closeServiceModal(); // Service
+            if (typeof window.closeCalculator === 'function') window.closeCalculator(); // Calculator
+
+            // Legal Modals
+            document.querySelectorAll('.modal-backdrop.active').forEach(m => {
+                m.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Legacy Booking
+            const bm = document.getElementById('bookingModal');
+            if (bm && !bm.classList.contains('hidden')) {
+                bm.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
     const banner = document.getElementById('cookie-banner');
     const hasConsent = localStorage.getItem('cookieConsent');
 

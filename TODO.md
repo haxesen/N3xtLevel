@@ -1,28 +1,30 @@
 # N3XT LEVEL - Teendők (TODO)
 
-## ⏳ Függőben lévő feladatok
-- [x] **Blog Szekció Aktiválása:** 
-  - 3 db konkrét esettanulmány (Fogorvos, Tetőfedő, Kávézó) hozzáadva.
-  - Aktiválva a főoldalon.
-- [x] **Projekt Kalkulátor (Project Configurator):**
-  - Interaktív árkalkulátor implementálva.
-  - Formspree integrációval lead-eket gyűjt.
-  - Webshop opció kivéve, fókusz a szolgáltatásokon.
-- [x] **Chatbot Intelligencia:**
-  - Média produkció (Fotó/Videó/Drón) kulcsszavak felismerése.
-  - Iparág specifikus válaszok (Fogorvos, Szalon, Építőipar).
-  - Árazási kérdések kezelése (Közvetlen kapcsolatfelvételre irányítás).
+## 🔜 Következő Lépések (Prioritás)
+- [ ] **Kalkulátor Elemek Átdolgozása:** A kártyák (Típusok, Funkciók) tartalmának és megjelenésének finomítása.
+- [ ] **További Tartalom:** Portfólió bővítése új esettanulmányokkal.
 
-### 📈 Tartalom
-- [ ] **Portfólió:** További esettanulmányok (Case Studies) írása és feltöltése.
+## 🎨 Friss Fejlesztések (Kész)
+- [x] **Popup Rendszer Egységesítése:**
+  - Minden ablak (Szolgáltatás, Jogi, Kalkulátor, Hub) egységes Prémium designt kapott (Narancs Keret + Glow).
+  - Egységes, animált "Close" gomb mindenhol.
+  - **ESC billentyű**: Minden popup bezárható vele.
+  - Siker üzenet: Elegáns pulse animáció + 4mp auto-close.
+- [x] **Navigáció & UX:**
+  - Felső menü "Kontakt" -> Üzenet Popupot nyit.
+  - "Anfragen" gomb -> Projekt Kalkulátort indít.
+  - Mobil menü gombok javítva.
+- [x] **Marketing Flow (Homepage):**
+  - Szekciók átrendezve a konverzió növelésére: `Stats` és `Portfolio` előrébb került, `Blog` a végére.
+- [x] **Kalkulátor Logika:**
+  - Érvényesítés: Nem lehet továbblépni a 2. (Extrák) és 3. (Kontakt) lépésre kiválasztás nélkül.
+  - Design: Fekete pipák cserélve narancssárgára (`text-accent`).
+- [x] **Chatbot:**
+  - HTML megjelenítési hiba javítva.
 
-## ✅ Kész (MVP)
-- [x] Weboldal Design & Dark Mode
-- [x] WebP Képoptimalizálás
+## ✅ MVP Funkciók (Korábban Kész)
+- [x] Weboldal Design & Dark Mode (WebP optimalizálás)
 - [x] Többnyelvűség (DE, EN, HU)
-- [x] Chatbot (Interesse typo javítva)
-- [x] Foglalási Naptár (Működő logika)
-- [x] Kapcsolati Űrlap & Email (info@n3xt-level.eu)
+- [x] Foglalási Naptár & Kapcsolati Űrlap (Formspree + Google Sync)
 - [x] Jogi Szövegek (Impresszum/Datenschutz)
-- [x] Google Analytics (GA4) Integráció (GDPR-kompatibilis)
-- [x] Git Repository Optimalizálás (Backupok leválasztása)
+- [x] Google Analytics (GA4) Integráció

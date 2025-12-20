@@ -26,12 +26,12 @@ This document outlines the official pricing structure for N3xtLevel, based on co
 *   **Advanced Local SEO & Analytics:** Measurable results and local dominance.
 *   **GDPR & Security Package:** Peace of mind compliance.
 
-### 3. ENTERPRISE AI - "Market Dominance"
+### 3. ENTERPRISE & SHOP - "Market Dominance"
 **Price:** From €5.990 (Individual)
 **Target:** Established Companies, E-Commerce, Innovators.
-**Description:** Custom scalable solutions with AI automation to outpace the competition.
+**Description:** Scalable online stores and AI automation to outpace the competition.
 **Features:**
-*   **Custom Web-App / E-Commerce:** Tailored functionality (Shopify, Custom Code).
+*   **High-End E-Commerce System:** Tailored Online Shops (WooCommerce / Shopify).
 *   **24/7 AI Sales Chatbot:** Automation that sells while you sleep.
 *   **Automated Workflows:** Efficiency enhancements (Zapier/Make integrations).
 *   **International (Multi-language):** Global reach.
@@ -39,13 +39,20 @@ This document outlines the official pricing structure for N3xtLevel, based on co
 
 ---
 
-## Calculator Logic (To be reflected in Tool)
+## Calculator Logic & Types
 
-The Project Configurator should align with these tiers.
-*   **Base Price:** €1.390 (Matches Essential)
-*   **Add-ons:**
-    *   Content/SEO Boost -> Pushes towards Professional (~€1000-€1500 add-on)
-    *   E-Commerce/AI -> Pushes towards Enterprise range.
+The Project Configurator offers 3 streamlined base types:
+1.  **Landing Page (Essential Base):** Starts at €1.390.
+    *   *Constraint:* "Blog / News" feature is disabled for this type.
+2.  **Corporate Website (Professional Base):** Starts at €2.490.
+    *   Includes flexibility for all add-ons.
+3.  **E-Commerce (Enterprise Base):** Starts at €5.990.
+    *   Focus on Sales & Automation.
+
+**Add-ons:**
+*   **AI Content & SEO:** Upgrades any package.
+*   **Chatbots & Automation:** High-value extras.
+*   **Booking System:** Compatible with Website/Shop.
 
 ## Market Positioning
 *   **Competitors:** Often charge extra for content, speed optimization, and mobile design.

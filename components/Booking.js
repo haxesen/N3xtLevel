@@ -36,9 +36,7 @@ export const Booking = (lang = 'de') => {
 
     return `
 <!-- Booking Section -->
-    return `
-        < !--Booking Section-- >
-            <section id="booking" class="py-32 bg-black relative border-t border-white/5">
+<section id="booking" class="py-32 bg-black relative border-t border-white/5">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="flex flex-col gap-10 items-center lg:items-start">
 

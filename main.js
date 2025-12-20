@@ -603,6 +603,28 @@ const initChatbot = () => {
                 nextOpts = [{ val: 'booking', label: { de: 'Beratung buchen', en: 'Book Consult', hu: 'Konzultáció' } }];
             }
 
+            // 2.5 Content Production (New)
+            else if (action === 'price_content') {
+                const t = {
+                    de: "Wir erstellen 4K-Drohnenaufnahmen, Business-Fotos und Image-Filme direkt für Ihre Webseite.",
+                    en: "We create 4K drone shots, business photos, and image films directly for your website.",
+                    hu: "4K drónfelvételeket, üzleti fotókat és imázsfilmeket készítünk közvetlenül a weboldalához."
+                };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'booking', label: { de: 'Anfragen', en: 'Inquire', hu: 'Érdeklődés' } }];
+            }
+
+            // 2.6 Industry Solutions (New)
+            else if (action === 'industry') {
+                const t = {
+                    de: "Wir haben spezielle Erfahrung in dieser Branche! Sehen Sie sich unsere Fallstudien an.",
+                    en: "We have specialized experience in this industry! Check out our Case Studies.",
+                    hu: "Különleges tapasztalatunk van ebben az iparágban! Nézze meg esettanulmányainkat."
+                };
+                resp = t[currentLang] || t.de;
+                nextOpts = [{ val: 'nav_blog', label: { de: 'Zu den Cases', en: 'See Cases', hu: 'Esettanulmányok' } }];
+            }
+
             // 3. Services
             else if (action === 'services') {
                 const t = { de: "Wir bieten Webdesign, SEO und AI-Automatisierung. Wohin soll es gehen?", en: "We offer Web Design, SEO, and AI Automation. Where to?", hu: "Webdizájnt, SEO-t és AI automatizációt kínálunk. Hová lépjünk?" };
@@ -725,6 +747,19 @@ const initChatbot = () => {
         }
         if (lower.includes('ai') || lower.includes('automat') || lower.includes('intel')) {
             handleAction('price_ai');
+            return;
+        }
+        // Media / Content
+        if (lower.includes('foto') || lower.includes('photo') || lower.includes('video') || lower.includes('drohne') || lower.includes('drone') || lower.includes('film') || lower.includes('kamera') || lower.includes('media') || lower.includes('image')) {
+            handleAction('price_content');
+            return;
+        }
+
+        // Industry Specifics
+        if (lower.includes('arzt') || lower.includes('praxis') || lower.includes('orvos') || lower.includes('fog') || lower.includes('zahn') ||
+            lower.includes('beauty') || lower.includes('salon') || lower.includes('kosmetik') || lower.includes('szépség') || lower.includes('mass') ||
+            lower.includes('handwerk') || lower.includes('bau') || lower.includes('dach') || lower.includes('épít') || lower.includes('tető')) {
+            handleAction('industry');
             return;
         }
 

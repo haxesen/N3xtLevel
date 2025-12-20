@@ -174,7 +174,7 @@ export const ProjectConfig = (lang = 'de') => {
                                      class="uic-card-feat p-5 rounded-xl border border-white/10 bg-white/5 hover:border-accent/50 cursor-pointer transition-all duration-300 flex items-center gap-4 hover:bg-white/10"
                                      data-value="${key}">
                                     <div class="w-5 h-5 rounded border border-white/30 flex-shrink-0 flex items-center justify-center">
-                                        <i class="fas fa-check text-xs text-black opacity-0 transition-opacity"></i>
+                                        <i class="fas fa-check text-xs text-accent opacity-0 transition-opacity"></i>
                                     </div>
                                     <span class="text-gray-300 group-hover:text-white transition-colors text-sm md:text-base">${label}</span>
                                 </div>

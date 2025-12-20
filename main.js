@@ -346,6 +346,12 @@ window.changeStep = (delta) => {
 };
 
 window.goToStep = (step) => {
+    // Validation: Cannot skip Step 1
+    if (step > 0 && !window.calcState.type) {
+        alert(currentLang === 'hu' ? 'Kérjük válasszon típust!' : (currentLang === 'en' ? 'Please select a type!' : 'Bitte wählen Sie zuerst einen Typ aus!'));
+        return;
+    }
+
     window.calcState.step = step;
     document.querySelectorAll('.uic-view').forEach((el, idx) => {
         if (idx === step) { el.classList.remove('hidden'); el.classList.add('animate-fade-in'); }

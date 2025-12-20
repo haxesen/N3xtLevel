@@ -30,3 +30,5 @@
 - [x] Foglalási Naptár (Működő logika)
 - [x] Kapcsolati Űrlap & Email (info@n3xt-level.eu)
 - [x] Jogi Szövegek (Impresszum/Datenschutz)
+- [x] Google Analytics (GA4) Integráció (GDPR-kompatibilis)
+- [x] Git Repository Optimalizálás (Backupok leválasztása)

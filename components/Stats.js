@@ -4,19 +4,19 @@ export const Stats = (lang = 'de') => {
             stat1: "Ladezeit",
             stat2: "Google SEO Score",
             stat3: "AI Support",
-            stat4: "Made in Austria"
+            stat4: "Kundenzufriedenheit"
         },
         en: {
             stat1: "Load Time",
             stat2: "Google SEO Score",
             stat3: "AI Support",
-            stat4: "Made in Austria"
+            stat4: "Client Satisfaction"
         },
         hu: {
             stat1: "Betöltési idő",
             stat2: "Google SEO Pont",
             stat3: "AI Ügyfélszolgálat",
-            stat4: "Osztrák Minőség"
+            stat4: "Ügyfél-elégedettség"
         }
     };
 

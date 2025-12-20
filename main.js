@@ -17,7 +17,7 @@ import { ProjectConfig } from './components/ProjectConfig.js';
 // import { Pricing } from './components/Pricing.js';
 
 import { LegalTexts } from './components/LegalTexts.js';
-import { Chatbot } from './components/Chatbot.js';
+import { Chatbot, initChatbotLogic } from './components/Chatbot.js';
 import { CookieBanner } from './components/CookieBanner.js';
 import { initParticles } from './components/Particles.js';
 
@@ -618,7 +618,8 @@ const initServiceModal = () => {
     };
 };
 
-const initChatbot = () => {
+// 5. Update UI (Main Re-render function)
+const updateUI = () => {
     const toggle = document.getElementById('chat-toggle');
     const windowEl = document.getElementById('chat-window');
     const close = document.getElementById('close-chat');

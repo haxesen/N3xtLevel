@@ -110,28 +110,7 @@ export const ProjectConfig = (lang = 'de') => {
     }[lang];
 
     return `
-    <!-- TEASER SECTION (Visible) -->
-    <section id="project-config-teaser" class="py-24 bg-black relative border-t border-white/5 overflow-hidden">
-         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
-         
-         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
-            <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-glow-sm">
-                <i class="fas fa-calculator text-3xl text-accent"></i>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">${t.teaser_title}</h2>
-            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">${t.teaser_text}</p>
-            
-            <button onclick="openCalculator()" class="group relative px-8 py-4 bg-white text-black font-bold rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 transition-all duration-300">
-                <span class="relative z-10 flex items-center gap-3">
-                    ${t.btn_start}
-                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </span>
-                <div class="absolute inset-0 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-         </div>
-    </section>
-
-    <!-- MODAL (Hidden) -->
+    <!-- MODAL (Hidden by default) -->
     <div id="project-config-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeCalculator()"></div>

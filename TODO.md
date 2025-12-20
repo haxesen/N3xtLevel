@@ -4,19 +4,14 @@
 - [x] **Blog Szekció Aktiválása:** 
   - 3 db konkrét esettanulmány (Fogorvos, Tetőfedő, Kávézó) hozzáadva.
   - Aktiválva a főoldalon.
-- [ ] **Árazás Szekció (Pricing) Véglegesítése:**
-  - Kód kész (`components/Pricing.js`), de átmenetileg kikapcsolva.
-  - Teendő: Tartalom átszerkesztése (csomagok, árak).
-  - Aktiválás: `main.js`-ben kivenni a kommentet.
-
-## 🔮 Jövőbeli Fejlesztések (Backlog)
-### 📅 Foglalási Rendszer
-- [ ] **Google Calendar Integráció:** Dedikált naptárazonosító (Calendar ID) beállítása a Google Scriptben (jelenleg 'primary').
-
-### 🤖 Chatbot 2.0
-- [ ] **Intelligencia Növelése:** Több válaszlehetőség és forgatókönyv írása.
-- [ ] **LLM Integráció:** (Opcinális) Valódi OpenAI API bekötése a statikus válaszok helyett.
-- [ ] **UI:** Animációk finomítása.
+- [x] **Projekt Kalkulátor (Project Configurator):**
+  - Interaktív árkalkulátor implementálva.
+  - Formspree integrációval lead-eket gyűjt.
+  - Webshop opció kivéve, fókusz a szolgáltatásokon.
+- [x] **Chatbot Intelligencia:**
+  - Média produkció (Fotó/Videó/Drón) kulcsszavak felismerése.
+  - Iparág specifikus válaszok (Fogorvos, Szalon, Építőipar).
+  - Árazási kérdések kezelése (Közvetlen kapcsolatfelvételre irányítás).
 
 ### 📈 Tartalom
 - [ ] **Portfólió:** További esettanulmányok (Case Studies) írása és feltöltése.

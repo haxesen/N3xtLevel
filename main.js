@@ -495,12 +495,9 @@ window.hubSelect = (type, btn) => {
         html = Contact(lang);
     }
 
-    // Cleanup Section classes for Modal context
-    // Replace standard section padding with minimal padding
-    html = html.replace(/section id=".*?" class=".*?"/, 'div class="w-full"');
-    html = html.replace('</section>', '</div>');
-
-    body.innerHTML = html;
+    // Inject HTML directly (skipping regex to avoid mismatches)
+    // We wrap it to handle styles if needed
+    body.innerHTML = `<div class="w-full modal-inner-content">${html}</div>`;
 
     // Re-initialize logic
     if (type === 'calendar') setupCalendar();

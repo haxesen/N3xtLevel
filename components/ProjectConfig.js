@@ -6,8 +6,7 @@ export const ProjectConfig = (lang = 'de') => {
         types: {
             landing: "fa-rocket",
             website: "fa-laptop-code",
-            ecommerce: "fa-cart-shopping",
-            webapp: "fa-code-branch"
+            ecommerce: "fa-cart-shopping"
         },
         features: {
             content_ai: "fa-robot",
@@ -40,8 +39,7 @@ export const ProjectConfig = (lang = 'de') => {
             types: {
                 landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
                 website: { title: "Corporate Website", desc: "Mehrseitiger Auftritt mit CMS." },
-                ecommerce: { title: "E-Commerce", desc: "Webshop mit Payment-System." },
-                webapp: { title: "Custom Web-App", desc: "SaaS, Portale & Plattformen." }
+                ecommerce: { title: "E-Commerce", desc: "Webshop mit Payment-System." }
             },
             features: {
                 content_ai: { title: "AI Content Boost", desc: "Texte & Bilder fixfertig generiert." },
@@ -77,8 +75,7 @@ export const ProjectConfig = (lang = 'de') => {
             types: {
                 landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
                 website: { title: "Corporate Website", desc: "Multi-page site with CMS." },
-                ecommerce: { title: "E-Commerce", desc: "Webshop with Payment System." },
-                webapp: { title: "Custom Web-App", desc: "SaaS, Portals & Platforms." }
+                ecommerce: { title: "E-Commerce", desc: "Webshop with Payment System." }
             },
             features: {
                 content_ai: { title: "AI Content Boost", desc: "Text & Images generated for you." },
@@ -114,8 +111,7 @@ export const ProjectConfig = (lang = 'de') => {
             types: {
                 landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
                 website: { title: "Céges Weboldal", desc: "Többoldalas szájt CMS-sel." },
-                ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel." },
-                webapp: { title: "Egyedi Web-App", desc: "SaaS, Portálok & Platformok." }
+                ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel." }
             },
             features: {
                 content_ai: { title: "AI Tartalom", desc: "Szövegírás & Képek generálása." },

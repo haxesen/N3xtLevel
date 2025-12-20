@@ -21,11 +21,11 @@ export const Pricing = (lang = 'de') => {
                 btn: "Durchstarten"
             },
             enterprise: {
-                name: "Enterprise AI",
+                name: "Enterprise & Shop",
                 price: "Ab €5.990",
                 period: "individuell",
                 desc: "Innovation & Marktführerschaft.",
-                features: ["Custom Web-App / E-Commerce", "24/7 AI Sales Chatbot", "Automatisierte Workflows", "International (Mehrsprachig)", "Premium Priority Support"],
+                features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Automatisierte Workflows", "International (Mehrsprachig)", "Premium Priority Support"],
                 btn: "Beratung anfordern"
             },
             cta: {
@@ -54,11 +54,11 @@ export const Pricing = (lang = 'de') => {
                 btn: "Boost Business"
             },
             enterprise: {
-                name: "Enterprise AI",
+                name: "Enterprise & Commerce",
                 price: "From €5,990",
                 period: "individual",
                 desc: "Innovation & Market Leadership.",
-                features: ["Custom Web-App / E-Commerce", "24/7 AI Sales Chatbot", "Automated Workflows", "International (Multi-language)", "Premium Priority Support"],
+                features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Automated Workflows", "International (Multi-language)", "Premium Priority Support"],
                 btn: "Request Consult"
             },
             cta: {
@@ -87,11 +87,11 @@ export const Pricing = (lang = 'de') => {
                 btn: "Turbózzuk fel"
             },
             enterprise: {
-                name: "Enterprise AI",
+                name: "Enterprise & Shop",
                 price: "€5.990-tól",
                 period: "egyéni",
                 desc: "Innováció és Piacvezetés.",
-                features: ["Egyedi Web-App / Webshop", "24/7 AI Sales Chatbot", "Automatizált Folyamatok", "Nemzetközi (Többnyelvűség)", "Prémium Priority Support"],
+                features: ["High-End Webáruház Rendszer", "24/7 AI Sales Chatbot", "Automatizált Folyamatok", "Nemzetközi (Többnyelvűség)", "Prémium Priority Support"],
                 btn: "Konzultáció"
             },
             cta: {

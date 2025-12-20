@@ -78,7 +78,7 @@ export const ContactHub = (lang = 'de') => {
                 
                 <!-- Card 1: Calculator -->
                 <div class="group relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-accent text-3xl shadow-glow group-hover:scale-110 transition-transform">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-white text-3xl shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform">
                         <i class="fas fa-calculator"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">${t.card_calc.title}</h3>
@@ -101,13 +101,13 @@ export const ContactHub = (lang = 'de') => {
                 </div>
 
                 <!-- Card 3: Message -->
-                <div class="group relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,69,0,0.15)] flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-purple-400 text-3xl shadow-glow group-hover:scale-110 transition-transform">
+                <div class="group relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-purple-400 text-3xl shadow-[0_0_20px_rgba(168,85,247,0.4)] group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">${t.card_msg.title}</h3>
                     <p class="text-gray-400 mb-8 leading-relaxed">${t.card_msg.desc}</p>
-                    <button onclick="hubSelect('message', this)" class="mt-auto px-8 py-3 bg-gradient-to-r from-accent to-[#FF8C00] text-white font-bold rounded-lg hover:from-accent-hover hover:to-[#FF4500] transition-all w-full shadow-glow">
+                    <button onclick="hubSelect('message', this)" class="mt-auto px-8 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold rounded-lg hover:from-purple-400 hover:to-indigo-500 transition-all w-full shadow-[0_0_20px_rgba(168,85,247,0.4)]">
                         ${t.card_msg.btn}
                     </button>
                 </div>

@@ -495,6 +495,9 @@ window.hubSelect = (type, btn) => {
         html = Contact(lang);
     }
 
+    // CRITICAL FIX: Remove 'reveal' class because intersection observer might not trigger inside modal
+    html = html.replace(/reveal/g, '');
+
     // Inject HTML directly (skipping regex to avoid mismatches)
     // We wrap it to handle styles if needed
     body.innerHTML = `<div class="w-full modal-inner-content">${html}</div>`;

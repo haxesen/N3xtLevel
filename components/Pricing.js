@@ -4,28 +4,28 @@ export const Pricing = (lang = 'de') => {
         de: {
             title: "Investitionspläne",
             subtitle: "Transparent & Fair. Wählen Sie das Paket für Ihren Erfolg.",
-            starter: {
-                name: "Starter",
-                price: "€1.290",
+            essential: {
+                name: "Essential",
+                price: "€1.390",
                 period: "einmalig",
-                desc: "Perfekter Einstieg für Selbstständige.",
-                features: ["Modernes One-Pager Design", "Mobile Optimierung", "SEO Basis-Setup", "Rechtssicheres Impressum"],
+                desc: "Für Start-ups & lokale Helden.",
+                features: ["Premium One-Pager", "Rechtssicher (Impressum)", "Mobile First Design", "SEO Basis-Paket"],
                 btn: "Jetzt starten"
             },
-            business: {
-                name: "Business Growth",
+            professional: {
+                name: "Professional",
                 price: "€2.490",
                 period: "einmalig",
-                desc: "Für Unternehmen, die wachsen wollen.",
-                features: ["Bis zu 8 Unterseiten", "CMS (Selbstverwaltung)", "Blog Funktion", "Erweitertes SEO", "Schnelle Ladezeiten"],
+                desc: "Unser Bestseller für KMUs.",
+                features: ["Bis zu 6 Unterseiten", "CMS (Selbstverwaltung)", "Blog / News Modul", "Erweitertes SEO & Speed", "Kontaktformulare"],
                 btn: "Durchstarten"
             },
-            dominance: {
-                name: "Market Dominance",
-                price: "Ab €4.990",
+            enterprise: {
+                name: "Enterprise AI",
+                price: "Ab €5.990",
                 period: "individuell",
-                desc: "Maßgeschneiderte Web-Apps & Systeme.",
-                features: ["Alles aus Business Growth", "React / Next.js Apps", "KI-Chatbots", "Mehrsprachigkeit", "API Integrationen"],
+                desc: "Innovation & Marktführerschaft.",
+                features: ["Alles aus Professional", "E-Commerce / Webshop", "AI Chatbot Integration", "Mehrsprachigkeit", "Custom Web Apps"],
                 btn: "Beratung anfordern"
             },
             cta: {
@@ -37,28 +37,28 @@ export const Pricing = (lang = 'de') => {
         en: {
             title: "Investment Plans",
             subtitle: "Transparent & Fair. Choose the package for your success.",
-            starter: {
-                name: "Starter",
-                price: "€1,290",
+            essential: {
+                name: "Essential",
+                price: "€1,390",
                 period: "one-time",
-                desc: "Perfect start for freelancers.",
-                features: ["Modern One-Pager Design", "Mobile Optimization", "Basic SEO Setup", "Legal Imprint"],
+                desc: "For Start-ups & Local Heroes.",
+                features: ["Premium One-Pager", "Legal Compliance", "Mobile First Design", "Basic SEO Package"],
                 btn: "Get Started"
             },
-            business: {
-                name: "Business Growth",
+            professional: {
+                name: "Professional",
                 price: "€2,490",
                 period: "one-time",
-                desc: "For companies aiming to grow.",
-                features: ["Up to 8 Subpages", "CMS (Self-management)", "Blog Function", "Advanced SEO", "Fast Loading"],
+                desc: "Our Bestseller for SMEs.",
+                features: ["Up to 6 Subpages", "CMS (Self-management)", "Blog / News Module", "Advanced SEO & Speed", "Contact Forms"],
                 btn: "Boost Business"
             },
-            dominance: {
-                name: "Market Dominance",
-                price: "From €4,990",
+            enterprise: {
+                name: "Enterprise AI",
+                price: "From €5,990",
                 period: "individual",
-                desc: "Tailored Web Apps & Systems.",
-                features: ["Everything in Business Growth", "React / Next.js Apps", "AI Chatbots", "Multilingual", "API Integrations"],
+                desc: "Innovation & Market Leadership.",
+                features: ["Everything in Professional", "E-Commerce / Webshop", "AI Chatbot Integration", "Multi-language Support", "Custom Web Apps"],
                 btn: "Request Consult"
             },
             cta: {
@@ -70,28 +70,28 @@ export const Pricing = (lang = 'de') => {
         hu: {
             title: "Befektetési Csomagok",
             subtitle: "Átlátható és korrekt. Válaszd a sikeredhez illő csomagot.",
-            starter: {
-                name: "Kezdő",
-                price: "€1.290",
+            essential: {
+                name: "Essential",
+                price: "€1.390",
                 period: "egyszeri",
-                desc: "Tökéletes indulás vállalkozóknak.",
-                features: ["Modern One-Pager Dizájn", "Mobil Optimalizálás", "Alap SEO Beállítás", "Jogtiszta Impresszum"],
+                desc: "Induló vállalkozásoknak.",
+                features: ["Prémium One-Pager", "Jogtiszta (Impresszum)", "Mobil-első Design", "Alap SEO Csomag"],
                 btn: "Indítás"
             },
-            business: {
-                name: "Üzleti Növekedés",
+            professional: {
+                name: "Professional",
                 price: "€2.490",
                 period: "egyszeri",
-                desc: "Cégeknek, akik növekedni akarnak.",
-                features: ["Akár 8 aloldal", "CMS (Szerkeszthető)", "Blog Funkció", "Haladó SEO", "Gyors Betöltés"],
+                desc: "Bestseller KKV-knak.",
+                features: ["Akár 6 aloldal", "CMS (Szerkeszthető)", "Blog / Hírek Modul", "Haladó SEO & Sebesség", "Kapcsolati űrlapok"],
                 btn: "Turbózzuk fel"
             },
-            dominance: {
-                name: "Piaci Dominancia",
-                price: "€4.990-tól",
+            enterprise: {
+                name: "Enterprise AI",
+                price: "€5.990-tól",
                 period: "egyéni",
-                desc: "Egyedi Web-Appok és Rendszerek.",
-                features: ["Minden a Növekedés csomagból", "React / Next.js Appok", "AI Chatbotok", "Többnyelvűség", "API Integrációk"],
+                desc: "Innováció és Piacvezetés.",
+                features: ["Minden a Professional-ból", "E-Commerce / Webshop", "AI Chatbot Integráció", "Többnyelvűség", "Egyedi Web Appok"],
                 btn: "Konzultáció"
             },
             cta: {
@@ -112,7 +112,7 @@ export const Pricing = (lang = 'de') => {
 
         return `
         <div class="flex flex-col p-8 rounded-3xl border transition-all duration-300 ${borderClass} ${bgClass} relative group hover:-translate-y-2">
-            ${isPopular ? `<div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">POPULAR</div>` : ''}
+            ${isPopular ? `<div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl flex items-center gap-1"><i class="fas fa-star text-[10px]"></i> POPULAR</div>` : ''}
             
             <h3 class="text-2xl font-bold text-white mb-2">${data.name}</h3>
             <div class="flex items-baseline mb-4">
@@ -146,9 +146,9 @@ export const Pricing = (lang = 'de') => {
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                ${renderCard('starter')}
-                ${renderCard('business', true)}
-                ${renderCard('dominance')}
+                ${renderCard('essential')}
+                ${renderCard('professional', true)}
+                ${renderCard('enterprise')}
             </div>
 
             <!-- Custom Calculator CTA -->

@@ -4,7 +4,8 @@ export const ProjectConfig = (lang = 'de') => {
     const icons = {
         types: {
             website: "fa-laptop-code",
-            upgrade: "fa-screwdriver-wrench",
+            ecommerce: "fa-cart-shopping",
+            ai: "fa-robot",
             content: "fa-camera-retro"
         },
         features: {
@@ -36,19 +37,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Zurück",
             btn_send: "Anfrage senden",
             types: {
-                website: { title: "Neues Web-Projekt", desc: "Corporate Website, Landing Page oder Portfolio." },
-                upgrade: { title: "Website Optimierung", desc: "Relaunch, Erweiterung oder Modernisierung bestehender Seiten." },
-                content: { title: "Content Creation", desc: "Foto, Video, Drohnenaufnahmen & Texte." }
+                website: { title: "Webseite", desc: "Modernes Corporate Design oder Landing Page." },
+                ecommerce: { title: "E-Commerce", desc: "Komplett-Webshop mit Zahlungssystem." },
+                ai: { title: "AI & Automation", desc: "Chatbots, Workflows & Prozessoptimierung." },
+                content: { title: "Media & Content", desc: "Profi Foto- & Videoproduktion." }
             },
             features: {
-                multilang: "Mehrsprachigkeit",
-                booking: "Buchungssystem",
-                chatbot: "AI Chatbot Integration",
-                seo_setup: "SEO Basis-Setup",
-                blog: "Blog / News Bereich",
-                cms: "CMS (Selbstverwaltung)",
-                darkmode: "Premium Dark Mode",
-                drone: "Drohnenaufnahmen"
+                multilang: { title: "Mehrsprachigkeit", desc: "DE/EN/HU Integration für internationale Reichweite." },
+                booking: { title: "Buchungssystem", desc: "Automatische Terminvergabe & Kalender-Sync." },
+                chatbot: { title: "AI Chatbot", desc: "24/7 Kundensupport mit eigener Datenbasis." },
+                seo_setup: { title: "SEO Pro Setup", desc: "Technisches SEO für Top Google-Rankings." },
+                blog: { title: "Blog / News", desc: "Content-Marketing Modul mit Editor." },
+                cms: { title: "CMS System", desc: "Inhalte einfach selbst verwalten." },
+                darkmode: { title: "Premium Dark Mode", desc: "Exklusives Design für Augenkomfort." },
+                drone: { title: "Drohnenaufnahmen", desc: "Cinematische 4K Luftaufnahmen." }
             },
             form: {
                 name: "Ihr Name",
@@ -70,19 +72,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Back",
             btn_send: "Send Request",
             types: {
-                website: { title: "New Web Project", desc: "Corporate Website, Landing Page or Portfolio." },
-                upgrade: { title: "Website Upgrade", desc: "Relaunch, Extension or Modernization." },
-                content: { title: "Content Creation", desc: "Photo, Video, Drone Shots & Copywriting." }
+                website: { title: "Website", desc: "Modern Corporate Design or Landing Page." },
+                ecommerce: { title: "E-Commerce", desc: "Complete Webshop with Payment Systems." },
+                ai: { title: "AI & Automation", desc: "Chatbots, Workflows & Process Optimization." },
+                content: { title: "Media & Content", desc: "Pro Photo & Video Production." }
             },
             features: {
-                multilang: "Multi-language",
-                booking: "Booking System",
-                chatbot: "AI Chatbot",
-                seo_setup: "Basic SEO Setup",
-                blog: "Blog / News Section",
-                cms: "Easy to Edit (CMS)",
-                darkmode: "Premium Dark Mode",
-                drone: "Drone Shots"
+                multilang: { title: "Multi-language", desc: "DE/EN/HU integration for global reach." },
+                booking: { title: "Booking System", desc: "Auto scheduling & Calendar Sync." },
+                chatbot: { title: "AI Chatbot", desc: "24/7 Support trained on your data." },
+                seo_setup: { title: "SEO Pro Setup", desc: "Technical SEO for top Google rankings." },
+                blog: { title: "Blog / News", desc: "Content marketing module with editor." },
+                cms: { title: "CMS System", desc: "Manage content easily yourself." },
+                darkmode: { title: "Premium Dark Mode", desc: "Exclusive design for eye comfort." },
+                drone: { title: "Drone Shots", desc: "Cinematic 4K aerial footage." }
             },
             form: {
                 name: "Your Name",
@@ -104,19 +107,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Vissza",
             btn_send: "Ajánlatkérés Küldése",
             types: {
-                website: { title: "Új Weboldal", desc: "Céges weboldal, Landing Page vagy Portfólió." },
-                upgrade: { title: "Meglévő Weboldal fejlesztése", desc: "Relaunch, Modernizálás vagy Bővítés." },
-                content: { title: "Tartalomgyártás", desc: "Fotó, Videó, Drónfelvételek & Szövegírás." }
+                website: { title: "Weboldal", desc: "Modern céges weboldal vagy Landing Page." },
+                ecommerce: { title: "E-Commerce", desc: "Komplett Webshop fizetési rendszerrel." },
+                ai: { title: "AI & Automatizálás", desc: "Chatbotok, Workflowk & Folyamatoptimalizálás." },
+                content: { title: "Média & Tartalom", desc: "Profi Fotó- és Videógyártás." }
             },
             features: {
-                multilang: "Többnyelvűség",
-                booking: "Időpontfoglaló",
-                chatbot: "AI Chatbot",
-                seo_setup: "SEO Alapbeállítás",
-                blog: "Blog / Hírek modul",
-                cms: "Könnyen szerkeszthető",
-                darkmode: "Prémium Dark Mode",
-                drone: "Drónfelvételek"
+                multilang: { title: "Többnyelvűség", desc: "DE/EN/HU integráció a nemzetközi sikerért." },
+                booking: { title: "Időpontfoglaló", desc: "Automata naptár és foglalási rendszer." },
+                chatbot: { title: "AI Chatbot", desc: "0-24 Ügyfélszolgálat saját tudásbázissal." },
+                seo_setup: { title: "SEO Pro Setup", desc: "Technikai optimalizálás a Google helyezésért." },
+                blog: { title: "Blog / Hírek", desc: "Tartalommarketing modul saját szerkesztővel." },
+                cms: { title: "CMS Rendszer", desc: "Kezelje tartalmait programozói tudás nélkül." },
+                darkmode: { title: "Prémium Dark Mode", desc: "Exkluzív sötét mód a szemkímélő élményért." },
+                drone: { title: "Drónfelvételek", desc: "Lenyűgöző 4K légifelvételek." }
             },
             form: {
                 name: "Az Ön neve",
@@ -196,12 +200,12 @@ export const ProjectConfig = (lang = 'de') => {
                     <!-- Step 2: Features -->
                     <div id="uic-step-1" class="uic-view hidden">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            ${Object.entries(t.features).map(([key, label]) => `
+                            ${Object.entries(t.features).map(([key, data]) => `
                                 <div onclick="toggleSelection('feature', '${key}')" 
-                                     class="uic-card-feat p-4 rounded-xl border border-white/10 bg-white/5 hover:border-accent/40 cursor-pointer transition-all duration-300 flex flex-col items-center justify-center text-center gap-3 hover:bg-white/10 group h-32"
+                                     class="uic-card-feat p-4 rounded-xl border border-white/10 bg-white/5 hover:border-accent/40 cursor-pointer transition-all duration-300 flex flex-col items-center justify-center text-center gap-2 hover:bg-white/10 group h-40"
                                      data-value="${key}">
                                     
-                                     <div class="relative">
+                                     <div class="relative mb-1">
                                         <div class="text-3xl text-gray-500 group-hover:text-accent transition-colors duration-300">
                                             <i class="fas ${icons.features[key]}"></i>
                                         </div>
@@ -210,7 +214,8 @@ export const ProjectConfig = (lang = 'de') => {
                                         </div>
                                      </div>
 
-                                    <span class="text-gray-300 group-hover:text-white transition-colors text-sm font-medium leading-tight">${label}</span>
+                                    <span class="text-white font-bold text-sm leading-tight">${data.title}</span>
+                                    <span class="text-gray-400 text-xs leading-tight opacity-80 group-hover:opacity-100 transition-opacity">${data.desc}</span>
                                 </div>
                             `).join('')}
                         </div>

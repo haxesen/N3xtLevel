@@ -1,8 +1,14 @@
 export const ProjectConfig = (lang = 'de') => {
     const t = {
         de: {
-            title: "Projekt Kalkulator",
-            subtitle: "Wählen Sie Ihre Wunsch-Features und erhalten Sie ein unverbindliches Angebot.",
+            // Teaser
+            teaser_title: "Starten Sie Ihr Projekt",
+            teaser_text: "Nutzen Sie unseren interaktiven Konfigurator, um Ihr individuelles Angebot zu erstellen. Schnell, einfach & unverbindlich.",
+            btn_start: "Jetzt Konfigurierer starten",
+
+            // Wizard
+            title: "Projekt Konfigurator",
+            subtitle: "Wählen Sie Ihre Wunsch-Features.",
             step1: "Was benötigen Sie?",
             step2: "Welche Extras?",
             step3: "Kontaktdaten",
@@ -29,12 +35,15 @@ export const ProjectConfig = (lang = 'de') => {
                 name: "Ihr Name",
                 email: "Ihre E-Mail",
                 phone: "Telefon (Optional)"
-            },
-            success: "Vielen Dank! Wir erstellen Ihr Angebot."
+            }
         },
         en: {
-            title: "Project Calculator",
-            subtitle: "Select your desired features and get a non-binding offer.",
+            teaser_title: "Start Your Project",
+            teaser_text: "Use our interactive configurator to create your individual offer. Fast, easy & non-binding.",
+            btn_start: "Start Configurator Now",
+
+            title: "Project Configurator",
+            subtitle: "Select your desired features.",
             step1: "What do you need?",
             step2: "Visual & Functional Extras",
             step3: "Contact Details",
@@ -61,12 +70,15 @@ export const ProjectConfig = (lang = 'de') => {
                 name: "Your Name",
                 email: "Your Email",
                 phone: "Phone (Optional)"
-            },
-            success: "Thank you! We are preparing your offer."
+            }
         },
         hu: {
-            title: "Projekt Kalkulátor",
-            subtitle: "Válassza ki a kívánt funkciókat, és kérjen kötelezettségmentes ajánlatot.",
+            teaser_title: "Indítsa el Projektjét",
+            teaser_text: "Használja interaktív konfigurátorunkat egyedi árajánlat kéréséhez. Gyors, egyszerű és kötelezettségmentes.",
+            btn_start: "Konfigurátor indítása",
+
+            title: "Projekt Konfigurátor",
+            subtitle: "Válassza ki a kívánt funkciókat.",
             step1: "Mire van szüksége?",
             step2: "Extrák és Funkciók",
             step3: "Elérhetőség",
@@ -93,51 +105,74 @@ export const ProjectConfig = (lang = 'de') => {
                 name: "Az Ön neve",
                 email: "Email címe",
                 phone: "Telefonszám (Opcionális)"
-            },
-            success: "Köszönjük! Hamarosan küldjük az ajánlatot."
+            }
         }
     }[lang];
 
-    // IDs used for JS logic
     return `
-    <section id="project-config" class="py-24 bg-black relative border-t border-white/5 overflow-hidden">
-        <!-- Background Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- TEASER SECTION (Visible) -->
+    <section id="project-config-teaser" class="py-24 bg-black relative border-t border-white/5 overflow-hidden">
+         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+         
+         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+            <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-glow-sm">
+                <i class="fas fa-calculator text-3xl text-accent"></i>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">${t.teaser_title}</h2>
+            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">${t.teaser_text}</p>
+            
+            <button onclick="openCalculator()" class="group relative px-8 py-4 bg-white text-black font-bold rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 transition-all duration-300">
+                <span class="relative z-10 flex items-center gap-3">
+                    ${t.btn_start}
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </span>
+                <div class="absolute inset-0 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
+         </div>
+    </section>
 
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16 reveal">
-                <span class="text-accent font-bold tracking-widest uppercase text-sm">Pre-Check</span>
-                <h2 class="text-3xl md:text-5xl font-bold mt-2 text-white">${t.title}</h2>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">${t.subtitle}</p>
+    <!-- MODAL (Hidden) -->
+    <div id="project-config-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeCalculator()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative w-full h-full md:h-auto md:max-w-4xl md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-[#0a0a0a] border border-white/10 md:rounded-3xl shadow-2xl p-6 md:p-12 overflow-y-auto transform scale-95 transition-transform duration-300" id="project-config-content">
+            
+            <button onclick="closeCalculator()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors z-20">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-bold text-white">${t.title}</h3>
+                <p class="text-gray-400 mt-2">${t.subtitle}</p>
             </div>
 
-            <!-- Wizard Container -->
-            <div class="bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                
+            <!-- Wizard -->
+            <div class="relative overflow-hidden">
                 <!-- Progress Bar -->
-                <div class="flex items-center justify-between mb-12 px-4 relative">
+                <div class="flex items-center justify-between mb-10 px-4 relative">
                     <div class="absolute top-1/2 left-0 w-full h-1 bg-white/5 -z-10 rounded-full"></div>
                     <div id="uic-progress-track" class="absolute top-1/2 left-0 h-1 bg-accent -z-10 rounded-full transition-all duration-500" style="width: 0%"></div>
                     
                     <div class="uic-step active flex flex-col items-center gap-2 cursor-pointer" onclick="goToStep(0)">
-                        <div class="w-10 h-10 rounded-full bg-accent text-black font-bold flex items-center justify-center shadow-glow transition-all duration-300">1</div>
-                        <span class="text-xs text-accent font-medium uppercase hidden md:block">${t.step1}</span>
+                        <div class="w-8 h-8 rounded-full bg-accent text-black font-bold flex items-center justify-center shadow-glow transition-all duration-300">1</div>
+                        <span class="text-[10px] md:text-xs text-accent font-medium uppercase hidden md:block">${t.step1}</span>
                     </div>
                     <div class="uic-step flex flex-col items-center gap-2 cursor-pointer opacity-40" onclick="goToStep(1)">
-                        <div class="w-10 h-10 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300">2</div>
-                        <span class="text-xs text-gray-400 font-medium uppercase hidden md:block">${t.step2}</span>
+                        <div class="w-8 h-8 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300">2</div>
+                        <span class="text-[10px] md:text-xs text-gray-400 font-medium uppercase hidden md:block">${t.step2}</span>
                     </div>
                     <div class="uic-step flex flex-col items-center gap-2 cursor-pointer opacity-40" onclick="goToStep(2)">
-                        <div class="w-10 h-10 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300">3</div>
-                        <span class="text-xs text-gray-400 font-medium uppercase hidden md:block">${t.step3}</span>
+                        <div class="w-8 h-8 rounded-full bg-white/10 text-white font-bold flex items-center justify-center border border-white/10 transition-all duration-300">3</div>
+                        <span class="text-[10px] md:text-xs text-gray-400 font-medium uppercase hidden md:block">${t.step3}</span>
                     </div>
                 </div>
 
                 <!-- Steps Content -->
-                <div id="uic-content-area" class="min-h-[300px]">
+                <div class="min-h-[350px]">
                     <!-- Step 1: Types -->
                     <div id="uic-step-0" class="uic-view animate-fade-in block">
-                        <h3 class="text-2xl font-bold text-white mb-8 text-center">${t.step1}</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             ${Object.entries(t.types).map(([key, label]) => `
                                 <div onclick="toggleSelection('type', '${key}')" 
@@ -146,7 +181,7 @@ export const ProjectConfig = (lang = 'de') => {
                                     <div class="w-6 h-6 rounded-full border-2 border-white/20 flex-shrink-0 flex items-center justify-center">
                                         <div class="w-3 h-3 rounded-full bg-accent opacity-0 transition-opacity"></div>
                                     </div>
-                                    <span class="text-white font-medium text-lg">${label}</span>
+                                    <span class="text-white font-medium text-sm md:text-base">${label}</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -154,7 +189,6 @@ export const ProjectConfig = (lang = 'de') => {
 
                     <!-- Step 2: Features -->
                     <div id="uic-step-1" class="uic-view hidden">
-                        <h3 class="text-2xl font-bold text-white mb-8 text-center">${t.step2}</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             ${Object.entries(t.features).map(([key, label]) => `
                                 <div onclick="toggleSelection('feature', '${key}')" 
@@ -163,15 +197,14 @@ export const ProjectConfig = (lang = 'de') => {
                                     <div class="w-5 h-5 rounded border border-white/30 flex-shrink-0 flex items-center justify-center">
                                         <i class="fas fa-check text-xs text-black opacity-0 transition-opacity"></i>
                                     </div>
-                                    <span class="text-gray-300 group-hover:text-white transition-colors">${label}</span>
+                                    <span class="text-gray-300 group-hover:text-white transition-colors text-sm md:text-base">${label}</span>
                                 </div>
                             `).join('')}
                         </div>
                     </div>
 
-                    <!-- Step 3: Contact Form -->
+                    <!-- Step 3: Contact -->
                     <div id="uic-step-2" class="uic-view hidden">
-                         <h3 class="text-2xl font-bold text-white mb-8 text-center">${t.step3}</h3>
                          <div class="max-w-md mx-auto space-y-4">
                             <div>
                                 <label class="block text-sm text-gray-400 mb-2">${t.form.name}</label>
@@ -193,18 +226,13 @@ export const ProjectConfig = (lang = 'de') => {
                 </div>
 
                 <!-- Navigation -->
-                <div class="flex justify-between mt-12 pt-8 border-t border-white/10">
+                <div class="flex justify-between mt-8 pt-8 border-t border-white/10">
                     <button id="uic-btn-back" onclick="changeStep(-1)" class="px-6 py-3 rounded-lg text-gray-400 hover:text-white font-medium transition-colors hidden">${t.btn_back}</button>
                     <button id="uic-btn-next" onclick="changeStep(1)" class="ml-auto px-8 py-3 rounded-lg bg-white text-black font-bold hover:bg-gray-200 transition-all shadow-lg transform hover:-translate-y-1">${t.btn_next}</button>
                     <button id="uic-btn-send" onclick="submitConfig()" class="ml-auto px-8 py-3 rounded-lg bg-accent text-white font-bold hover:bg-accent-hover transition-all shadow-glow hidden">${t.btn_send}</button>
                 </div>
-
             </div>
         </div>
-
-        <script>
-            // Logic injected via main.js or here mostly for reference
-        </script>
-    </section>
+    </div>
     `;
 };

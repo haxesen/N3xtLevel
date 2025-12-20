@@ -56,6 +56,7 @@ export const Chatbot = `
         <span class="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full border-2 border-[#0a0a0a]"></span>
     </button>
 </div>
+`;
 // --- Logic ---
 export const initChatbotLogic = () => {
     const toggle = document.getElementById('chat-toggle');
@@ -68,7 +69,7 @@ export const initChatbotLogic = () => {
 
     let isOpen = false;
     let hasGreeted = false;
-    
+
     // Get current Lang dynamically
     const getLang = () => localStorage.getItem('n3xt_lang') || 'de';
 
@@ -95,8 +96,8 @@ export const initChatbotLogic = () => {
     const addMsg = (sender, text) => {
         hideTyping();
         const div = document.createElement('div');
-        div.className = `flex ${ sender === 'bot' ? 'justify-start' : 'justify-end' } animate - fade -in my - 2`;
-        div.innerHTML = `< div class="max-w-[85%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot' ? 'bg-white/10 text-gray-200 rounded-tl-none' : 'bg-accent text-white rounded-tr-none'} shadow-sm" > ${ text }</div > `;
+        div.className = `flex ${sender === 'bot' ? 'justify-start' : 'justify-end'} animate - fade -in my - 2`;
+        div.innerHTML = `< div class="max-w-[85%] rounded-2xl px-4 py-2 text-sm ${sender === 'bot' ? 'bg-white/10 text-gray-200 rounded-tl-none' : 'bg-accent text-white rounded-tr-none'} shadow-sm" > ${text}</div > `;
         msgs.appendChild(div);
         msgs.scrollTop = msgs.scrollHeight;
     };
@@ -140,25 +141,25 @@ export const initChatbotLogic = () => {
             }
             else if (action === 'pricing' || action.startsWith('price_')) {
                 const t = {
-                   de: "Das hängt stark vom Projekt ab. Am besten besprechen wir das persönlich! Buchen Sie einen Termin oder schreiben Sie uns.",
-                   en: "That depends on the project. Let's discuss personally! Book a meeting or email us.",
-                   hu: "Ez nagyban függ a projekttől. Beszéljük át személyesen! Foglaljon időpontot vagy írjon nekünk."
-               };
-               resp = t[currentLang] || t.de;
-               nextOpts = [
-                   { val: 'booking', label: { de: '📅 Termin buchen', en: '📅 Book Meeting', hu: '📅 Időpontfoglalás' } },
-                   { val: 'show_email', label: { de: '✉️ Email schreiben', en: '✉️ Send Email', hu: '✉️ Email írása' } }
-               ];
+                    de: "Das hängt stark vom Projekt ab. Am besten besprechen wir das persönlich! Buchen Sie einen Termin oder schreiben Sie uns.",
+                    en: "That depends on the project. Let's discuss personally! Book a meeting or email us.",
+                    hu: "Ez nagyban függ a projekttől. Beszéljük át személyesen! Foglaljon időpontot vagy írjon nekünk."
+                };
+                resp = t[currentLang] || t.de;
+                nextOpts = [
+                    { val: 'booking', label: { de: '📅 Termin buchen', en: '📅 Book Meeting', hu: '📅 Időpontfoglalás' } },
+                    { val: 'show_email', label: { de: '✉️ Email schreiben', en: '✉️ Send Email', hu: '✉️ Email írása' } }
+                ];
             }
             else if (action === 'show_email') {
                 addMsg('bot', 'info@n3xt-level.eu');
                 return;
             }
             else if (action === 'industry') {
-                const t = { 
-                    de: "Wir haben spezielle Erfahrung in dieser Branche! Sehen Sie sich unsere Fallstudien an.", 
-                    en: "We have specialized experience in this industry! Check out our Case Studies.", 
-                    hu: "Különleges tapasztalatunk van ebben az iparágban! Nézze meg esettanulmányainkat." 
+                const t = {
+                    de: "Wir haben spezielle Erfahrung in dieser Branche! Sehen Sie sich unsere Fallstudien an.",
+                    en: "We have specialized experience in this industry! Check out our Case Studies.",
+                    hu: "Különleges tapasztalatunk van ebben az iparágban! Nézze meg esettanulmányainkat."
                 };
                 resp = t[currentLang] || t.de;
                 nextOpts = [{ val: 'nav_blog', label: { de: 'Zu den Cases', en: 'See Cases', hu: 'Esettanulmányok' } }];
@@ -182,8 +183,8 @@ export const initChatbotLogic = () => {
                 nextOpts = [{ val: 'booking', label: { de: 'Termin', en: 'Meeting', hu: 'Időpont' } }];
             }
             else if (action === 'support' || action === 'guarantee') {
-               const t = { de: "Ja! Wir bieten Wartung & Garantie.", en: "Yes! We offer maintenance & warranty.", hu: "Igen! Kínálunk karbantartást és garanciát." };
-               resp = t[currentLang] || t.de;
+                const t = { de: "Ja! Wir bieten Wartung & Garantie.", en: "Yes! We offer maintenance & warranty.", hu: "Igen! Kínálunk karbantartást és garanciát." };
+                resp = t[currentLang] || t.de;
             }
             else if (action.startsWith('nav_')) {
                 const target = action.split('_')[1];
@@ -207,7 +208,7 @@ export const initChatbotLogic = () => {
         if (lower.includes('dauer') || lower.includes('lange') || lower.includes('time') || lower.includes('idő')) { handleAction('duration'); return; }
         if (lower.includes('wo') || lower.includes('ort') || lower.includes('hol') || lower.includes('cím')) { handleAction('location'); return; }
         if (lower.includes('support') || lower.includes('wartung') || lower.includes('karbantart')) { handleAction('support'); return; }
-        
+
         // 2. Action
         if (lower.includes('termin') || lower.includes('book') || lower.includes('időpont')) { handleAction('booking'); return; }
         if (lower.includes('preis') || lower.includes('cost') || lower.includes('ár')) { handleAction('pricing'); return; }

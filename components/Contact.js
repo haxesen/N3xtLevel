@@ -63,23 +63,23 @@ export const Contact = (lang = 'de', isModal = false) => {
                         <div class="group">
                             <label
                                 class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.name_label}</label>
-                            <input type="text" name="name" required
-                                class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
+                            <input type="text" name="name" required style="background-color: rgba(255,255,255,0.08);"
+                                class="w-full border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
                                 placeholder="${t.name_placeholder}">
                         </div>
                         <div class="group">
                             <label
                                 class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.email_label}</label>
-                            <input type="email" name="email" required
-                                class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
+                            <input type="email" name="email" required style="background-color: rgba(255,255,255,0.08);"
+                                class="w-full border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600"
                                 placeholder="${t.email_placeholder}">
                         </div>
                     </div>
                     <div class="group">
                         <label
                             class="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-accent transition-colors">${t.msg_label}</label>
-                        <textarea name="message" rows="4" required
-                            class="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600 resize-none"
+                        <textarea name="message" rows="4" required style="background-color: rgba(255,255,255,0.08);"
+                            class="w-full border border-white/10 rounded-lg px-5 py-4 text-white outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-gray-600 resize-none"
                             placeholder="${t.msg_placeholder}"></textarea>
                     </div>
 

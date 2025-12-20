@@ -103,7 +103,8 @@ export const Booking = (lang = 'de', isModal = false) => {
                                         <button class="time-slot py-2 px-3 rounded-lg border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all text-sm">17:00</button>
                                     </div>
 
-                                    <button id="confirmBookingBtn" class="w-full mt-6 bg-accent text-white font-bold py-3 rounded-lg hover:bg-accent-hover transition-all shadow-glow">
+                                    <button id="confirmBookingBtn" style="background: linear-gradient(90deg, #FF4500 0%, #FF8C00 100%);"
+                                        class="w-full mt-6 text-white font-bold py-3 rounded-lg hover:shadow-glow-intense transition-all shadow-glow">
                                         ${t.btn_book}
                                     </button>
                                 </div>

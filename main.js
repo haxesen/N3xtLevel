@@ -750,7 +750,7 @@ const initChatbot = () => {
             return;
         }
         // Media / Content
-        if (lower.includes('foto') || lower.includes('photo') || lower.includes('video') || lower.includes('drohne') || lower.includes('drone') || lower.includes('film') || lower.includes('kamera') || lower.includes('media') || lower.includes('image')) {
+        if (lower.includes('foto') || lower.includes('fotó') || lower.includes('photo') || lower.includes('video') || lower.includes('videó') || lower.includes('drohne') || lower.includes('drone') || lower.includes('film') || lower.includes('kamera') || lower.includes('media') || lower.includes('image') || lower.includes('reklám')) {
             handleAction('price_content');
             return;
         }

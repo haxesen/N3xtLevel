@@ -314,7 +314,7 @@ const updateUI = () => {
     renderComp('hero-container', Hero);
     renderComp('services-container', Services);
     renderComp('process-container', Process);
-    renderComp('pricing-container', Pricing);
+    // renderComp('pricing-container', Pricing); // TODO: Redesign/Edit content before enabling
     renderComp('premium-content-container', PremiumContent);
     renderComp('stats-container', Stats);
     renderComp('about-me-container', AboutMe);
@@ -808,6 +808,23 @@ const initChatbot = () => {
 initChatbot();
 initServiceModal();
 
+const GA_ID = 'G-345GNE46LZ';
+
+const loadAnalytics = () => {
+    if (document.getElementById('ga-script')) return;
+    const script = document.createElement('script');
+    script.id = 'ga-script';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', GA_ID, { 'anonymize_ip': true });
+    console.log('GA Loaded');
+};
+
 const initGlobals = () => {
     document.addEventListener('click', e => {
         const open = e.target.closest('[data-modal-open]');
@@ -822,13 +839,19 @@ const initGlobals = () => {
     });
 
     const banner = document.getElementById('cookie-banner');
-    if (banner && !localStorage.getItem('cookieConsent')) {
+    const hasConsent = localStorage.getItem('cookieConsent');
+
+    if (banner && !hasConsent) {
         setTimeout(() => banner.classList.remove('translate-y-full'), 1000);
+    } else if (hasConsent === 'accepted') {
+        loadAnalytics();
     }
+
     const accept = document.getElementById('cookie-accept');
     if (accept) accept.onclick = () => {
         localStorage.setItem('cookieConsent', 'accepted');
         if (banner) banner.classList.add('translate-y-full');
+        loadAnalytics();
     };
     const decline = document.getElementById('cookie-decline');
     if (decline) decline.onclick = () => {

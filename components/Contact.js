@@ -83,8 +83,8 @@ export const Contact = (lang = 'de', isModal = false) => {
                             placeholder="${t.msg_placeholder}"></textarea>
                     </div>
 
-                    <button type="submit"
-                        class="w-full bg-gradient-to-r from-accent to-[#FF8C00] text-white font-bold text-lg py-5 rounded-lg hover:from-accent-hover hover:to-[#FF4500] transition-all duration-300 shadow-glow hover:shadow-glow-intense hover:-translate-y-1 transform">
+                    <button type="submit" style="background: linear-gradient(90deg, #FF4500 0%, #FF8C00 100%);"
+                        class="w-full text-white font-bold text-lg py-5 rounded-lg hover:shadow-glow-intense hover:-translate-y-1 transform transition-all duration-300 shadow-glow">
                         ${t.btn}
                     </button>
                     <p id="formStatus" class="text-center text-accent font-semibold hidden opacity-0 transition-opacity duration-300 mt-4"></p>

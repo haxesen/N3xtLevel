@@ -64,7 +64,8 @@ export const Booking = (lang = 'de', isModal = false) => {
 
                         <!-- Right Content: Calendar UI -->
                         <div class="w-full ${isModal ? '' : 'reveal'}" style="transition-delay: 200ms;">
-                            <div class="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-glow relative overflow-hidden group hover:border-accent/30 transition-colors">
+                            <div style="background-color: #111; box-shadow: 0 0 25px rgba(255, 69, 0, 0.4); border-color: rgba(255,255,255,0.1);" 
+                                 class="border rounded-3xl p-8 relative overflow-hidden group transition-colors">
                                 <!-- Glow Effect inside card -->
                                 <div class="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none"></div>
 

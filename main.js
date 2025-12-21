@@ -442,12 +442,40 @@ window.submitConfig = async () => {
     btn.disabled = false;
 
     if (success) {
-        window.closeCalculator();
-        const successMsg = currentLang === 'hu' ? 'Köszönjük! Ajánlatkérését megkaptuk.' : (currentLang === 'de' ? 'Danke! Anfrage erhalten.' : 'Thanks! Request received.');
-        alert(successMsg);
+        // Custom Success UI matching Contact Form
+        const modalContent = document.getElementById('project-config-content');
+        if (modalContent) {
+            const successTitle = currentLang === 'hu' ? 'Köszönjük!' : (currentLang === 'de' ? 'Vielen Dank!' : 'Thank You!');
+            const successText = currentLang === 'hu' ? 'Ajánlatkérését megkaptuk.<br>Hamarosan jelentkezünk!' : (currentLang === 'de' ? 'Anfrage erhalten.<br>Wir melden uns in Kürze!' : 'Request received.<br>We will contact you shortly!');
 
-        // Reset Logic
-        window.calcState = { step: 0, type: null, features: [] };
+            modalContent.innerHTML = `
+                <div class="flex flex-col items-center justify-center p-12 h-full min-h-[400px] animate-fade-in-up">
+                    <div class="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mb-8 text-accent animate-pulse shadow-[0_0_30px_rgba(255,69,0,0.2)]">
+                        <i class="fas fa-check text-4xl"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-white mb-6">${successTitle}</h3>
+                    <p class="text-gray-300 text-xl text-center font-medium leading-relaxed max-w-lg">
+                        ${successText}
+                    </p>
+                </div>
+            `;
+
+            // Auto Close Logic
+            setTimeout(() => {
+                window.closeCalculator();
+                // Reset State after closing
+                setTimeout(() => {
+                    window.calcState = { step: 0, type: null, features: [] };
+                    // Re-render Calculator by re-calling setup/init if needed, 
+                    // but usually the next openCalculator() call resets UI.
+                }, 500);
+            }, 4000);
+        } else {
+            // Fallback
+            window.closeCalculator();
+            const successMsg = currentLang === 'hu' ? 'Köszönjük! Ajánlatkérését megkaptuk.' : (currentLang === 'de' ? 'Danke! Anfrage erhalten.' : 'Thanks! Request received.');
+            alert(successMsg);
+        }
     } else {
         alert("System Error. Please try again.");
     }

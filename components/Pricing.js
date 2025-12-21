@@ -135,16 +135,22 @@ export const Pricing = (lang = 'de') => {
         // but the CARD itself must NOT be overflow-hidden so the Badge (-top-4) is visible.
         const techBg = isPopular ? `
             <style>
-                @keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+                @keyframes blobFloat { 
+                    0%, 100% { transform: translate(0, 0) scale(1); } 
+                    33% { transform: translate(30px, -30px) scale(1.1); } 
+                    66% { transform: translate(-20px, 20px) scale(0.9); } 
+                }
             </style>
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none -z-10">
-                <!-- Soft Radar Effect -->
-                <div class="absolute inset-[-50%] w-[200%] h-[200%] opacity-40"
-                     style="background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.2) 60deg, transparent 120deg); 
-                            animation: radarSpin 8s linear infinite;">
+                <!-- Liquid Plasma Effect -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-[80px] opacity-40 animate-pulse-slow" style="animation-duration: 4s;"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] opacity-40 animate-pulse-slow" style="animation-duration: 6s; animation-delay: 1s;"></div>
+                
+                <!-- Moving Gradient Mesh -->
+                <div class="absolute inset-[-50%] opacity-20"
+                     style="background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 60%); 
+                            animation: blobFloat 10s ease-in-out infinite;">
                 </div>
-                <!-- Inner Shadow to fade edges -->
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#0f0f0f_80%)]"></div>
             </div>
         ` : '';
 

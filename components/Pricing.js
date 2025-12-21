@@ -165,10 +165,10 @@ export const Pricing = (lang = 'de') => {
 
     return `
     <!-- Pricing Section with Highlighted "Launch" Background -->
-    <section id="pricing" class="py-24 relative overflow-hidden">
+    <section id="pricing" class="py-24 relative overflow-hidden border-y border-white/5">
         <!-- Background Gradients -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black via-[#0c0c0c] to-black -z-20"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent -z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-[#151515] to-black -z-20"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/15 via-transparent to-transparent -z-10 pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">

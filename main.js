@@ -398,21 +398,21 @@ window.updateSummary = () => {
 
     // Costs Logic
     const baseCosts = {
-        landing: { min: 1200, max: 1600 },
-        website: { min: 2200, max: 3200 },
-        ecommerce: { min: 5500, max: 8500 }
+        landing: { min: 900, max: 1300 },
+        website: { min: 1500, max: 2400 },
+        ecommerce: { min: 3500, max: 5500 }
     };
 
     // Feature add-ons (Avg cost added to range)
     const featCosts = {
-        content_ai: 300,
-        seo_pro: 400,
-        chat_sales: 600,
-        automation: 500,
-        blog: 400,
-        booking: 400,
-        multilang: 500,
-        design: 400,
+        content_ai: 150,
+        seo_pro: 250,
+        chat_sales: 300,
+        automation: 250,
+        blog: 200,
+        booking: 200,
+        multilang: 300,
+        design: 200,
         maintenance: 0
     };
 

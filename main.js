@@ -444,6 +444,13 @@ window.updateSummary = () => {
     // Format Prices
     const formatPrice = (p) => "€" + Math.round(p).toLocaleString();
 
+    // Disclaimer Translations
+    const disclaimer = {
+        de: "*Unverbindliche Schätzung. Der Endpreis wird nach persönlicher Absprache finalisiert.",
+        en: "*Non-binding estimate. Final price confirmed after consultation.",
+        hu: "*Nem kötelező érvényű becslés. A végleges árat személyes egyeztetés után pontosítjuk."
+    }[currentLang] || "";
+
     txt.innerHTML = `
         <strong>${tr.sel}</strong> ${typeLabel} <br> 
         <span class="text-gray-400 text-xs text-pretty">${feats}</span>
@@ -451,10 +458,14 @@ window.updateSummary = () => {
         ${window.calcState.type ? `
         <div class="mt-4 pt-4 border-t border-white/10">
             <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">${tr.est}</div>
-            <div class="text-2xl font-bold text-accent shadow-glow inline-block">
+            <div class="text-2xl font-bold text-accent shadow-glow inline-block mb-1">
                 ${formatPrice(minTotal)} - ${formatPrice(maxTotal)}
             </div>
-            ${hasMaint ? `<div class="text-xs text-gray-300 mt-1">+ €99${tr.mo}</div>` : ''}
+            ${hasMaint ? `<div class="text-xs text-gray-300 mb-2">+ €99${tr.mo}</div>` : '<div class="mb-2"></div>'}
+            
+            <p class="text-[10px] text-gray-500 italic leading-tight max-w-xs mx-auto">
+                ${disclaimer}
+            </p>
         </div>
         ` : ''}
     `;

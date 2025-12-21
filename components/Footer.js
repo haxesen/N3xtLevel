@@ -32,7 +32,7 @@ export const Footer = (lang = 'de') => {
 
         <!-- Social Icons (Footer) -->
         <div class="flex space-x-6 items-center">
-            <a href="#" class="social-btn text-xl"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61585405025431" target="_blank" class="social-btn text-xl"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social-btn text-xl"><i class="fab fa-instagram"></i></a>
             <a href="#" class="social-btn text-xl"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" class="social-btn text-lg"><i class="fab fa-x-twitter"></i></a>

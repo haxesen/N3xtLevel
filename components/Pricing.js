@@ -129,7 +129,7 @@ export const Pricing = (lang = 'de') => {
                 `).join('')}
             </ul>
 
-            <button onclick="window.hubSelect('message')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass}">
+            <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass}">
                 ${data.btn}
             </button>
         </div>

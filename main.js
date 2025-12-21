@@ -676,18 +676,28 @@ window.setupContactForm = () => {
     console.log("🛠️ Setup Contact Form: Pre-fill check...", form ? "FOUND" : "NOT FOUND");
 
     if (form) {
-        // Pre-fill Message Logic (Restored)
+        // Pre-fill Message Logic (Booking)
         const pendingBooking = localStorage.getItem('n3xt_pending_booking');
-        if (pendingBooking) {
-            try {
-                const pb = JSON.parse(pendingBooking);
-                const msgArea = form.querySelector('textarea[name="message"]');
-                if (msgArea && !msgArea.value) {
+        const selectedPackage = localStorage.getItem('n3xt_selected_package');
+        const msgArea = form.querySelector('textarea[name="message"]');
+
+        if (msgArea && !msgArea.value) {
+            if (pendingBooking) {
+                try {
+                    const pb = JSON.parse(pendingBooking);
                     msgArea.value = (currentLang === 'hu' ? `Időpontfoglalás kérés:\nDátum: ${pb.date}\nIdő: ${pb.time}` :
                         (currentLang === 'en' ? `Booking Request:\nDate: ${pb.date}\nTime: ${pb.time}` :
                             `Terminanfrage:\nDatum: ${pb.date}\nUhrzeit: ${pb.time}`)) + "\n\n";
-                }
-            } catch (e) { console.error("Booking Parse Error", e); }
+                } catch (e) { console.error("Booking Parse Error", e); }
+            } else if (selectedPackage) {
+                // Package Pre-fill
+                msgArea.value = (currentLang === 'hu' ? `Üdvözlöm! Érdeklődnék a ${selectedPackage} csomag iránt.` :
+                    (currentLang === 'en' ? `Hello! I am interested in the ${selectedPackage} package.` :
+                        `Hallo! Ich interessiere mich für das ${selectedPackage} Paket.`)) + "\n\n";
+
+                // Clear it immediately so it doesn't persist if they close and reopen freely
+                localStorage.removeItem('n3xt_selected_package');
+            }
         }
 
         // Note: Event listener is handled by initGlobals delegation to prevent duplicates.
@@ -697,6 +707,11 @@ window.setupContactForm = () => {
 
 window.setupStats = () => {
     // Placeholder for stats logic if assumed elsewhere
+};
+
+window.selectPackage = (pkgName) => {
+    localStorage.setItem('n3xt_selected_package', pkgName);
+    window.hubSelect('message');
 };
 
 window.hubSelect = (type, btn) => {

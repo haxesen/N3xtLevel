@@ -139,12 +139,12 @@ export const Pricing = (lang = 'de') => {
             </style>
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none -z-10">
                 <!-- Soft Radar Effect -->
-                <div class="absolute inset-[-50%] w-[200%] h-[200%] opacity-20"
-                     style="background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.1) 60deg, transparent 120deg); 
+                <div class="absolute inset-[-50%] w-[200%] h-[200%] opacity-40"
+                     style="background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.2) 60deg, transparent 120deg); 
                             animation: radarSpin 8s linear infinite;">
                 </div>
                 <!-- Inner Shadow to fade edges -->
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#0f0f0f_70%)]"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#0f0f0f_80%)]"></div>
             </div>
         ` : '';
 

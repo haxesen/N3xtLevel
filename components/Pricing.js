@@ -6,9 +6,11 @@ export const Pricing = (lang = 'de') => {
             subtitle: "Transparent & Fair. Wählen Sie das Paket für Ihren Erfolg.",
             launch_offer: "🚀 Einführungsangebot: Preise gültig für die nächsten 3 Monate!",
             future_note: "*Danach gelten die regulären Preise (+20%).",
+            future_label: "Normale Preis:",
             essential: {
                 name: "Essential",
                 price: "€990",
+                future_price: "€1.190",
                 period: "einmalig",
                 desc: "Für Start-ups & lokale Helden.",
                 features: ["High-Conversion Landing Page", "Google Maps & Kontakt-Setup", "Ultra-Fast Speed Performance", "SEO Basis & Social Media"],
@@ -17,6 +19,7 @@ export const Pricing = (lang = 'de') => {
             professional: {
                 name: "Professional",
                 price: "€1.790",
+                future_price: "€2.190",
                 period: "einmalig",
                 desc: "Unser Bestseller für KMUs.",
                 features: ["Bis zu 7 Unterseiten & Blog", "CMS (Einfache Selbstverwaltung)", "AI-Optimierte Texte & Bilder", "Erweitertes Local SEO & Analytics", "Basis Automatisierung (Kalender)"],
@@ -25,6 +28,7 @@ export const Pricing = (lang = 'de') => {
             enterprise: {
                 name: "Enterprise & Shop",
                 price: "Ab €3.990",
+                future_price: "€4.790",
                 period: "individuell",
                 desc: "Innovation & Marktführerschaft.",
                 features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Profi Make.com Automatisierung", "International (Mehrsprachig)", "CRM & Priority Support"],
@@ -41,9 +45,11 @@ export const Pricing = (lang = 'de') => {
             subtitle: "Transparent & Fair. Choose the package for your success.",
             launch_offer: "🚀 Launch Pricing: Valid for the next 3 months only!",
             future_note: "*Regular prices (+20%) apply thereafter.",
+            future_label: "Regular Price:",
             essential: {
                 name: "Essential",
                 price: "€990",
+                future_price: "€1,190",
                 period: "one-time",
                 desc: "For Start-ups & Local Heroes.",
                 features: ["High-Conversion Landing Page", "Google Maps & Contact Setup", "Ultra-Fast Speed Performance", "Basic SEO & Social Media"],
@@ -52,6 +58,7 @@ export const Pricing = (lang = 'de') => {
             professional: {
                 name: "Professional",
                 price: "€1,790",
+                future_price: "€2,190",
                 period: "one-time",
                 desc: "Our Bestseller for SMEs.",
                 features: ["Up to 7 Subpages & Blog", "CMS (Easy Self-Management)", "AI-Optimized Content & Images", "Advanced Local SEO & Analytics", "Basic Automation (Calendar)"],
@@ -60,6 +67,7 @@ export const Pricing = (lang = 'de') => {
             enterprise: {
                 name: "Enterprise & Commerce",
                 price: "From €3,990",
+                future_price: "€4,790",
                 period: "individual",
                 desc: "Innovation & Market Leadership.",
                 features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Pro Make.com Automation", "International (Multi-language)", "CRM & Priority Support"],
@@ -76,9 +84,11 @@ export const Pricing = (lang = 'de') => {
             subtitle: "Átlátható és korrekt. Válaszd a sikeredhez illő csomagot.",
             launch_offer: "🚀 Bevezető Árak: Az ajánlat a következő 3 hónapban érvényes!",
             future_note: "*A 3 hónap letelte után a normál árak (+20%) érvényesek.",
+            future_label: "Normál ár:",
             essential: {
                 name: "Essential",
                 price: "€990",
+                future_price: "€1.190",
                 period: "egyszeri",
                 desc: "Induló vállalkozásoknak.",
                 features: ["High-Conversion Landing Page", "Google Térkép & Kapcsolat", "Ultra-Gyors Betöltés", "Alap SEO & Social Media"],
@@ -87,6 +97,7 @@ export const Pricing = (lang = 'de') => {
             professional: {
                 name: "Professional",
                 price: "€1.790",
+                future_price: "€2.190",
                 period: "egyszeri",
                 desc: "Bestseller KKV-knak.",
                 features: ["Akár 7 aloldal & Blog", "CMS (Könnyű Szerkeszthetőség)", "AI Szövegírás & Képek", "Haladó Helyi SEO & Analytics", "Alap Automatizálás (Naptár)"],
@@ -95,6 +106,7 @@ export const Pricing = (lang = 'de') => {
             enterprise: {
                 name: "Enterprise & Shop",
                 price: "€3.990-tól",
+                future_price: "€4.790",
                 period: "egyéni",
                 desc: "Innováció és Piacvezetés.",
                 features: ["High-End Webáruház Rendszer", "24/7 AI Sales Chatbot", "Professzionális Make.com Automatizálás", "Nemzetközi (Többnyelvűség)", "CRM & Priority Support"],
@@ -123,9 +135,13 @@ export const Pricing = (lang = 'de') => {
                 <h3 class="text-2xl font-bold text-white mb-2">${data.name}</h3>
                 <p class="text-gray-400 text-sm mb-6 min-h-[40px]">${data.desc}</p>
                 
-                <div class="mb-8">
+                <div class="mb-6">
                     <span class="text-4xl font-bold text-white">${data.price}</span>
                     <span class="text-gray-500 text-sm ml-2">/ ${data.period}</span>
+                    
+                    <div class="mt-2 text-xs text-gray-500">
+                        ${t.future_label} <span class="line-through decoration-red-500 decoration-2">${data.future_price}</span>
+                    </div>
                 </div>
                 
                 <ul class="space-y-4 mb-8 flex-1">

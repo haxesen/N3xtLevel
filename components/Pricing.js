@@ -127,24 +127,28 @@ export const Pricing = (lang = 'de') => {
         // More distinct background (dark grey/blue tint instead of transparent)
         // Stronger borders
         const borderClass = isPopular ? 'border-accent shadow-[0_0_40px_rgba(255,69,0,0.15)] scale-105 z-10' : 'border-white/10 hover:border-accent/40 hover:bg-white/5';
-        const bgClass = isPopular ? 'bg-[#0f0f0f] overflow-hidden' : 'bg-[#0a0a0a]';
+        const bgClass = isPopular ? 'bg-[#0f0f0f]' : 'bg-[#0a0a0a]';
         const btnClass = isPopular ? 'bg-accent text-white hover:bg-accent-hover shadow-glow hover:shadow-glow-intense' : 'bg-transparent border border-white/20 text-white hover:bg-white/10';
 
         // Dynamic Tech Background for Popular Card
+        // We put this in a wrapper with overflow-hidden to clip the animation,
+        // but the CARD itself must NOT be overflow-hidden so the Badge (-top-4) is visible.
         const techBg = isPopular ? `
             <style>
                 @keyframes techMove { 0% { background-position: 0 0; } 100% { background-position: 40px 40px; } }
             </style>
-            <div class="absolute inset-0 opacity-[0.07] pointer-events-none -z-10" 
-                 style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 11px); animation: techMove 4s linear infinite;">
+            <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none -z-10">
+                <div class="absolute inset-0 opacity-[0.07]" 
+                     style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 11px); animation: techMove 4s linear infinite;">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-50"></div>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-50 pointer-events-none -z-10"></div>
         ` : '';
 
         return `
             <div class="relative p-8 rounded-2xl border ${borderClass} ${bgClass} transition-all duration-300 flex flex-col h-full group backdrop-blur-sm"
                  data-aos="fade-up" data-aos-delay="${isPopular ? '100' : '0'}">
-                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg shadow-accent/20 z-20">MOST POPULAR</div>' : ''}
+                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg shadow-accent/20 z-20 whitespace-nowrap">MOST POPULAR</div>' : ''}
                 
                 ${techBg}
 

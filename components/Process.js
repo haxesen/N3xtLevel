@@ -135,7 +135,7 @@ export const Process = (lang = 'de') => {
         
         <!-- CTA -->
         <div class="text-center mt-20 reveal">
-            <a href="#" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); return false;" class="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 hover:border-accent transition-all group">
+            <a onclick="window.hubSelect('calendar')" style="cursor: pointer;" class="inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 hover:border-accent transition-all group">
                 ${t.cta}
                 <i class="fas fa-arrow-right text-accent group-hover:translate-x-1 transition-transform"></i>
             </a>

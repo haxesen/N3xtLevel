@@ -123,14 +123,17 @@ export const Pricing = (lang = 'de') => {
     const t = content[lang] || content.de;
 
     const renderCard = (data, isPopular = false) => {
-        const borderClass = isPopular ? 'border-accent shadow-glow' : 'border-white/10 hover:border-white/30';
-        const bgClass = isPopular ? 'bg-white/5' : 'bg-transparent';
+        // Updated Styling for Launch Offer
+        // More distinct background (dark grey/blue tint instead of transparent)
+        // Stronger borders
+        const borderClass = isPopular ? 'border-accent shadow-[0_0_40px_rgba(255,69,0,0.15)] scale-105 z-10' : 'border-white/10 hover:border-accent/40 hover:bg-white/5';
+        const bgClass = isPopular ? 'bg-[#0f0f0f]' : 'bg-[#0a0a0a]';
         const btnClass = isPopular ? 'bg-accent text-white hover:bg-accent-hover shadow-glow hover:shadow-glow-intense' : 'bg-transparent border border-white/20 text-white hover:bg-white/10';
 
         return `
-            <div class="relative p-8 rounded-2xl border ${borderClass} ${bgClass} transition-all duration-300 flex flex-col h-full group"
+            <div class="relative p-8 rounded-2xl border ${borderClass} ${bgClass} transition-all duration-300 flex flex-col h-full group backdrop-blur-sm"
                  data-aos="fade-up" data-aos-delay="${isPopular ? '100' : '0'}">
-                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg">MOST POPULAR</div>' : ''}
+                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg shadow-accent/20">MOST POPULAR</div>' : ''}
                 
                 <h3 class="text-2xl font-bold text-white mb-2">${data.name}</h3>
                 <p class="text-gray-400 text-sm mb-6 min-h-[40px]">${data.desc}</p>
@@ -139,8 +142,8 @@ export const Pricing = (lang = 'de') => {
                     <span class="text-4xl font-bold text-white">${data.price}</span>
                     <span class="text-gray-500 text-sm ml-2">/ ${data.period}</span>
                     
-                    <div class="mt-2 text-xs text-gray-500">
-                        ${t.future_label} <span class="line-through decoration-red-500 decoration-2">${data.future_price}</span>
+                    <div class="mt-2 text-xs text-gray-400 bg-white/5 inline-block px-2 py-1 rounded border border-white/5">
+                        ${t.future_label} <span class="line-through decoration-red-500 decoration-2 text-gray-500">${data.future_price}</span>
                     </div>
                 </div>
                 
@@ -161,8 +164,11 @@ export const Pricing = (lang = 'de') => {
     };
 
     return `
-    <section id="pricing" class="py-20 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] -z-10"></div>
+    <!-- Pricing Section with Highlighted "Launch" Background -->
+    <section id="pricing" class="py-24 relative overflow-hidden">
+        <!-- Background Gradients -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-[#0c0c0c] to-black -z-20"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent -z-10 pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">

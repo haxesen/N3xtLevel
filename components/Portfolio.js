@@ -56,7 +56,7 @@ export const Portfolio = (lang = 'de') => {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1: Beauty & Wellness -->
-            <div onclick="window.selectPackage('${currentLang === 'hu' ? 'Projekt Stílus: Glow & Relax' : (currentLang === 'de' ? 'Projekt-Stil: Glow & Relax' : 'Project Style: Glow & Relax')}')" 
+            <div onclick="window.selectPackage('${lang === 'hu' ? 'Projekt Stílus: Glow & Relax' : (lang === 'de' ? 'Projekt-Stil: Glow & Relax' : 'Project Style: Glow & Relax')}')" 
                  class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]">
                 <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=1000"
                     alt="Beauty Salon"
@@ -72,7 +72,7 @@ export const Portfolio = (lang = 'de') => {
             </div>
 
             <!-- Project 2: Gastronomy -->
-            <div onclick="window.selectPackage('${currentLang === 'hu' ? 'Projekt Stílus: Eiscafe Müller' : (currentLang === 'de' ? 'Projekt-Stil: Eiscafe Müller' : 'Project Style: Eiscafe Müller')}')"
+            <div onclick="window.selectPackage('${lang === 'hu' ? 'Projekt Stílus: Eiscafe Müller' : (lang === 'de' ? 'Projekt-Stil: Eiscafe Müller' : 'Project Style: Eiscafe Müller')}')"
                  class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
                 style="transition-delay: 100ms;">
                 <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21?auto=format&fit=crop&q=80&w=1000"
@@ -89,7 +89,7 @@ export const Portfolio = (lang = 'de') => {
             </div>
 
             <!-- Project 3: Medical -->
-            <div onclick="window.selectPackage('${currentLang === 'hu' ? 'Projekt Stílus: Praxis Dr. Weber' : (currentLang === 'de' ? 'Projekt-Stil: Praxis Dr. Weber' : 'Project Style: Praxis Dr. Weber')}')"
+            <div onclick="window.selectPackage('${lang === 'hu' ? 'Projekt Stílus: Praxis Dr. Weber' : (lang === 'de' ? 'Projekt-Stil: Praxis Dr. Weber' : 'Project Style: Praxis Dr. Weber')}')"
                  class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
                 style="transition-delay: 200ms;">
                 <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000"

@@ -17,7 +17,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€2.490",
                 period: "einmalig",
                 desc: "Unser Bestseller für KMUs.",
-                features: ["Bis zu 7 Unterseiten & Blog", "CMS (Einfache Selbstverwaltung)", "AI-Optimierte Texte & Bilder", "Erweitertes Local SEO & Analytics", "DSGVO & Sicherheits-Paket"],
+                features: ["Bis zu 7 Unterseiten & Blog", "CMS (Einfache Selbstverwaltung)", "AI-Optimierte Texte & Bilder", "Erweitertes Local SEO & Analytics", "Basis Automatisierung (Kalender)"],
                 btn: "Durchstarten"
             },
             enterprise: {
@@ -25,7 +25,7 @@ export const Pricing = (lang = 'de') => {
                 price: "Ab €5.990",
                 period: "individuell",
                 desc: "Innovation & Marktführerschaft.",
-                features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Automatisierte Workflows", "International (Mehrsprachig)", "Premium Priority Support"],
+                features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Profi Make.com Automatisierung", "International (Mehrsprachig)", "CRM & Priority Support"],
                 btn: "Beratung anfordern"
             },
             cta: {
@@ -50,7 +50,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€2,490",
                 period: "one-time",
                 desc: "Our Bestseller for SMEs.",
-                features: ["Up to 7 Subpages & Blog", "CMS (Easy Self-Management)", "AI-Optimized Content & Images", "Advanced Local SEO & Analytics", "GDPR & Security Package"],
+                features: ["Up to 7 Subpages & Blog", "CMS (Easy Self-Management)", "AI-Optimized Content & Images", "Advanced Local SEO & Analytics", "Basic Automation (Calendar)"],
                 btn: "Boost Business"
             },
             enterprise: {
@@ -58,7 +58,7 @@ export const Pricing = (lang = 'de') => {
                 price: "From €5,990",
                 period: "individual",
                 desc: "Innovation & Market Leadership.",
-                features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Automated Workflows", "International (Multi-language)", "Premium Priority Support"],
+                features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Pro Make.com Automation", "International (Multi-language)", "CRM & Priority Support"],
                 btn: "Request Consult"
             },
             cta: {
@@ -83,7 +83,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€2.490",
                 period: "egyszeri",
                 desc: "Bestseller KKV-knak.",
-                features: ["Akár 7 aloldal & Blog", "CMS (Könnyű Szerkeszthetőség)", "AI Szövegírás & Képek", "Haladó Helyi SEO & Analytics", "GDPR & Biztonsági Csomag"],
+                features: ["Akár 7 aloldal & Blog", "CMS (Könnyű Szerkeszthetőség)", "AI Szövegírás & Képek", "Haladó Helyi SEO & Analytics", "Alap Automatizálás (Naptár)"],
                 btn: "Turbózzuk fel"
             },
             enterprise: {
@@ -91,7 +91,7 @@ export const Pricing = (lang = 'de') => {
                 price: "€5.990-tól",
                 period: "egyéni",
                 desc: "Innováció és Piacvezetés.",
-                features: ["High-End Webáruház Rendszer", "24/7 AI Sales Chatbot", "Automatizált Folyamatok", "Nemzetközi (Többnyelvűség)", "Prémium Priority Support"],
+                features: ["High-End Webáruház Rendszer", "24/7 AI Sales Chatbot", "Professzionális Make.com Automatizálás", "Nemzetközi (Többnyelvűség)", "CRM & Priority Support"],
                 btn: "Konzultáció"
             },
             cta: {

@@ -24,7 +24,7 @@ This document outlines the official pricing structure for N3xtLevel, based on co
 *   **CMS (Easy Self-Management):** Client retains control.
 *   **AI-Optimized Content & Images:** Professional copy and visuals included.
 *   **Advanced Local SEO & Analytics:** Measurable results and local dominance.
-*   **GDPR & Security Package:** Peace of mind compliance.
+*   **Basic Automation:** Google Calendar Sync & Auto-reply functionality.
 
 ### 3. ENTERPRISE & SHOP - "Market Dominance"
 **Price:** From €5.990 (Individual)
@@ -33,9 +33,9 @@ This document outlines the official pricing structure for N3xtLevel, based on co
 **Features:**
 *   **High-End E-Commerce System:** Tailored Online Shops (WooCommerce / Shopify).
 *   **24/7 AI Sales Chatbot:** Automation that sells while you sleep.
-*   **Automated Workflows:** Efficiency enhancements (Zapier/Make integrations).
+*   **Advanced Process Automation:** Custom Make.com workflows (CRM Sync, Auto-Invoicing, Lead Routing).
 *   **International (Multi-language):** Global reach.
-*   **Premium Priority Support:** Dedicated assistance.
+*   **Premium Priority Support & CRM:** Dedicated assistance and system integration.
 
 ---
 
@@ -56,4 +56,4 @@ The Project Configurator offers 3 streamlined base types:
 
 ## Market Positioning
 *   **Competitors:** Often charge extra for content, speed optimization, and mobile design.
-*   **N3xtLevel Advantage:** We include AI-generated premium content and technical perfection in the core packages, making the offer "turn-key" and higher value for the money.
+*   **N3xtLevel Advantage:** We include **AI-generated premium content**, **Business Automation (Make.com)**, and **technical perfection** in the core packages. This "Turn-Key + Automation" approach provides significantly higher value than standard web agencies.

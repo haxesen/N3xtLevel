@@ -387,24 +387,77 @@ window.updateSummary = () => {
     if (!txt) return;
 
     const tr = {
-        de: { sel: "Ausgewählt:", none: "Keine" },
-        en: { sel: "Selected:", none: "None" },
-        hu: { sel: "Kiválasztva:", none: "Nincs" }
-    }[currentLang] || { sel: "Selected:", none: "None" };
+        de: { sel: "Ausgewählt:", none: "Keine", est: "Geschätzte Investition:", mo: "/Monat Wartung" },
+        en: { sel: "Selected:", none: "None", est: "Est. Investment:", mo: "/mo Maintenance" },
+        hu: { sel: "Kiválasztva:", none: "Nincs", est: "Becsült Beruházás:", mo: "/hó Karbantartás" }
+    }[currentLang] || { sel: "Selected:", none: "None", est: "Est. Investment:", mo: "/mo" };
 
     const typeLabel = window.calcState.type ?
         (document.querySelector(`.uic-card-type[data-value="${window.calcState.type}"] h4`)?.innerText || window.calcState.type.toUpperCase())
         : '-';
 
+    // Costs Logic
+    const baseCosts = {
+        landing: { min: 1200, max: 1600 },
+        website: { min: 2200, max: 3200 },
+        ecommerce: { min: 5500, max: 8500 }
+    };
+
+    // Feature add-ons (Avg cost added to range)
+    const featCosts = {
+        content_ai: 300,
+        seo_pro: 400,
+        chat_sales: 600,
+        automation: 500,
+        blog: 400,
+        booking: 400,
+        multilang: 500,
+        design: 400,
+        maintenance: 0
+    };
+
+    let minTotal = 0;
+    let maxTotal = 0;
+
+    if (window.calcState.type && baseCosts[window.calcState.type]) {
+        minTotal += baseCosts[window.calcState.type].min;
+        maxTotal += baseCosts[window.calcState.type].max;
+    }
+
     // Translate feature keys to their titles if possible, or leave as is
     const feats = window.calcState.features.length > 0 ?
         window.calcState.features.map(f => {
             const el = document.querySelector(`.uic-card-feat[data-value="${f}"] span.font-bold`);
+
+            // Add cost
+            const cost = featCosts[f] || 0;
+            minTotal += cost;
+            maxTotal += (cost * 1.2); // 20% variance on features
+
             return el ? el.innerText : f;
         }).join(', ')
         : tr.none;
 
-    txt.innerHTML = `<strong>${tr.sel}</strong> ${typeLabel} <br> <span class="text-gray-400 text-xs">${feats}</span>`;
+    // Maintenance Check
+    const hasMaint = window.calcState.features.includes('maintenance');
+
+    // Format Prices
+    const formatPrice = (p) => "€" + Math.round(p).toLocaleString();
+
+    txt.innerHTML = `
+        <strong>${tr.sel}</strong> ${typeLabel} <br> 
+        <span class="text-gray-400 text-xs text-pretty">${feats}</span>
+        
+        ${window.calcState.type ? `
+        <div class="mt-4 pt-4 border-t border-white/10">
+            <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">${tr.est}</div>
+            <div class="text-2xl font-bold text-accent shadow-glow inline-block">
+                ${formatPrice(minTotal)} - ${formatPrice(maxTotal)}
+            </div>
+            ${hasMaint ? `<div class="text-xs text-gray-300 mt-1">+ €99${tr.mo}</div>` : ''}
+        </div>
+        ` : ''}
+    `;
 };
 
 const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/ma2sksp64ucfz51s4imlu7qdkpc3un8i";

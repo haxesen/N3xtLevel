@@ -565,14 +565,31 @@ window.submitContactForm = async (event) => {
 
     // Get Data
     const formData = new FormData(form);
+
+    // Check for Booking Data in LocalStorage
+    const storedBooking = localStorage.getItem('n3xt_pending_booking');
+    let bookingData = null;
+    try {
+        if (storedBooking) bookingData = JSON.parse(storedBooking);
+    } catch (e) {
+        console.error("Booking Parse Error", e);
+    }
+
     const payload = {
         form_type: "Contact",
         language: currentLang,
         client_name: formData.get('name'),
         client_email: formData.get('email'),
         message: formData.get('message'),
+        booking_date: bookingData ? bookingData.date : '',
+        booking_time: bookingData ? bookingData.time : '',
         timestamp: new Date().toLocaleString()
     };
+
+    // Append to message for clarity in simple emails
+    if (bookingData) {
+        payload.message = (payload.message || "") + `\n\n[Booking Request: ${bookingData.date} @ ${bookingData.time}]`;
+    }
 
     // UI Loading
     btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
@@ -588,6 +605,7 @@ window.submitContactForm = async (event) => {
     btn.disabled = false;
 
     if (success) {
+        localStorage.removeItem('n3xt_pending_booking');
         const formContainer = document.getElementById('formContent');
         const successMsg = document.getElementById('successMessage');
 

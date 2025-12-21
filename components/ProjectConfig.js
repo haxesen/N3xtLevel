@@ -1,7 +1,6 @@
 export const ProjectConfig = (lang = 'de') => {
 
-    // Icon Mappings
-    // Icon Mappings
+
     const icons = {
         types: {
             landing: "fa-rocket",
@@ -38,9 +37,9 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Zurück",
             btn_send: "Anfrage senden",
             types: {
-                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (ab €900)" },
-                website: { title: "Corporate Website", desc: "Mehrseitiger Auftritt mit CMS. (ab €1.500)" },
-                ecommerce: { title: "E-Commerce", desc: "Webshop mit Payment-System. (ab €3.500)" }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (ab €990)" },
+                website: { title: "Corporate Website", desc: "Mehrseitiger Auftritt mit CMS. (ab €1.790)" },
+                ecommerce: { title: "E-Commerce", desc: "Webshop mit Payment-System. (ab €3.990)" }
             },
             features: {
                 content_ai: { title: "AI Content Boost", desc: "Texte & Bilder fixfertig generiert. (+€150)" },
@@ -75,9 +74,9 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Back",
             btn_send: "Send Request",
             types: {
-                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (from €900)" },
-                website: { title: "Corporate Website", desc: "Multi-page site with CMS. (from €1,500)" },
-                ecommerce: { title: "E-Commerce", desc: "Webshop with Payment System. (from €3,500)" }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (from €990)" },
+                website: { title: "Corporate Website", desc: "Multi-page site with CMS. (from €1,790)" },
+                ecommerce: { title: "E-Commerce", desc: "Webshop with Payment System. (from €3,990)" }
             },
             features: {
                 content_ai: { title: "AI Content Boost", desc: "Text & Images generated. (+€150)" },
@@ -112,9 +111,9 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Vissza",
             btn_send: "Ajánlatkérés Küldése",
             types: {
-                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (kb. €900)" },
-                website: { title: "Céges Weboldal", desc: "Többoldalas szájt CMS-sel. (kb. €1.500)" },
-                ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel. (kb. €3.500)" }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (kb. €990)" },
+                website: { title: "Céges Weboldal", desc: "Többoldalas szájt CMS-sel. (kb. €1.790)" },
+                ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel. (kb. €3.990)" }
             },
             features: {
                 content_ai: { title: "AI Tartalom", desc: "Szövegírás & Képek. (+€150)" },

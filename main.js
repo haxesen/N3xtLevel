@@ -396,11 +396,11 @@ window.updateSummary = () => {
         (document.querySelector(`.uic-card-type[data-value="${window.calcState.type}"] h4`)?.innerText || window.calcState.type.toUpperCase())
         : '-';
 
-    // Costs Logic
+    // Base Costs (Aligned with Fixed Packages)
     const baseCosts = {
-        landing: { min: 900, max: 1300 },
-        website: { min: 1500, max: 2400 },
-        ecommerce: { min: 3500, max: 5500 }
+        landing: { min: 990, max: 1390 },
+        website: { min: 1790, max: 2690 },
+        ecommerce: { min: 3990, max: 5990 }
     };
 
     // Feature add-ons (Avg cost added to range)

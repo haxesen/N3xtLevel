@@ -44,11 +44,11 @@ export const Hero = (lang = 'de') => {
 
     // Helper a N3XT szó formázásához, ha benne van a stringben
     const formatBrand = (text) => {
-        return text.replace('N3XT', `N < span class="text-[#ff0000]" style = "-webkit-text-stroke: 2px white;" > 3</span > XT`);
+        return text.replace('N3XT', `N<span class="text-[#ff0000]" style="-webkit-text-stroke: 2px white;">3</span>XT`);
     };
 
     return `
-    < !--Hero Section-- >
+    <!-- Hero Section -->
         <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
             <!-- Background Canvas (Neural Network) -->
             <canvas id="neural-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-30"></canvas>

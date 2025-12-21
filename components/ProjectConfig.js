@@ -16,7 +16,8 @@ export const ProjectConfig = (lang = 'de') => {
             blog: "fa-newspaper",
             booking: "fa-calendar-check",
             multilang: "fa-globe",
-            design: "fa-palette"
+            design: "fa-palette",
+            maintenance: "fa-screwdriver-wrench"
         }
     };
 
@@ -49,7 +50,8 @@ export const ProjectConfig = (lang = 'de') => {
                 blog: { title: "Blog / News", desc: "Content-Modul für Reichweite." },
                 booking: { title: "Buchungssystem", desc: "Termine automatisch verwalten." },
                 multilang: { title: "Mehrsprachigkeit", desc: "International skalieren (DE/EN/HU)." },
-                design: { title: "Premium Motion", desc: "High-End Animationen & Design." }
+                design: { title: "Premium Motion", desc: "High-End Animationen & Design." },
+                maintenance: { title: "Monatliche Wartung", desc: "Systempflege & CRM Support." }
             },
             form: {
                 name: "Ihr Name",
@@ -85,7 +87,8 @@ export const ProjectConfig = (lang = 'de') => {
                 blog: { title: "Blog / News", desc: "Content module for reach." },
                 booking: { title: "Booking System", desc: "Manage appointments automatically." },
                 multilang: { title: "Multi-language", desc: "Scale internationally (DE/EN/HU)." },
-                design: { title: "Premium Motion", desc: "High-end animations & design." }
+                design: { title: "Premium Motion", desc: "High-end animations & design." },
+                maintenance: { title: "Monthly Maintenance", desc: "System Health & CRM." }
             },
             form: {
                 name: "Your Name",
@@ -121,7 +124,8 @@ export const ProjectConfig = (lang = 'de') => {
                 blog: { title: "Blog / Hírek", desc: "Tartalommodul a látogatókért." },
                 booking: { title: "Időpontfoglaló", desc: "Automata naptárkezelés." },
                 multilang: { title: "Többnyelvűség", desc: "Nemzetközi piac (DE/EN/HU)." },
-                design: { title: "Prémium Motion", desc: "High-End animációk & design." }
+                design: { title: "Prémium Motion", desc: "High-End animációk & design." },
+                maintenance: { title: "Havi Karbantartás", desc: "Rendszerfelügyelet & CRM." }
             },
             form: {
                 name: "Az Ön neve",

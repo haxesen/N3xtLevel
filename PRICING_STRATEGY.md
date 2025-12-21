@@ -37,6 +37,15 @@ This document outlines the official pricing structure for N3xtLevel, based on co
 *   **International (Multi-language):** Global reach.
 *   **Premium Priority Support & CRM:** Dedicated assistance and system integration.
 
+### 4. MONTHLY MAINTENANCE & SUPPORT (Recurring Revenue)
+**Goal:** Continuous system health and automation reliability.
+
+*   **Basic Web Care (€49/mo):** Hosting, Security Updates, Backups. (Available for all).
+*   **Business Automation Support (€99/mo):**
+    *   **Requires:** Enterprise or Professional Package with Automation.
+    *   **Includes:** Web Care + Make.com Scenario monitoring, Google Sheets database cleanup, API updates.
+    *   **Why:** Ensures the CRM/Automation effectively runs 24/7 without issues.
+
 ---
 
 ## Calculator Logic & Types
@@ -53,6 +62,7 @@ The Project Configurator offers 3 streamlined base types:
 *   **AI Content & SEO:** Upgrades any package.
 *   **Chatbots & Automation:** High-value extras.
 *   **Booking System:** Compatible with Website/Shop.
+*   **Monthly Maintenance:** Linked to Automation/CRM for system stability.
 
 ## Market Positioning
 *   **Competitors:** Often charge extra for content, speed optimization, and mobile design.

@@ -229,8 +229,29 @@ window.toggleSelection = (category, value) => {
         });
     } else if (category === 'feature') {
         const idx = window.calcState.features.indexOf(value);
+        const isSelecting = idx === -1;
+
         if (idx > -1) window.calcState.features.splice(idx, 1);
         else window.calcState.features.push(value);
+
+        // Dependency Logic (Maintenance <-> Automation)
+        if (value === 'maintenance' && isSelecting) {
+            // If Maintenance selected -> Ensure Automation is ON
+            if (!window.calcState.features.includes('automation')) {
+                // Trigger toggle for automation (which will add it)
+                setTimeout(() => window.toggleSelection('feature', 'automation'), 50);
+                const msg = currentLang === 'hu' ? 'A karbantartás mellé hozzáadtuk az Automatizálás csomagot (Szükséges).' :
+                    (currentLang === 'de' ? 'Wartung erfordert Automatisierung. Hinzugefügt!' : 'Maintenance requires Automation. Added!');
+                // alert(msg); // Optional: Less obtrusive without alert, but clear UX needed.
+            }
+        }
+
+        if (value === 'automation' && !isSelecting) {
+            // If Automation removed -> Remove Maintenance if active
+            if (window.calcState.features.includes('maintenance')) {
+                setTimeout(() => window.toggleSelection('feature', 'maintenance'), 50);
+            }
+        }
 
         const el = document.querySelector(`.uic-card-feat[data-value="${value}"]`);
         if (el) {

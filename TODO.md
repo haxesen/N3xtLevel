@@ -1,10 +1,18 @@
 # N3XT LEVEL - Teendők (TODO)
 
 ## 🔜 Következő Lépések (Prioritás)
-- [ ] **Make.com Integráció:** Contact űrlap és Kalkulátor bekötése Webhook-ra, automatizált válaszok.
 - [ ] **Portfólió Bővítése:** Új demo projektek (Ügyvéd, Építész, Sörfőzde).
+- [ ] **Spam Védelem:** reCAPTCHA beépítése (ha szükséges).
+
+## 💡 Automatizációs Ötletek (Future Backlog)
+- [ ] **Szerződés Generátor:** Státuszváltásra automatikus Google Docs -> PDF szerződés és kiküldés.
+- [ ] **Projektmenedzsment:** Leadszinkronizálás Trello / Notion feladatkezelőbe.
+- [ ] **AI "Sales Asszisztens":** ChatGPT alapú választervezet és leadelemzés.
 
 ## 🎨 Friss Fejlesztések (Kész)
+- [x] **Make.com Automatizáció:** Teljes rendszer (Webhook -> CRM -> Email -> Router).
+- [x] **SMTP Integráció:** Saját domainről küldött profi HTML levelek.
+- [x] **Kód Stabilizálás:** Event Delegation és Console cleanup.
 - [x] **Árazási Stratégia V4:** Versenyképes csomagok (Essential, Professional AI, Enterprise Shop).
 - [x] **Kalkulátor Refactor:** 3 fő típus, logikai szűrés (Landing nem választhat Blogot).
 - [x] **Design & Colors:** Hub ikonok és gombok színeinek véglegesítése (Fehér/Narancs/Lila).

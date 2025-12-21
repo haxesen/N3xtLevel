@@ -4,6 +4,7 @@ export const Pricing = (lang = 'de') => {
         de: {
             title: "Investitionspläne",
             subtitle: "Transparent & Fair. Wählen Sie das Paket für Ihren Erfolg.",
+            launch_offer: "🚀 Einführungsangebot: Preise gültig für die nächsten 3 Monate!",
             essential: {
                 name: "Essential",
                 price: "€990",
@@ -37,6 +38,7 @@ export const Pricing = (lang = 'de') => {
         en: {
             title: "Investment Plans",
             subtitle: "Transparent & Fair. Choose the package for your success.",
+            launch_offer: "🚀 Launch Prising: Valid for the next 3 months only!",
             essential: {
                 name: "Essential",
                 price: "€990",
@@ -70,6 +72,7 @@ export const Pricing = (lang = 'de') => {
         hu: {
             title: "Befektetési Csomagok",
             subtitle: "Átlátható és korrekt. Válaszd a sikeredhez illő csomagot.",
+            launch_offer: "🚀 Bevezető Árak: Az ajánlat a következő 3 hónapban érvényes!",
             essential: {
                 name: "Essential",
                 price: "€990",
@@ -143,6 +146,13 @@ export const Pricing = (lang = 'de') => {
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">${t.title}</h2>
                 <div class="w-24 h-1 bg-accent mx-auto rounded-full mb-6"></div>
                 <p class="text-gray-400">${t.subtitle}</p>
+                
+                <!-- Launch Offer Badge -->
+                <div class="inline-block bg-accent/10 border border-accent/30 rounded-full px-6 py-2 animate-pulse-slow mt-4">
+                    <span class="text-accent font-bold text-sm md:text-base tracking-wide">
+                        ${t.launch_offer}
+                    </span>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">

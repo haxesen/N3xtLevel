@@ -38,20 +38,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Zurück",
             btn_send: "Anfrage senden",
             types: {
-                landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
-                website: { title: "Corporate Website", desc: "Mehrseitiger Auftritt mit CMS." },
-                ecommerce: { title: "E-Commerce", desc: "Webshop mit Payment-System." }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (ab €1.200)" },
+                website: { title: "Corporate Website", desc: "Mehrseitiger Auftritt mit CMS. (ab €2.200)" },
+                ecommerce: { title: "E-Commerce", desc: "Webshop mit Payment-System. (ab €5.500)" }
             },
             features: {
-                content_ai: { title: "AI Content Boost", desc: "Texte & Bilder fixfertig generiert." },
-                seo_pro: { title: "SEO & Analytics", desc: "Top-Rankings & Conversion-Tracking." },
-                chat_sales: { title: "Sales Chatbot", desc: "Verkauft 24/7 automatisch." },
-                automation: { title: "Workflows", desc: "Zapier, Make & Auto-Emails." },
-                blog: { title: "Blog / News", desc: "Content-Modul für Reichweite." },
-                booking: { title: "Buchungssystem", desc: "Termine automatisch verwalten." },
-                multilang: { title: "Mehrsprachigkeit", desc: "International skalieren (DE/EN/HU)." },
-                design: { title: "Premium Motion", desc: "High-End Animationen & Design." },
-                maintenance: { title: "Monatliche Wartung", desc: "Systempflege & CRM Support." }
+                content_ai: { title: "AI Content Boost", desc: "Texte & Bilder fixfertig generiert. (+€300)" },
+                seo_pro: { title: "SEO & Analytics", desc: "Top-Rankings & Conversion-Tracking. (+€400)" },
+                chat_sales: { title: "Sales Chatbot", desc: "Verkauft 24/7 automatisch. (+€600)" },
+                automation: { title: "Workflows", desc: "Zapier, Make & Auto-Emails. (+€500)" },
+                blog: { title: "Blog / News", desc: "Content-Modul für Reichweite. (+€400)" },
+                booking: { title: "Buchungssystem", desc: "Termine automatisch verwalten. (+€400)" },
+                multilang: { title: "Mehrsprachigkeit", desc: "International skalieren. (+€500)" },
+                design: { title: "Premium Motion", desc: "High-End Animationen & Design. (+€400)" },
+                maintenance: { title: "Monatliche Wartung", desc: "Systempflege & CRM Support. (+€99/Mo)" }
             },
             form: {
                 name: "Ihr Name",
@@ -75,20 +75,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Back",
             btn_send: "Send Request",
             types: {
-                landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
-                website: { title: "Corporate Website", desc: "Multi-page site with CMS." },
-                ecommerce: { title: "E-Commerce", desc: "Webshop with Payment System." }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (from €1,200)" },
+                website: { title: "Corporate Website", desc: "Multi-page site with CMS. (from €2,200)" },
+                ecommerce: { title: "E-Commerce", desc: "Webshop with Payment System. (from €5,500)" }
             },
             features: {
-                content_ai: { title: "AI Content Boost", desc: "Text & Images generated for you." },
-                seo_pro: { title: "SEO & Analytics", desc: "Top Rankings & Conversion Tracking." },
-                chat_sales: { title: "Sales Chatbot", desc: "Sells 24/7 automatically." },
-                automation: { title: "Workflows", desc: "Zapier, Make & Auto-Emails." },
-                blog: { title: "Blog / News", desc: "Content module for reach." },
-                booking: { title: "Booking System", desc: "Manage appointments automatically." },
-                multilang: { title: "Multi-language", desc: "Scale internationally (DE/EN/HU)." },
-                design: { title: "Premium Motion", desc: "High-end animations & design." },
-                maintenance: { title: "Monthly Maintenance", desc: "System Health & CRM." }
+                content_ai: { title: "AI Content Boost", desc: "Text & Images generated. (+€300)" },
+                seo_pro: { title: "SEO & Analytics", desc: "Top Rankings & Tracking. (+€400)" },
+                chat_sales: { title: "Sales Chatbot", desc: "Sells 24/7 automatically. (+€600)" },
+                automation: { title: "Workflows", desc: "Zapier, Make & Auto-Emails. (+€500)" },
+                blog: { title: "Blog / News", desc: "Content module for reach. (+€400)" },
+                booking: { title: "Booking System", desc: "Manage appointments auto. (+€400)" },
+                multilang: { title: "Multi-language", desc: "Scale internationally. (+€500)" },
+                design: { title: "Premium Motion", desc: "High-end animations. (+€400)" },
+                maintenance: { title: "Monthly Maintenance", desc: "System Health & CRM. (+€99/mo)" }
             },
             form: {
                 name: "Your Name",
@@ -112,20 +112,20 @@ export const ProjectConfig = (lang = 'de') => {
             btn_back: "Vissza",
             btn_send: "Ajánlatkérés Küldése",
             types: {
-                landing: { title: "Landing Page", desc: "High-Performance One-Pager." },
-                website: { title: "Céges Weboldal", desc: "Többoldalas szájt CMS-sel." },
-                ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel." }
+                landing: { title: "Landing Page", desc: "High-Performance One-Pager. (kb. €1.200)" },
+                website: { title: "Céges Weboldal", desc: "Többoldalas szájt CMS-sel. (kb. €2.200)" },
+                ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel. (kb. €5.500)" }
             },
             features: {
-                content_ai: { title: "AI Tartalom", desc: "Szövegírás & Képek generálása." },
-                seo_pro: { title: "SEO & Analytics", desc: "Top helyezések & Mérés." },
-                chat_sales: { title: "Sales Chatbot", desc: "0-24 automata értékesítés." },
-                automation: { title: "Automatizálás", desc: "Zapier, Make & E-mailek." },
-                blog: { title: "Blog / Hírek", desc: "Tartalommodul a látogatókért." },
-                booking: { title: "Időpontfoglaló", desc: "Automata naptárkezelés." },
-                multilang: { title: "Többnyelvűség", desc: "Nemzetközi piac (DE/EN/HU)." },
-                design: { title: "Prémium Motion", desc: "High-End animációk & design." },
-                maintenance: { title: "Havi Karbantartás", desc: "Rendszerfelügyelet & CRM." }
+                content_ai: { title: "AI Tartalom", desc: "Szövegírás & Képek. (+€300)" },
+                seo_pro: { title: "SEO & Analytics", desc: "Top helyezések & Mérés. (+€400)" },
+                chat_sales: { title: "Sales Chatbot", desc: "0-24 automata eladás. (+€600)" },
+                automation: { title: "Automatizálás", desc: "Zapier, Make & E-mailek. (+€500)" },
+                blog: { title: "Blog / Hírek", desc: "Tartalommodul a látogatókért. (+€400)" },
+                booking: { title: "Időpontfoglaló", desc: "Automata naptárkezelés. (+€400)" },
+                multilang: { title: "Többnyelvűség", desc: "Nemzetközi piac. (+€500)" },
+                design: { title: "Prémium Motion", desc: "High-End animációk. (+€400)" },
+                maintenance: { title: "Havi Karbantartás", desc: "Rendszerfelügyelet & CRM. (+€99/hó)" }
             },
             form: {
                 name: "Az Ön neve",

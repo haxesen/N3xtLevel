@@ -5,14 +5,14 @@ export const TechStack = (lang = 'de') => {
         hu: "A sikered motorja:"
     }[lang] || "Power your success with";
 
-    // Tech Stack items: Icon class, Name, Color (optional)
+    // Tech Stack items: Icon class, Name
     const stack = [
-        { icon: "fa-brands fa-react", name: "React" },
-        { icon: "fa-solid fa-bolt", name: "Make.com" }, // Generic bolt for Make
-        { icon: "fa-solid fa-microchip", name: "Alpha Intelli" }, // AI placeholder
-        { icon: "fa-brands fa-google", name: "Google Cloud" },
-        { icon: "fa-brands fa-wordpress", name: "CMS" }, // WooCommerce/WP
-        { icon: "fa-brands fa-shopify", name: "Shopify" }
+        { icon: "fa-solid fa-brain", name: "OpenAI" },
+        { icon: "fa-solid fa-bolt", name: "Make.com" },
+        { icon: "fa-brands fa-google", name: "Google" },
+        { icon: "fa-solid fa-code", name: "HTML5 / CSS3" },
+        { icon: "fa-solid fa-rocket", name: "Performance" },
+        { icon: "fa-solid fa-magnifying-glass-chart", name: "SEO Pro" }
     ];
 
     return `

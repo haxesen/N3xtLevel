@@ -6,7 +6,7 @@ export const Pricing = (lang = 'de') => {
             subtitle: "Transparent & Fair. Wählen Sie das Paket für Ihren Erfolg.",
             essential: {
                 name: "Essential",
-                price: "€1.390",
+                price: "€990",
                 period: "einmalig",
                 desc: "Für Start-ups & lokale Helden.",
                 features: ["High-Conversion Landing Page", "Google Maps & Kontakt-Setup", "Ultra-Fast Speed Performance", "SEO Basis & Social Media"],
@@ -14,7 +14,7 @@ export const Pricing = (lang = 'de') => {
             },
             professional: {
                 name: "Professional",
-                price: "€2.490",
+                price: "€1.790",
                 period: "einmalig",
                 desc: "Unser Bestseller für KMUs.",
                 features: ["Bis zu 7 Unterseiten & Blog", "CMS (Einfache Selbstverwaltung)", "AI-Optimierte Texte & Bilder", "Erweitertes Local SEO & Analytics", "Basis Automatisierung (Kalender)"],
@@ -22,7 +22,7 @@ export const Pricing = (lang = 'de') => {
             },
             enterprise: {
                 name: "Enterprise & Shop",
-                price: "Ab €5.990",
+                price: "Ab €3.990",
                 period: "individuell",
                 desc: "Innovation & Marktführerschaft.",
                 features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Profi Make.com Automatisierung", "International (Mehrsprachig)", "CRM & Priority Support"],
@@ -39,7 +39,7 @@ export const Pricing = (lang = 'de') => {
             subtitle: "Transparent & Fair. Choose the package for your success.",
             essential: {
                 name: "Essential",
-                price: "€1,390",
+                price: "€990",
                 period: "one-time",
                 desc: "For Start-ups & Local Heroes.",
                 features: ["High-Conversion Landing Page", "Google Maps & Contact Setup", "Ultra-Fast Speed Performance", "Basic SEO & Social Media"],
@@ -47,7 +47,7 @@ export const Pricing = (lang = 'de') => {
             },
             professional: {
                 name: "Professional",
-                price: "€2,490",
+                price: "€1,790",
                 period: "one-time",
                 desc: "Our Bestseller for SMEs.",
                 features: ["Up to 7 Subpages & Blog", "CMS (Easy Self-Management)", "AI-Optimized Content & Images", "Advanced Local SEO & Analytics", "Basic Automation (Calendar)"],
@@ -55,7 +55,7 @@ export const Pricing = (lang = 'de') => {
             },
             enterprise: {
                 name: "Enterprise & Commerce",
-                price: "From €5,990",
+                price: "From €3,990",
                 period: "individual",
                 desc: "Innovation & Market Leadership.",
                 features: ["High-End E-Commerce System", "24/7 AI Sales Chatbot", "Pro Make.com Automation", "International (Multi-language)", "CRM & Priority Support"],
@@ -72,7 +72,7 @@ export const Pricing = (lang = 'de') => {
             subtitle: "Átlátható és korrekt. Válaszd a sikeredhez illő csomagot.",
             essential: {
                 name: "Essential",
-                price: "€1.390",
+                price: "€990",
                 period: "egyszeri",
                 desc: "Induló vállalkozásoknak.",
                 features: ["High-Conversion Landing Page", "Google Térkép & Kapcsolat", "Ultra-Gyors Betöltés", "Alap SEO & Social Media"],
@@ -80,7 +80,7 @@ export const Pricing = (lang = 'de') => {
             },
             professional: {
                 name: "Professional",
-                price: "€2.490",
+                price: "€1.790",
                 period: "egyszeri",
                 desc: "Bestseller KKV-knak.",
                 features: ["Akár 7 aloldal & Blog", "CMS (Könnyű Szerkeszthetőség)", "AI Szövegírás & Képek", "Haladó Helyi SEO & Analytics", "Alap Automatizálás (Naptár)"],
@@ -88,7 +88,7 @@ export const Pricing = (lang = 'de') => {
             },
             enterprise: {
                 name: "Enterprise & Shop",
-                price: "€5.990-tól",
+                price: "€3.990-tól",
                 period: "egyéni",
                 desc: "Innováció és Piacvezetés.",
                 features: ["High-End Webáruház Rendszer", "24/7 AI Sales Chatbot", "Professzionális Make.com Automatizálás", "Nemzetközi (Többnyelvűség)", "CRM & Priority Support"],

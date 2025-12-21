@@ -135,13 +135,16 @@ export const Pricing = (lang = 'de') => {
         // but the CARD itself must NOT be overflow-hidden so the Badge (-top-4) is visible.
         const techBg = isPopular ? `
             <style>
-                @keyframes techMove { 0% { background-position: 0 0; } 100% { background-position: 40px 40px; } }
+                @keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
             </style>
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none -z-10">
-                <div class="absolute inset-0 opacity-[0.07]" 
-                     style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 11px); animation: techMove 4s linear infinite;">
+                <!-- Soft Radar Effect -->
+                <div class="absolute inset-[-50%] w-[200%] h-[200%] opacity-20"
+                     style="background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.1) 60deg, transparent 120deg); 
+                            animation: radarSpin 8s linear infinite;">
                 </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-50"></div>
+                <!-- Inner Shadow to fade edges -->
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#0f0f0f_70%)]"></div>
             </div>
         ` : '';
 

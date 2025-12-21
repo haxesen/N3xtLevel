@@ -21,11 +21,11 @@ export const TechStack = (lang = 'de') => {
              <p class="text-sm text-gray-500 uppercase tracking-[0.2em] mb-8 font-medium">${t}</p>
              
              <!-- Tech Grid (Mobile: 3x2, Desktop: Flex) -->
-             <div class="grid grid-cols-3 md:flex md:flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+             <div class="grid grid-cols-3 md:flex md:flex-wrap justify-center items-center gap-8 md:gap-16">
                 ${stack.map(item => `
-                    <div class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-110">
-                        <i class="${item.icon} text-3xl md:text-4xl text-gray-400 group-hover:text-accent transition-colors"></i>
-                        <span class="text-[10px] md:text-xs text-gray-600 group-hover:text-white uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-6">${item.name}</span>
+                    <div class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110 opacity-50 hover:opacity-100 cursor-default">
+                        <i class="${item.icon} text-3xl md:text-4xl text-gray-500 group-hover:text-accent transition-colors duration-300"></i>
+                        <span class="text-[10px] md:text-xs text-gray-600 group-hover:text-white uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-6 whitespace-nowrap">${item.name}</span>
                     </div>
                 `).join('')}
              </div>

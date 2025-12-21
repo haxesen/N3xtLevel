@@ -489,40 +489,118 @@ window.updateSummary = () => {
     txt.innerHTML = `<strong>${tr.sel}</strong> ${typeLabel} <br> <span class="text-gray-400 text-xs">${feats}</span>`;
 };
 
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/ma2sksp64ucfz51s4imlu7qdkpc3un8i";
+
+window.sendToMake = async (payload) => {
+    try {
+        const response = await fetch(MAKE_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        // Make.com often returns text "Accepted", treating as success even if not strictly JSON.
+        if (response.ok) {
+            return true;
+        } else {
+            throw new Error(response.statusText);
+        }
+    } catch (error) {
+        console.error('Make Integration Error:', error);
+        return false;
+    }
+};
+
 window.submitConfig = async () => {
     const name = document.getElementById('uic-name').value;
     const email = document.getElementById('uic-email').value;
-    const phone = document.getElementById('uic-phone') ? document.getElementById('uic-phone').value : '';
+    const phone = document.getElementById('uic-phone').value;
 
     if (!name || !email) {
-        alert("Name & Email required!");
+        const msg = currentLang === 'hu' ? 'Kérjük töltse ki a Név és Email mezőt!' : (currentLang === 'de' ? 'Bitte Name & Email ausfüllen!' : 'Name & Email required!');
+        alert(msg);
         return;
     }
 
-    const data = {
-        _subject: "🚀 Neuer Projekt-Kalkulator Lead",
-        type: window.calcState.type,
-        features: window.calcState.features.join(', '),
-        name: name,
-        email: email,
-        phone: phone
+    const btn = document.getElementById('uic-btn-send');
+    const originalContent = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+    btn.classList.add('opacity-50', 'cursor-not-allowed');
+    btn.disabled = true;
+
+    const payload = {
+        form_type: "Calculator",
+        language: currentLang,
+        project_type: window.calcState.type,
+        features: window.calcState.features,
+        client_name: name,
+        client_email: email,
+        client_phone: phone,
+        timestamp: new Date().toLocaleString()
     };
 
-    const formData = new FormData();
-    for (const key in data) formData.append(key, data[key]);
+    const success = await window.sendToMake(payload);
 
-    try {
-        const response = await fetch("https://formspree.io/f/mvzppned", {
-            method: "POST", body: formData, headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-            alert("Danke! Wir melden uns in Kürze.");
-            location.reload();
+    btn.innerHTML = originalContent;
+    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    btn.disabled = false;
+
+    if (success) {
+        window.closeCalculator();
+        const successMsg = currentLang === 'hu' ? 'Köszönjük! Ajánlatkérését megkaptuk.' : (currentLang === 'de' ? 'Danke! Anfrage erhalten.' : 'Thanks! Request received.');
+        alert(successMsg);
+
+        // Reset Logic
+        window.calcState = { step: 0, type: null, features: [] };
+    } else {
+        alert("System Error. Please try again.");
+    }
+};
+
+window.submitContactForm = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const originalContent = btn.innerHTML;
+
+    // Get Data
+    const formData = new FormData(form);
+    const payload = {
+        form_type: "Contact",
+        language: currentLang,
+        client_name: formData.get('name'),
+        client_email: formData.get('email'),
+        message: formData.get('message'),
+        timestamp: new Date().toLocaleString()
+    };
+
+    // UI Loading
+    btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+    btn.classList.add('opacity-50', 'cursor-not-allowed');
+    btn.disabled = true;
+
+    // Send
+    const success = await window.sendToMake(payload);
+
+    // RESTORE UI
+    btn.innerHTML = originalContent;
+    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    btn.disabled = false;
+
+    if (success) {
+        const formContainer = document.getElementById('formContent');
+        const successMsg = document.getElementById('successMessage');
+
+        if (formContainer && successMsg) {
+            formContainer.classList.add('hidden');
+            successMsg.classList.remove('hidden');
         } else {
-            alert("Fehler beim Senden.");
+            const fallbackMsg = currentLang === 'hu' ? 'Köszönjük! Üzenetét megkaptuk.' : (currentLang === 'de' ? 'Danke! Nachricht erhalten.' : 'Success! Message received.');
+            alert(fallbackMsg);
+            form.reset();
         }
-    } catch (error) {
-        alert("Netzwerkfehler.");
+    } else {
+        alert(currentLang === 'hu' ? 'Hiba történt a küldés során. Kérjük próbálja újra.' : 'System Error. Please try again.');
     }
 };
 
@@ -623,6 +701,22 @@ window.closeUnivModal = () => {
             document.body.style.overflow = '';
         }, 300);
     }
+};
+
+window.setupContactForm = () => {
+    const form = document.getElementById('contactForm');
+    console.log("🛠️ Setup Contact Form: Searching for #contactForm...", form ? "FOUND" : "NOT FOUND");
+
+    if (form) {
+        // Since we re-render HTML, the element is usually new, but good practice to clear just in case logic changes.
+        form.removeEventListener('submit', window.submitContactForm);
+        form.addEventListener('submit', window.submitContactForm);
+        console.log("✅ Contact Form Listener Attached.");
+    }
+};
+
+window.setupStats = () => {
+    // Placeholder for stats logic if assumed elsewhere
 };
 
 window.hubSelect = (type, btn) => {
@@ -753,7 +847,6 @@ const updateUI = () => {
     });
 
     setupCalendar();
-    setupContactForm();
     setupStats();
     setupReveal();
 
@@ -899,6 +992,14 @@ const loadAnalytics = () => {
 };
 
 const initGlobals = () => {
+    // Global Form Submit Handler (Delegation) - Robust solution for dynamic forms
+    document.addEventListener('submit', (e) => {
+        if (e.target && e.target.id === 'contactForm') {
+            console.log("⚡ Global Delegation caught #contactForm submit!");
+            window.submitContactForm(e);
+        }
+    });
+
     document.addEventListener('click', e => {
         const open = e.target.closest('[data-modal-open]');
         if (open) {

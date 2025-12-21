@@ -127,18 +127,31 @@ export const Pricing = (lang = 'de') => {
         // More distinct background (dark grey/blue tint instead of transparent)
         // Stronger borders
         const borderClass = isPopular ? 'border-accent shadow-[0_0_40px_rgba(255,69,0,0.15)] scale-105 z-10' : 'border-white/10 hover:border-accent/40 hover:bg-white/5';
-        const bgClass = isPopular ? 'bg-[#0f0f0f]' : 'bg-[#0a0a0a]';
+        const bgClass = isPopular ? 'bg-[#0f0f0f] overflow-hidden' : 'bg-[#0a0a0a]';
         const btnClass = isPopular ? 'bg-accent text-white hover:bg-accent-hover shadow-glow hover:shadow-glow-intense' : 'bg-transparent border border-white/20 text-white hover:bg-white/10';
+
+        // Dynamic Tech Background for Popular Card
+        const techBg = isPopular ? `
+            <style>
+                @keyframes techMove { 0% { background-position: 0 0; } 100% { background-position: 40px 40px; } }
+            </style>
+            <div class="absolute inset-0 opacity-[0.07] pointer-events-none -z-10" 
+                 style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 11px); animation: techMove 4s linear infinite;">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-50 pointer-events-none -z-10"></div>
+        ` : '';
 
         return `
             <div class="relative p-8 rounded-2xl border ${borderClass} ${bgClass} transition-all duration-300 flex flex-col h-full group backdrop-blur-sm"
                  data-aos="fade-up" data-aos-delay="${isPopular ? '100' : '0'}">
-                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg shadow-accent/20">MOST POPULAR</div>' : ''}
+                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg shadow-accent/20 z-20">MOST POPULAR</div>' : ''}
                 
-                <h3 class="text-2xl font-bold text-white mb-2">${data.name}</h3>
-                <p class="text-gray-400 text-sm mb-6 min-h-[40px]">${data.desc}</p>
+                ${techBg}
+
+                <h3 class="text-2xl font-bold text-white mb-2 relative z-10">${data.name}</h3>
+                <p class="text-gray-400 text-sm mb-6 min-h-[40px] relative z-10">${data.desc}</p>
                 
-                <div class="mb-6">
+                <div class="mb-6 relative z-10">
                     <span class="text-4xl font-bold text-white">${data.price}</span>
                     <span class="text-gray-500 text-sm ml-2">/ ${data.period}</span>
                     
@@ -147,7 +160,7 @@ export const Pricing = (lang = 'de') => {
                     </div>
                 </div>
                 
-                <ul class="space-y-4 mb-8 flex-1">
+                <ul class="space-y-4 mb-8 flex-1 relative z-10">
                     ${data.features.map(f => `
                         <li class="flex items-start gap-3 text-gray-300 text-sm">
                             <i class="fas fa-check text-accent mt-1"></i>
@@ -156,7 +169,7 @@ export const Pricing = (lang = 'de') => {
                     `).join('')}
                 </ul>
                 
-                <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass}">
+                <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass} relative z-10">
                     ${data.btn}
                 </button>
             </div>

@@ -511,6 +511,11 @@ window.submitContactForm = async (event) => {
         if (formContainer && successMsg) {
             formContainer.classList.add('hidden');
             successMsg.classList.remove('hidden');
+
+            // Auto Close Logic
+            setTimeout(() => {
+                if (window.closeUnivModal) window.closeUnivModal();
+            }, 4000);
         } else {
             const fallbackMsg = currentLang === 'hu' ? 'Köszönjük! Üzenetét megkaptuk.' : (currentLang === 'de' ? 'Danke! Nachricht erhalten.' : 'Success! Message received.');
             alert(fallbackMsg);
@@ -622,13 +627,25 @@ window.closeUnivModal = () => {
 
 window.setupContactForm = () => {
     const form = document.getElementById('contactForm');
-    console.log("🛠️ Setup Contact Form: Searching for #contactForm...", form ? "FOUND" : "NOT FOUND");
+    console.log("🛠️ Setup Contact Form: Pre-fill check...", form ? "FOUND" : "NOT FOUND");
 
     if (form) {
-        // Since we re-render HTML, the element is usually new, but good practice to clear just in case logic changes.
-        form.removeEventListener('submit', window.submitContactForm);
-        form.addEventListener('submit', window.submitContactForm);
-        console.log("✅ Contact Form Listener Attached.");
+        // Pre-fill Message Logic (Restored)
+        const pendingBooking = localStorage.getItem('n3xt_pending_booking');
+        if (pendingBooking) {
+            try {
+                const pb = JSON.parse(pendingBooking);
+                const msgArea = form.querySelector('textarea[name="message"]');
+                if (msgArea && !msgArea.value) {
+                    msgArea.value = (currentLang === 'hu' ? `Időpontfoglalás kérés:\nDátum: ${pb.date}\nIdő: ${pb.time}` :
+                        (currentLang === 'en' ? `Booking Request:\nDate: ${pb.date}\nTime: ${pb.time}` :
+                            `Terminanfrage:\nDatum: ${pb.date}\nUhrzeit: ${pb.time}`)) + "\n\n";
+                }
+            } catch (e) { console.error("Booking Parse Error", e); }
+        }
+
+        // Note: Event listener is handled by initGlobals delegation to prevent duplicates.
+        // We do NOT attach it here anymore.
     }
 };
 

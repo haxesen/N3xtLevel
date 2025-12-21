@@ -94,7 +94,7 @@ export const Contact = (lang = 'de', isModal = false) => {
 
             <!-- Success Message -->
             <div id="successMessage"
-                class="hidden absolute inset-0 flex flex-col items-center justify-center p-8 bg-[#0a0a0a] z-20">
+                class="hidden relative w-full min-h-[400px] flex flex-col items-center justify-center p-8 bg-[#0a0a0a] z-20 rounded-3xl">
                 <div
                     class="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 text-accent animate-pulse">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"

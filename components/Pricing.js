@@ -165,12 +165,17 @@ export const Pricing = (lang = 'de') => {
 
     return `
     <!-- Pricing Section with Highlighted "Launch" Background -->
-    <section id="pricing" class="py-24 relative overflow-hidden border-y border-white/5">
-        <!-- Background Gradients -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black via-[#151515] to-black -z-20"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/15 via-transparent to-transparent -z-10 pointer-events-none"></div>
+    <section id="pricing" class="py-24 relative overflow-hidden border-y border-white/5 bg-[#050510]">
+        <!-- High-Tech Grid Background -->
+        <div class="absolute inset-0 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.05] pointer-events-none"></div>
+        
+        <!-- Deep Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#050510] via-transparent to-[#050510] pointer-events-none"></div>
+        
+        <!-- Central Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,69,0,0.15),transparent_70%)] pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tight">
                     ${t.title} <span class="text-accent">.</span>

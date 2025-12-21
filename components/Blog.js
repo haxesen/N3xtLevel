@@ -1,97 +1,97 @@
 export const Blog = (lang = 'de') => {
     const content = {
         de: {
-            title: "Aktuelle Einblicke & Erfolgsgeschichten",
-            subtitle: "Konkrete Beispiele, wie wir lokalen Unternehmen helfen.",
+            title: "Insights & Success Stories",
+            subtitle: "Wie KI & Automation den Unterschied machen.",
             articles: [
                 {
-                    category: "Praxis & Gesundheit",
-                    date: "Fallstudie",
-                    title: "Zahnarztpraxis: 30% mehr Patienten",
-                    excerpt: "Wie eine lokale Praxis durch Online-Terminbuchung und SEO täglich 2 Stunden Admin-Zeit spart und neue Patienten gewinnt.",
-                    img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Innovation",
+                    date: "Webdesign 2.0",
+                    title: "Warum KI-Webseiten 3x mehr Kunden konvertieren",
+                    excerpt: "KI-generierte Inhalte und dynamische Strukturen passen sich dem Besucher an. Das Ergebnis: Höhere Relevanz und mehr Verkäufe.",
+                    img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 },
                 {
-                    category: "Beauty & Wellness",
-                    date: "Lösung",
-                    title: "Beauty Salon: Voller Kalender, kein Stören",
-                    excerpt: "Während der Behandlung stört kein Telefon mehr. Unser System übernimmt Terminbuchungen und Fragen vollautomatisch.",
-                    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Effizienz",
+                    date: "Automation",
+                    title: "20 Stunden/Woche sparen mit Make.com",
+                    excerpt: "Schluss mit Excel-Chaos. Wie wir Terminbuchungen, Rechnungen und E-Mails vollautomatisch synchronisieren.",
+                    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 },
                 {
-                    category: "Gastronomie & Lokal",
-                    date: "SEO Strategie",
-                    title: "Café & Bistro: Nr. 1 auf Google Maps",
-                    excerpt: "Vom Geheimtipp zum Stadtgespräch. Durch gezieltes 'Local SEO' haben wir die Sichtbarkeit in der Google-Suche verdoppelt.",
-                    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Wachstum",
+                    date: "Local SEO",
+                    title: "Google Maps Dominanz in 30 Tagen",
+                    excerpt: "Lokale Sichtbarkeit ist der Schlüssel. Mit unserer optimierten Strategie landet Ihr Unternehmen ganz oben.",
+                    img: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 }
             ],
-            readMore: "Ähnliches Projekt starten"
+            readMore: "Lösung anfragen"
         },
         en: {
             title: "Insights & Success Stories",
-            subtitle: "Concrete examples of how we help local businesses.",
+            subtitle: "How AI & Automation make the difference.",
             articles: [
                 {
-                    category: "Practice & Health",
-                    date: "Case Study",
-                    title: "Dental Practice: 30% More Patients",
-                    excerpt: "How a local practice saves 2 hours of admin time daily and gains new patients via online booking and SEO.",
-                    img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Innovation",
+                    date: "Web Design 2.0",
+                    title: "Why AI Websites Convert 3x Better",
+                    excerpt: "AI-generated content and dynamic structures adapt to the visitor. The result: Higher relevance and more sales.",
+                    img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 },
                 {
-                    category: "Beauty & Wellness",
-                    date: "Solution",
-                    title: "Beauty Salon: Full Schedule, No Stress",
-                    excerpt: "No more phone ringing during treatments. Our system handles bookings and inquiries automatically.",
-                    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Efficiency",
+                    date: "Automation",
+                    title: "Save 20 Hours/Week with Make.com",
+                    excerpt: "Stop the spreadsheet chaos. How we fully synchronize bookings, invoices, and emails automatically.",
+                    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 },
                 {
-                    category: "Gastronomy & Local",
-                    date: "SEO Strategy",
-                    title: "Cafe & Bistro: #1 on Google Maps",
-                    excerpt: "From hidden gem to talk of the town. Through targeted 'Local SEO', we doubled visibility in Google searches.",
-                    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Growth",
+                    date: "Local SEO",
+                    title: "Google Maps Dominance in 30 Days",
+                    excerpt: "Local visibility is key. With our optimized strategy, your business lands at the very top.",
+                    img: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 }
             ],
-            readMore: "Start similar project"
+            readMore: "Request Solution"
         },
         hu: {
-            title: "Esettanulmányok & Megoldások",
-            subtitle: "Konkrét példák, hogyan segítünk a helyi vállalkozóknak.",
+            title: "Esettanulmányok & Tudástár",
+            subtitle: "Hogyan tesz különbséget az AI & Automatizáció.",
             articles: [
                 {
-                    category: "Praxis & Egészség",
-                    date: "Esettanulmány",
-                    title: "Fogorvosi Rendelő: 30%-kal több páciens",
-                    excerpt: "Hogyan spórolt meg egy helyi rendelő napi 2 óra adminisztrációt és szerzett új pácienseket az online foglalórendszerrel.",
-                    img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Innováció",
+                    date: "Webdesign 2.0",
+                    title: "Miért konvertálnak 3x jobban az AI weboldalak?",
+                    excerpt: "Az AI által generált tartalmak és dinamikus struktúrák alkalmazkodnak a látogatóhoz. Eredmény: Magasabb eladás.",
+                    img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 },
                 {
-                    category: "Szépség & Wellness",
-                    date: "Megoldás",
-                    title: "Szépségszalon: Teli naptár, nyugalom",
-                    excerpt: "Kezelés közben nem csörög a telefon. Rendszerünk automatikusan kezeli az időpontokat és a gyakori kérdéseket.",
-                    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Hatékonyság",
+                    date: "Automatizáció",
+                    title: "Heti 20 óra megtakarítás Make.com-mal",
+                    excerpt: "Vége az Excel-káosznak. Bemutatjuk, hogyan szinkronizáljuk teljesen automatán a foglalásokat, számlákat és e-maileket.",
+                    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 },
                 {
-                    category: "Vendéglátás",
-                    date: "SEO Stratégia",
-                    title: "Kávézó: 1. hely a Google Térképen",
-                    excerpt: "Rejtett helyből a város kedvence. Célzott 'Helyi SEO' stratégiával megdupláztuk a láthatóságot a keresőben.",
-                    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
-                    link: "#contact"
+                    category: "Növekedés",
+                    date: "Helyi SEO",
+                    title: "Google Térkép uralom 30 nap alatt",
+                    excerpt: "A helyi láthatóság a kulcs. Optimalizált stratégiánkkal vállalkozása garantáltan a találati lista élére kerül.",
+                    img: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800",
+                    link: "#"
                 }
             ],
-            readMore: "Hasonló projekt indítása"
+            readMore: "Megoldás kérése"
         }
     };
 

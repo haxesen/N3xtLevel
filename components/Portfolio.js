@@ -50,13 +50,14 @@ export const Portfolio = (lang = 'de') => {
                         class="text-accent">${t.title_highlight}</span></h2>
                 <p class="text-gray-400">${t.subtitle}</p>
             </div>
-            <a href="#"
+            <a onclick="window.openCalculator()" style="cursor: pointer;"
                 class="hidden md:inline-block text-accent font-semibold hover:text-white transition-colors mt-6 md:mt-0">${t.view_all}</a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1: Beauty & Wellness -->
-            <div class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]">
+            <div onclick="window.selectPackage('${currentLang === 'hu' ? 'Projekt Stílus: Glow & Relax' : (currentLang === 'de' ? 'Projekt-Stil: Glow & Relax' : 'Project Style: Glow & Relax')}')" 
+                 class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]">
                 <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=1000"
                     alt="Beauty Salon"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
@@ -71,7 +72,8 @@ export const Portfolio = (lang = 'de') => {
             </div>
 
             <!-- Project 2: Gastronomy -->
-            <div class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
+            <div onclick="window.selectPackage('${currentLang === 'hu' ? 'Projekt Stílus: Eiscafe Müller' : (currentLang === 'de' ? 'Projekt-Stil: Eiscafe Müller' : 'Project Style: Eiscafe Müller')}')"
+                 class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
                 style="transition-delay: 100ms;">
                 <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21?auto=format&fit=crop&q=80&w=1000"
                     alt="Bakery & Ice Cream"
@@ -87,7 +89,8 @@ export const Portfolio = (lang = 'de') => {
             </div>
 
             <!-- Project 3: Medical -->
-            <div class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
+            <div onclick="window.selectPackage('${currentLang === 'hu' ? 'Projekt Stílus: Praxis Dr. Weber' : (currentLang === 'de' ? 'Projekt-Stil: Praxis Dr. Weber' : 'Project Style: Praxis Dr. Weber')}')"
+                 class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
                 style="transition-delay: 200ms;">
                 <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000"
                     alt="Medical Practice"
@@ -103,7 +106,7 @@ export const Portfolio = (lang = 'de') => {
             </div>
         </div>
         <div class="flex justify-center mt-8 md:hidden">
-            <a href="#" class="text-accent font-semibold hover:text-white transition-colors">${t.view_all}</a>
+            <a onclick="window.openCalculator()" style="cursor: pointer;" class="text-accent font-semibold hover:text-white transition-colors">${t.view_all}</a>
         </div>
     </div>
 </section>

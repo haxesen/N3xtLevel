@@ -18,6 +18,8 @@
 - [x] **Design & Colors:** Hub ikonok és gombok színeinek véglegesítése (Fehér/Narancs/Lila).
 - [x] **System Upgrade:** Template generátor bővítve, felesleges fájlok törölve.
 - [x] **Popup Rendszer Egységesítése:** Minden ablak egységes Prémium designt kapott (Narancs Keret + Glow).
+- [x] **Facebook Business:** Oldal létrehozva, sidebar/footer linkek bekötve.
+- [x] **Google Calendar Integráció:** Make.com-on keresztül (Booking Date/Time átadva).
 
 ## ✅ MVP Funkciók (Korábban Kész)
 - [x] Weboldal Design & Dark Mode (WebP optimalizálás)

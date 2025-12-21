@@ -10,7 +10,7 @@ export const TechStack = (lang = 'de') => {
         { icon: "fa-solid fa-brain", name: "OpenAI" },
         { icon: "fa-solid fa-bolt", name: "Make.com" },
         { icon: "fa-brands fa-google", name: "Google" },
-        { icon: "fa-solid fa-code", name: "HTML5 / CSS3" },
+        { icon: "fa-solid fa-chart-line", name: "Google Analytics" },
         { icon: "fa-solid fa-rocket", name: "Performance" },
         { icon: "fa-solid fa-magnifying-glass-chart", name: "SEO Pro" }
     ];

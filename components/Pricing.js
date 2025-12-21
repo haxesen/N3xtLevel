@@ -1,10 +1,11 @@
 export const Pricing = (lang = 'de') => {
 
-    const translations = {
+    const content = {
         de: {
             title: "Investitionspläne",
             subtitle: "Transparent & Fair. Wählen Sie das Paket für Ihren Erfolg.",
             launch_offer: "🚀 Einführungsangebot: Preise gültig für die nächsten 3 Monate!",
+            future_note: "*Danach gelten die regulären Preise (+20%).",
             essential: {
                 name: "Essential",
                 price: "€990",
@@ -38,7 +39,8 @@ export const Pricing = (lang = 'de') => {
         en: {
             title: "Investment Plans",
             subtitle: "Transparent & Fair. Choose the package for your success.",
-            launch_offer: "🚀 Launch Prising: Valid for the next 3 months only!",
+            launch_offer: "🚀 Launch Pricing: Valid for the next 3 months only!",
+            future_note: "*Regular prices (+20%) apply thereafter.",
             essential: {
                 name: "Essential",
                 price: "€990",
@@ -73,6 +75,7 @@ export const Pricing = (lang = 'de') => {
             title: "Befektetési Csomagok",
             subtitle: "Átlátható és korrekt. Válaszd a sikeredhez illő csomagot.",
             launch_offer: "🚀 Bevezető Árak: Az ajánlat a következő 3 hónapban érvényes!",
+            future_note: "*A 3 hónap letelte után a normál árak (+20%) érvényesek.",
             essential: {
                 name: "Essential",
                 price: "€990",
@@ -105,47 +108,52 @@ export const Pricing = (lang = 'de') => {
         }
     };
 
-    const t = translations[lang] || translations.de;
+    const t = content[lang] || content.de;
 
-    const renderCard = (type, isPopular = false) => {
-        const data = t[type];
-        const borderClass = isPopular ? "border-accent shadow-glow" : "border-white/10 hover:border-accent/50";
-        const bgClass = isPopular ? "bg-white/5" : "bg-card-bg";
-        const btnClass = isPopular ? "bg-accent hover:bg-accent-hover text-white shadow-lg" : "border border-accent/50 hover:bg-accent text-white";
+    const renderCard = (data, isPopular = false) => {
+        const borderClass = isPopular ? 'border-accent shadow-glow' : 'border-white/10 hover:border-white/30';
+        const bgClass = isPopular ? 'bg-white/5' : 'bg-transparent';
+        const btnClass = isPopular ? 'bg-accent text-white hover:bg-accent-hover shadow-glow hover:shadow-glow-intense' : 'bg-transparent border border-white/20 text-white hover:bg-white/10';
 
         return `
-        <div class="flex flex-col p-8 rounded-3xl border transition-all duration-300 ${borderClass} ${bgClass} relative group hover:-translate-y-2">
-            ${isPopular ? `<div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl flex items-center gap-1"><i class="fas fa-star text-[10px]"></i> POPULAR</div>` : ''}
-            
-            <h3 class="text-2xl font-bold text-white mb-2">${data.name}</h3>
-            <div class="flex items-baseline mb-4">
-                <span class="text-4xl font-bold text-accent">${data.price}</span>
-                <span class="text-xs text-gray-500 ml-2">${data.period}</span>
+            <div class="relative p-8 rounded-2xl border ${borderClass} ${bgClass} transition-all duration-300 flex flex-col h-full group"
+                 data-aos="fade-up" data-aos-delay="${isPopular ? '100' : '0'}">
+                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg">MOST POPULAR</div>' : ''}
+                
+                <h3 class="text-2xl font-bold text-white mb-2">${data.name}</h3>
+                <p class="text-gray-400 text-sm mb-6 min-h-[40px]">${data.desc}</p>
+                
+                <div class="mb-8">
+                    <span class="text-4xl font-bold text-white">${data.price}</span>
+                    <span class="text-gray-500 text-sm ml-2">/ ${data.period}</span>
+                </div>
+                
+                <ul class="space-y-4 mb-8 flex-1">
+                    ${data.features.map(f => `
+                        <li class="flex items-start gap-3 text-gray-300 text-sm">
+                            <i class="fas fa-check text-accent mt-1"></i>
+                            <span>${f}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+                
+                <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass}">
+                    ${data.btn}
+                </button>
             </div>
-            <p class="text-gray-400 text-sm mb-6 h-10">${data.desc}</p>
-            
-            <ul class="space-y-3 mb-8 flex-grow">
-                ${data.features.map(f => `
-                <li class="flex items-start text-gray-300 text-sm">
-                    <span class="text-accent mr-2">✓</span> ${f}
-                </li>
-                `).join('')}
-            </ul>
-
-            <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass}">
-                ${data.btn}
-            </button>
-        </div>
         `;
     };
 
     return `
-    <section id="pricing" class="py-20 bg-black relative border-t border-white/5">
+    <section id="pricing" class="py-20 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] -z-10"></div>
+
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">${t.title}</h2>
-                <div class="w-24 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-                <p class="text-gray-400">${t.subtitle}</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tight">
+                    ${t.title} <span class="text-accent">.</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-6">${t.subtitle}</p>
                 
                 <!-- Launch Offer Badge -->
                 <div class="inline-block bg-accent/10 border border-accent/30 rounded-full px-6 py-2 animate-pulse-slow mt-4">
@@ -153,12 +161,13 @@ export const Pricing = (lang = 'de') => {
                         ${t.launch_offer}
                     </span>
                 </div>
+                <p class="text-xs text-gray-500 mt-2">${t.future_note}</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                ${renderCard('essential')}
-                ${renderCard('professional', true)}
-                ${renderCard('enterprise')}
+                ${renderCard(t.essential)}
+                ${renderCard(t.professional, true)}
+                ${renderCard(t.enterprise)}
             </div>
 
             <!-- Custom Calculator CTA -->

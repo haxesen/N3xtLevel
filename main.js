@@ -24,10 +24,7 @@ import { initParticles } from './components/Particles.js';
 
 // --- State Management ---
 let currentLang = localStorage.getItem('n3xt_lang') || 'de';
-// Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoqZlg_LU9S3A36C-Cub7JTJomOkN1YN4KbRMjsCRt2H4wdSmsdgLf7Q_pyofxNM_-/exec";
-// Formspree ID
-const FORMSPREE_URL = "https://formspree.io/f/mvzppned";
+// --- Helper Functions ---
 
 
 // --- Helper Functions ---

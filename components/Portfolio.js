@@ -2,9 +2,9 @@ export const Portfolio = (lang = 'de') => {
     const content = {
         de: {
             title_prefix: "Ausgewählte",
-            title_highlight: "Projekte",
+            title_highlight: "Design-Konzepte",
             subtitle: "Innovation trifft auf Design.",
-            view_all: "Alle Projekte ansehen →",
+            view_all: "Eigenes Projekt starten →",
             proj1_cat: "Beauty & Wellness",
             proj1_desc: "Online-Terminbuchung & Elegantes Design für mehr Kunden.",
             proj2_cat: "Gastronomie",
@@ -14,9 +14,9 @@ export const Portfolio = (lang = 'de') => {
         },
         en: {
             title_prefix: "Selected",
-            title_highlight: "Projects",
+            title_highlight: "Design Concepts",
             subtitle: "Innovation meets Design.",
-            view_all: "View all projects →",
+            view_all: "Start your Project →",
             proj1_cat: "Beauty & Wellness",
             proj1_desc: "Online booking & Elegant design for more customers.",
             proj2_cat: "Gastronomy",
@@ -26,9 +26,9 @@ export const Portfolio = (lang = 'de') => {
         },
         hu: {
             title_prefix: "Kiemelt",
-            title_highlight: "Projektek",
+            title_highlight: "Design Koncepciók",
             subtitle: "Innováció és Design találkozása.",
-            view_all: "Összes projekt megtekintése →",
+            view_all: "Saját projekt indítása →",
             proj1_cat: "Szépség & Wellness",
             proj1_desc: "Online időpontfoglalás & Elegáns dizájn a több ügyfélért.",
             proj2_cat: "Gasztronómia",
@@ -56,8 +56,7 @@ export const Portfolio = (lang = 'de') => {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1: Beauty & Wellness -->
-            <div onclick="window.selectPackage('${lang === 'hu' ? 'Projekt Stílus: Glow & Relax' : (lang === 'de' ? 'Projekt-Stil: Glow & Relax' : 'Project Style: Glow & Relax')}')" 
-                 class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]">
+            <div class="group reveal rounded-2xl overflow-hidden relative aspect-[4/3]">
                 <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=1000"
                     alt="Beauty Salon"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
@@ -72,8 +71,7 @@ export const Portfolio = (lang = 'de') => {
             </div>
 
             <!-- Project 2: Gastronomy -->
-            <div onclick="window.selectPackage('${lang === 'hu' ? 'Projekt Stílus: Eiscafe Müller' : (lang === 'de' ? 'Projekt-Stil: Eiscafe Müller' : 'Project Style: Eiscafe Müller')}')"
-                 class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
+            <div class="group reveal rounded-2xl overflow-hidden relative aspect-[4/3]"
                 style="transition-delay: 100ms;">
                 <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21?auto=format&fit=crop&q=80&w=1000"
                     alt="Bakery & Ice Cream"
@@ -89,8 +87,7 @@ export const Portfolio = (lang = 'de') => {
             </div>
 
             <!-- Project 3: Medical -->
-            <div onclick="window.selectPackage('${lang === 'hu' ? 'Projekt Stílus: Praxis Dr. Weber' : (lang === 'de' ? 'Projekt-Stil: Praxis Dr. Weber' : 'Project Style: Praxis Dr. Weber')}')"
-                 class="group reveal rounded-2xl overflow-hidden relative cursor-pointer aspect-[4/3]"
+            <div class="group reveal rounded-2xl overflow-hidden relative aspect-[4/3]"
                 style="transition-delay: 200ms;">
                 <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000"
                     alt="Medical Practice"

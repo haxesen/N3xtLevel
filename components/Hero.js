@@ -8,7 +8,7 @@ export const Hero = (lang = 'de') => {
             p_highlight: "KMUs & lokale Dienstleister",
             p_end: ". KI-optimierte Lösungen für maximalen Erfolg.",
             cta_primary: "Projekt konfigurieren",
-            cta_secondary: "Portfolio ansehen"
+            cta_secondary: "Kostenlose Beratung"
         },
         en: {
             h1_line1: "Take your Business",
@@ -18,7 +18,7 @@ export const Hero = (lang = 'de') => {
             p_highlight: "SMEs & Local Services",
             p_end: ". AI-optimized solutions for maximum success.",
             cta_primary: "Configure your Project",
-            cta_secondary: "View Portfolio"
+            cta_secondary: "Free Consultation"
         },
         hu: {
             h1_line1: "Emelje vállalkozását",
@@ -28,7 +28,7 @@ export const Hero = (lang = 'de') => {
             p_highlight: "KKV-knak & Helyi Szolgáltatóknak",
             p_end: ". MI-optimalizált megoldások a maximális sikerért.",
             cta_primary: "Konfiguráld a Projekted",
-            cta_secondary: "Portfólió"
+            cta_secondary: "Ingyenes Konzultáció"
         }
     };
 
@@ -79,10 +79,10 @@ export const Hero = (lang = 'de') => {
                             class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                         </div>
                     </button>
-                    <a href="#portfolio"
+                    <button onclick="window.hubSelect('calendar')" style="cursor: pointer;"
                         class="px-10 py-5 border border-white/20 text-white text-lg font-medium rounded hover:bg-white/5 hover:border-white transition-all duration-300">
                         ${t.cta_secondary}
-                    </a>
+                    </button>
                 </div>
             </div>
 

@@ -498,8 +498,8 @@ window.submitConfig = async () => {
     const email = document.getElementById('uic-email').value;
     const phone = document.getElementById('uic-phone').value;
 
-    if (!name || !email) {
-        const msg = currentLang === 'hu' ? 'Kérjük töltse ki a Név és Email mezőt!' : (currentLang === 'de' ? 'Bitte Name & Email ausfüllen!' : 'Name & Email required!');
+    if (!name || !email || !phone) {
+        const msg = currentLang === 'hu' ? 'Kérjük töltsön ki minden mezőt (Név, Email, Telefon)!' : (currentLang === 'de' ? 'Bitte alle Felder ausfüllen!' : 'All fields refered!');
         alert(msg);
         return;
     }
@@ -575,6 +575,13 @@ window.submitContactForm = async (event) => {
 
     // Get Data
     const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Strict Validation: Check for empty fields
+    if (Object.values(data).some(val => !val.trim())) {
+        alert(currentLang === 'hu' ? 'Kérjük töltsön ki minden mezőt!' : (currentLang === 'de' ? 'Bitte alle Felder ausfüllen!' : 'Please fill all fields!'));
+        return;
+    }
 
     // Check for Booking Data in LocalStorage
     const storedBooking = localStorage.getItem('n3xt_pending_booking');

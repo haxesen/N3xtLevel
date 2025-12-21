@@ -995,7 +995,7 @@ const initGlobals = () => {
     // Global Form Submit Handler (Delegation) - Robust solution for dynamic forms
     document.addEventListener('submit', (e) => {
         if (e.target && e.target.id === 'contactForm') {
-            console.log("⚡ Global Delegation caught #contactForm submit!");
+
             window.submitContactForm(e);
         }
     });

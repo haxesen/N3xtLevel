@@ -14,6 +14,7 @@ import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
 import { Blog } from './components/Blog.js';
 import { ProjectConfig } from './components/ProjectConfig.js';
+import { TechStack } from './components/TechStack.js';
 import { ContactHub } from './components/ContactHub.js';
 import { Pricing } from './components/Pricing.js';
 
@@ -782,7 +783,7 @@ const updateUI = () => {
 
     renderComp('navbar-container', Navbar);
     renderComp('hero-container', Hero);
-
+    renderComp('tech-stack-container', TechStack);
     renderComp('services-container', Services);
     renderComp('pricing-container', Pricing);
     renderComp('process-container', Process);

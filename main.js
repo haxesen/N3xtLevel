@@ -721,7 +721,7 @@ const initUniversalModal = () => {
         div.className = 'fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300';
         div.innerHTML = `
             <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeUnivModal()"></div>
-            <div class="relative w-full h-full md:h-auto md:max-w-4xl md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-gradient-to-br from-[#13111C] to-[#0a0a0a] border border-accent/50 md:rounded-3xl shadow-[0_0_60px_rgba(255,69,0,0.1)] p-0 overflow-y-auto transform scale-95 transition-transform duration-300 flex flex-col max-h-screen" id="univ-content">
+            <div class="relative w-full h-full md:h-auto md:max-w-4xl md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-gradient-to-br from-[#0d0b14] to-[#020202] border border-accent/50 md:rounded-3xl shadow-[0_0_60px_rgba(255,69,0,0.1)] p-0 overflow-y-auto transform scale-95 transition-transform duration-300 flex flex-col max-h-screen" id="univ-content">
                 <button onclick="closeUnivModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition-all z-50 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md shadow-lg group">
                     <i class="fas fa-times text-lg group-hover:rotate-90 transition-transform duration-300"></i>
                 </button>
@@ -965,7 +965,7 @@ const initServiceModal = () => {
         modal.className = 'fixed inset-0 z-[60] hidden transition-opacity duration-300 opacity-0 pointer-events-none'; // Start hidden
         modal.innerHTML = `
             <div class="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity" onclick="closeServiceModal()"></div>
-            <div class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-gradient-to-br from-[#120a1f] to-[#0a0a0a] border border-accent/60 rounded-3xl p-8 shadow-[0_0_50px_rgba(255,69,0,0.15)] transform scale-95 transition-all duration-300">
+            <div class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-gradient-to-br from-[#0b0512] to-[#020202] border border-accent/60 rounded-3xl p-8 shadow-[0_0_50px_rgba(255,69,0,0.15)] transform scale-95 transition-all duration-300">
                 <button class="absolute top-5 right-5 text-gray-400 hover:text-white transition-all z-50 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md shadow-lg group" onclick="closeServiceModal()">
                     <i class="fas fa-times text-lg group-hover:rotate-90 transition-transform duration-300"></i>
                 </button>

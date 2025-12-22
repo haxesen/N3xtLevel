@@ -528,6 +528,11 @@ window.submitConfig = async () => {
     btn.disabled = false;
 
     if (success) {
+        // Track Lead in Facebook Pixel
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead', { content_name: 'Calculator_Submission', value: 0.00, currency: 'EUR' });
+        }
+
         // Custom Success UI matching Contact Form
         const modalContent = document.getElementById('project-config-content');
         if (modalContent) {
@@ -625,6 +630,11 @@ window.submitContactForm = async (event) => {
     btn.disabled = false;
 
     if (success) {
+        // Track Lead in Facebook Pixel
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead', { content_name: 'Contact_Form', value: 0.00, currency: 'EUR' });
+        }
+
         localStorage.removeItem('n3xt_pending_booking');
         const formContainer = document.getElementById('formContent');
         const successMsg = document.getElementById('successMessage');

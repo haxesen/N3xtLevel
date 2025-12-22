@@ -233,9 +233,9 @@ export const Pricing = (lang = 'de') => {
                     <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
                         ${t.cta.desc}
                     </p>
-                    <button onclick="window.openCalculator()" class="px-8 py-3 bg-transparent border border-accent text-accent hover:bg-accent hover:text-white rounded-xl font-bold transition-all shadow-glow hover:shadow-glow-intense flex items-center gap-2 mx-auto group-btn">
+                    <button onclick="window.openCalculator()" class="px-10 py-4 bg-white text-black border border-white hover:bg-gray-200 hover:border-gray-200 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] flex items-center gap-2 mx-auto transform hover:-translate-y-1">
                         <span>${t.cta.btn}</span>
-                        <i class="fas fa-calculator group-btn-hover:rotate-12 transition-transform"></i>
+                        <i class="fas fa-calculator text-accent"></i>
                     </button>
                 </div>
             </div>

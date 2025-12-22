@@ -457,13 +457,13 @@ window.updateSummary = () => {
         
         ${window.calcState.type ? `
         <div class="mt-4 pt-4 border-t border-white/10">
-            <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">${tr.est}</div>
-            <div class="text-2xl font-bold text-accent shadow-glow inline-block mb-1">
+            <div class="text-xs text-indigo-300 uppercase tracking-wider mb-1 font-semibold">${tr.est}</div>
+            <div class="text-3xl md:text-4xl font-black text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] inline-block mb-2 mt-1 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 ${formatPrice(minTotal)} - ${formatPrice(maxTotal)}
             </div>
-            ${hasMaint ? `<div class="text-xs text-gray-300 mb-2">+ €99${tr.mo}</div>` : '<div class="mb-2"></div>'}
+            ${hasMaint ? `<div class="text-xs text-gray-400 mb-2 border-t border-white/10 pt-1 inline-block">+ €99${tr.mo}</div>` : '<div class="mb-2"></div>'}
             
-            <p class="text-[10px] text-gray-500 italic leading-tight max-w-xs mx-auto">
+            <p class="text-[10px] text-gray-500 italic leading-tight max-w-xs transform scale-90 origin-left opacity-70">
                 ${disclaimer}
             </p>
         </div>
@@ -532,7 +532,7 @@ window.submitConfig = async () => {
         const modalContent = document.getElementById('project-config-content');
         if (modalContent) {
             const successTitle = currentLang === 'hu' ? 'Köszönjük!' : (currentLang === 'de' ? 'Vielen Dank!' : 'Thank You!');
-            const successText = currentLang === 'hu' ? 'Ajánlatkérését megkaptuk.<br>Hamarosan jelentkezünk!' : (currentLang === 'de' ? 'Anfrage erhalten.<br>Wir melden uns in Kürze!' : 'Request received.<br>We will contact you shortly!');
+            const successText = currentLang === 'hu' ? 'Ajánlatkérését megkaptuk.<br>Hamarosan jelentkezünk!' : (currentLang === 'de' ? 'Anfrage erhalten.<br>Wir melden uns in Kürte!' : 'Request received.<br>We will contact you shortly!');
 
             modalContent.innerHTML = `
                 <div class="flex flex-col items-center justify-center p-12 h-full min-h-[400px] animate-fade-in-up">

@@ -268,12 +268,14 @@ export const ProjectConfig = (lang = 'de') => {
                                 </div>
                             </div>
 
-                            <div class="p-6 bg-gradient-to-br from-indigo-900/80 via-purple-900/60 to-black rounded-xl border border-indigo-500/50 mt-6 relative overflow-hidden shadow-lg shadow-indigo-500/20 backdrop-blur-md">
-                                <div class="absolute top-0 right-0 p-4 opacity-30 text-5xl text-indigo-400 rotate-12"><i class="fas fa-file-invoice"></i></div>
-                                <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-wider flex items-center gap-2 border-b border-white/10 pb-2">
-                                    <i class="fas fa-calculator text-indigo-400"></i> ${t.summary_title}
+                            <div class="p-6 bg-gradient-to-br from-[#1e1b4b] via-[#0f0720] to-black rounded-xl border border-indigo-500/30 mt-6 relative overflow-hidden shadow-2xl shadow-black/50 backdrop-blur-md">
+                                <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl text-indigo-500 rotate-12 mix-blend-overlay"><i class="fas fa-file-invoice"></i></div>
+                                <h4 class="text-indigo-200 font-bold mb-4 text-xs uppercase tracking-[0.2em] flex items-center gap-2 border-b border-white/5 pb-3">
+                                    <i class="fas fa-calculator"></i> ${t.summary_title}
                                 </h4>
-                                <p class="text-base text-white leading-relaxed font-medium drop-shadow-md" id="uic-summary-text">${t.summary_placeholder}</p>
+                                <div id="uic-summary-text" class="relative z-10">
+                                    <p class="text-base text-gray-300 font-medium">${t.summary_placeholder}</p>
+                                </div>
                             </div>
                          </div>
                     </div>

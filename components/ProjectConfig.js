@@ -55,7 +55,7 @@ export const ProjectConfig = (lang = 'de') => {
             form: {
                 name: "Ihr Name",
                 email: "Ihre E-Mail",
-                phone: "Telefon"
+                phone: "Telefon (Optional)"
             },
             summary_title: "Zusammenfassung",
             summary_placeholder: "Wählen Sie Ihre Optionen..."
@@ -92,7 +92,7 @@ export const ProjectConfig = (lang = 'de') => {
             form: {
                 name: "Your Name",
                 email: "Your Email",
-                phone: "Phone"
+                phone: "Phone (Optional)"
             },
             summary_title: "Summary",
             summary_placeholder: "Select your options..."
@@ -129,7 +129,7 @@ export const ProjectConfig = (lang = 'de') => {
             form: {
                 name: "Az Ön neve",
                 email: "Email címe",
-                phone: "Telefonszám"
+                phone: "Telefonszám (Nem kötelező)"
             },
             summary_title: "Összegzés",
             summary_placeholder: "Válasszon opciókat..."

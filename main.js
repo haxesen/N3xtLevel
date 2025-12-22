@@ -496,10 +496,10 @@ window.sendToMake = async (payload) => {
 window.submitConfig = async () => {
     const name = document.getElementById('uic-name').value;
     const email = document.getElementById('uic-email').value;
-    const phone = document.getElementById('uic-phone').value;
+    // const phone = document.getElementById('uic-phone').value; // Optional
 
-    if (!name || !email || !phone) {
-        const msg = currentLang === 'hu' ? 'Kérjük töltsön ki minden mezőt (Név, Email, Telefon)!' : (currentLang === 'de' ? 'Bitte alle Felder ausfüllen!' : 'All fields refered!');
+    if (!name || !email) {
+        const msg = currentLang === 'hu' ? 'Kérjük töltse ki a Név és Email mezőt!' : (currentLang === 'de' ? 'Bitte Name & Email ausfüllen!' : 'Name & Email required!');
         alert(msg);
         return;
     }
@@ -577,9 +577,12 @@ window.submitContactForm = async (event) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // Strict Validation: Check for empty fields
-    if (Object.values(data).some(val => !val.trim())) {
-        alert(currentLang === 'hu' ? 'Kérjük töltsön ki minden mezőt!' : (currentLang === 'de' ? 'Bitte alle Felder ausfüllen!' : 'Please fill all fields!'));
+    // Strict Validation: Required Fields (Name, Email, Message) - Phone is Optional
+    const { name, email, message } = data;
+    if ((name !== undefined && !name.trim()) ||
+        (email !== undefined && !email.trim()) ||
+        (message !== undefined && !message.trim())) {
+        alert(currentLang === 'hu' ? 'Kérjük töltse ki a kötelező mezőket!' : (currentLang === 'de' ? 'Bitte Pflichtfelder ausfüllen!' : 'Please fill required fields!'));
         return;
     }
 

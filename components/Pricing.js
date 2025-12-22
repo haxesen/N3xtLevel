@@ -126,13 +126,14 @@ export const Pricing = (lang = 'de') => {
         // Updated Styling for Launch Offer
         // More distinct background (dark grey/blue tint instead of transparent)
         // Stronger borders
-        const borderClass = isPopular ? 'border-accent shadow-[0_0_40px_rgba(255,69,0,0.15)] scale-105 z-10' : 'border-white/10 hover:border-accent/40 hover:bg-white/5';
-        const bgClass = isPopular ? 'bg-[#0f0f0f]' : 'bg-[#0a0a0a]';
-        const btnClass = isPopular ? 'bg-accent text-white hover:bg-accent-hover shadow-glow hover:shadow-glow-intense' : 'bg-transparent border border-white/20 text-white hover:bg-white/10';
+        // Gold Theme for Professional (Popular) Card
+        // Using Amber-400 (#fbbf24) as Gold substitute
+        const goldClass = isPopular ? 'border-amber-400 shadow-[0_0_50px_rgba(251,191,36,0.2)] scale-105 z-10' : 'border-white/10 hover:border-accent/40 hover:bg-white/5';
+        const bgClass = isPopular ? 'bg-[#12120e]' : 'bg-[#0a0a0a]'; // Slight golden warm tint for BG
+        const btnClass = isPopular ? 'bg-gradient-to-r from-amber-400 to-yellow-500 text-black hover:from-amber-300 hover:to-yellow-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)]' : 'bg-transparent border border-white/20 text-white hover:bg-white/10';
+        const iconClass = isPopular ? 'text-amber-400' : 'text-accent';
 
-        // Dynamic Tech Background for Popular Card
-        // We put this in a wrapper with overflow-hidden to clip the animation,
-        // but the CARD itself must NOT be overflow-hidden so the Badge (-top-4) is visible.
+        // Dynamic Gold Plasma Background
         const techBg = isPopular ? `
             <style>
                 @keyframes blobFloat { 
@@ -142,22 +143,22 @@ export const Pricing = (lang = 'de') => {
                 }
             </style>
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none -z-10">
-                <!-- Liquid Plasma Effect -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-[80px] opacity-40 animate-pulse-slow" style="animation-duration: 4s;"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] opacity-40 animate-pulse-slow" style="animation-duration: 6s; animation-delay: 1s;"></div>
+                <!-- Gold Plasma -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/20 rounded-full blur-[80px] opacity-50 animate-pulse-slow" style="animation-duration: 4s;"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-200/10 rounded-full blur-[80px] opacity-50 animate-pulse-slow" style="animation-duration: 6s; animation-delay: 1s;"></div>
                 
-                <!-- Moving Gradient Mesh -->
-                <div class="absolute inset-[-50%] opacity-20"
-                     style="background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 60%); 
+                <!-- Gold Mesh -->
+                <div class="absolute inset-[-50%] opacity-30"
+                     style="background: radial-gradient(circle at 50% 50%, rgba(251,191,36,0.15), transparent 60%); 
                             animation: blobFloat 10s ease-in-out infinite;">
                 </div>
             </div>
         ` : '';
 
         return `
-            <div class="relative p-8 rounded-2xl border ${borderClass} ${bgClass} transition-all duration-300 flex flex-col h-full group backdrop-blur-sm"
+            <div class="relative p-8 rounded-2xl border ${goldClass} ${bgClass} transition-all duration-300 flex flex-col h-full group backdrop-blur-sm"
                  data-aos="fade-up" data-aos-delay="${isPopular ? '100' : '0'}">
-                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black font-bold px-4 py-1 rounded-full text-sm shadow-lg shadow-accent/20 z-20 whitespace-nowrap">MOST POPULAR</div>' : ''}
+                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-yellow-500 text-black font-black tracking-wider px-6 py-1.5 rounded-full text-xs shadow-lg shadow-amber-500/20 z-20 whitespace-nowrap uppercase border border-yellow-200">Most Popular</div>' : ''}
                 
                 ${techBg}
 
@@ -165,7 +166,7 @@ export const Pricing = (lang = 'de') => {
                 <p class="text-gray-400 text-sm mb-6 min-h-[40px] relative z-10">${data.desc}</p>
                 
                 <div class="mb-6 relative z-10">
-                    <span class="text-4xl font-bold text-white">${data.price}</span>
+                    <span class="text-4xl font-bold ${isPopular ? 'text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.4)]' : 'text-white'}">${data.price}</span>
                     <span class="text-gray-500 text-sm ml-2">/ ${data.period}</span>
                     
                     <div class="mt-2 text-xs text-gray-400 bg-white/5 inline-block px-2 py-1 rounded border border-white/5">
@@ -176,13 +177,13 @@ export const Pricing = (lang = 'de') => {
                 <ul class="space-y-4 mb-8 flex-1 relative z-10">
                     ${data.features.map(f => `
                         <li class="flex items-start gap-3 text-gray-300 text-sm">
-                            <i class="fas fa-check text-accent mt-1"></i>
+                            <i class="fas fa-check ${iconClass} mt-1 drop-shadow-[0_0_5px_rgba(0,0,0,0.5)]"></i>
                             <span>${f}</span>
                         </li>
                     `).join('')}
                 </ul>
                 
-                <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass} relative z-10">
+                <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass} relative z-10 transform hover:scale-[1.02]">
                     ${data.btn}
                 </button>
             </div>

@@ -112,7 +112,7 @@ export const ProjectConfig = (lang = 'de') => {
             btn_send: "Ajánlatkérés Küldése",
             types: {
                 landing: { title: "Landing Page", desc: "High-Performance One-Pager. (kb. €990)" },
-                website: { title: "Céges Weboldal", desc: "Többoldalas weboldal CMS-sel. (kb. €1.790)" },
+                website: { title: "Céges Weboldal", desc: "Többoldalas Weblap CMS-sel. (kb. €1.790)" },
                 ecommerce: { title: "E-Commerce", desc: "Webshop fizetési rendszerrel. (kb. €3.990)" }
             },
             features: {

@@ -180,26 +180,37 @@ export const ProjectConfig = (lang = 'de') => {
                     <!-- Step 1: Types -->
                     <div id="uic-step-0" class="uic-view animate-fade-in block">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            ${Object.entries(t.types).map(([key, data]) => `
+                            ${Object.entries(t.types).map(([key, data]) => {
+        const theme = {
+            landing: { border: 'border-blue-500/20', bg: 'bg-gradient-to-br from-blue-500/5 to-transparent', hover: 'hover:border-blue-500', shadow: 'hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]', icon: 'text-blue-400 bg-blue-500/10 group-hover:bg-blue-500', check: 'bg-blue-500' },
+            website: { border: 'border-purple-500/20', bg: 'bg-gradient-to-br from-purple-500/5 to-transparent', hover: 'hover:border-purple-500', shadow: 'hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]', icon: 'text-purple-400 bg-purple-500/10 group-hover:bg-purple-500', check: 'bg-purple-500' },
+            ecommerce: { border: 'border-orange-500/20', bg: 'bg-gradient-to-br from-orange-500/5 to-transparent', hover: 'hover:border-orange-500', shadow: 'hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]', icon: 'text-orange-400 bg-orange-500/10 group-hover:bg-orange-500', check: 'bg-orange-500' }
+        }[key] || { border: 'border-white/10', bg: 'bg-white/5', hover: 'hover:border-accent', shadow: 'hover:shadow-glow', icon: 'text-accent bg-accent/10 group-hover:bg-accent', check: 'bg-accent' };
+
+        return `
                                 <div onclick="toggleSelection('type', '${key}')" 
-                                     class="uic-card-type p-6 rounded-2xl border border-white/10 bg-white/5 hover:border-accent hover:bg-white/10 cursor-pointer transition-all duration-300 flex items-start gap-4 hover:shadow-glow group h-full"
+                                     class="uic-card-type p-6 rounded-2xl border ${theme.border} ${theme.bg} ${theme.hover} cursor-pointer transition-all duration-500 flex items-start gap-4 ${theme.shadow} group h-full relative overflow-hidden"
                                      data-value="${key}">
                                     
-                                    <div class="w-12 h-12 rounded-xl bg-accent/10 text-accent flex-shrink-0 flex items-center justify-center group-hover:bg-accent group-hover:text-black transition-all duration-300 border border-accent/20">
-                                        <i class="fas ${icons.types[key]} text-xl"></i>
+                                    <!-- Background Glow -->
+                                    <div class="absolute -right-10 -bottom-10 w-32 h-32 rounded-full opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-40" 
+                                         style="background-color: ${key === 'landing' ? '#3b82f6' : (key === 'website' ? '#a855f7' : '#f97316')}"></div>
+
+                                    <div class="w-12 h-12 rounded-xl ${theme.icon} text-xl flex-shrink-0 flex items-center justify-center group-hover:text-black transition-all duration-300 border border-white/5 relative z-10">
+                                        <i class="fas ${icons.types[key]}"></i>
                                     </div>
                                     
-                                    <div class="flex-1">
+                                    <div class="flex-1 relative z-10">
                                         <div class="flex justify-between items-start">
-                                            <h4 class="text-white font-bold text-lg mb-1 group-hover:text-accent transition-colors">${data.title}</h4>
+                                            <h4 class="text-white font-bold text-lg mb-1 group-hover:translate-x-1 transition-transform">${data.title}</h4>
                                             <div class="w-5 h-5 rounded-full border border-white/30 flex items-center justify-center ml-2">
-                                                 <div class="w-2.5 h-2.5 rounded-full bg-accent opacity-0 transition-opacity uic-check-circle"></div>
+                                                 <div class="w-2.5 h-2.5 rounded-full opacity-0 transition-opacity uic-check-circle ${theme.check}"></div>
                                             </div>
                                         </div>
                                         <p class="text-gray-400 text-sm leading-relaxed">${data.desc}</p>
                                     </div>
                                 </div>
-                            `).join('')}
+                            `}).join('')}
                         </div>
                     </div>
 
@@ -208,20 +219,23 @@ export const ProjectConfig = (lang = 'de') => {
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             ${Object.entries(t.features).map(([key, data]) => `
                                 <div onclick="toggleSelection('feature', '${key}')" 
-                                     class="uic-card-feat p-4 rounded-xl border border-white/10 bg-white/5 hover:border-accent/40 cursor-pointer transition-all duration-300 flex flex-col items-center justify-center text-center gap-2 hover:bg-white/10 group h-40"
+                                     class="uic-card-feat p-4 rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent hover:from-white/10 hover:border-accent/30 cursor-pointer transition-all duration-300 flex flex-col items-center justify-center text-center gap-2 group h-40 relative overflow-hidden"
                                      data-value="${key}">
                                     
-                                     <div class="relative mb-1">
-                                        <div class="text-3xl text-gray-500 group-hover:text-accent transition-colors duration-300">
+                                     <!-- Hover Glow -->
+                                     <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                                     <div class="relative mb-1 z-10 w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/5 group-hover:scale-110 transition-transform duration-300">
+                                        <div class="text-2xl text-gray-400 group-hover:text-accent transition-colors duration-300">
                                             <i class="fas ${icons.features[key]}"></i>
                                         </div>
-                                        <div class="absolute -top-2 -right-3 w-5 h-5 bg-accent rounded-full text-black text-xs flex items-center justify-center opacity-0 transition-opacity uic-feat-check shadow-lg font-bold">
+                                        <div class="absolute -top-2 -right-2 w-5 h-5 bg-accent rounded-full text-black text-xs flex items-center justify-center opacity-0 transition-opacity uic-feat-check shadow-lg font-bold z-20">
                                             <i class="fas fa-check"></i>
                                         </div>
                                      </div>
 
-                                    <span class="text-white font-bold text-sm leading-tight">${data.title}</span>
-                                    <span class="text-gray-400 text-xs leading-tight opacity-80 group-hover:opacity-100 transition-opacity">${data.desc}</span>
+                                    <span class="text-white font-bold text-sm leading-tight relative z-10">${data.title}</span>
+                                    <span class="text-gray-400 text-xs leading-tight opacity-70 group-hover:opacity-100 transition-opacity relative z-10">${data.desc}</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -254,9 +268,11 @@ export const ProjectConfig = (lang = 'de') => {
                                 </div>
                             </div>
 
-                            <div class="p-6 bg-accent/5 rounded-xl border border-accent/20 mt-6 relative overflow-hidden">
+                            <div class="p-6 bg-gradient-to-br from-accent/10 to-transparent rounded-xl border border-accent/30 mt-6 relative overflow-hidden shadow-lg shadow-accent/5">
                                 <div class="absolute top-0 right-0 p-4 opacity-10 text-4xl text-accent"><i class="fas fa-file-invoice"></i></div>
-                                <h4 class="text-accent font-bold mb-2 text-sm uppercase tracking-wider">${t.summary_title}</h4>
+                                <h4 class="text-accent font-bold mb-2 text-sm uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fas fa-calculator"></i> ${t.summary_title}
+                                </h4>
                                 <p class="text-sm text-gray-300 leading-relaxed" id="uic-summary-text">${t.summary_placeholder}</p>
                             </div>
                          </div>

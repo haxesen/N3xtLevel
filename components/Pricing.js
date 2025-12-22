@@ -222,11 +222,14 @@ export const Pricing = (lang = 'de') => {
         <!-- High-Tech Grid Background -->
         <div class="absolute inset-0 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.05] pointer-events-none"></div>
         
-        <!-- Deep Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#050510] via-transparent to-[#050510] pointer-events-none"></div>
+        <!-- Deep Gradient Overlay (Vertical Fade) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none"></div>
         
-        <!-- Central Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,69,0,0.15),transparent_70%)] pointer-events-none"></div>
+        <!-- Strong Vignette (Darken Edges) -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#000000_100%)] pointer-events-none opacity-60"></div>
+
+        <!-- Central Glow (Behind Cards) -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,69,0,0.15),transparent_60%)] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">

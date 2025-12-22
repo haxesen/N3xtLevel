@@ -38,7 +38,7 @@ export const AboutMe = (lang = 'de') => {
                     <div
                         class="absolute inset-0 border-2 border-accent rounded-full animate-pulse-slow blur-sm">
                     </div>
-                    <img src="/profile.webp" alt="${t.name}"
+                    <img src="/profile_futuristic.jpg" alt="${t.name}"
                         class="relative z-10 w-full h-full object-cover rounded-full border-2 border-accent shadow-glow">
                     <!-- Decorative Elements -->
                     <div

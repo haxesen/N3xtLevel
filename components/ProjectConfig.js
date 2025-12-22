@@ -268,12 +268,12 @@ export const ProjectConfig = (lang = 'de') => {
                                 </div>
                             </div>
 
-                            <div class="p-6 bg-gradient-to-br from-accent/20 to-white/5 rounded-xl border border-accent/40 mt-6 relative overflow-hidden shadow-lg shadow-accent/10 backdrop-blur-sm">
-                                <div class="absolute top-0 right-0 p-4 opacity-20 text-4xl text-accent"><i class="fas fa-file-invoice"></i></div>
-                                <h4 class="text-accent font-bold mb-2 text-sm uppercase tracking-wider flex items-center gap-2">
-                                    <i class="fas fa-calculator"></i> ${t.summary_title}
+                            <div class="p-6 bg-gradient-to-br from-indigo-900/80 via-purple-900/60 to-black rounded-xl border border-indigo-500/50 mt-6 relative overflow-hidden shadow-lg shadow-indigo-500/20 backdrop-blur-md">
+                                <div class="absolute top-0 right-0 p-4 opacity-30 text-5xl text-indigo-400 rotate-12"><i class="fas fa-file-invoice"></i></div>
+                                <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-wider flex items-center gap-2 border-b border-white/10 pb-2">
+                                    <i class="fas fa-calculator text-indigo-400"></i> ${t.summary_title}
                                 </h4>
-                                <p class="text-sm text-gray-200 leading-relaxed font-medium" id="uic-summary-text">${t.summary_placeholder}</p>
+                                <p class="text-base text-white leading-relaxed font-medium drop-shadow-md" id="uic-summary-text">${t.summary_placeholder}</p>
                             </div>
                          </div>
                     </div>

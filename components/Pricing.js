@@ -122,43 +122,69 @@ export const Pricing = (lang = 'de') => {
 
     const t = content[lang] || content.de;
 
-    const renderCard = (data, isPopular = false) => {
-        // Updated Styling for Launch Offer
-        // More distinct background (dark grey/blue tint instead of transparent)
-        // Stronger borders
-        // Gold Theme for Professional (Popular) Card
-        // Using Amber-400 (#fbbf24) as Gold substitute
-        const goldClass = isPopular ? 'border-amber-400 shadow-[0_0_50px_rgba(251,191,36,0.2)] scale-105 z-10' : 'border-white/10 hover:border-accent/40 hover:bg-white/5';
-        const bgClass = isPopular ? 'bg-[#12120e]' : 'bg-[#0a0a0a]'; // Slight golden warm tint for BG
-        const btnClass = isPopular ? 'bg-gradient-to-r from-amber-400 to-yellow-500 text-black hover:from-amber-300 hover:to-yellow-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)]' : 'bg-transparent border border-white/20 text-white hover:bg-white/10';
-        const iconClass = isPopular ? 'text-amber-400' : 'text-accent';
+    const renderCard = (data, theme = 'bronze') => {
+        // Theme Configurations
+        const themes = {
+            bronze: {
+                border: 'border-orange-700/50 hover:border-orange-500',
+                bg: 'bg-[#0f0a05]',
+                btn: 'bg-gradient-to-r from-orange-700 to-orange-600 text-white hover:from-orange-600 hover:to-orange-500 shadow-[0_0_15px_rgba(194,65,12,0.3)]',
+                icon: 'text-orange-600',
+                price: 'text-orange-500 drop-shadow-[0_0_8px_rgba(234,88,12,0.3)]',
+                badge: null,
+                plasma1: 'bg-orange-700/20',
+                plasma2: 'bg-red-900/10'
+            },
+            gold: {
+                border: 'border-amber-400 shadow-[0_0_50px_rgba(251,191,36,0.2)] scale-105 z-10',
+                bg: 'bg-[#12120e]',
+                btn: 'bg-gradient-to-r from-amber-400 to-yellow-500 text-black hover:from-amber-300 hover:to-yellow-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)]',
+                icon: 'text-amber-400',
+                price: 'text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.4)]',
+                badge: 'bg-gradient-to-r from-amber-400 to-yellow-500 text-black border-yellow-200',
+                plasma1: 'bg-amber-500/20',
+                plasma2: 'bg-yellow-200/10'
+            },
+            silver: {
+                border: 'border-slate-300/40 hover:border-slate-100', // Platinum look
+                bg: 'bg-[#0a0c10]',
+                btn: 'bg-gradient-to-r from-slate-300 to-slate-100 text-black hover:from-white hover:to-slate-200 shadow-[0_0_15px_rgba(226,232,240,0.3)]',
+                icon: 'text-slate-300',
+                price: 'text-slate-200 drop-shadow-[0_0_8px_rgba(226,232,240,0.3)]',
+                badge: null,
+                plasma1: 'bg-slate-400/20',
+                plasma2: 'bg-blue-300/5'
+            }
+        };
 
-        // Dynamic Gold Plasma Background
-        const techBg = isPopular ? `
+        const t = themes[theme] || themes.bronze;
+
+        // Dynamic Tech Background (Now for ALL cards with specific colors)
+        const techBg = `
             <style>
-                @keyframes blobFloat { 
+                @keyframes blobFloat-${theme} { 
                     0%, 100% { transform: translate(0, 0) scale(1); } 
                     33% { transform: translate(30px, -30px) scale(1.1); } 
                     66% { transform: translate(-20px, 20px) scale(0.9); } 
                 }
             </style>
             <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none -z-10">
-                <!-- Gold Plasma -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/20 rounded-full blur-[80px] opacity-50 animate-pulse-slow" style="animation-duration: 4s;"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-200/10 rounded-full blur-[80px] opacity-50 animate-pulse-slow" style="animation-duration: 6s; animation-delay: 1s;"></div>
+                <!-- Plasma Effect -->
+                <div class="absolute top-0 right-0 w-64 h-64 ${t.plasma1} rounded-full blur-[80px] opacity-40 animate-pulse-slow" style="animation-duration: 4s;"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 ${t.plasma2} rounded-full blur-[80px] opacity-40 animate-pulse-slow" style="animation-duration: 6s; animation-delay: 1s;"></div>
                 
-                <!-- Gold Mesh -->
-                <div class="absolute inset-[-50%] opacity-30"
-                     style="background: radial-gradient(circle at 50% 50%, rgba(251,191,36,0.15), transparent 60%); 
-                            animation: blobFloat 10s ease-in-out infinite;">
+                <!-- Mesh -->
+                <div class="absolute inset-[-50%] opacity-20"
+                     style="background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 60%); 
+                            animation: blobFloat-${theme} 10s ease-in-out infinite;">
                 </div>
             </div>
-        ` : '';
+        `;
 
         return `
-            <div class="relative p-8 rounded-2xl border ${goldClass} ${bgClass} transition-all duration-300 flex flex-col h-full group backdrop-blur-sm"
-                 data-aos="fade-up" data-aos-delay="${isPopular ? '100' : '0'}">
-                ${isPopular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-yellow-500 text-black font-black tracking-wider px-6 py-1.5 rounded-full text-xs shadow-lg shadow-amber-500/20 z-20 whitespace-nowrap uppercase border border-yellow-200">Most Popular</div>' : ''}
+            <div class="relative p-8 rounded-2xl border ${t.border} ${t.bg} transition-all duration-300 flex flex-col h-full group backdrop-blur-sm"
+                 data-aos="fade-up" data-aos-delay="${theme === 'gold' ? '100' : '0'}">
+                ${t.badge ? `<div class="absolute -top-4 left-1/2 -translate-x-1/2 ${t.badge} font-black tracking-wider px-6 py-1.5 rounded-full text-xs shadow-lg z-20 whitespace-nowrap uppercase border">Most Popular</div>` : ''}
                 
                 ${techBg}
 
@@ -166,24 +192,24 @@ export const Pricing = (lang = 'de') => {
                 <p class="text-gray-400 text-sm mb-6 min-h-[40px] relative z-10">${data.desc}</p>
                 
                 <div class="mb-6 relative z-10">
-                    <span class="text-4xl font-bold ${isPopular ? 'text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.4)]' : 'text-white'}">${data.price}</span>
+                    <span class="text-4xl font-bold ${t.price}">${data.price}</span>
                     <span class="text-gray-500 text-sm ml-2">/ ${data.period}</span>
                     
                     <div class="mt-2 text-xs text-gray-400 bg-white/5 inline-block px-2 py-1 rounded border border-white/5">
-                        ${t.future_label} <span class="line-through decoration-red-500 decoration-2 text-gray-500">${data.future_price}</span>
+                        ${data.future_label || 'Normal:'} <span class="line-through decoration-red-500 decoration-2 text-gray-500">${data.future_price}</span>
                     </div>
                 </div>
                 
                 <ul class="space-y-4 mb-8 flex-1 relative z-10">
                     ${data.features.map(f => `
                         <li class="flex items-start gap-3 text-gray-300 text-sm">
-                            <i class="fas fa-check ${iconClass} mt-1 drop-shadow-[0_0_5px_rgba(0,0,0,0.5)]"></i>
+                            <i class="fas fa-check ${t.icon} mt-1 drop-shadow-[0_0_5px_rgba(0,0,0,0.5)]"></i>
                             <span>${f}</span>
                         </li>
                     `).join('')}
                 </ul>
                 
-                <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${btnClass} relative z-10 transform hover:scale-[1.02]">
+                <button onclick="window.selectPackage('${data.name}')" class="w-full py-3 rounded-xl font-bold text-center transition-all duration-300 ${t.btn} relative z-10 transform hover:scale-[1.02]">
                     ${data.btn}
                 </button>
             </div>
@@ -219,9 +245,9 @@ export const Pricing = (lang = 'de') => {
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                ${renderCard(t.essential)}
-                ${renderCard(t.professional, true)}
-                ${renderCard(t.enterprise)}
+                ${renderCard(t.essential, 'bronze')}
+                ${renderCard(t.professional, 'gold')}
+                ${renderCard(t.enterprise, 'silver')}
             </div>
 
             <!-- Custom Calculator CTA -->
